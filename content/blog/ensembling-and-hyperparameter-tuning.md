@@ -1,8 +1,8 @@
----
-title: "Ensembling of Scikit Learn Classification Models"
-date: 2024-03-16T14:01:40+01:00
-draft: false
----
++++
+title = 'Ensembling and Hyperparameter Tuning'
+date = 2024-03-16T17:56:43+05:30
+draft = false
++++
 
 Ensembling and hyperparameter tuning are essential techniques in machine learning for improving model performance. In this article, we'll explore these techniques using the `scikit-learn` library in Python.
 

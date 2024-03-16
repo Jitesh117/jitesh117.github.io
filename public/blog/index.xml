@@ -2,27 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Blogs on Jitesh117</title>
-    <link>jitesh117.github.io/personal_website/blog/</link>
+    <link>//localhost:1313/blog/</link>
     <description>Recent content in Blogs on Jitesh117</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Jan 2023 14:01:40 +0100</lastBuildDate>
-    <atom:link href="jitesh117.github.io/personal_website/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 16 Mar 2024 17:56:43 +0530</lastBuildDate>
+    <atom:link href="//localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Ensembling of Scikit Learn Classification Models</title>
-      <link>jitesh117.github.io/personal_website/blog/ensembling-scikit-models/</link>
-      <pubDate>Fri, 27 Jan 2023 14:01:40 +0100</pubDate>
-      <guid>jitesh117.github.io/personal_website/blog/ensembling-scikit-models/</guid>
-      <description>Ensembling of Scikit Learn Classification Models involves combining multiple machine learning classifiers to improve predictive performance. One common approach is through a technique known as &amp;ldquo;voting,&amp;rdquo; where the predictions of individual classifiers are aggregated to make a final prediction. Scikit-learn provides several ensemble methods, such as VotingClassifier, BaggingClassifier, and RandomForestClassifier, each with its own unique characteristics and advantages.
-In ensemble learning, diverse base classifiers are trained on different subsets of the training data or using different algorithms.</description>
-    </item>
-    <item>
-      <title>Scikit-Learn Pipelines for streamlineed ML workflow</title>
-      <link>jitesh117.github.io/personal_website/blog/scikit-pipelines/</link>
-      <pubDate>Fri, 27 Jan 2023 14:01:40 +0100</pubDate>
-      <guid>jitesh117.github.io/personal_website/blog/scikit-pipelines/</guid>
-      <description>In the realm of machine learning, data preprocessing and model building often involve multiple steps that need to be executed sequentially. These steps may include data cleaning, feature engineering, scaling, and model fitting, among others. Manually managing these steps can lead to cumbersome code and potential errors. Enter Scikit-Learn pipelines—a powerful tool for streamlining and automating machine learning workflows.
-What are Scikit-Learn Pipelines? Scikit-Learn pipelines are a convenient way to chain together multiple processing steps into a single object.</description>
+      <title>Ensembling and Hyperparameter Tuning</title>
+      <link>//localhost:1313/blog/ensembling-and-hyperparameter-tuning/</link>
+      <pubDate>Sat, 16 Mar 2024 17:56:43 +0530</pubDate>
+      <guid>//localhost:1313/blog/ensembling-and-hyperparameter-tuning/</guid>
+      <description>Ensembling and hyperparameter tuning are essential techniques in machine learning for improving model performance. In this article, we&amp;rsquo;ll explore these techniques using the scikit-learn library in Python.
+Understanding Ensembling Ensembling is a technique where multiple models are combined to improve predictive performance. There are various ensembling methods, such as Bagging, Boosting, and Stacking.
+Bagging Bagging, or Bootstrap Aggregating, involves training multiple base models on different subsets of the training data and then aggregating their predictions.</description>
     </item>
   </channel>
 </rss>
