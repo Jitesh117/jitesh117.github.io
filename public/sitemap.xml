@@ -2,17 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/blog/</loc>
-    <lastmod>2024-03-16T14:01:40+01:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/</loc>
-    <lastmod>2024-03-16T14:01:40+01:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/blog/ensembling-and-hyperparameter-tuning/</loc>
+    <loc>jitesh117.github.io/blog/</loc>
     <lastmod>2024-03-16T17:56:43+05:30</lastmod>
   </url><url>
-    <loc>//localhost:1313/categories/</loc>
+    <loc>jitesh117.github.io/blog/ensembling-and-hyperparameter-tuning/</loc>
+    <lastmod>2024-03-16T17:56:43+05:30</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/</loc>
+    <loc>jitesh117.github.io/</loc>
+    <lastmod>2024-03-16T17:56:43+05:30</lastmod>
+  </url><url>
+    <loc>jitesh117.github.io/categories/</loc>
+  </url><url>
+    <loc>jitesh117.github.io/tags/</loc>
   </url>
 </urlset>
