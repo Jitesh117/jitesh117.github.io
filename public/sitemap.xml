@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>jitesh117.github.io/personal_website/blog/</loc>
+    <lastmod>2023-01-27T14:01:40+01:00</lastmod>
+  </url><url>
+    <loc>jitesh117.github.io/personal_website/blog/ensembling-scikit-models/</loc>
+    <lastmod>2023-01-27T14:01:40+01:00</lastmod>
+  </url><url>
+    <loc>jitesh117.github.io/personal_website/</loc>
+    <lastmod>2023-01-27T14:01:40+01:00</lastmod>
+  </url><url>
+    <loc>jitesh117.github.io/personal_website/blog/scikit-pipelines/</loc>
+    <lastmod>2023-01-27T14:01:40+01:00</lastmod>
+  </url><url>
+    <loc>jitesh117.github.io/personal_website/categories/</loc>
+  </url><url>
+    <loc>jitesh117.github.io/personal_website/tags/</loc>
+  </url>
+</urlset>

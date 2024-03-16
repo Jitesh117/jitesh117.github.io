@@ -1,0 +1,44 @@
+baseURL = 'jitesh117.github.io/personal_website'
+languageCode = "en-us"
+title = "Jitesh117"
+theme = "PaperMod"
+
+[params.homeInfoParams]
+Title = "Hey, I’m Jitesh 👋"
+Content = "I'm a Data Scientist and Flutter Developer. I write about Data Science, Python, and ML stuff. Currently, I'm exploring Machine Learning and Kaggle competitions."
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/Jitesh117"
+
+[[params.socialIcons]]
+name = "kaggle"
+url = "https://www.kaggle.com/jiteshkumarsahoo"
+
+[[params.socialIcons]]
+name = "twitter"
+url = "https://twitter.com/Jitesh_117"
+
+
+[[params.socialIcons]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/Jitesh117/"
+
+
+[[menu.main]]
+identifier = "home"
+name = "Home"
+url = "/"
+weight = 10
+
+[[menu.main]]
+identifier = "posts"
+name = "Blog"
+url = "/blog/"
+weight = 20
+
+# [[menu.main]]
+# identifier = "contents"
+# name = "Contents"
+# url = "https://joelolawanle.com/contents"
+# weight = 30

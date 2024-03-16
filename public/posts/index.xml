@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Jitesh117</title>
+    <link>//localhost:1313/posts/</link>
+    <description>Recent content in Posts on Jitesh117</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 27 Jan 2023 14:01:40 +0100</lastBuildDate>
+    <atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First Blog Post</title>
+      <link>//localhost:1313/posts/first/</link>
+      <pubDate>Fri, 27 Jan 2023 14:01:40 +0100</pubDate>
+      <guid>//localhost:1313/posts/first/</guid>
+      <description>Advertisement :)
+pica - high quality and fast image resize in browser. babelfish - developer friendly i18n with plurals support and easy syntax. You will like those projects!
+h1 Heading 8-) h2 Heading h3 Heading h4 Heading h5 Heading h6 Heading Horizontal Rules Typographic replacements Enable typographer option to see result.
+(c) (C) (r) (R) (tm) (TM) (p) (P) +-
+test.. test&amp;hellip; test&amp;hellip;.. test?&amp;hellip;.. test!&amp;hellip;.
+!!!!!! ???? ,, &amp;ndash; &amp;mdash;</description>
+    </item>
+    <item>
+      <title>Second Blog Post</title>
+      <link>//localhost:1313/posts/second/</link>
+      <pubDate>Fri, 27 Jan 2023 14:01:40 +0100</pubDate>
+      <guid>//localhost:1313/posts/second/</guid>
+      <description>Emphasis This is bold text
+This is bold text
+This is italic text
+This is italic text
+Strikethrough
+Blockquotes Blockquotes can also be nested&amp;hellip;
+&amp;hellip;by using additional greater-than signs right next to each other&amp;hellip;
+&amp;hellip;or with spaces between arrows.
+Lists Unordered
+Create a list by starting a line with +, -, or * Sub-lists are made by indenting 2 spaces: Marker character change forces new list start: Ac tristique libero volutpat at Facilisis in pretium nisl aliquet Nulla volutpat aliquam velit Very easy!</description>
+    </item>
+  </channel>
+</rss>
