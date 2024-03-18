@@ -35,10 +35,6 @@ weight = 10
 identifier = "posts"
 name = "Blog"
 url = "/blog/"
-weight = 20
 
-# [[menu.main]]
-# identifier = "contents"
-# name = "Contents"
-# url = "https://joelolawanle.com/contents"
-# weight = 30
+[params]
+mainSections = [ "blog", "shelf" ]
