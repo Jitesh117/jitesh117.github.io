@@ -4,7 +4,7 @@ date = 2024-03-20T19:42:54+05:30
 draft = false
 +++
 
-![img](/images/vim.png)
+![img](/images/vim_screen.png)
 
 [VIM](https://www.vim.org/) or Vi Improved, is a free and open-source text editor for the terminal written by Bram Moolenaar.
 It is a highly powerful and versatile text editor that has managed to gather a devoted following among many people.Known for its efficiency, speed, and extensive customization options, Vim offers a unique modal editing approach that distinguishes it from traditional text editors. 
