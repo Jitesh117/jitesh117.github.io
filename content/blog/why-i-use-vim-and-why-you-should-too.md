@@ -72,7 +72,7 @@ After getting a little familiar with the basic vim motions, I installed the Vim 
 
 ![lazy_vim](/images/lazy_vim_screen.png)
 
-After using the Vim extension for 2 years, I felt like I want more speed from my editor which VSCode just couldn't provide. Then I found out about [NeoVim](https://neovim.io/) is a modernized and extended version of the Vim text editor, designed to address limitations and add new features while maintaining compatibility with Vim's core functionality and philosophy. I referred [Teej](https://www.youtube.com/@teej_dv)'s channel to configure NeoVim from scratch. But being a Windows user, it was quite a pain to go through the tutorial seamlessly due to some dependencies not able to install correctly.
+After using the Vim extension for 2 years, I felt like I want more speed from my editor which VSCode just couldn't provide. Then I found out about [NeoVim](https://neovim.io/), a modernized and extended version of the Vim text editor, designed to address limitations and add new features while maintaining compatibility with Vim's core functionality and philosophy. I referred [Teej](https://www.youtube.com/@teej_dv)'s channel to configure NeoVim from scratch. But being a Windows user, it was quite a pain to go through the tutorial seamlessly due to some dependencies not able to install correctly.
 
 So I tried out NeoVim distros. I tried NVChad, AstroVim, LunarVim but found LazyVim the the most apt to my likes.
 
