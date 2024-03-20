@@ -54,7 +54,7 @@ Copy the whole function using the mouse and then Cut and paste
 Go the the beginning of the function, go to `Normal` mode, press `Shift + V` and then `]]`. The whole function will get selected and then press `d` to delete it and store in the default register.
 Then go to the line where you want to paste the code and just press `p`.
 
-There are endless more number of things which can be achieved seamlessly with Vim, but that is out scope for this article. To know more about vim shortcuts, you follow this [article](https://vim.rtorr.com/).
+There are endless more number of things which can be achieved seamlessly with Vim, but that is out scope for this article. To know more about vim shortcuts, you can follow this [article](https://vim.rtorr.com/).
 
 
 ## My journey of learning Vim motions
