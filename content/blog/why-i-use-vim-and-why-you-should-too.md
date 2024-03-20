@@ -1,6 +1,6 @@
 +++
 title = 'Why I use Vim and why you should too'
-date = 2024-03-20T21:00:00+05:30
+date = 2024-03-20T07:00:00+05:30
 draft = false
 +++
 
