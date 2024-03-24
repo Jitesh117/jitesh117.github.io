@@ -153,3 +153,32 @@ We search linearly from the hashed index until the end of the array then wrap fr
 > - We stop the iteration as soon as we encounter an empty slot
 
 **WORST CASE**: Linear lookup across table
+
+In Linear probing, deleting has to be done using soft delete, because if we do hard delete, it would create an empty slot, which means the probing key would never move forward for that colliding key of that same index. 
+
+**Linear probing is simple and fast** 
+
+**Simple**: We linearly iterate to find the next slot, can this *BE* any easier?
+**Fast**: Usage of Localised access i.e. the page is cached on CPU and the page contains the neighbouring elements. So subsequent accesses are served on CPU cache.
+
+*But how can linear probing give constant time performance?*
+
+Because in an average case, there would be far fewer collisions. The keys would be distributed across your entire space.
+
+##### Challenges with Linear probing
+1. A bad hash function would make linear probing a few hash table search and hence inefficient.
+Hence, using a good hash function is very important, [MurmurHash](https://en.wikipedia.org/wiki/MurmurHash) is preferred
+
+2. Linear probing sufferes from clustered collisions. To tackle this, a good **uniform** hash function is essential for linear probing to be efficient. 
+
+#### 2. Quadratic Probing
+
+Instead of placing the collided key in the neighbouring slot, quadratic probing adds successive value of an arbitrary quadratic polynomial.
+
+**How is it better than linear probing?**
+
+- It reduces clustering adn cascaded collisions as collided keys are placed further away from each other.
+* It is not immune to it, it just reduces it a great extent.
+
+- It has a good locality of reference but not as greeat as linear probing
+* Leverages CPU cache well.

@@ -38,6 +38,7 @@ url = "/blog/"
 
 [params]
 mainSections = ["blog", "shelf"]
+comments = true
 
 ShowCodeCopyButtons = true
 ShowPostNavLinks = true
