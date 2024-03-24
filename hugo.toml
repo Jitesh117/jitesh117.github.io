@@ -37,4 +37,12 @@ name = "Blog"
 url = "/blog/"
 
 [params]
-mainSections = [ "blog", "shelf" ]
+mainSections = ["blog", "shelf"]
+
+ShowCodeCopyButtons = true
+ShowPostNavLinks = true
+ShowReadingTime = true
+ShowShareButtons = true
+
+[params.cover]
+linkFullImages = true
