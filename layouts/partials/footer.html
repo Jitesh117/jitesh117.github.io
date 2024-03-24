@@ -1,6 +1,7 @@
 
 {{- if not (.Param "hideFooter") }}
 <footer class="footer">
+    {{ partial "giscus" . }}
     {{- if site.Copyright }}
     <span>{{ site.Copyright | markdownify }}</span>
     {{- else }}
@@ -134,5 +135,3 @@
     });
 </script>
 {{- end }}
-
-{{ partial "giscus" . }}
