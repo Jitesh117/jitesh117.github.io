@@ -16,7 +16,7 @@ What pushed me to actually learn Vim motions and incorporate it in my daily edit
 
 ## What makes Vim different from others
 
-Vim sets itself apart from other text editors such as VSCode through its modal editing system, which offers distint modes for various tasks.
+Vim sets itself apart from other text editors such as VSCode through its modal editing system, which offers distinct modes for various tasks.
 
 ### But why Modal editing?
 
@@ -33,7 +33,7 @@ To go to the last or the first line of the code, in any other editor, you'll mos
 #### The Vim way
 Vim makes this super easy and intuitive. Just press `Shift + g` in `Normal` mode (Press Esc to go to `Normal` mode).
 
-To go to the first line of the code fron any line, just press `gg` in `Normal` mode (Press Esc to go to `Normal` mode).
+To go to the first line of the code from any line, just press `gg` in `Normal` mode (Press Esc to go to `Normal` mode).
 
 After editing those lines, you'd most likely want to go back to the line you were previously working on. Vim has got you covered, just press `Ctrl + o`
 
@@ -82,7 +82,7 @@ At this time most of my work revolves around Jupyter Notebooks, and the support 
 
 ## Conclusion
 
-What I realised after using Vim in both NeoVim and via extensions in VSCode and Intellij, is that although full blown IDE experience from Vim is not for everybody, Vim motions is something which solves a lot of issues for the general public.
+What I realized after using Vim in both NeoVim and via extensions in VSCode and Intellij, is that although full blown IDE experience from Vim is not for everybody, Vim motions is something which solves a lot of issues for the general public.
 
 Vim motions' capabilities are now so recognised that almost every popular code/text editor has incorporated Vim motions into themselves in the form of extensions/plugins. Even browsers have Vim extensions like Vimium which incorporated the Vim goodness right into your browsing experience.
 

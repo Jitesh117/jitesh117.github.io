@@ -6,8 +6,17 @@
     <description>Recent content on Jitesh117</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Mar 2024 07:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 26 Mar 2024 17:00:00 +0530</lastBuildDate>
     <atom:link href="jitesh117.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hash Tables Primer: The Ins and Outs of Efficient Key-Value Storage</title>
+      <link>jitesh117.github.io/blog/the-ins-and-outs-of-hash-tables/</link>
+      <pubDate>Tue, 26 Mar 2024 17:00:00 +0530</pubDate>
+      <guid>jitesh117.github.io/blog/the-ins-and-outs-of-hash-tables/</guid>
+      <description>Hash Tables are one of the most used Data structures, they&amp;rsquo;re so popular that almost every language has their own implementation and nomenclature of Hash Tables.
+One very interesting fact about Hash Tables is that they&amp;rsquo;re also used as building blocks for:
+Classes and its members Variable lookup table As we can see, Hash Tables are not just used in the business case of any application, but it&amp;rsquo;s also used in the inner working of any programming language.</description>
+    </item>
     <item>
       <title>Why I use Vim and why you should too</title>
       <link>jitesh117.github.io/blog/why-i-use-vim-and-why-you-should-too/</link>
