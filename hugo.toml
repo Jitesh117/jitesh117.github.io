@@ -3,6 +3,8 @@ languageCode = "en-us"
 title = "Jitesh117"
 theme = "PaperMod"
 
+googleAnalytics = "G-CGJ4KC5CSM"
+
 [params.homeInfoParams]
 Title = "Hey, I’m Jitesh 👋"
 Content = "I'm a Data Scientist and Flutter Developer. I write about Data Science, Python, and ML stuff. Currently, I'm exploring Machine Learning and Kaggle competitions."
