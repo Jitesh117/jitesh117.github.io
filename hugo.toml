@@ -59,6 +59,8 @@ hideSummary = true
 
 comments = true
 
+math = true
+
 ShowCodeCopyButtons = true
 ShowPostNavLinks = true
 ShowReadingTime = true
