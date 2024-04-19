@@ -1,0 +1,18 @@
+{{ if and (not .IsHome) (not (or (eq .RelPermalink "/shelf/") (eq .RelPermalink "/musings/"))) }}
+<script src="https://giscus.app/client.js" 
+  data-repo="jitesh117/blog_comments"
+  data-repo-id="R_kgDOLkuO3Q"
+  data-category="Q&A"
+  data-category-id="DIC_kwDOLkuO3c4CeMSc"
+  data-mapping="pathname"
+  data-strict="0"
+  data-reactions-enabled="1"
+  data-emit-metadata="0"
+  data-input-position="top"
+  data-theme="preferred_color_scheme"
+  data-lang="en"
+  data-loading="lazy"
+  crossorigin="anonymous"
+  async>
+</script>
+{{ end }}
