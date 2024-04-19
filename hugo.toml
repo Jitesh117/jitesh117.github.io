@@ -59,7 +59,7 @@ hideSummary = true
 
 comments = true
 
-math = true
+# math = true
 
 ShowCodeCopyButtons = true
 ShowPostNavLinks = true

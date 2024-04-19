@@ -4,6 +4,7 @@ date = 2024-04-19T20:52:26+05:30
 draft = false
 cover.image = "/images/graphs.png"
 showToc = true
+math = true
 +++
 
 ## Activation Functions in Neural Networks
