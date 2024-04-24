@@ -10,7 +10,7 @@ hideMeta = true
 1. [1984](https://www.goodreads.com/book/show/61439040-1984) by George Orwell
 2. [By the River Piedra I sat down and wept](https://www.goodreads.com/book/show/1428.By_the_River_Piedra_I_Sat_Down_and_Wept) by Paulo Coelho
 3. [Animal Farm](https://www.goodreads.com/book/show/170448.Animal_Farm) By George Orwell
-4. [Halo The Forerunner Saga series](https://en.wikipedia.org/wiki/Forerunner_Saga) by Greg bear
+4. [Halo The Forerunner Saga series](https://en.wikipedia.org/wiki/Forerunner_Saga) by Greg Bear
 
 ## Non-fiction 
 

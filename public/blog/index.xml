@@ -6,8 +6,17 @@
     <description>Recent content on Jitesh117</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Apr 2024 20:52:26 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 24 Apr 2024 11:56:07 +0530</lastBuildDate>
     <atom:link href="//localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hierarchical Indexing in Pandas</title>
+      <link>//localhost:1313/blog/hierarchical-indexing-in-pandas/</link>
+      <pubDate>Wed, 24 Apr 2024 11:56:07 +0530</pubDate>
+      <guid>//localhost:1313/blog/hierarchical-indexing-in-pandas/</guid>
+      <description>Hierarchical indexing in Pandas enables the users to have multiple index levels on an axis. In simple words, it provides a way for you to work with higher dimensional data in a lower dimensional form.
+Creating a Multi-Index You can create a multi-index (hierarchical index) in Pandas using the MultiIndex object or by passing multiple index arrays or lists to the index parameter when creating a DataFrame or Series.
+# Creating a MultiIndex from arrays multi_index = pd.</description>
+    </item>
     <item>
       <title>Activation Function and Loss Functions in Neural Networks</title>
       <link>//localhost:1313/blog/activation-function-and-loss-functions-in-neural-networks/</link>
@@ -40,6 +49,17 @@ But why bother to type fast? 1. It just really impresses people When people see 
       <description>Hash Tables are one of the most used Data structures, they&amp;rsquo;re so popular that almost every language has their own implementation and nomenclature of Hash Tables.
 One very interesting fact about Hash Tables is that they&amp;rsquo;re also used as building blocks for:
 Classes and its members Variable lookup table As we can see, Hash Tables are not just used in the business case of any application, but it&amp;rsquo;s also used in the inner working of any programming language.</description>
+    </item>
+    <item>
+      <title>Hash Table Performance and Implementation</title>
+      <link>//localhost:1313/blog/hash-table-performance-and-implementation/</link>
+      <pubDate>Tue, 26 Mar 2024 15:34:47 +0530</pubDate>
+      <guid>//localhost:1313/blog/hash-table-performance-and-implementation/</guid>
+      <description>Hash Table gives constant time performance when there are zero collisions.
+But that&amp;rsquo;s impossible!
+So how can we quantify how &amp;ldquo;full&amp;rdquo; the table is? This is called the Load Factor
+Load Factor Load Factor is the ratio of the total number of elements and the number of slots in the hash table.
+Load Factor with different resolution strategies Load Factor with different resolution strategies With chaining, we can never fill the table i.</description>
     </item>
     <item>
       <title>Why I use Vim and why you should too</title>

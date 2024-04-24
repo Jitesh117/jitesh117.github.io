@@ -3,12 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>//localhost:1313/blog/</loc>
-    <lastmod>2024-04-19T20:52:26+05:30</lastmod>
+    <lastmod>2024-04-24T11:56:07+05:30</lastmod>
   </url><url>
-    <loc>//localhost:1313/blog/activation-function-and-loss-functions-in-neural-networks/</loc>
-    <lastmod>2024-04-19T20:52:26+05:30</lastmod>
+    <loc>//localhost:1313/blog/hierarchical-indexing-in-pandas/</loc>
+    <lastmod>2024-04-24T11:56:07+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/</loc>
+    <lastmod>2024-04-24T11:56:07+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/blog/activation-function-and-loss-functions-in-neural-networks/</loc>
     <lastmod>2024-04-19T20:52:26+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/blog/so-you-think-you-know-git/</loc>
@@ -40,6 +43,9 @@
   </url><url>
     <loc>//localhost:1313/blog/the-ins-and-outs-of-hash-tables/</loc>
     <lastmod>2024-03-26T17:00:00+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/blog/hash-table-performance-and-implementation/</loc>
+    <lastmod>2024-03-26T15:34:47+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/blog/why-i-use-vim-and-why-you-should-too/</loc>
     <lastmod>2024-03-20T07:00:00+05:30</lastmod>
