@@ -2,10 +2,12 @@
 title = 'Hierarchical Indexing in Pandas'
 date = 2024-04-25T11:56:07+05:30
 cover.image = "/images/indexing.jpg"
-draft = False
+draft = false
 +++
 
-Working with high-dimensional or categorized data can be a complex and challenging task, but Pandas provides a powerful tool to simplify this process: hierarchical indexing. Hierarchical indexing, also known as multi-level or multi-indexed indexing, allows you to create and manipulate indexes with multiple levels or dimensions, providing a more intuitive and organized way to structure, access, and analyze your data. 
+Working with high-dimensional or categorized data can be a complex and challenging task, but Pandas provides a powerful tool to simplify this process: hierarchical indexing. 
+
+Hierarchical indexing, also known as multi-level or multi-indexed indexing, allows you to create and manipulate indexes with multiple levels or dimensions, providing a more intuitive and organized way to structure, access, and analyze your data. 
 
 This indexing technique is particularly useful when dealing with datasets that contain multiple levels of categorization or grouping, such as data from different regions, periods, or product categories. 
 
