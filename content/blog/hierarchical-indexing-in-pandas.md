@@ -3,6 +3,7 @@ title = 'Hierarchical Indexing in Pandas'
 date = 2024-04-25T11:56:07+05:30
 cover.image = "/images/indexing.jpg"
 draft = false
+ShowToc = true
 +++
 
 Working with high-dimensional or categorized data can be a complex and challenging task, but Pandas provides a powerful tool to simplify this process: hierarchical indexing. 
@@ -104,7 +105,7 @@ d  2    1.074623
 These reshaping operations are particularly useful when working with higher-dimensional or categorized data, allowing you to explore and analyze your data from different perspectives.
 
 
-### Benefits of Hierarchical Indexing
+## Benefits of Hierarchical Indexing
 
 Hierarchical indexing in Pandas offers several benefits:
 
