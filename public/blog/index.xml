@@ -6,8 +6,16 @@
     <description>Recent content on Jitesh117</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Apr 2024 11:56:07 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 26 Apr 2024 16:22:06 +0530</lastBuildDate>
     <atom:link href="//localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why to Use Tmux</title>
+      <link>//localhost:1313/blog/why-to-use-tmux/</link>
+      <pubDate>Fri, 26 Apr 2024 16:22:06 +0530</pubDate>
+      <guid>//localhost:1313/blog/why-to-use-tmux/</guid>
+      <description>1. Introduction tmux (Terminal Multiplexer) is a powerful terminal utility that allows you to create multiple terminal sessions, split windows, and detach and reattach sessions with ease. It&amp;rsquo;s a game-changer for anyone who works heavily in the terminal, providing a robust environment for multitasking, remote server management, and efficient workflow.
+Benefits of using tmux Persistent sessions: Detach and reattach sessions, ensuring your work is never lost Efficient window and pane management: Split your terminal into multiple windows and panes Enhanced productivity: Streamline your workflow by running multiple commands simultaneously Remote session sharing: Share sessions with other users for collaboration or pair programming A Brief overview of its features tmux offers a wide range of features, including window and pane management, customizable status bars, key bindings, plugins, and more.</description>
+    </item>
     <item>
       <title>Hierarchical Indexing in Pandas</title>
       <link>//localhost:1313/blog/hierarchical-indexing-in-pandas/</link>
@@ -49,6 +57,17 @@ But why bother to type fast? 1. It just really impresses people When people see 
       <description>Hash Tables are one of the most used Data structures, they&amp;rsquo;re so popular that almost every language has their own implementation and nomenclature of Hash Tables.
 One very interesting fact about Hash Tables is that they&amp;rsquo;re also used as building blocks for:
 Classes and its members Variable lookup table As we can see, Hash Tables are not just used in the business case of any application, but it&amp;rsquo;s also used in the inner working of any programming language.</description>
+    </item>
+    <item>
+      <title>Hash Table Performance and Implementation</title>
+      <link>//localhost:1313/blog/hash-table-performance-and-implementation/</link>
+      <pubDate>Tue, 26 Mar 2024 15:34:47 +0530</pubDate>
+      <guid>//localhost:1313/blog/hash-table-performance-and-implementation/</guid>
+      <description>Hash Table gives constant time performance when there are zero collisions.
+But that&amp;rsquo;s impossible!
+So how can we quantify how &amp;ldquo;full&amp;rdquo; the table is? This is called the Load Factor
+Load Factor Load Factor is the ratio of the total number of elements and the number of slots in the hash table.
+Load Factor with different resolution strategies Load Factor with different resolution strategies With chaining, we can never fill the table i.</description>
     </item>
     <item>
       <title>Why I use Vim and why you should too</title>
