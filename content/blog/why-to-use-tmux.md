@@ -1,6 +1,6 @@
 +++
 title = 'Why to Use Tmux'
-date = 2024-04-26T16:22:06+05:30
+date = 2024-04-30T16:22:06+05:30
 draft = false
 cover.image = "/images/tmux.jpg"
 showToc = true
