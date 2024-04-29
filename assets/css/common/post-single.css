@@ -45,11 +45,11 @@
 }
 
 .post-content h1 { color: var(--primary); margin: 40px auto 32px; font-size: 40px; }
-.post-content h2 { color: #0e9cfa; margin: 32px auto 24px; font-size: 32px; }
-.post-content h3 { color: #1dd1a7; font-size: 24px; }
-.post-content h4 { color: #0b89a2; font-size: 16px; }
-.post-content h5 { color: #ffa500; font-size: 14px; }
-.post-content h6 { color: #ff0000; font-size: 12px; }
+.post-content h2 { color: #91e273; margin: 32px auto 24px; font-size: 32px; }
+.post-content h3 { color: #4db6bb; font-size: 24px; }
+.post-content h4 { color: #d79921; font-size: 16px; }
+.post-content h5 { color: 	#cc241d; font-size: 14px; }
+.post-content h6 { color: #3c3836; font-size: 12px; }
 
 .post-content a,
 .toc a:hover {
