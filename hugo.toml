@@ -49,7 +49,7 @@ url = "/shelf/"
 
 [[menu.main]]
 identifier = "musings"
-name = "Musings"
+name = "Essays"
 url = "/musings/"
 
 [params]
