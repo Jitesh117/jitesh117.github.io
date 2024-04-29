@@ -1,7 +1,8 @@
 +++
 title = 'Do We Really Know Ourselves?'
-date = 2024-04-27T18:01:41+05:30
-draft = true
+date = 2024-04-29T18:01:41+05:30
+cover.image = "/images/know_ourselves.jpg"
+draft = false
 +++
 
 One of the most haunting realisations I've had about myself recently is that I've let my work define me too much all my life. Like, barring some very close friends, none could pinpoint anything about my personality. 
@@ -20,8 +21,8 @@ Perhaps this habit of letting their work define people is ingrained in Humans. I
 
 What I've noticed though, is that the most genuine connections I made were not because of their work but how they carried themselves, their nature, personality and such. 
 
-As I think more about this, it makes me feel a bit unsettling that I have been consumed by my professional life too much that I've neglected my own self altogether.
+As I think more about this, it makes me feel a bit unsettled that I have been consumed by my professional life too much that I've neglected my own self altogether.
 
 Yet this discomfort feels like a new beginning for me. There are so many facets in me just waiting to get discovered.
 
-Starting now, I'm on a journey to explore myself. I'm open to whatever comes my way. I don't know where I'll end up, but wherever it is, it'll be more true to who I really am than where I've been."
+Starting now, I'm on a journey to explore myself. I'm open to whatever comes my way. I don't know where I'll end up, but wherever it is, it'll be more true to who I really am than where I've been.

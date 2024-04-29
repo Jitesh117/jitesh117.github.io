@@ -6,12 +6,12 @@
     <description>Recent content on Jitesh117</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Apr 2024 16:22:06 +0530</lastBuildDate>
+    <lastBuildDate>Tue, 30 Apr 2024 16:22:06 +0530</lastBuildDate>
     <atom:link href="//localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why to Use Tmux</title>
       <link>//localhost:1313/blog/why-to-use-tmux/</link>
-      <pubDate>Fri, 26 Apr 2024 16:22:06 +0530</pubDate>
+      <pubDate>Tue, 30 Apr 2024 16:22:06 +0530</pubDate>
       <guid>//localhost:1313/blog/why-to-use-tmux/</guid>
       <description>1. Introduction tmux (Terminal Multiplexer) is a powerful terminal utility that allows you to create multiple terminal sessions, split windows, and detach and reattach sessions with ease. It&amp;rsquo;s a game-changer for anyone who works heavily in the terminal, providing a robust environment for multitasking, remote server management, and efficient workflow.
 Benefits of using tmux Persistent sessions: Detach and reattach sessions, ensuring your work is never lost Efficient window and pane management: Split your terminal into multiple windows and panes Enhanced productivity: Streamline your workflow by running multiple commands simultaneously Remote session sharing: Share sessions with other users for collaboration or pair programming A Brief overview of its features tmux offers a wide range of features, including window and pane management, customizable status bars, key bindings, plugins, and more.</description>

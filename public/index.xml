@@ -6,15 +6,23 @@
     <description>Recent content on Jitesh117</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Apr 2024 18:01:41 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 01 May 2024 18:01:41 +0530</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Do We Really Know Ourselves?</title>
       <link>//localhost:1313/musings/do-we-really-know-ourselves/</link>
-      <pubDate>Sat, 27 Apr 2024 18:01:41 +0530</pubDate>
+      <pubDate>Wed, 01 May 2024 18:01:41 +0530</pubDate>
       <guid>//localhost:1313/musings/do-we-really-know-ourselves/</guid>
       <description>One of the most haunting realisations I&amp;rsquo;ve had about myself recently is that I&amp;rsquo;ve let my work define me too much all my life. Like, barring some very close friends, none could pinpoint anything about my personality.
 If you&amp;rsquo;d asked anyone from my class about me, the most they could tell about me was that &amp;ldquo;Jitesh likes reading a lot&amp;rdquo;. That&amp;rsquo;s it. Although it&amp;rsquo;s not the people&amp;rsquo;s perception about me what&amp;rsquo;s bothering me, but the fact that I don&amp;rsquo;t do much apart from my work is troubling me a lot now.</description>
+    </item>
+    <item>
+      <title>Why to Use Tmux</title>
+      <link>//localhost:1313/blog/why-to-use-tmux/</link>
+      <pubDate>Tue, 30 Apr 2024 16:22:06 +0530</pubDate>
+      <guid>//localhost:1313/blog/why-to-use-tmux/</guid>
+      <description>1. Introduction tmux (Terminal Multiplexer) is a powerful terminal utility that allows you to create multiple terminal sessions, split windows, and detach and reattach sessions with ease. It&amp;rsquo;s a game-changer for anyone who works heavily in the terminal, providing a robust environment for multitasking, remote server management, and efficient workflow.
+Benefits of using tmux Persistent sessions: Detach and reattach sessions, ensuring your work is never lost Efficient window and pane management: Split your terminal into multiple windows and panes Enhanced productivity: Streamline your workflow by running multiple commands simultaneously Remote session sharing: Share sessions with other users for collaboration or pair programming A Brief overview of its features tmux offers a wide range of features, including window and pane management, customizable status bars, key bindings, plugins, and more.</description>
     </item>
     <item>
       <title>Why Reading Fiction Matters</title>
@@ -23,14 +31,6 @@ If you&amp;rsquo;d asked anyone from my class about me, the most they could tell
       <guid>//localhost:1313/musings/why-reading-fiction-matters/</guid>
       <description>Being in Tech, more often than not, if you ask anyone for book recommendations, they&amp;rsquo;d recommend a non-fiction self-help book. Although non-fiction books have their place, Fiction should never be overlooked.
 One thing which makes Fiction books overlooked by the general population is that there is no direct benefit of reading them. When you&amp;rsquo;ve read a non-fictional book, you get know some new knowledge. But that&amp;rsquo;s not the case with Fiction books.</description>
-    </item>
-    <item>
-      <title>Why to Use Tmux</title>
-      <link>//localhost:1313/blog/why-to-use-tmux/</link>
-      <pubDate>Fri, 26 Apr 2024 16:22:06 +0530</pubDate>
-      <guid>//localhost:1313/blog/why-to-use-tmux/</guid>
-      <description>1. Introduction tmux (Terminal Multiplexer) is a powerful terminal utility that allows you to create multiple terminal sessions, split windows, and detach and reattach sessions with ease. It&amp;rsquo;s a game-changer for anyone who works heavily in the terminal, providing a robust environment for multitasking, remote server management, and efficient workflow.
-Benefits of using tmux Persistent sessions: Detach and reattach sessions, ensuring your work is never lost Efficient window and pane management: Split your terminal into multiple windows and panes Enhanced productivity: Streamline your workflow by running multiple commands simultaneously Remote session sharing: Share sessions with other users for collaboration or pair programming A Brief overview of its features tmux offers a wide range of features, including window and pane management, customizable status bars, key bindings, plugins, and more.</description>
     </item>
     <item>
       <title>Hierarchical Indexing in Pandas</title>
