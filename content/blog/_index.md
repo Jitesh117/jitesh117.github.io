@@ -1,3 +1,3 @@
 # Blogs
 
-Tech articles written by me.
+Tech articles written by me. 
