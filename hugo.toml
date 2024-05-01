@@ -39,9 +39,9 @@ url = "https://twitter.com/Jitesh_117"
 name = "linkedin"
 url = "https://www.linkedin.com/in/Jitesh117/"
 
-# [[params.socialIcons]]
-# name = "RSS"
-# url = "https://www.jitesh117.github.io/index.xml/"
+[[params.socialIcons]]
+name = "RSS"
+url = "https://jitesh117.github.io/"
 
 
 [[menu.main]]
