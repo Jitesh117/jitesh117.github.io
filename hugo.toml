@@ -41,7 +41,7 @@ url = "https://www.linkedin.com/in/Jitesh117/"
 
 [[params.socialIcons]]
 name = "RSS"
-url = "https://jitesh117.github.io/"
+url = "https://jitesh117.github.io/index.xml"
 
 
 [[menu.main]]
