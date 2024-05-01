@@ -14,9 +14,9 @@ buildFuture = true
   taxonomy = ['html']
   term = ['html']
 
-[params.author]
-email = 'sahookumarjitesh@gmail.com'
-name = 'Jitesh Kumar Sahoo'
+# [params.author]
+# email = 'sahookumarjitesh@gmail.com'
+# name = 'Jitesh Kumar Sahoo'
 
 [params.homeInfoParams]
 Title = "Hey, I’m Jitesh 👋"
