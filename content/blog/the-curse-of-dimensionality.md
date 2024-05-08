@@ -30,11 +30,7 @@ $$\lim_{d \rightarrow \infty} \frac{r_{10}}{r_{11}} = 1$$
 
 Where $r_k$ is the distance to the $k^{th}$ nearest neighbor.
 
-Additionally, the expected distance to the 10th nearest neighbor, normalized by $\sqrt{d}$, approaches a constant:
-
-$$\lim_{d \rightarrow \infty} \frac{\mathbb{E}[r_{10}]}{\sqrt{d}} = \sqrt{\frac{8}{\pi}}$$
-
-Let $\ell$ be the edge length of the smallest hyper-cube that contains all $k$-nearest neighbors of a test point. Then $\ell^d \approx kn$ and $\ell \approx (kn)^{1/d}$. If $n=1000$, how big is $\ell$?
+Let $\ell$ be the edge length of the smallest hyper-cube that contains all $k$-nearest neighbors of a test point. Then $\ell^d \approx k/n$ and $\ell \approx (k/n)^{1/d}$. If $n=1000$, how big is $\ell$?
 
 So as $d \gg 0$ almost the entire space is needed to find the 10-NN. This breaks down the $k$-NN assumptions, because the KNN are not particularly closer (and therefore more similar) than any other data points in the training set. Why would the test point share the label with those $k$-nearest neighbors, if they are not actually similar to it?
 

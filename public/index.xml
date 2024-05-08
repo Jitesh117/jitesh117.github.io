@@ -13,7 +13,7 @@
       <link>//localhost:1313/blog/the-curse-of-dimensionality/</link>
       <pubDate>Wed, 08 May 2024 15:15:29 +0530</pubDate>
       <guid>//localhost:1313/blog/the-curse-of-dimensionality/</guid>
-      <description>Introduction As the number of features or dimensions grows in a dataset, the effectiveness of many machine learning algorithms can suffer from an issue called the &amp;ldquo;curse of dimensionality.&amp;rdquo; This problem is particularly prevalent for instance-based algorithms like K-nearest neighbors (KNN).
+      <description>As the number of features or dimensions grows in a dataset, the effectiveness of many machine learning algorithms can suffer from an issue called the &amp;ldquo;curse of dimensionality.&amp;rdquo; This problem is particularly prevalent for instance-based algorithms like K-nearest neighbors (KNN).
 The KNN algorithm relies on calculating the distances between data points to determine which points are nearest neighbors.
 In low dimensional spaces like 2D or 3D, the concepts of distance and neighborhood are relatively straightforward.</description>
     </item>

@@ -147,12 +147,6 @@ In low dimensional spaces like 2D or 3D, the concepts of distance and neighborho
     
     <h1 class="post-title entry-hint-parent">
       The Curse of Dimensionality
-      <span class="entry-hint" title="Draft">
-        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
-        </svg>
-      </span>
     </h1>
     <div class="post-meta"><span title='2024-05-08 15:15:29 +0530 IST'>May 8, 2024</span>&nbsp;·&nbsp;5 min
 
@@ -174,9 +168,7 @@ In low dimensional spaces like 2D or 3D, the concepts of distance and neighborho
 <p>As $d \rightarrow \infty$, the ratio of the distances to the 10th and 11th nearest neighbors approaches 1:</p>
 <p>$$\lim_{d \rightarrow \infty} \frac{r_{10}}{r_{11}} = 1$$</p>
 <p>Where $r_k$ is the distance to the $k^{th}$ nearest neighbor.</p>
-<p>Additionally, the expected distance to the 10th nearest neighbor, normalized by $\sqrt{d}$, approaches a constant:</p>
-<p>$$\lim_{d \rightarrow \infty} \frac{\mathbb{E}[r_{10}]}{\sqrt{d}} = \sqrt{\frac{8}{\pi}}$$</p>
-<p>Let $\ell$ be the edge length of the smallest hyper-cube that contains all $k$-nearest neighbors of a test point. Then $\ell^d \approx kn$ and $\ell \approx (kn)^{1/d}$. If $n=1000$, how big is $\ell$?</p>
+<p>Let $\ell$ be the edge length of the smallest hyper-cube that contains all $k$-nearest neighbors of a test point. Then $\ell^d \approx k/n$ and $\ell \approx (k/n)^{1/d}$. If $n=1000$, how big is $\ell$?</p>
 <p>So as $d \gg 0$ almost the entire space is needed to find the 10-NN. This breaks down the $k$-NN assumptions, because the KNN are not particularly closer (and therefore more similar) than any other data points in the training set. Why would the test point share the label with those $k$-nearest neighbors, if they are not actually similar to it?</p>
 <p>$$\mathrm{As} \quad d \gg 0, \quad \ell \approx (kn)^{1/d} \approx 1$$</p>
 <p>This means that when the dimensionality $d$ is very high, the edge length $\ell$ of the smallest hyper-cube containing the $k$-nearest neighbors approaches 1, which is the entire unit cube $[0, 1]^d$.</p>
@@ -192,7 +184,7 @@ In low dimensional spaces like 2D or 3D, the concepts of distance and neighborho
 <li><strong>Data transformation</strong>: Applying appropriate data transformations, such as normalization or scaling, can help maintain the relative importance of features and prevent certain dimensions from dominating the distance calculations.</li>
 <li><strong>Hybrid approaches</strong>: Integrating KNN with other machine learning techniques, such as decision trees or support vector machines, can leverage the strengths of different algorithms and potentially overcome the limitations of KNN in high dimensions.</li>
 </ol>
-<p>While the curse of dimensionality is a fundamental challenge in high-dimensional spaces, these techniques can help alleviate its impact on the KNN algorithm. However, it is essential to carefully evaluate the trade-offs between dimensionality reduction and potential information loss, as well as consider alternative algorithms that may be better suited for high-dimensional data, such as tree-based methods or kernel-based methods.</p>
+<p>While the dimensionality is a fundamental challenge in high-dimensional spaces, these techniques can help alleviate its impact on the KNN algorithm. However, it is essential to carefully evaluate the trade-offs between dimensionality reduction and potential information loss, as well as consider alternative algorithms that may be better suited for high-dimensional data, such as tree-based methods or kernel-based methods.</p>
 
 
   </div>
