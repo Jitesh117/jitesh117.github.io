@@ -2,6 +2,7 @@
 title = 'The Serenity of Matri Mandir'
 date = 2024-05-07T21:43:05+05:30
 cover.image = 'images/matri_mandir.jpg'
+ShowToc = true
 +++
 
 In the heart of Auroville, a township dedicated to Human Unity, stands Matri-Mandir, a monument that represents "The Mother". This is not just an architectural wonder but a gateway to inner peace and spiritual awakening.

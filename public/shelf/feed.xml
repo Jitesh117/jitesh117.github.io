@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Jitesh117</title>
+    <link>//localhost:1313/shelf/</link>
+    <description>Recent content on Jitesh117</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 Mar 2024 16:20:40 +0530</lastBuildDate>
+    <atom:link href="//localhost:1313/shelf/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Papers</title>
+      <link>//localhost:1313/shelf/papers/</link>
+      <pubDate>Sun, 31 Mar 2024 16:20:40 +0530</pubDate>
+      <guid>//localhost:1313/shelf/papers/</guid>
+      <description> Attention is all you need Pre-train, Prompt and Recommendation: A Comprehensive Survey of Language Modelling Paradigm Adaptations in Recommender Systems </description>
+    </item>
+    <item>
+      <title>Articles</title>
+      <link>//localhost:1313/shelf/articles/</link>
+      <pubDate>Sun, 31 Mar 2024 16:20:20 +0530</pubDate>
+      <guid>//localhost:1313/shelf/articles/</guid>
+      <description> Being a Noob by Paul Graham My GitHub Project went viral by Aditya Lenge How to keep yourself unblocked by Arpit Bhayani </description>
+    </item>
+    <item>
+      <title>Books</title>
+      <link>//localhost:1313/shelf/books/</link>
+      <pubDate>Sun, 31 Mar 2024 16:20:09 +0530</pubDate>
+      <guid>//localhost:1313/shelf/books/</guid>
+      <description>Fiction 1984 by George Orwell By the River Piedra I sat down and wept by Paulo Coelho Animal Farm By George Orwell Halo The Forerunner Saga series by Greg Bear Non-fiction Show Your Work by Austin Kleon The Art of War by Sun Tzu The Psychology of Money by Morgan Housel Fooled by Randomness by Nassim Nicholas Taleb </description>
+    </item>
+  </channel>
+</rss>

@@ -2,29 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Jitesh117</title>
-    <link>//localhost:1313/</link>
+    <link>//localhost:1313/blog/</link>
     <description>Recent content on Jitesh117</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 May 2024 15:15:29 +0530</lastBuildDate>
-    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>The Curse of Dimensionality</title>
-      <link>//localhost:1313/blog/the-curse-of-dimensionality/</link>
-      <pubDate>Wed, 08 May 2024 15:15:29 +0530</pubDate>
-      <guid>//localhost:1313/blog/the-curse-of-dimensionality/</guid>
-      <description>Introduction As the number of features or dimensions grows in a dataset, the effectiveness of many machine learning algorithms can suffer from an issue called the &amp;ldquo;curse of dimensionality.&amp;rdquo; This problem is particularly prevalent for instance-based algorithms like K-nearest neighbors (KNN).
-The KNN algorithm relies on calculating the distances between data points to determine which points are nearest neighbors.
-In low dimensional spaces like 2D or 3D, the concepts of distance and neighborhood are relatively straightforward.</description>
-    </item>
-    <item>
-      <title>The Serenity of Matri Mandir</title>
-      <link>//localhost:1313/musings/the-serenity-of-matri-mandir/</link>
-      <pubDate>Tue, 07 May 2024 21:43:05 +0530</pubDate>
-      <guid>//localhost:1313/musings/the-serenity-of-matri-mandir/</guid>
-      <description>In the heart of Auroville, a township dedicated to Human Unity, stands Matri-Mandir, a monument that represents &amp;ldquo;The Mother&amp;rdquo;. This is not just an architectural wonder but a gateway to inner peace and spiritual awakening.
-The inception of Auroville traces back to the spiritual vision of the Indian philosopher and guru Sri Aurobindo and his partner, known as &amp;ldquo;The Mother&amp;rdquo;. The Mother dreamed of establishing a universal township unlike anywhere else on earth - a place where people from all nations could live together in peace while undertaking an experiment in human unity and evolution.</description>
-    </item>
+    <lastBuildDate>Tue, 30 Apr 2024 16:22:06 +0530</lastBuildDate>
+    <atom:link href="//localhost:1313/blog/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why to Use Tmux</title>
       <link>//localhost:1313/blog/why-to-use-tmux/</link>
@@ -32,22 +15,6 @@ The inception of Auroville traces back to the spiritual vision of the Indian phi
       <guid>//localhost:1313/blog/why-to-use-tmux/</guid>
       <description>1. Introduction tmux (Terminal Multiplexer) is a powerful terminal utility that allows you to create multiple terminal sessions, split windows, and detach and reattach sessions with ease. It&amp;rsquo;s a game-changer for anyone who works heavily in the terminal, providing a robust environment for multitasking, remote server management, and efficient workflow.
 Benefits of using tmux Persistent sessions: Detach and reattach sessions, ensuring your work is never lost Efficient window and pane management: Split your terminal into multiple windows and panes Enhanced productivity: Streamline your workflow by running multiple commands simultaneously Remote session sharing: Share sessions with other users for collaboration or pair programming A Brief overview of its features tmux offers a wide range of features, including window and pane management, customizable status bars, key bindings, plugins, and more.</description>
-    </item>
-    <item>
-      <title>Do We Really Know Ourselves?</title>
-      <link>//localhost:1313/musings/do-we-really-know-ourselves/</link>
-      <pubDate>Mon, 29 Apr 2024 18:01:41 +0530</pubDate>
-      <guid>//localhost:1313/musings/do-we-really-know-ourselves/</guid>
-      <description>One of the most haunting realisations I&amp;rsquo;ve had about myself recently is that I&amp;rsquo;ve let my work define me too much all my life. Like, barring some very close friends, none could pinpoint anything about my personality.
-If you&amp;rsquo;d asked anyone from my class about me, the most they could tell about me was that &amp;ldquo;Jitesh likes reading a lot&amp;rdquo;. That&amp;rsquo;s it. Although it&amp;rsquo;s not the people&amp;rsquo;s perception about me what&amp;rsquo;s bothering me, but the fact that I don&amp;rsquo;t do much apart from my work is troubling me a lot now.</description>
-    </item>
-    <item>
-      <title>Why Reading Fiction Matters</title>
-      <link>//localhost:1313/musings/why-reading-fiction-matters/</link>
-      <pubDate>Fri, 26 Apr 2024 19:34:46 +0530</pubDate>
-      <guid>//localhost:1313/musings/why-reading-fiction-matters/</guid>
-      <description>Being in Tech, more often than not, if you ask anyone for book recommendations, they&amp;rsquo;d recommend a non-fiction self-help book. Although non-fiction books have their place, Fiction should never be overlooked.
-One thing which makes Fiction books overlooked by the general population is that there is no direct benefit of reading them. When you&amp;rsquo;ve read a non-fictional book, you get know some new knowledge. But that&amp;rsquo;s not the case with Fiction books.</description>
     </item>
     <item>
       <title>Hierarchical Indexing in Pandas</title>
@@ -73,43 +40,6 @@ This indexing technique is particularly useful when dealing with datasets that c
       <guid>//localhost:1313/blog/so-you-think-you-know-git/</guid>
       <description>This article is just about my learnings from the talk So you Think you know Git.
 One might think that everything there is to know about Git has already been covered, but that would be wrong. Even today, the Git codebase is seeing around 9 commits per day and 10,000 commits in the last 3 years. That means there are still plenty of new things being added to Git that you might not know about.</description>
-    </item>
-    <item>
-      <title>The Trap of Knowing What You Want</title>
-      <link>//localhost:1313/musings/the-trap-of-knowing-what-you-want/</link>
-      <pubDate>Wed, 10 Apr 2024 14:27:45 +0530</pubDate>
-      <guid>//localhost:1313/musings/the-trap-of-knowing-what-you-want/</guid>
-      <description>In our world, we often think that finding our passion and purpose is the key to being happy. But this can actually be a trap. Many people think they know what they want, and they chase after those things, believing they will finally feel satisfied. But then they end up feeling lost and unfulfilled anyway.
-Having a clear idea of what you desire can be powerful. But we have to be careful, because this mindset also has its limits.</description>
-    </item>
-    <item>
-      <title>Making and Losing Friends</title>
-      <link>//localhost:1313/musings/making-and-losing-friends-in-life/</link>
-      <pubDate>Sat, 06 Apr 2024 15:47:15 +0530</pubDate>
-      <guid>//localhost:1313/musings/making-and-losing-friends-in-life/</guid>
-      <description>Friends are the one thing that can change the outlook of anything that is happening in our lives. Having their mere presence can amplify any happiness.
-Growing up as a kid whose father worked in the Indian Air Force, I had to switch cities a lot. While it meant I got to make new friends every 3-5 years, it also meant losing most of my friends whenever I changed places. Each new transfer meant saying goodbye to old friends and diving into a new adventure.</description>
-    </item>
-    <item>
-      <title>Papers</title>
-      <link>//localhost:1313/shelf/papers/</link>
-      <pubDate>Sun, 31 Mar 2024 16:20:40 +0530</pubDate>
-      <guid>//localhost:1313/shelf/papers/</guid>
-      <description> Attention is all you need Pre-train, Prompt and Recommendation: A Comprehensive Survey of Language Modelling Paradigm Adaptations in Recommender Systems </description>
-    </item>
-    <item>
-      <title>Articles</title>
-      <link>//localhost:1313/shelf/articles/</link>
-      <pubDate>Sun, 31 Mar 2024 16:20:20 +0530</pubDate>
-      <guid>//localhost:1313/shelf/articles/</guid>
-      <description> Being a Noob by Paul Graham My GitHub Project went viral by Aditya Lenge How to keep yourself unblocked by Arpit Bhayani </description>
-    </item>
-    <item>
-      <title>Books</title>
-      <link>//localhost:1313/shelf/books/</link>
-      <pubDate>Sun, 31 Mar 2024 16:20:09 +0530</pubDate>
-      <guid>//localhost:1313/shelf/books/</guid>
-      <description>Fiction 1984 by George Orwell By the River Piedra I sat down and wept by Paulo Coelho Animal Farm By George Orwell Halo The Forerunner Saga series by Greg Bear Non-fiction Show Your Work by Austin Kleon The Art of War by Sun Tzu The Psychology of Money by Morgan Housel Fooled by Randomness by Nassim Nicholas Taleb </description>
     </item>
     <item>
       <title>How I Learned to Type 150&#43; WPM</title>

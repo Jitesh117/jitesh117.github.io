@@ -6,8 +6,17 @@
     <description>Recent content on Jitesh117</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Apr 2024 16:22:06 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 08 May 2024 15:15:29 +0530</lastBuildDate>
     <atom:link href="//localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Curse of Dimensionality</title>
+      <link>//localhost:1313/blog/the-curse-of-dimensionality/</link>
+      <pubDate>Wed, 08 May 2024 15:15:29 +0530</pubDate>
+      <guid>//localhost:1313/blog/the-curse-of-dimensionality/</guid>
+      <description>Introduction As the number of features or dimensions grows in a dataset, the effectiveness of many machine learning algorithms can suffer from an issue called the &amp;ldquo;curse of dimensionality.&amp;rdquo; This problem is particularly prevalent for instance-based algorithms like K-nearest neighbors (KNN).
+The KNN algorithm relies on calculating the distances between data points to determine which points are nearest neighbors.
+In low dimensional spaces like 2D or 3D, the concepts of distance and neighborhood are relatively straightforward.</description>
+    </item>
     <item>
       <title>Why to Use Tmux</title>
       <link>//localhost:1313/blog/why-to-use-tmux/</link>
