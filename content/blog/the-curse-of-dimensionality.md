@@ -1,7 +1,7 @@
 +++
 title = 'The Curse of Dimensionality'
 date = 2024-05-08T15:15:29+05:30
-draft = False
+draft = false
 ShowToc = true
 cover.image = "images/dimension.jpg"
 math = true
