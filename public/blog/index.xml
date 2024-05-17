@@ -6,8 +6,16 @@
     <description>Recent content on Jitesh117</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 May 2024 15:15:29 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 17 May 2024 15:43:31 +0530</lastBuildDate>
     <atom:link href="//localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Perceptron</title>
+      <link>//localhost:1313/blog/perceptron/</link>
+      <pubDate>Fri, 17 May 2024 15:43:31 +0530</pubDate>
+      <guid>//localhost:1313/blog/perceptron/</guid>
+      <description>Perceptron: A Fundamental Building Block in Machine Learning The perceptron is a foundational concept in machine learning, representing the simplest type of artificial neural network. This article explores the perceptron model, its functionality, and its significance as introduced in the Cornell Machine Learning course.
+Introduction to the Perceptron The perceptron, developed by Frank Rosenblatt in 1958, is a type of linear classifier used for binary classification tasks. It is the basis of more complex neural networks and deep learning models.</description>
+    </item>
     <item>
       <title>The Curse of Dimensionality</title>
       <link>//localhost:1313/blog/the-curse-of-dimensionality/</link>

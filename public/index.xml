@@ -6,8 +6,23 @@
     <description>Recent content on Jitesh117</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 08 May 2024 15:15:29 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 17 May 2024 15:43:31 +0530</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Perceptron</title>
+      <link>//localhost:1313/blog/perceptron/</link>
+      <pubDate>Fri, 17 May 2024 15:43:31 +0530</pubDate>
+      <guid>//localhost:1313/blog/perceptron/</guid>
+      <description>The perceptron is a foundational concept in machine learning, representing the simplest type of artificial neural network. This article explores the perceptron model, its functionality, and its significance in the world of Machine learning.
+Introduction to the Perceptron The perceptron, developed by Frank Rosenblatt in 1957, is a type of linear classifier used for binary classification tasks. It is the basis of more complex neural networks and deep learning models.</description>
+    </item>
+    <item>
+      <title>College Days</title>
+      <link>//localhost:1313/musings/college-days/</link>
+      <pubDate>Thu, 09 May 2024 21:32:59 +0530</pubDate>
+      <guid>//localhost:1313/musings/college-days/</guid>
+      <description>It was a rainy day of November, when I reached the Pondicherry Railway station with my Dad, excited as well as a little frightened. Loads of Auto walas were shouting &amp;ldquo;Bhaiyya, bhaiyya kidhar jana hai?&amp;rdquo; in their Tamil accent, trying to lure us using Hindi in the Tamil heavy environment. Even though we knew we were being ripped off, dad selected one and we put all of my stuff in the auto and told the driver to go to the &amp;ldquo;Enginerring college&amp;rdquo;.</description>
+    </item>
     <item>
       <title>The Curse of Dimensionality</title>
       <link>//localhost:1313/blog/the-curse-of-dimensionality/</link>
