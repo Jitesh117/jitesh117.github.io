@@ -65,14 +65,20 @@ identifier = "musings"
 name = "Essays"
 url = "/musings/"
 
+[[menu.main]]
+identifier = "archive"
+name = "Archives"
+url = "/archives/"
+
 [params]
-mainSections = ["blog"]
+mainSections = ["blog", "musings"]
 
 hideSummary = true
 
 comments = true
 
-# math = true
+archives = true
+ archiveSection = ["blog", "musings", ]
 
 ShowCodeCopyButtons = true
 ShowPostNavLinks = true
