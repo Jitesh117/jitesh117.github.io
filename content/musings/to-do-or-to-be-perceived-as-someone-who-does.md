@@ -6,7 +6,7 @@ draft = false
 
 Internet, like in real life, is filled with grifters, i.e. People who portray themselves as someone they aren't. 
 
-Following the "Fake it till you make it" mindset, is double edged sword, depending on the person. On one hand, it can motivate you to push your limits, on the other hand, it can lead to dishonesty and false pride in yourself.
+Following the "Fake it till you make it" mindset, is a double edged sword, depending on the person. On one hand, it can motivate you to push your limits, on the other hand, it can lead to dishonesty and false pride in yourself.
 
 The dopamine hit you get on your posts, makes it very lucrative to only post a particular kind of content, whether you genuinely enjoy it or not. This can lead a to a cycle of chasing likes and validation instead of pursuing genuine interests.
 
