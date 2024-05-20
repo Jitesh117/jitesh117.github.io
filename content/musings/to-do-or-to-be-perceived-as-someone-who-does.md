@@ -1,7 +1,7 @@
 +++
 title = 'To Do, or to Be Perceived as Someone Who Does'
 date = 2024-05-20T10:02:19+05:30
-draft = true
+draft = false
 +++
 
 Internet, like in real life, is filled with grifters, i.e. People who portray themselves as someone they aren't. 
