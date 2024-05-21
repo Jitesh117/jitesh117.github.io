@@ -3,12 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>//localhost:1313/musings/</loc>
-    <lastmod>2024-05-18T19:05:45+05:30</lastmod>
-  </url><url>
-    <loc>//localhost:1313/musings/how-to-twitter/</loc>
-    <lastmod>2024-05-18T19:05:45+05:30</lastmod>
+    <lastmod>2024-05-21T19:55:34+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/</loc>
+    <lastmod>2024-05-21T19:55:34+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/musings/the-keyboard-is-mightier-than-the-pen/</loc>
+    <lastmod>2024-05-21T19:55:34+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/musings/to-do-or-to-be-perceived-as-someone-who-does/</loc>
+    <lastmod>2024-05-20T10:02:19+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/musings/triumph-of-the-nerds/</loc>
+    <lastmod>2024-05-19T19:18:38+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/musings/how-to-twitter/</loc>
     <lastmod>2024-05-18T19:05:45+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/musings/imposter-syndrome-or-skill-issue/</loc>
