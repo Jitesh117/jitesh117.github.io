@@ -15,6 +15,6 @@ One tweet seen by the right person can *and* has changed lives for the better. I
 
 The internet has truly democratisized knowledge and information like never before. Resources that were available to only a privileged few are now up for grabs for everyone with an internet connection. The barrier to entry has never been lower.
 
-If you make an optimal use of the tools provided by the internet, you'll discover that the possibilities are truly limitless. 
+If you make an optimal use of the tools provided by the internet, you'll discover that the possibilities are truly limitless.
 
 You are your future's own architect now.
