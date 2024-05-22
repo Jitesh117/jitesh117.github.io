@@ -6,7 +6,7 @@ draft = false
 
 Tech, unlike other fields, changes its landscape every passing day. You can never tell what's trending today will live to see the face of tomorrow or not.
 
-Every other week, there a person will emerge with their new shiny "Roadmap" of any particular domain in tech. Although the intention is right, these Roadmaps often over-simplify the complexity and dynamic nature of the tech ecosystem.
+Every other week, a person will emerge with their new shiny "Roadmap" of any particular domain in tech. Although the intention is right, these Roadmaps often over-simplify the complexity and dynamic nature of the tech ecosystem.
 
 No matter how much one tries to bring order to this chaotic tech world, they fall flat on their face every single time.
 
