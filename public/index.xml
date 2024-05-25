@@ -9,11 +9,11 @@
     <lastBuildDate>Sat, 25 May 2024 19:46:59 +0530</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Test</title>
+      <title>Catpuccin dark</title>
       <link>//localhost:1313/blog/test/</link>
       <pubDate>Sat, 25 May 2024 19:46:59 +0530</pubDate>
       <guid>//localhost:1313/blog/test/</guid>
-      <description>Heading one Heading two Heading three Heading four Heading five Heading six </description>
+      <description>Heading one Heading two Heading three Heading four Heading five Heading Six import catpuccin from themes def catpuccin_theme(): print(&amp;#34;Catpuccin theme&amp;#34;) </description>
     </item>
     <item>
       <title>Delulu Is the Solulu</title>
