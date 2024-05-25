@@ -6,14 +6,21 @@
     <description>Recent content on Jitesh117</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 May 2024 16:00:29 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 25 May 2024 19:46:59 +0530</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test</title>
+      <link>//localhost:1313/blog/test/</link>
+      <pubDate>Sat, 25 May 2024 19:46:59 +0530</pubDate>
+      <guid>//localhost:1313/blog/test/</guid>
+      <description>Heading one Heading two Heading three Heading four Heading five Heading six </description>
+    </item>
     <item>
       <title>Delulu Is the Solulu</title>
       <link>//localhost:1313/musings/delulu-is-the-solulu/</link>
       <pubDate>Thu, 23 May 2024 16:00:29 +0530</pubDate>
       <guid>//localhost:1313/musings/delulu-is-the-solulu/</guid>
-      <description>One of the weird things I&amp;rsquo;ve witnessed in the tech world, is the skill to courage ratio in people. Contrary to popular belief, skill is still in abundance. What&amp;rsquo;s scarce though, is the belief in one&amp;rsquo;s own abilities.
+      <description>One of the weird things I&amp;rsquo;ve witnessed in the tech world, is the skill-to-courage ratio in people. Contrary to popular belief, skill is still in abundance. What&amp;rsquo;s scarce though, is the belief in one&amp;rsquo;s own abilities.
 The worst thing one can do, is to doubt themselves. You have to delude yourself everyday, that you can achieve anything you put your mind and soul to.
 The amount of opportunities you can get just by being confident in yourself and putting your work out there, is unreal.</description>
     </item>

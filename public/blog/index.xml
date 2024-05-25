@@ -6,8 +6,15 @@
     <description>Recent content on Jitesh117</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 May 2024 15:43:31 +0530</lastBuildDate>
+    <lastBuildDate>Sat, 25 May 2024 19:46:59 +0530</lastBuildDate>
     <atom:link href="//localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Catpuccin dark</title>
+      <link>//localhost:1313/blog/test/</link>
+      <pubDate>Sat, 25 May 2024 19:46:59 +0530</pubDate>
+      <guid>//localhost:1313/blog/test/</guid>
+      <description>Heading one Heading two Heading three Heading four Heading five Heading Six import catpuccin from themes def catpuccin_theme(): print(&amp;#34;Catpuccin theme&amp;#34;) </description>
+    </item>
     <item>
       <title>The Perceptron</title>
       <link>//localhost:1313/blog/perceptron/</link>
