@@ -13,7 +13,7 @@ It's surreal that anyone can post about their thoughts or work for everyone in t
 
 One tweet seen by the right person can *and* has changed lives for the better. It's upto the person how they decide to tap the potential of the opportunities the World Wide Web offers. The key is to be original and engage with the community authentically. 
 
-The internet has truly democratisized knowledge and information like never before. Resources that were available to only a privileged few are now up for grabs for everyone with an internet connection. The barrier to entry has never been lower.
+The internet has truly democraticized knowledge and information like never before. Resources that were available to only a privileged few are now up for grabs for everyone with an internet connection. The barrier to entry has never been lower.
 
 If you make an optimal use of the tools provided by the internet, you'll discover that the possibilities are truly limitless.
 

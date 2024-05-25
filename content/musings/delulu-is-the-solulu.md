@@ -4,7 +4,7 @@ date = 2024-05-23T16:00:29+05:30
 draft = false
 +++
 
-One of the weird things I've witnessed in the tech world, is the skill to courage ratio in people.
+One of the weird things I've witnessed in the tech world, is the skill-to-courage ratio in people.
 Contrary to popular belief, skill is still in abundance. What's scarce though, is the belief in one's own abilities.
 
 The worst thing one can do, is to doubt themselves. You **have** to delude yourself everyday, that you can achieve anything you put your mind and soul to.
