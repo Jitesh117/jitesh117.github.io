@@ -80,6 +80,10 @@ comments = true
 archives = true
  archiveSection = ["blog", "musings", ]
 
+defaultTheme = "dark"
+disableThemeToggle = true
+
+
 ShowCodeCopyButtons = true
 ShowPostNavLinks = true
 ShowReadingTime = true

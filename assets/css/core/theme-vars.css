@@ -7,29 +7,29 @@
   --footer-height: 60px;
   --radius: 8px;
 
-  /* Light mode colors */
-  --theme: #fbf1c7;
-  --entry: #f9f5d7;
-  --primary: #3c3836;
-  --secondary: #7c6f64;
-  --tertiary: #bdae93;
-  --content: #282828;
-  --code-block-bg: #3c3836;
-  --code-bg: #f7eab6;
-  --border: #d5c4a1;
+/* Light mode colors */
+--theme: #c1d0ed; /* Light crust */
+--entry: #cfcff2; /* Manix */
+--primary: #585B70; /* Crust */
+--secondary: #5c6d82; /* Sage */
+--tertiary: #CA9EE6; /* Lavender */
+--content: #4C4F69; /* Crust */
+--code-block-bg: #313244; /* Surface */
+--code-bg: #eceff4; /* Crust */
+--border: #C6D0F5; /* Sky */
 }
 
 .dark {
-  /* Dark mode colors */
-  --theme: #282828;
-  --entry: #3c3836;
-  --primary: #fbf1c7;
-  --secondary: #bdae93;
-  --tertiary: #665c54;
-  --content: #ebdbb2;
-  --code-block-bg: #3c3836;
-  --code-bg: #504945;
-  --border: #504945;
+/* Dark mode colors */
+--theme: #1E1E2E; /* Mantle */
+--entry: #473974; /* Crust */
+--primary: #D9E0EE; /* Light crust */
+--secondary: #b5b8e3; /* Green */
+--tertiary: #2e3793; /* Yellow */
+--content: #D9E0EE; /* Light crust */
+--code-block-bg: #3f3144; /* Surface */
+--code-bg: #63359f; /* Crust */
+--border: #585B70; /* Crust */
 }
 
 .list {
