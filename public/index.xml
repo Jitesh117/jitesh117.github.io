@@ -17,13 +17,6 @@
 Twitter algorithm, like most social media platforms, is programmed to push whatever will get the most engagement from you, be it likes, comments or retweets.</description>
     </item>
     <item>
-      <title>GruvBox dark</title>
-      <link>//localhost:1313/blog/test/</link>
-      <pubDate>Sat, 25 May 2024 19:46:59 +0530</pubDate>
-      <guid>//localhost:1313/blog/test/</guid>
-      <description>Heading one Heading two Heading three Heading four Heading five Heading Six import currentTheme from themes def displayTheme(): print(&amp;#34;Current Theme&amp;#34;) </description>
-    </item>
-    <item>
       <title>Delulu Is the Solulu</title>
       <link>//localhost:1313/musings/delulu-is-the-solulu/</link>
       <pubDate>Thu, 23 May 2024 16:00:29 +0530</pubDate>
