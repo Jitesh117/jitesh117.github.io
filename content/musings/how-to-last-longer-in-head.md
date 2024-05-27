@@ -2,6 +2,7 @@
 title = 'How To Last Longer in Head'
 date = 2024-05-26T19:14:04+05:30
 draft = false
+cover.image = "images/head.jpg"
 +++
 
 Having a short attention span makes it difficult to get things done. You might start an important project, but then get sidetracked checking Instagram or replying to a text message. Before you know it, hours have gone by and you haven't made much progress.

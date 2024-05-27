@@ -1,6 +1,7 @@
 +++
 title = 'To Do, or to Be Perceived as Someone Who Does'
 date = 2024-05-20T10:02:19+05:30
+cover.image = "/images/todo_or.jpg"
 draft = false
 +++
 

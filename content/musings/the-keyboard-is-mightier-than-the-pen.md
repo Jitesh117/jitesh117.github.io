@@ -1,6 +1,7 @@
 +++
 title = 'The Keyboard Is Mightier Than the Pen'
 date = 2024-05-21T19:55:34+05:30
+cover.image = "/images/keyboard.jpg"
 draft = false
 +++
 

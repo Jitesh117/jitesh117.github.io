@@ -1,6 +1,7 @@
 +++
-title = 'Delulu Is the Solulu'
+title = 'Delude yourself to Greatness'
 date = 2024-05-23T16:00:29+05:30
+cover.image = "/images/delulu.jpg"
 draft = false
 +++
 

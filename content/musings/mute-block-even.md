@@ -1,6 +1,7 @@
 +++
 title = 'Mute, Block Even'
 date = 2024-05-25T21:27:11+05:30
+cover.image = "/images/mute.jpg"
 draft = false
 +++
 

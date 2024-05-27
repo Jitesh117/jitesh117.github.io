@@ -2,6 +2,7 @@
 title = 'Triumph of the Nerds'
 date = 2024-05-19T19:18:38+05:30
 draft = false
+cover.image = "/images/nerds.jpg"
 +++
 
 The term 'Nerd', originally coined as a slur for overly intellectual, socially awkward individuals, is now worn as a badge of honor, but why?

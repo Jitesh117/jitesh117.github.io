@@ -1,6 +1,7 @@
 +++
 title = 'Roadmapping Your Way to Mediocrity'
 date = 2024-05-22T18:21:22+05:30
+cover.image = "/images/roadmap.jpg"
 draft = false
 +++
 
