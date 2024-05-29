@@ -2,6 +2,7 @@
 title = 'Why to Write'
 date = 2024-05-28T19:36:46+05:30
 draft = false
+cover.image = "/images/write.jpg"
 +++
 
 It's been almost 2 months since I started writing blogs and sharing it online. Although at the beginning I started just for the sake of writing online. But after writing consistently for 2 months and 23 articles in, I now feel that there's this kind of thinking which can be exercised only by writing. 

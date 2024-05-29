@@ -3,10 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>//localhost:1313/musings/</loc>
-    <lastmod>2024-05-28T19:36:46+05:30</lastmod>
+    <lastmod>2024-05-29T20:07:59+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/</loc>
-    <lastmod>2024-05-28T19:36:46+05:30</lastmod>
+    <lastmod>2024-05-29T20:07:59+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/musings/see-through-the-blackbox/</loc>
+    <lastmod>2024-05-29T20:07:59+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/musings/why-to-write/</loc>
     <lastmod>2024-05-28T19:36:46+05:30</lastmod>

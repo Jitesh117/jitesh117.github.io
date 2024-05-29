@@ -6,8 +6,17 @@
     <description>Recent content on Jitesh117</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 May 2024 19:36:46 +0530</lastBuildDate>
+    <lastBuildDate>Wed, 29 May 2024 20:07:59 +0530</lastBuildDate>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Break the Blackbox</title>
+      <link>//localhost:1313/musings/break-the-blackbox/</link>
+      <pubDate>Wed, 29 May 2024 20:07:59 +0530</pubDate>
+      <guid>//localhost:1313/musings/break-the-blackbox/</guid>
+      <description>The last decade has seen rapid changes in the tech landscape. The State-of-the-Art tech has been advancing itself every passing month.
+One of the best things to come out of this is the advancement of the Developer tools. But tools are only as good as the craftsman wielding them.
+Now it&amp;rsquo;s easier than ever to make progress in tech without knowing the internal working of most things. You can just treat anything as a Blackbox and get done with your work.</description>
+    </item>
     <item>
       <title>Why to Write</title>
       <link>//localhost:1313/musings/why-to-write/</link>
