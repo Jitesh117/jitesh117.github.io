@@ -1,6 +1,6 @@
 +++
 title = 'The Privilege of Having an Opinion'
-date = 2024-06-04T21:49:15+05:30
+date = 2024-06-04T11:49:15+05:30
 draft = false
 +++
 
