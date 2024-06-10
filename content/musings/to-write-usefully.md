@@ -1,7 +1,7 @@
 +++
 title = 'On Writing Usefully'
 date = 2024-06-10T20:14:07+05:30
-draft = true
+draft = false
 +++
 
 One of the things I've heard many people say, is to write usefully. They say write stuff which people would find useful for their lives, and therefore want to read more. Sure that's a way to increase readership for your work, but that shouldn't influence one's writings. Drawing imaginary boundaries in your head is one of the worst things you can do.
