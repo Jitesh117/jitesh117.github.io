@@ -5,6 +5,7 @@ draft = false
 cover.image = "/images/graphs.png"
 showToc = true
 math = true
+tags = ["Machine learning"]
 +++
 
 ## Activation Functions in Neural Networks

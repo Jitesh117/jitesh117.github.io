@@ -4,6 +4,7 @@ date = 2024-03-20T07:00:00+05:30
 draft = false
 cover.image = "/images/vim_screen.png"
 ShowToc = true
+tags = ["Linux"]
 +++
 
 [VIM](https://www.vim.org/) or Vi Improved, is a free and open-source text editor for the terminal written by Bram Moolenaar.

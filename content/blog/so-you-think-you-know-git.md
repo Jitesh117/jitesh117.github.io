@@ -4,6 +4,7 @@ date = 2024-04-15T14:39:34+05:30
 draft = false
 cover.image = "/images/git_cover.jpg"
 ShowToc = true
+tags = ["Linux"]
 +++
 
 This article is just about my learnings from the talk [So you Think you know Git](https://youtu.be/aolI_Rz0ZqY?si=HcJvZSBtWKw0Ssdc).

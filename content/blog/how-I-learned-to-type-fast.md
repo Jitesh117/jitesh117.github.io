@@ -4,6 +4,7 @@ date = 2024-03-29T16:25:00+05:30
 draft = false
 cover.image = "/images/monkeytype_stats.png"
 ShowToc = true
+tags = ["Tech Productivity"]
 +++
 
 In this article I'm going to write about a topic very close to my heart, which is "How I Learned to type Faster". Typing fast has been a game changer for me, and I believe anyone who types fast can become at least twice as productive as they already are. 

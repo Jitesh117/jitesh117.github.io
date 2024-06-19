@@ -3,6 +3,7 @@ title = 'Hyperparameter Tuning and Ensembling'
 date = 2024-03-16T17:56:43+05:30
 draft = false
 ShowToc = true
+tags = ["Machine learning"]
 +++
 
 Ensembling, a powerful technique in machine learning, has gained widespread popularity for its ability to significantly enhance predictive performance. By combining the predictions of multiple individual models, ensembles can often achieve better results than any single model alone. However, to fully leverage the potential of ensembling, it's crucial to fine-tune the hyperparameters of the underlying base models. 

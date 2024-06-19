@@ -4,6 +4,7 @@ date = 2024-04-25T11:56:07+05:30
 cover.image = "/images/indexing.jpg"
 draft = false
 ShowToc = true
+tags = ["Machine Learning"]
 +++
 
 Working with high-dimensional or categorized data can be a complex and challenging task, but Pandas provides a powerful tool to simplify this process: hierarchical indexing. 

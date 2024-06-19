@@ -4,6 +4,7 @@ date = 2024-03-26T17:00:00+05:30
 draft = false
 cover.image = "/images/hashing.png"
 ShowToc = true
+tags = ["Tech"]
 +++
 
 Hash Tables are one of the most used Data structures, they're so popular that almost every language has their own implementation and nomenclature of Hash Tables. 

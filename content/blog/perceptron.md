@@ -4,6 +4,7 @@ date = 2024-05-17T15:43:31+05:30
 math = true
 cover.image = "/images/perceptron.jpg"
 ShowToc = true
+tags = ["Machine learning"]
 +++
 
 The perceptron is a foundational concept in machine learning, representing the simplest type of artificial neural network. This article explores the perceptron model, its functionality, and its significance in the world of Machine learning.

@@ -5,6 +5,7 @@ draft = false
 ShowToc = true
 cover.image = "images/dimension.jpg"
 math = true
+tags = ["Machine Learning"]
 +++
 
 As the number of features or dimensions grows in a dataset, the effectiveness of many machine learning algorithms can suffer from an issue called the "curse of dimensionality." This problem is particularly prevalent for instance-based algorithms like K-nearest neighbors (KNN).

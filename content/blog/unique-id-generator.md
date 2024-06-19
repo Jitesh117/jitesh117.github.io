@@ -3,6 +3,7 @@ title = 'Unique ID Generator'
 date = 2024-05-30T21:37:51+05:30
 cover.image = "/images/unique_id.jpg"
 showToc = true
+tags = ["System Design"]
 +++
 
 # System Design of a Unique ID Generator
