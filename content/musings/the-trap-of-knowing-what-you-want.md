@@ -4,6 +4,7 @@ date = 2024-04-10T14:27:45+05:30
 draft = false
 cover.image = "/images/want-min.jpg"
 ShowToc = true
+tags = ["Opinion"]
 +++
 
 In our world, we often think that finding our passion and purpose is the key to being happy. But this can actually be a trap. Many people think they know what they want, and they chase after those things, believing they will finally feel satisfied. But then they end up feeling lost and unfulfilled anyway.

@@ -2,6 +2,7 @@
 title = 'Break the Blackbox'
 date = 2024-05-29T20:07:59+05:30
 draft = false
+tags = ["Opinion"]
 +++
 
 The last decade has seen rapid changes in the tech landscape. The State-of-the-Art tech has been advancing itself every passing month.

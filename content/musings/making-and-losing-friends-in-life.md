@@ -4,6 +4,7 @@ date = 2024-04-06T15:47:15+05:30
 draft = false
 cover.image = "/images/friends.avif"
 ShowToc = true
+tags = ["Opinion"]
 +++
 
 Friends are the one thing that can change the outlook of anything that is happening in our lives. Having their mere presence can amplify any happiness. 

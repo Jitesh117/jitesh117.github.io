@@ -2,6 +2,7 @@
 title = 'The Everlasting Feeling of Being Mid'
 date = 2024-06-08T20:14:48+05:30
 draft = false
+tags = ["Opinion"]
 +++
 
 One of the worst mistakes I've been doing all my life, is, being ambitious but in the wrong way. Being ambitious, means to strive for greater heights, but I failed to consider the time factor it takes. I  thought I can't achieve the said goal in, say a month or two, then I'm just not built for it.

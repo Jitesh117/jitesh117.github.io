@@ -3,6 +3,7 @@ title = 'Do We Really Know Ourselves?'
 date = 2024-04-29T18:01:41+05:30
 cover.image = "/images/know_ourselves.jpg"
 draft = false
+tags = ["Opinion"]
 +++
 
 One of the most haunting realisations I've had about myself recently is that I've let my work define me too much all my life. Like, barring some very close friends, none could pinpoint anything about my personality. 

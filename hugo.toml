@@ -70,6 +70,11 @@ identifier = "archive"
 name = "Archives"
 url = "/archives/"
 
+[[menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+
 [params]
 mainSections = ["blog", "musings"]
 
@@ -88,6 +93,9 @@ ShowCodeCopyButtons = true
 ShowPostNavLinks = true
 ShowReadingTime = true
 ShowShareButtons = true
+
+search = true
+searchPlaceholder = "Search..."
 
 [params.cover]
 linkFullImages = true

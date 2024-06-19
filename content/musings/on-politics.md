@@ -2,6 +2,7 @@
 title = 'On Politics'
 date = 2024-05-30T20:52:30+05:30
 draft = true
+tags = ["Opinion"]
 +++
 
 Talking about politics is a tricky thing to crack. One has to be cautious not to be swayed away with their emotions while discussing with their peers. And no matter how much you try, your beliefs will cloud your judgement. 

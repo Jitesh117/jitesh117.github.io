@@ -2,6 +2,7 @@
 title = 'Why Reading Fiction Matters'
 date = 2024-04-26T19:34:46+05:30
 draft = true
+tags = ["Opinion"]
 +++
 
 Being in Tech, more often than not, if you ask anyone for book recommendations, they'd recommend a non-fiction self-help book. 

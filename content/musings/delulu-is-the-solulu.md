@@ -3,6 +3,7 @@ title = 'Delude yourself to Greatness'
 date = 2024-05-23T16:00:29+05:30
 cover.image = "/images/delulu.jpg"
 draft = false
+tags = ["Opinion"]
 +++
 
 One of the weird things I've witnessed in the tech world, is the skill-to-courage ratio in people.

@@ -2,6 +2,7 @@
 title = 'Imposter Syndrome or Skill Issue'
 date = 2024-05-17T18:59:37+05:30
 cover.image = "/images/imposter.jpg"
+tags = ["Opinion"]
 +++
 
 Whenever I see a youngling posting their project on twitter, it makes me wonder, why have I not done this myself ever? Do I just not have it in me what it takes to build good products?

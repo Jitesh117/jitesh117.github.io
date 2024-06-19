@@ -3,6 +3,7 @@ title = 'How to Twitter'
 date = 2024-05-18T19:05:45+05:30
 draft = false
 cover.image = "/images/twitter.jpg"
+tags = ["Opinion"]
 +++
 
 For the longest time since I had created my twitter account, the only thing which I did was retweet and like. The reason I had created my account was to "Learn in public". 

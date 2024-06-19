@@ -3,6 +3,7 @@ title = 'Mute, Block Even'
 date = 2024-05-25T21:27:11+05:30
 cover.image = "/images/mute.jpg"
 draft = false
+tags = ["Opinion"]
 +++
 
 There would be times, when you would see a post or a comment on Twitter, where you would *really* want to meet the person who posted it and punch them in their face. But alas, you can only reply to their post. But before you hit the **SEND** button, think, do you *really* want to feed the algorithm to show more similar things like this?

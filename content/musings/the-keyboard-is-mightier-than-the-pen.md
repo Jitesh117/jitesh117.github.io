@@ -3,6 +3,7 @@ title = 'The Keyboard Is Mightier Than the Pen'
 date = 2024-05-21T19:55:34+05:30
 cover.image = "/images/keyboard.jpg"
 draft = false
+tags = ["Opinion"]
 +++
 
 Whether you like it or not, Computers are now an integral part of our lives. But is this for the better? That's a discussion for another day.

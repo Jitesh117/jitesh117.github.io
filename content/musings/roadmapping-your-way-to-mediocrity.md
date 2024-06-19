@@ -3,6 +3,7 @@ title = 'Roadmapping Your Way to Mediocrity'
 date = 2024-05-22T18:21:22+05:30
 cover.image = "/images/roadmap.jpg"
 draft = false
+tags = ["Opinion"]
 +++
 
 Tech, unlike other fields, changes its landscape every passing day. You can never tell what's trending today will live to see the face of tomorrow or not.
