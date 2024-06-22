@@ -6,8 +6,37 @@
     <description>Recent content on Jitesh117</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 May 2024 15:43:31 +0530</lastBuildDate>
+    <lastBuildDate>Fri, 14 Jun 2024 20:33:20 +0530</lastBuildDate>
     <atom:link href="//localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Zen of Python</title>
+      <link>//localhost:1313/blog/the-zen-of-python/</link>
+      <pubDate>Fri, 14 Jun 2024 20:33:20 +0530</pubDate>
+      <guid>//localhost:1313/blog/the-zen-of-python/</guid>
+      <description>Beautiful is better than ugly. Code should be written in a clean, elegant, and aesthetically pleasing manner. Example: # Ugly def find_max(list_of_nums): max=list_of_nums[0] for x in list_of_nums: if x&amp;gt;max: max=x return max # Beautiful def find_max(numbers): return max(numbers) Explicit is better than implicit. Code should be explicit and avoid relying on implicit behavior, which can lead to confusion and bugs. Example: # Implicit name = &amp;#34;Alice&amp;#34; print(&amp;#34;Hello, &amp;#34; + name) # Requires mental concatenation # Explicit name = &amp;#34;Alice&amp;#34; print(f&amp;#34;Hello, {name}&amp;#34;) # Clear string formatting Simple is better than complex.</description>
+    </item>
+    <item>
+      <title>History of Jupyter Notebooks</title>
+      <link>//localhost:1313/blog/history-of-jupyter-notebooks/</link>
+      <pubDate>Fri, 14 Jun 2024 20:02:46 +0530</pubDate>
+      <guid>//localhost:1313/blog/history-of-jupyter-notebooks/</guid>
+      <description>The History of Jupyter Notebooks Introduction Jupyter Notebooks, formerly known as IPython Notebooks, are a powerful open-source web application that allows users to create and share documents containing live code, visualizations, and explanatory text. These notebooks have become an essential tool for data scientists, researchers, and developers, providing a seamless environment for interactive computing, data analysis, and collaboration. In this article, we will explore the fascinating history of Jupyter Notebooks and how they have evolved to become a cornerstone of modern data analysis workflows.</description>
+    </item>
+    <item>
+      <title>Hands on Ml Review</title>
+      <link>//localhost:1313/blog/hands-on-ml-review/</link>
+      <pubDate>Sat, 08 Jun 2024 21:17:57 +0530</pubDate>
+      <guid>//localhost:1313/blog/hands-on-ml-review/</guid>
+      <description>Hands-on Machine Learning is a book which is recommended by many to be used as a first ML book to learn how to code ML models. I started reading this book back in January but left it in between. But thought of giving this book a serious read this time and finishing this. Today is June 8 and I&amp;rsquo;m starting to journal this journey and will eventually post the book review as a blog post which you are reading now :)</description>
+    </item>
+    <item>
+      <title>Unique ID Generator</title>
+      <link>//localhost:1313/blog/unique-id-generator/</link>
+      <pubDate>Thu, 30 May 2024 21:37:51 +0530</pubDate>
+      <guid>//localhost:1313/blog/unique-id-generator/</guid>
+      <description>System Design of a Unique ID Generator Requirements Before diving into the design, let’s outline the key requirements for our unique ID generator:
+Uniqueness: Every ID must be unique. Scalability: The system should be able to handle a large number of ID generation requests. Low Latency: ID generation should be fast. Fault Tolerance: The system should handle failures gracefully. High-Level Design We can achieve these requirements using a distributed system architecture.</description>
+    </item>
     <item>
       <title>The Perceptron</title>
       <link>//localhost:1313/blog/perceptron/</link>

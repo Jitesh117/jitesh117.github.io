@@ -2,13 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/musings/</loc>
-    <lastmod>2024-05-29T20:07:59+05:30</lastmod>
+    <loc>//localhost:1313/blog/</loc>
+    <lastmod>2024-06-14T20:33:20+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/</loc>
+    <lastmod>2024-06-14T20:33:20+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/</loc>
-    <lastmod>2024-05-29T20:07:59+05:30</lastmod>
+    <lastmod>2024-06-14T20:33:20+05:30</lastmod>
   </url><url>
-    <loc>//localhost:1313/musings/see-through-the-blackbox/</loc>
+    <loc>//localhost:1313/tags/python/</loc>
+    <lastmod>2024-06-14T20:33:20+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/blog/the-zen-of-python/</loc>
+    <lastmod>2024-06-14T20:33:20+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/blog/history-of-jupyter-notebooks/</loc>
+    <lastmod>2024-06-14T20:02:46+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/musings/</loc>
+    <lastmod>2024-06-10T20:14:07+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/musings/to-write-usefully/</loc>
+    <lastmod>2024-06-10T20:14:07+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/opinion/</loc>
+    <lastmod>2024-06-10T20:14:07+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/book-review/</loc>
+    <lastmod>2024-06-08T21:17:57+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/blog/hands-on-ml-review/</loc>
+    <lastmod>2024-06-08T21:17:57+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/machine-learning/</loc>
+    <lastmod>2024-06-08T21:17:57+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/musings/the-everlasting-feeling-of-being-mid/</loc>
+    <lastmod>2024-06-08T20:14:48+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/musings/the-rise-of-the-anon-devs/</loc>
+    <lastmod>2024-06-08T18:28:22+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/musings/the-privilege-of-having-an-opinion/</loc>
+    <lastmod>2024-06-04T11:49:15+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/system-design/</loc>
+    <lastmod>2024-05-30T21:37:51+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/blog/unique-id-generator/</loc>
+    <lastmod>2024-05-30T21:37:51+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/musings/on-politics/</loc>
+    <lastmod>2024-05-30T20:52:30+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/musings/break-the-blackbox/</loc>
     <lastmod>2024-05-29T20:07:59+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/musings/why-to-write/</loc>
@@ -41,9 +89,6 @@
     <loc>//localhost:1313/musings/imposter-syndrome-or-skill-issue/</loc>
     <lastmod>2024-05-17T18:59:37+05:30</lastmod>
   </url><url>
-    <loc>//localhost:1313/blog/</loc>
-    <lastmod>2024-05-17T15:43:31+05:30</lastmod>
-  </url><url>
     <loc>//localhost:1313/blog/perceptron/</loc>
     <lastmod>2024-05-17T15:43:31+05:30</lastmod>
   </url><url>
@@ -55,6 +100,9 @@
   </url><url>
     <loc>//localhost:1313/musings/the-serenity-of-matri-mandir/</loc>
     <lastmod>2024-05-07T21:43:05+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/linux/</loc>
+    <lastmod>2024-04-30T16:22:06+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/blog/why-to-use-tmux/</loc>
     <lastmod>2024-04-30T16:22:06+05:30</lastmod>
@@ -95,7 +143,13 @@
     <loc>//localhost:1313/blog/how-i-learned-to-type-fast/</loc>
     <lastmod>2024-03-29T16:25:00+05:30</lastmod>
   </url><url>
+    <loc>//localhost:1313/tags/tech-productivity/</loc>
+    <lastmod>2024-03-29T16:25:00+05:30</lastmod>
+  </url><url>
     <loc>//localhost:1313/blog/the-ins-and-outs-of-hash-tables/</loc>
+    <lastmod>2024-03-26T17:00:00+05:30</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/tech/</loc>
     <lastmod>2024-03-26T17:00:00+05:30</lastmod>
   </url><url>
     <loc>//localhost:1313/blog/hash-table-performance-and-implementation/</loc>
@@ -110,7 +164,5 @@
     <loc>//localhost:1313/archives/</loc>
   </url><url>
     <loc>//localhost:1313/categories/</loc>
-  </url><url>
-    <loc>//localhost:1313/tags/</loc>
   </url>
 </urlset>

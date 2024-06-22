@@ -1,49 +1,53 @@
 +++
-title = 'Hands on Ml Review'
-date = 2024-06-08T21:17:57+05:30
-draft = true
-tags = ["Machine learning"]
+title = 'Hands on ML Book Review'
+date = 2024-06-22T21:17:57+05:30
+ShowToc = true
+cover.image = "/images/hands-on-ml.jpg"
+tags = ["Machine learning", "Book Review"]
 +++
 
-Hands on Machine Learning is a book which is recommended by many to be used as a first ML book to learn how to code ML models. I started reading this book back in January but left it in between. But thought of giving this book a serious read this time and finish this. Today is June 8 and I'm starting to journal this journey and will eventually post this as a blog post(which you are reading now :)
-
-## Chapter 1-2
-
-The book starts slow with the introduction to the ML landscape in the first chapter. It goes through the types of machine learning algorithms and the main challenges faced while building ML models.
-
-The meaty part of the book starts with the second chapter. This chapter walks you through an end-to-end machine learning project, emphasizing on the basics and how the overall process looks like in the real world.
-
-One thing which I liked in this chapter was first the author demonstrated how to do one task using just numpy and python and then did the same thing in one line using scikit-learn.
-
-I really liked this elegant method of implementing train_test_split:
-```python
-from zlib import crc32
-
-def test_set_check(identifier, test_ratio):
-	return crc32(np.int64(identifier)) & 0xffffffff < test_ratio * 2**32
-
-def split_train_test_by_id(data, test_ratio, id_column):
-	ids = data[id_column]
-	in_test_set = ids.apply(lambda id_: test_set_check(id_, test_ratio))
-	
-	return data.loc[~in_test_set], data.loc[in_test_set]
-
-```
-
-It take the California housing price prediction dataset. Although this is a regression task, this books takes it up a notch with introducing concepts like Stratified sampling, Cross validation splits, model tuning, etc.
-
-Main emphasis is given on the Data cleaning process. Care is taken that all possible edge cases which you may find while building a model yourself are covered in this chapter.
-
-The following concepts were taught in this chapter:
-- Stratified shuffling
-- Correlation matrix
-- Imputing data
-- Ordinal and One Hot Encoding
-- How to make custom transformers using scikit-learn.
+I've heard so much about "Hands-On Machine Learning" as the go-to book for beginners in ML. I first picked it up in January but didn't get far. Now, though, I'm giving it another shot and committing to finishing it. Today, on June 8th, I'm starting to document this journey, which will end up in a blog post review of the book that you're reading now :)
 
 
-## Chapter 3
+## Jumping Right In
 
-This chapter is about classification problems and how to deal with them. Takes the good'ol MNIST dataset to teach classification algorithms.
+What's super cool is that the author doesn't waste time spoon-feeding you theory. By the second chapter, you're already building an end-to-end project! How crazy is that?! You learn how to frame the problem, explore the data, preprocess inputs, and select, fine-tune, and deploy a model. The process of machine learning is explained so well, with clear code examples, that you always know what you're doing, why you're doing it, and how to do it.
 
-Majority of the time is spend on making sure you understand the performance measure stuff like Recall, Precision, ROC, F1 Score, 
+## Engaging Exercises
+
+Mastering a skill comes from actively engaging with the material, and this book gets it. The exercises are like tasks a data scientist does at their job. For instance, you'll build different models and try out various preprocessing techniques on specific datasets. This is just like the applied ML process in the industry, where you start with hypotheses, implement them, and see how they affect the model's performance.
+
+One super fun exercise involves applying different transformations to MNIST digits to augment the dataset. This teaches you about data augmentation—a technique often used in ML—and its impact on performance. It’s informative and engaging, giving you a real sense of accomplishment.
+
+## Covers Both Classical ML & Deep Learning
+
+The book is split into two parts: classical machine learning and deep learning with TensorFlow. Each part is great on its own, but together, they make the book an outstanding resource for all sorts of readers.
+
+### Classical Machine Learning
+
+The first part covers algorithms like linear models, support vector machines, and tree-based ensembles. It’s perfect for beginners. You’ll learn about overfitting, underfitting, and the complete model-building process with code early on. The mix of theory and hands-on exercises helps you grasp the concepts and apply them to real data.
+
+### Deep Learning with TensorFlow
+
+The second part dives into modern deep learning techniques. Each chapter builds on the last, covering feedforward, convolutional, and recurrent neural networks. There are several chapters dedicated to TensorFlow, with practical exercises to apply what you’ve learned. If you're already familiar with classical ML, you can jump straight to the deep learning part and use the first part as a handy reference.
+
+I started the second chapter but noticed it uses TensorFlow and Keras for deep learning. I've heard PyTorch might be a better choice, so I didn't finish the second part completely. But that's just a personal preference.
+
+## Friendly Style with Helpful Code and Visuals
+
+One of the best things about this book is its approachable and friendly writing style. Machine learning can be intimidating, especially if you don't have a technical background. But this book feels more like a series of blog posts than a textbook, making it a fun read that’s easy to stick with.
+
+It’s filled with relevant graphs and figures that clarify each topic. For example, the chapters on classification algorithms feature plots of the decision boundaries created by the model. These visual aids are super helpful for understanding how different hyperparameters or algorithms affect the classification process.
+
+And guess what? All these figures are generated using Python code available in the book’s GitHub repository. This not only helps you grasp ML concepts but also shows you how to create various plots with matplotlib and sklearn.
+
+## Real-World Applications
+One thing that really stands out is how the book ties everything back to real-world applications. You'll work on problems like a real Data Scientist works on their job. This helps you understand how the techniques you're learning can be applied to solve real problems, making the learning experience even more relevant and exciting.
+
+## Step-by-Step Guidance
+The step-by-step guidance is another big plus. The author walks you through each process in a detailed manner, so you never feel lost. Whether it’s data preprocessing or model evaluation, each step is explained clearly, ensuring you can follow along and apply the knowledge to your own projects.
+
+
+So, if you're looking for a hands-on, engaging, and friendly guide to machine learning, this book is definitely worth checking out!
+
+Happy learning!
