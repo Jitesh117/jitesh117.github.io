@@ -20,16 +20,16 @@
 }
 
 .dark {
-/* Dark mode colors */
---theme: #1E1E2E; /* Mantle */
---entry: #473974; /* Crust */
---primary: #D9E0EE; /* Light crust */
---secondary: #b5b8e3; /* Green */
---tertiary: #2e3793; /* Yellow */
---content: #D9E0EE; /* Light crust */
---code-block-bg: #3f3144; /* Surface */
---code-bg: #63359f; /* Crust */
---border: #585B70; /* Crust */
+    /* Ayu Dark theme colors */
+    --theme: #0A0E14; /* Background */
+    --entry: #1F2430; /* Slightly lighter background for entries */
+    --primary: #E6E1CF; /* Primary text color */
+    --secondary: #fffffe; /* Secondary text color */
+    --tertiary: #ff9100; /* Accent color (Yellow in Ayu) */
+    --content: #E6E1CF; /* Content text color */
+    --code-block-bg: #191E2A; /* Code block background */
+    --code-bg: #232834; /* Inline code background */
+    --border: #3D424D; /* Border color */
 }
 
 .list {
