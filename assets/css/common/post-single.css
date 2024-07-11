@@ -45,54 +45,31 @@
 }
 
 .post-content h1 { color: var(--primary); margin: 40px auto 32px; font-size: 40px; }
-/* .post-content h2 {
-  color: #E5C890;
+
+
+.post-content h2 {
+  color: #e3385d;
   margin: 32px auto 24px;
   font-size: 32px;
 }
 
 .post-content h3 {
-  color: #98C377;
+  color: #f7d6a6;
   font-size: 24px;
 }
 
 .post-content h4 {
-  color: #e146b8;
+  color: #b0ffc2;
   font-size: 16px;
 }
 
 .post-content h5 {
-  color: #F28FAD;
+  color: #c1e7d0;
   font-size: 14px;
 }
 
 .post-content h6 {
-  color: #A6ADC8;
-  font-size: 12px;
-} */
- .post-content h2 {
-  color: #ff9100; /* Ayu Dark Yellow */
-  margin: 32px auto 24px;
-  font-size: 32px;
-}
-
-.post-content h3 {
-  color: #37da93; /* Ayu Dark Green */
-  font-size: 24px;
-}
-
-.post-content h4 {
-  color: #FF8F40; /* Ayu Dark Orange */
-  font-size: 16px;
-}
-
-.post-content h5 {
-  color: #FF3333; /* Ayu Dark Red */
-  font-size: 14px;
-}
-
-.post-content h6 {
-  color: #5C6773; /* Ayu Dark Gray */
+  color: #b8e3ff;
   font-size: 12px;
 }
 

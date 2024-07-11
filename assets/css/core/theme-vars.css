@@ -1,41 +1,38 @@
 :root {
-  --gap: 24px;
-  --content-gap: 20px;
-  --nav-width: 1024px;
-  --main-width: 720px;
-  --header-height: 60px;
-  --footer-height: 60px;
-  --radius: 8px;
-
-/* Light mode colors */
---theme: #c1d0ed; /* Light crust */
---entry: #cfcff2; /* Manix */
---primary: #585B70; /* Crust */
---secondary: #5c6d82; /* Sage */
---tertiary: #CA9EE6; /* Lavender */
---content: #4C4F69; /* Crust */
---code-block-bg: #313244; /* Surface */
---code-bg: #eceff4; /* Crust */
---border: #C6D0F5; /* Sky */
+    --gap: 24px;
+    --content-gap: 20px;
+    --nav-width: 1024px;
+    --main-width: 720px;
+    --header-height: 60px;
+    --footer-height: 60px;
+    --radius: 8px;
+    --theme: rgb(255, 255, 255);
+    --entry: rgb(255, 255, 255);
+    --primary: rgb(30, 30, 30);
+    --secondary: rgb(108, 108, 108);
+    --tertiary: rgb(214, 214, 214);
+    --content: rgb(31, 31, 31);
+    --code-block-bg: rgb(28, 29, 33);
+    --code-bg: rgb(245, 245, 245);
+    --border: rgb(238, 238, 238);
 }
 
 .dark {
-    /* Ayu Dark theme colors */
-    --theme: #0A0E14; /* Background */
-    --entry: #1F2430; /* Slightly lighter background for entries */
-    --primary: #E6E1CF; /* Primary text color */
-    --secondary: #fffffe; /* Secondary text color */
-    --tertiary: #ff9100; /* Accent color (Yellow in Ayu) */
-    --content: #E6E1CF; /* Content text color */
-    --code-block-bg: #191E2A; /* Code block background */
-    --code-bg: #232834; /* Inline code background */
-    --border: #3D424D; /* Border color */
+    --theme: rgb(29, 30, 32);
+    --entry: rgb(46, 46, 51);
+    --primary: rgb(255, 75, 75);
+    --secondary: rgb(155, 156, 157);
+    --tertiary: rgb(65, 66, 68);
+    --content: rgb(196, 196, 197);
+    --code-block-bg: rgb(46, 46, 51);
+    --code-bg: rgb(55, 56, 62);
+    --border: rgb(51, 51, 51);
 }
 
 .list {
-  background: var(--code-bg);
+    background: var(--code-bg);
 }
 
 .dark.list {
-  background: var(--theme);
+    background: var(--theme);
 }
