@@ -31,7 +31,7 @@ When you set up a new TCP connection, even before you send any data, the TCP sof
 
 These are the steps in the TCP connection handshake:
 
-![TCP conneciton handshake](/images/tcp_connection.png) 
+![TCP conneciton handshake](/images/tcp_handshake.png) 
 > *Figure 1. TCP Connection handshake*
 
 1. To request a new TCP connection, the client sends a small TCP packet (40–60 bytes) with a “SYN” flag to the server (see Figure 1a).
