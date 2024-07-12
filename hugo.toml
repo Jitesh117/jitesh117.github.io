@@ -9,7 +9,7 @@ googleAnalytics = "G-CGJ4KC5CSM"
 buildFuture = true
 
 [outputs]
-  home = ['html', 'rss']
+  home = ['html', 'rss','json']
   section = ['html', 'rss']
   taxonomy = ['html']
   term = ['html']
@@ -75,6 +75,11 @@ identifier = "tags"
 name = "Tags"
 url = "/tags/"
 
+[[menu.main]]
+identifier = "search"
+name = "Search"
+url = "/search/"
+
 [params]
 mainSections = ["blog", "musings"]
 
@@ -99,3 +104,12 @@ searchPlaceholder = "Search..."
 
 [params.cover]
 linkFullImages = true
+
+[params.fuseOpts]
+isCaseSensitive = false
+shouldSort = true
+location = 0
+distance = 1_000
+threshold = 0.4
+minMatchCharLength = 0
+keys = [ "title", "permalink", "summary", "content" ]
