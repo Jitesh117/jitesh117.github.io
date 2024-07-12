@@ -5,6 +5,13 @@ draft = false
 hideMeta = true
 +++
 
+## Tech
+
+1. [The Go programming language](https://www.gopl.io/) by Alan A. A. Donovan
+2. [HTTP The definitive guide](https://www.oreilly.com/library/view/http-the-definitive/1565925092/) by David Gourley and Brian Totty
+3. [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) by Aurélien Géron
+4. [Deep Learning with PyTorch](https://www.manning.com/books/deep-learning-with-pytorch) by Eli Stevens, Luca Antiga, and Thomas Viehmann
+5. [Practical Vim](https://pragprog.com/titles/dnvim2/practical-vim-second-edition/) by Drew Neil
 ## Fiction
 
 1. [1984](https://www.goodreads.com/book/show/61439040-1984) by George Orwell
@@ -15,6 +22,6 @@ hideMeta = true
 ## Non-fiction 
 
 1. [Show Your Work](https://www.goodreads.com/en/book/show/18290401) by Austin Kleon
-2. [The Art of War](https://www.goodreads.com/book/show/10534.The_Art_of_War) by Sun Tzu
-3. [The Psychology of Money](https://www.goodreads.com/book/show/41881472-the-psychology-of-money) by Morgan Housel
-4. [Fooled by Randomness](https://www.goodreads.com/book/show/38315.Fooled_by_Randomness) by Nassim Nicholas Taleb 
+2. [Fooled by Randomness](https://www.goodreads.com/book/show/38315.Fooled_by_Randomness) by Nassim Nicholas Taleb 
+3. [The Art of War](https://www.goodreads.com/book/show/10534.The_Art_of_War) by Sun Tzu
+4. [The Psychology of Money](https://www.goodreads.com/book/show/41881472-the-psychology-of-money) by Morgan Housel
