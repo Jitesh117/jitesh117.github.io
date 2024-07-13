@@ -20,7 +20,7 @@ buildFuture = true
 
 [params.homeInfoParams]
 Title = "Hey, I’m Jitesh 👋"
-Content = "I'm a Data Scientist and Flutter Developer. I write about Data Science, Python, Machine Learning and anything that is going on my mind. Currently, I'm exploring Machine Learning, Kaggle competitions, and my inner conscience."
+Content = "Exploring the ins and outs of software, with some commentary on life sprinkled in. Follow along as I break down tech, share useful tips, and maybe crack a bad joke or two."
 
 [[params.socialIcons]]
 name = "github"
