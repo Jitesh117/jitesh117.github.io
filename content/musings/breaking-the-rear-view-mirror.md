@@ -1,7 +1,7 @@
 +++
 title = 'Breaking the Rear View Mirror'
 date = 2024-07-29T19:33:12+05:30
-draft = true
+draft = false
 cover.Image = 'images/thinking.jpg'
 tags = ["Opinion"]
 +++
