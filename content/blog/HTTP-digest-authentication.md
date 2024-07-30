@@ -4,6 +4,7 @@ date = 2024-07-29T12:57:21+05:30
 draft = false
 cover.Image = '/images/digest-authentication.jpg'
 ShowToc = true
+tags = ["Web"]
 +++
 
 HTTP Digest Authentication is a more secure method for a client to authenticate with a server compared to the more basic HTTP Basic Authentication. It employs a challenge-response mechanism where the client proves its knowledge of the password without actually sending the password in plain text over the network.
