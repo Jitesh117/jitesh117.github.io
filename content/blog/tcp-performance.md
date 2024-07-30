@@ -4,9 +4,10 @@ date = 2024-07-12T18:44:34+05:30
 draft = false
 showToc = true
 cover.image = '/images/tcp.jpeg'
+tags = ["Web"]
 +++
 
-HTTP is the language of the internet. And it is layered directly on top of TCP, so the performance of HTTP calls depends directly on the performance of the underlying TCP. 
+HTTP is the language of the internet. And it is layered directly on top of TCP, so the performance of HTTP calls depends directly on the performance of the underlying TCP.
 
 This article highlights some significant performance considerations of TCP connections. You'll better appreciate HTTP's connection optimization features after understanding these basic performance characteristics of TCP.
 
@@ -27,12 +28,13 @@ In this secion we'll go through the most common TCP related delays.
 
 ### 1. TCP Connection Handshake Delays
 
-When you set up a new TCP connection, even before you send any data, the TCP software exchanges a series of IP packages to negotiate the terms of the connection. 
+When you set up a new TCP connection, even before you send any data, the TCP software exchanges a series of IP packages to negotiate the terms of the connection.
 
 These are the steps in the TCP connection handshake:
 
-![TCP connection handshake](/images/tcp_handshake.png) 
-> *Figure 1. TCP Connection handshake*
+![TCP connection handshake](/images/tcp_handshake.png)
+
+> _Figure 1. TCP Connection handshake_
 
 1. To request a new TCP connection, the client sends a small TCP packet (40–60 bytes) with a “SYN” flag to the server (see Figure 1a).
 2. If the server accepts, it sends back a TCP packet with “SYN” and “ACK” flags, indicating the connection is accepted (see Figure 1b).
@@ -47,7 +49,6 @@ The Internet doesn't guarantee reliable packet delivery, so **TCP uses its own a
 **Piggybacking**: TCP can piggyback acknowledgments on outgoing data packets to optimize network use. **Delayed Acknowledgments**: TCP stacks may delay acknowledgments (100–200ms) to piggyback on outgoing data. If no data packet arrives in that time, the acknowledgment is sent alone.
 
 **HTTP Limitation**: HTTP's request-reply nature reduces piggybacking opportunities, potentially causing delays. **Adjusting TCP Settings**: Modifying TCP parameters should be done cautiously. **TCP algorithms protect the Internet from poorly designed applications**. Ensure changes won't create problems.
-
 
 ### 3. TCP Slow Start
 
