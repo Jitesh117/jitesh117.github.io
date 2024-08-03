@@ -1,6 +1,6 @@
 +++
 title = 'Editor Wars Are Stupid'
-date = 2024-08-01T19:10:39+05:30
+date = 2024-08-03T19:10:39+05:30
 draft = false
 cover.Image = 'images/editors.jpg'
 tags = ["Tech productivity", "Opinion"]
