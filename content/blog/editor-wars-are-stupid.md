@@ -22,7 +22,7 @@ Now, I know some of you might be thinking, "But what about Emacs and Vim? Aren't
 
 First off, no one should ever tell you what you should use. If you're happy with Visual Studio Code, stick with it! Microsoft has done an incredible job with it. The UI is beautiful, the Marketplace is a goldmine, and don't even get me started on how well it works with WSL. Plus, they invented LSP, which is now everywhere, including Vim and Emacs. That's pretty cool in my book.
 
-But here's the thing about Emacs and Vim - they change the way you think about text editing. You start treating code as pieaces of characters, but objects like words, sentences, lines, paragraphs, things between parantheses, quotes, etc. Once you discover their power, you might wonder how you ever coded without them. I can't really explain why they're so good (believe me, I've tried), but if you put in the time to learn them, you might just have your mind blown.
+But here's the thing about Emacs and Vim - they change the way you think about text editing. You stop treating code as pieaces of characters, but objects like words, sentences, lines, paragraphs, things between parantheses, quotes, etc. Once you discover their power, you might wonder how you ever coded without them. I can't really explain why they're so good (believe me, I've tried), but if you put in the time to learn them, you might just have your mind blown.
 
 That said, they're definitely not for everyone. Learning Emacs or Vim is like climbing a mountain. It takes time, perseverance, and a willingness to be less productive for a while as you learn. I've seen plenty of people give up because it was just too frustrating at first.
 
