@@ -97,7 +97,7 @@ Wouldn't it be nice if Go had a "debug mode" where unused variables were just fr
 
 So here's to Go's overzealous linting: The feature that keeps our code squeaky clean, but occasionally makes us want to pull our hair out during debugging sessions.
 
-## 3. No Ternary Operator
+## 2. No Ternary Operator
 
 Go doesn't have a ternary operator (`?:`), which can be surprising for developers coming from other languages:
 
@@ -111,7 +111,7 @@ if !condition {
 
 It's like Go is saying, "Oh, you want a shortcut? How about a nice walk through if-else land instead?" Sure, it's more explicit, but sometimes you just want to get to the point without feeling like you're writing a small novel.
 
-## 4. Naked Returns
+## 3. Naked Returns
 
 Go allows "naked" returns in functions, which can improve readability in short functions but may reduce clarity in longer ones:
 
@@ -134,7 +134,7 @@ At first glance, it's neat and tidy. But let's dive deeper into why naked return
 
 In the end, naked returns are like using acronyms in a presentation - they might save you a few keystrokes, but they leave everyone else scratching their heads. For the sake of your future self and your fellow developers, it's often better to be explicit about what you're returning. Your code reviewers will thank you!
 
-## 5. Slice Behavior
+## 4. Slice Behavior
 
 Slices in Go can behave unexpectedly due to their underlying array structure:
 
@@ -146,7 +146,7 @@ b[0] = 10 // This also modifies a[1]
 
 Surprise! You thought you were just changing b, but a got a makeover too. It's the programming equivalent of finding out that the wall you're painting in your apartment is actually shared with your neighbor. "Oops, hope you like blue!"
 
-## 6. Defer and Loop Variables
+## 5. Defer and Loop Variables
 
 Using `defer` inside a loop can lead to unexpected results due to how closure captures loop variables:
 
@@ -158,7 +158,7 @@ for i := 0; i < 5; i++ {
 
 You might expect it to print 0, 1, 2, 3, 4. But no, it's more like a time-travel movie where everyone ends up in the same timeline. It's Go's way of saying, "You thought you understood closure? That's cute."
 
-## 7. Nil Slices vs. Empty Slices
+## 6. Nil Slices vs. Empty Slices
 
 In Go, there's a distinction between nil slices and empty slices, which can affect behavior in certain situations:
 
@@ -169,7 +169,7 @@ s = []int{} // empty slice
 
 It's like the difference between an empty room and a room with a sign that says "This room is empty." Functionally similar, philosophically distinct, and occasionally the source of bugs that make you question your life choices.
 
-## 8. Date Formatting: The "What Year Is It?" Conundrum
+## 7. Date Formatting: The "What Year Is It?" Conundrum
 
 Just when you thought you had seen all of Go's quirks, along comes date formatting to make you question your sanity. In most programming languages, you'd use something intuitive like `YYYY-MM-DD` for year-month-day. But Go? Go decided to be "special."
 
