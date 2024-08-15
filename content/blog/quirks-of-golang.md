@@ -95,8 +95,6 @@ Sure, we appreciate Go's commitment to clean code. But sometimes, when you're de
 
 Wouldn't it be nice if Go had a "debug mode" where unused variables were just friendly warnings? Imagine how much smoother our edit-compile-debug tango would be!
 
-So here's to Go's overzealous linting: The feature that keeps our code squeaky clean, but occasionally makes us want to pull our hair out during debugging sessions.
-
 ## 2. No Ternary Operator
 
 Go doesn't have a ternary operator (`?:`), which can be surprising for developers coming from other languages:
@@ -144,7 +142,7 @@ b := a[1:3]
 b[0] = 10 // This also modifies a[1]
 ```
 
-Surprise! You thought you were just changing b, but a got a makeover too. It's the programming equivalent of finding out that the wall you're painting in your apartment is actually shared with your neighbor. "Oops, hope you like blue!"
+Surprise! You thought you were just changing `b`, but a got a makeover too. It's the programming equivalent of finding out that the wall you're painting in your apartment is actually shared with your neighbor. "Oops, hope you like blue!"
 
 ## 5. Defer and Loop Variables
 
@@ -217,4 +215,4 @@ It's so confusing. It's as if they were trying to port [.NET's formatting synta
 
 ## Conclusion
 
-In conclusion, Go is like that brutally honest friend who always has your best interests at heart, even if their methods sometimes make you want to scream into a pillow. It keeps your code clean, efficient, and occasionally makes you feel like you're solving a puzzle just to do simple tasks. But hey, at least you're never bored, right? Now excuse me while I go comment out a line of code and accidentally rewrite my entire function.
+Go is pretty strict with the clean code philosphy which although seems useful in the first look but can be a little hard to work with if you're not used to its quirks, occasionally making you feel like you're solving a puzzle just to do simple tasks. Now excuse me while I go comment out a line of code and accidentally rewrite my entire function.
