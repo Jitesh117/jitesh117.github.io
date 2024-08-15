@@ -77,7 +77,7 @@ func processUserData(userID int) error {
         return fmt.Errorf("failed to fetch user: %w", err)
     }
 
-    _, err = parseUserData(user)
+    _, err = parseUserData(user) // used assignment operator instead of declaration operator
     if err != nil {
         return fmt.Errorf("failed to parse user data: %w", err)
     }
