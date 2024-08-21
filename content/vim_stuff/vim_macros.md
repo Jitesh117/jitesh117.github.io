@@ -4,6 +4,7 @@ date = 2024-08-19T22:06:42+05:30
 draft = false
 cover.Image = '/images/macro_cover.jpg'
 showTOC = true
+tags = ["vim", "Linux"]
 +++
 
 **Vim macros** can seem daunting to many at first glance. However, the truth is, once you unlock their potential, you'll wonder how you ever survived without them. Imagine saving yourself the hassle of repeatedly smashing the dot (`.`) command—Vim macros make that a reality.
