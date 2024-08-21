@@ -1,7 +1,3 @@
-+++
-title = 'Vim Stuff'
-date = 2024-08-19T21:27:14+05:30
-draft = false
-+++
+# Vim Stuff
 
 Weekly posts for everything vim.
