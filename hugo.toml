@@ -48,47 +48,59 @@ url = "https://jitesh117.github.io/index.xml"
 identifier = "home"
 name = "Home"
 url = "/"
-weight = 10
-
-[[menu.main]]
-identifier = "posts"
-name = "Blog"
-url = "/blog/"
-
-[[menu.main]]
-identifier = "shelf"
-name = "Shelf"
-url = "/shelf/"
-
-[[menu.main]]
-identifier = "musings"
-name = "Essays"
-url = "/musings/"
+weight = 1
 
 [[menu.main]]
 identifier = "archive"
 name = "Archives"
 url = "/archives/"
+weight = 2
 
 [[menu.main]]
-identifier = "tags"
-name = "Tags"
-url = "/tags/"
+identifier = "posts"
+name = "Blog"
+url = "/blog/"
+weight = 3
+
+[[menu.main]]
+identifier = "musings"
+name = "Essays"
+url = "/musings/"
+weight = 4
+
+[[menu.main]]
+identifier = "vim_stuff"
+name = "Vim Stuff"
+url = "/vim_stuff/"
+weight = 5
+
+[[menu.main]]
+identifier = "shelf"
+name = "Shelf"
+url = "/shelf/"
+weight = 6
 
 [[menu.main]]
 identifier = "search"
 name = "Search"
 url = "/search/"
+weight = 7
+
+[[menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+weight = 8
 
 [params]
-mainSections = ["blog", "musings"]
+mainSections = ["blog", "musings", "vim_stuff"]
 
 hideSummary = true
 
 comments = true
 
 archives = true
- archiveSection = ["blog", "musings", ]
+ archiveSection = ["blog", "musings", "vim_stuff"]
 
 defaultTheme = "dark"
 disableThemeToggle = true
