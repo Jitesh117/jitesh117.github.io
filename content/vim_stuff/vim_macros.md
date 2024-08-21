@@ -1,7 +1,7 @@
 +++
 title = 'Vim Macros'
 date = 2024-08-19T22:06:42+05:30
-draft = true
+draft = false
 cover.Image = '/images/macro_cover.jpg'
 showTOC = true
 +++
