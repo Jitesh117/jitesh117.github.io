@@ -76,7 +76,7 @@ After getting a little familiar with the basic vim motions, I installed the Vim 
 
 ### The NeoVim saga
 
-**`NOTE`** : I've now switched to neovim permanently after struggling with it at first. But sure if you still want to really read this section, go ahead.
+**`edit`** : I've now switched to neovim permanently after struggling with it at first. But sure if you still want to really read this section, go ahead.
 
 ![lazy_vim](/images/lazy_vim_screen.png)
 
