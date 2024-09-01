@@ -8,9 +8,9 @@ tags = ["Linux"]
 +++
 
 [VIM](https://www.vim.org/) or Vi Improved, is a free and open-source text editor for the terminal written by Bram Moolenaar.
-It is a highly powerful and versatile text editor that has managed to gather a devoted following among many people. Known for its efficiency, speed, and extensive customization options, Vim offers a unique modal editing approach that distinguishes it from traditional text editors. 
+It is a highly powerful and versatile text editor that has managed to gather a devoted following among many people. Known for its efficiency, speed, and extensive customization options, Vim offers a unique modal editing approach that distinguishes it from traditional text editors.
 
-Although I was familiar with Vim since 2020, I never thought of actually using it. Thought why should I when there are much modern editors like VSCode and Intellij? Boy was I wrong. 
+Although I was familiar with Vim since 2020, I never thought of actually using it. Thought why should I when there are much modern editors like VSCode and Intellij? Boy was I wrong.
 What pushed me to actually learn Vim motions and incorporate it in my daily editing was none other than, you guessed it right, [ThePrimeagen](https://twitter.com/ThePrimeagen).
 
 > But what made me stick to Vim motions was not the absence of shortcuts in other editors, but the ease of doing the mundane things which attracted me.
@@ -30,8 +30,11 @@ Let's go through some examples to understand this more, shall we
 ### Going to the bottom most or top most line of code from any line
 
 #### The boring way
-To go to the last or the first line of the code, in any other editor, you'll most likely use your mouse and scroll endlessly in case there is 100s or 1000s of lines of code. 
+
+To go to the last or the first line of the code, in any other editor, you'll most likely use your mouse and scroll endlessly in case there is 100s or 1000s of lines of code.
+
 #### The Vim way
+
 Vim makes this super easy and intuitive. Just press `Shift + g` in `Normal` mode (Press Esc to go to `Normal` mode).
 
 To go to the first line of the code from any line, just press `gg` in `Normal` mode (Press Esc to go to `Normal` mode).
@@ -41,22 +44,25 @@ After editing those lines, you'd most likely want to go back to the line you wer
 ### Deleting a whole line of code
 
 #### The boring way
+
 To delete a line of code, one would select the whole line using the mouse and then hit the `backspace` key
 
 #### The Vim way
+
 Just press `dd` in `Normal` mode, easy as pie.
 
 ### Copying a function and pasting it somewhere else
 
 #### The boring way
+
 Copy the whole function using the mouse and then Cut and paste
 
 #### The Vim way
+
 Go the the beginning of the function, go to `Normal` mode, press `Shift + V` and then `]]`. The whole function will get selected and then press `d` to delete it and store in the default register.
 Then go to the line where you want to paste the code and just press `p`.
 
 There are endless more number of things which can be achieved seamlessly with Vim, but that is out scope for this article. To know more about vim shortcuts, you can follow this [article](https://vim.rtorr.com/).
-
 
 ## My journey of learning Vim motions
 
@@ -64,12 +70,13 @@ There are endless more number of things which can be achieved seamlessly with Vi
 
 When I stumbled upon Prime's [Twitch](https://www.twitch.tv/ThePrimeagen) channel, I was used to using VSCode as my code editor(I still do). Prime uses NeoVim as his editor but I was too intimidated by looking at the amount of configuration needed(Mind you, there was no [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) at that time). So I started off with the `vimtutor` shell command:
 
-
 ![vim_tutor](/images/vimtutor.png)
 
 After getting a little familiar with the basic vim motions, I installed the Vim extension in my VSCode. It did take some time getting used to at first if I'm being honest. But I sticked to it and it gave me wonderful returns on the time saved and how productive I feel while coding, or even making notes in Obsidian.
 
 ### The NeoVim saga
+
+**`NOTE`** : I've now switched to neovim permanently after struggling with it at first. But sure if you still want to really read this section, go ahead.
 
 ![lazy_vim](/images/lazy_vim_screen.png)
 
