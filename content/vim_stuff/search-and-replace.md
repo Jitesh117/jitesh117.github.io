@@ -4,6 +4,7 @@ date = 2024-08-27T20:32:40+05:30
 draft = false
 cover.Image = '/images/search_replace.jpg'
 showToc = true
+tags = ["vim", "linux"]
 +++
 
 Search and replace is a powerful feature in vim that can save you a lot of time when editing text. Whether you're working on a single file or across multiple files, vim provides robust tools to find and replace text quickly. In this article, we'll explore the basics of search and replace, as well as some advanced tips to help you make the most of this feature.
