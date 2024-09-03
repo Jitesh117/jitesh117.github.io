@@ -196,7 +196,7 @@ Use register contents in search patterns:
 
 Mastering Vim registers can significantly enhance your text editing efficiency. By understanding and utilizing these powerful tools, you can perform complex text manipulations with ease, making your Vim experience even more rewarding.
 
-Remember, like many aspects of Vim, becoming proficient with registers takes practice. Start incorporating them into your daily editing, and soon you'll wonder how you ever lived without them!
+Remember, like many aspects of Vim, becoming proficient with registers takes practice. Start incorporating them into your daily editing, and soon you'll wonder how you ever lived without them! Happy vimming!
 
 ## Further Reading
 
