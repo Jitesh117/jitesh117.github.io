@@ -10,3 +10,4 @@ hideMeta = true
 3. [My GitHub Project went viral](https://adityatelange.in/blog/papermod-went-viral/) by Aditya Lenge
 4. [How to keep yourself unblocked](https://arpitbhayani.me/blogs/keep-yourself-unblocked) by Arpit Bhayani
 5. [What we got right, What we got wrong](https://commandcenter.blogspot.com/2024/01/what-we-got-right-what-we-got-wrong.html) by Rob Pike
+6. [One Billion Rows Challenge in golang](https://www.bytesizego.com/blog/one-billion-row-challenge-go) by Shraddha Agrawal
