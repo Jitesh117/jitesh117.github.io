@@ -3,6 +3,7 @@ title = 'Books'
 date = 2024-03-31T16:20:09+05:30
 draft = false
 hideMeta = true
+weight = 1
 +++
 
 Books that I read and enjoyed.

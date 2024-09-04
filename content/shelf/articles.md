@@ -3,6 +3,7 @@ title = 'Articles'
 date = 2024-03-31T16:20:20+05:30
 draft = false
 hideMeta = true
+weight = 2
 +++
 
 Some of the great articles I read and enjoyed.
