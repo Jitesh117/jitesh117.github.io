@@ -5,6 +5,8 @@ draft = false
 hideMeta = true
 +++
 
+Some of the great articles I read and enjoyed.
+
 1. [The Invitation](https://nowherethis.svs.io/2023/10/05/the-invitation) by svs
 2. [Being a Noob](https://paulgraham.com/noob.html) by Paul Graham
 3. [My GitHub Project went viral](https://adityatelange.in/blog/papermod-went-viral/) by Aditya Lenge

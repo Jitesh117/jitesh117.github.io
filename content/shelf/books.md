@@ -5,6 +5,8 @@ draft = false
 hideMeta = true
 +++
 
+Books that I read and enjoyed.
+
 ## Tech
 
 1. [The Go programming language](https://www.gopl.io/) by Alan A. A. Donovan
@@ -12,6 +14,7 @@ hideMeta = true
 3. [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) by Aurélien Géron
 4. [Deep Learning with PyTorch](https://www.manning.com/books/deep-learning-with-pytorch) by Eli Stevens, Luca Antiga, and Thomas Viehmann
 5. [Practical Vim](https://pragprog.com/titles/dnvim2/practical-vim-second-edition/) by Drew Neil
+
 ## Fiction
 
 1. [1984](https://www.goodreads.com/book/show/61439040-1984) by George Orwell
@@ -19,9 +22,9 @@ hideMeta = true
 3. [Animal Farm](https://www.goodreads.com/book/show/170448.Animal_Farm) By George Orwell
 4. [Halo The Forerunner Saga series](https://en.wikipedia.org/wiki/Forerunner_Saga) by Greg Bear
 
-## Non-fiction 
+## Non-fiction
 
 1. [Show Your Work](https://www.goodreads.com/en/book/show/18290401) by Austin Kleon
-2. [Fooled by Randomness](https://www.goodreads.com/book/show/38315.Fooled_by_Randomness) by Nassim Nicholas Taleb 
+2. [Fooled by Randomness](https://www.goodreads.com/book/show/38315.Fooled_by_Randomness) by Nassim Nicholas Taleb
 3. [The Art of War](https://www.goodreads.com/book/show/10534.The_Art_of_War) by Sun Tzu
 4. [The Psychology of Money](https://www.goodreads.com/book/show/41881472-the-psychology-of-money) by Morgan Housel
