@@ -2,7 +2,6 @@
 title = 'Notes to Self'
 date = 2024-08-07T20:24:37+05:30
 draft = false
-weight = 10
 cover.Image = 'images/notes.jpg'
 +++
 
