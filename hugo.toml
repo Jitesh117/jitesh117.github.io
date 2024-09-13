@@ -51,7 +51,7 @@ url = "/"
 weight = 1
 
 [[menu.main]]
-identifier = "archives"
+identifier = "archive"
 name = "Archive"
 url = "/archive/"
 weight = 2
