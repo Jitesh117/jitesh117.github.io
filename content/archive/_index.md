@@ -1,6 +1,6 @@
 +++
-title= "Archive" # Change this to your desired archive page title
+title= "Archive" 
 layout= "archives"
-url= "/archives/"
+url= "/archive/"
 summary= "archives"
 +++
