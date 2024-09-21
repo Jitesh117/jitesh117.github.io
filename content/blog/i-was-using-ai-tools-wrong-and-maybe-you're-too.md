@@ -33,9 +33,17 @@ Things started changing when I started learning Go. I was building CLI tools lik
 
 I was pumped! After watching some of [Anthony GG](https://www.youtube.com/@anthonygg_)'s videos, I jumped into building a REST API project. But as I dug deeper, I quickly realized I didn’t fully understand key concepts like handlers, REST design, or database schemas. Every time I hit a roadblock, instead of figuring things out, I turned to GPT for quick fixes.
 
-This pattern continued in my snippet-manager project (which, by the way, is still a work in progress). I relied on GPT for everything—from crafting handlers to setting up the database layer and even Docker configurations. Initially, it felt like I was moving fast, but eventually, I hit a point where I couldn’t navigate my own codebase. The overuse of GPT had left gaps in my understanding, making tasks like debugging the database or modifying handlers feel foreign. It became clear that while GPT sped up my workflow, it also hindered my deeper comprehension of the project.
+This pattern continued in my [code-snippet-manager project](https://github.com/Jitesh117/snippet-manager-go) (which, by the way, is still a work in progress). I relied heavily on GPT for nearly every aspect—from building handlers to setting up the database layer and even Docker configurations. Initially, it felt like I was blazing through development, rapidly getting things done. However, over time, I realized I was only solving the surface-level problems without deeply understanding the underlying architecture.
 
-Turns out, I had overestimated my grasp of backend concepts. The AI wasn’t just a tool; it had become my bible.
+Eventually, I hit a point where I couldn’t even navigate my own codebase. Whether it was debugging database queries, modifying handlers, or handling Docker configurations, everything started feeling foreign. The overuse of GPT had left noticeable gaps in my understanding, and I had become far too dependent on it to solve problems I should’ve been learning to solve on my own.
+
+For example, I ran into an issue with my login endpoint where user passwords weren’t being processed correctly. After digging through my code and troubleshooting for far too long, I realized the problem was that I was marshalling my structs incorrectly. As a result, the password field was always being sent as empty. Here’s what the marshalling mistake looked like:
+
+![wrong password marshalling](/images/password_struct.png)
+
+This was a fundamental backend issue that I should have caught much earlier. Instead, I was so deep into this AI dependency hellhole that I didn’t even realize I was missing a key part of how struct marshalling works in Go. It was a humbling moment when I had to step back and admit that while GPT had helped me move faster, it had also held me back from truly grasping critical concepts.
+
+At that point, GPT was no longer just a tool—it had become an addiction. I wasn't approaching problems with the curiosity and problem-solving mindset I once had; instead, I was treating GPT like a bible, expecting it to have the solution for everything without engaging my own problem-solving skills.
 
 ## Rebuilding Brain Power (AKA Reclaiming My Big Brain Energy)
 
