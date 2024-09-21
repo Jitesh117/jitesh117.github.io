@@ -31,7 +31,9 @@ One of the worst parts about overusing AI tools is that it _feels_ like you’re
 
 Things started changing when I started learning Go. I was building CLI tools like Go versions of `wc`, `cat`, `grep`, and reading the book **Writing an Interpreter in Go** (wrote a [blog](https://jitesh117.github.io/blog/things-building-an-interpreter-taught-me/) about it, btw). I was feeling like a Go pro, but then came the real test: backend development.
 
-I was pumped! Watched some of [Anthony GG](https://www.youtube.com/@anthonygg_)'s videos, dove into a REST API project, and quickly realized... I didn’t actually understand things like handlers, REST design, or database schemas. Every time I hit a road block, instead of learning, I turned to GPT.
+I was pumped! After watching some of [Anthony GG](https://www.youtube.com/@anthonygg_)'s videos, I jumped into building a REST API project. But as I dug deeper, I quickly realized I didn’t fully understand key concepts like handlers, REST design, or database schemas. Every time I hit a roadblock, instead of figuring things out, I turned to GPT for quick fixes.
+
+This pattern continued in my snippet-manager project (which, by the way, is still a work in progress). I relied on GPT for everything—from crafting handlers to setting up the database layer and even Docker configurations. Initially, it felt like I was moving fast, but eventually, I hit a point where I couldn’t navigate my own codebase. The overuse of GPT had left gaps in my understanding, making tasks like debugging the database or modifying handlers feel foreign. It became clear that while GPT sped up my workflow, it also hindered my deeper comprehension of the project.
 
 Turns out, I had overestimated my grasp of backend concepts. The AI wasn’t just a tool; it had become my bible.
 
