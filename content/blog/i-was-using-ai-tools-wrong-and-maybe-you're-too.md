@@ -86,4 +86,5 @@ Just remember, it's more fun to be competent.
 ## References
 
 - [My blog post on building an interpreter in Golang](https://jitesh117.github.io/blog/things-building-an-interpreter-taught-me/)
+- [My code-snippet-manager project](https://github.com/Jitesh117/snippet-manager-go)
 - [Anthony GG YouTube Channel](https://www.youtube.com/@anthonygg_)
