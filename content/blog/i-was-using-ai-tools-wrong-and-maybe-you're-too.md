@@ -1,6 +1,6 @@
 +++
 title = "I Was Using AI Tools Wrong and Maybe You're Too"
-date = 2024-09-20T11:22:53+05:30
+date = 2024-09-21T11:22:53+05:30
 draft = false
 cover.image = '/images/tools_wrong.jpg'
 showToc = true
