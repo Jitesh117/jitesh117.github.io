@@ -6,7 +6,7 @@ cover.image = '/images/marks_vim.jpg'
 showToc = true
 +++
 
-Vim, the powerful text editor, offers a multitude of features to enhance your editing efficiency. Among these, marks and jumps stand out as incredibly useful tools for navigation within files and across your editing session. This article will explore how to effectively use marks and jumps to supercharge your Vim workflow.
+Vim, the powerful text editor, offers a multitude of features to enhance your editing efficiency. Among these, marks and jumps stand out as incredibly useful tools for navigation within files and across your editing session. In this article we'll explore how to effectively use marks and jumps to supercharge your Vim workflow.
 
 ## Understanding Marks
 
