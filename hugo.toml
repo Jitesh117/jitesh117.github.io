@@ -27,17 +27,20 @@ name = "github"
 url = "https://github.com/Jitesh117"
 
 [[params.socialIcons]]
-name = "kaggle"
-url = "https://www.kaggle.com/jiteshkumarsahoo"
+name = "email"
+url = "mailto:sahookumarjitesh@gmail.com"
 
 [[params.socialIcons]]
 name = "twitter"
 url = "https://x.com/Jitesh_117"
 
-
 [[params.socialIcons]]
 name = "linkedin"
 url = "https://www.linkedin.com/in/Jitesh117/"
+
+[[params.socialIcons]]
+name = "kaggle"
+url = "https://www.kaggle.com/jiteshkumarsahoo"
 
 [[params.socialIcons]]
 name = "RSS"
