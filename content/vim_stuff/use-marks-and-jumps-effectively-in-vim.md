@@ -3,6 +3,7 @@ title = "Use Marks and Jumps Effectively in Vim"
 date = 2024-09-25T09:44:17+05:30
 draft = false
 cover.image = '/images/marks_vim.jpg'
+tags = ["vim", "linux"]
 showToc = true
 +++
 

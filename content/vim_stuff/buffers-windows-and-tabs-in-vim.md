@@ -3,6 +3,7 @@ title = 'Mastering Vim Buffers, Tabs and Windows'
 date = 2024-09-17T17:04:06+05:30
 draft = false
 cover.image = '/images/buffer_tabs_windows.jpg'
+tags = ["vim", "linux"]
 showToc = true
 +++
 
