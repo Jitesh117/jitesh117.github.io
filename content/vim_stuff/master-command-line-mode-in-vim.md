@@ -1,7 +1,7 @@
 +++
 title = "Master Command Line Mode in Vim"
 date = 2024-10-02T17:23:20+05:30
-draft = true
+draft = false
 cover.image = '/images/vim_command.jpg'
 tags = ["vim", "linux"]
 showToc = true
