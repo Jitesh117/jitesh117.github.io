@@ -43,6 +43,10 @@ name = "kaggle"
 url = "https://www.kaggle.com/jiteshkumarsahoo"
 
 [[params.socialIcons]]
+name = "buymeacoffee"
+url = "https://buymeacoffee.com/jitesh117"
+
+[[params.socialIcons]]
 name = "RSS"
 url = "https://jitesh117.github.io/index.xml"
 
