@@ -161,7 +161,7 @@ Example:
 
 Text objects in Vim represent a paradigm shift in text editing. By thinking in terms of semantic blocks rather than individual characters, you can perform complex edits with just a few keystrokes. As you incorporate text objects into your Vim workflow, you'll find yourself editing with unprecedented speed and precision.
 
-Remember, the key to mastering text objects is practice. Start by consciously using them in your daily editing tasks, and soon they'll become second nature. Before long, you'll wonder how you ever edited text without them.
+Remember, the key to mastering text objects is practice. Start by consciously using them in your daily editing tasks, and soon they'll become second nature. After you start using them regularly, you'll wonder how you ever edited text without them.
 
 Happy Vimming!
 
