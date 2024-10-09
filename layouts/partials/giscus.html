@@ -1,5 +1,4 @@
-{{ if and (not .IsHome) (not (or (eq .RelPermalink "/shelf/") (eq .RelPermalink
-"/musings/"))) }}
+{{ if and (not .IsHome) (not (or (eq .RelPermalink "/shelf/") (eq .RelPermalink "/musings/") (eq .RelPermalink "/archive/") (eq .RelPermalink "/tags/") (eq .RelPermalink "/search/"))) }}
 <script
   src="https://giscus.app/client.js"
   data-repo="jitesh117/blog_comments"
@@ -18,4 +17,3 @@
   async
 ></script>
 {{ end }}
-

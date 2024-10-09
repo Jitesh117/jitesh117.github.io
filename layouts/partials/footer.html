@@ -1,4 +1,42 @@
+<!-- extend_footer.html -->
+{{ if and (not .IsHome) (not (or (eq .RelPermalink "/shelf/") (eq .RelPermalink "/musings/") (eq .RelPermalink "/archive/") (eq .RelPermalink "/tags/") (eq .RelPermalink "/search/"))) }}
+<style>
+  .buy-me-coffee {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--primary);
+    color: black;
+    padding: 10px 20px;
+    border-radius: 24px;
+    border: 2px solid white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin: 0 20px;
+  }
+  .buy-me-coffee:hover {
+    background-color: #ffe833;
+  }
+  .buy-me-coffee img {
+    margin-right: 10px;
+  }
+</style>
 
+<div style="text-align: center; margin-top: 20px">
+  <a
+    href="https://www.buymeacoffee.com/jitesh117"
+    target="_blank"
+    class="buy-me-coffee"
+  >
+    <img
+      src="/images/coffee_icon.png"
+      alt="Buy me a coffee"
+      height="50"
+    />
+    Like what you're reading? You can buy me a coffee!
+  </a>
+</div>
+{{ end }}
 {{- if not (.Param "hideFooter") }}
 <footer class="footer">
     {{ partial "giscus" . }}
