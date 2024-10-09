@@ -1,5 +1,6 @@
 <!-- extend_footer.html -->
-{{ if and (not .IsHome) (not (or (eq .RelPermalink "/shelf/") (eq .RelPermalink "/musings/") (eq .RelPermalink "/archive/") (eq .RelPermalink "/tags/") (eq .RelPermalink "/search/"))) }}
+{{ if and .IsPage (not .IsSection) (ne .RelPermalink "/tags/") (ne .RelPermalink
+"/search/") }}
 <style>
   .buy-me-coffee {
     display: inline-flex;
