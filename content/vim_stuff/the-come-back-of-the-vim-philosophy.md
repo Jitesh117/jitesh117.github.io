@@ -1,7 +1,7 @@
 +++
 title = "The Comeback of the Vim Philosophy"
 date = 2024-10-16T19:34:57+05:30
-draft = true
+draft = false
 showToc = true
 cover.image = "/images/neovim_comeback.jpg"
 tags = ["Vim", "Opinion"]
