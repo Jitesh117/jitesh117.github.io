@@ -1,56 +1,85 @@
+# Site Configuration
 baseURL = 'jitesh117.github.io/'
 languageCode = "en-us"
 title = "Jitesh's Blog"
 theme = "PaperMod"
 cover_image = "images/cover.jpeg"
-
 googleAnalytics = "G-CGJ4KC5CSM"
-
 buildFuture = true
 
+# Output Formats
 [outputs]
-  home = ['html', 'rss','json']
+  home = ['html', 'rss', 'json']
   section = ['html', 'rss']
   taxonomy = ['html']
   term = ['html']
 
-# [params.author]
-# email = 'sahookumarjitesh@gmail.com'
-# name = 'Jitesh Kumar Sahoo'
+# Site Parameters
+[params]
+  mainSections = ["blog", "musings", "vim_stuff"]
+  hideSummary = true
+  comments = true
+  archives = true
+  archiveSection = ["blog", "musings", "vim_stuff"]
+  defaultTheme = "dark"
+  disableThemeToggle = true
+  ShowCodeCopyButtons = true
+  ShowPostNavLinks = true
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPageNums = true
+  search = true
+  searchPlaceholder = "Search..."
 
-[params.homeInfoParams]
-Title = "Hey, I’m Jitesh 👋"
-Content = "Exploring the ins and outs of software, with some commentary on life sprinkled in. Follow along as I break down tech, share useful tips, and maybe crack a bad joke or two."
+  # Home Page Information
+  [params.homeInfoParams]
+    Title = "Hey, I’m Jitesh 👋"
+    Content = "Exploring the ins and outs of software, with some commentary on life sprinkled in. Follow along as I break down tech, share useful tips, and maybe crack a bad joke or two."
 
-[[params.socialIcons]]
-name = "github"
-url = "https://github.com/Jitesh117"
+  # Social Icons
+  [[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/Jitesh117"
 
-[[params.socialIcons]]
-name = "email"
-url = "mailto:sahookumarjitesh@gmail.com"
+  [[params.socialIcons]]
+  name = "email"
+  url = "mailto:sahookumarjitesh@gmail.com"
 
-[[params.socialIcons]]
-name = "twitter"
-url = "https://x.com/Jitesh_117"
+  [[params.socialIcons]]
+  name = "twitter"
+  url = "https://x.com/Jitesh_117"
 
-[[params.socialIcons]]
-name = "linkedin"
-url = "https://www.linkedin.com/in/Jitesh117/"
+  [[params.socialIcons]]
+  name = "linkedin"
+  url = "https://www.linkedin.com/in/Jitesh117/"
 
-[[params.socialIcons]]
-name = "kaggle"
-url = "https://www.kaggle.com/jiteshkumarsahoo"
+  [[params.socialIcons]]
+  name = "kaggle"
+  url = "https://www.kaggle.com/jiteshkumarsahoo"
 
-[[params.socialIcons]]
-name = "buymeacoffee"
-url = "https://buymeacoffee.com/jitesh117"
+  [[params.socialIcons]]
+  name = "buymeacoffee"
+  url = "https://buymeacoffee.com/jitesh117"
 
-[[params.socialIcons]]
-name = "RSS"
-url = "https://jitesh117.github.io/index.xml"
+  [[params.socialIcons]]
+  name = "RSS"
+  url = "https://jitesh117.github.io/index.xml"
 
+  # Cover Image Parameters
+  [params.cover]
+  linkFullImages = true
 
+  # Search Settings
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1_000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = [ "title", "permalink", "summary", "content" ]
+
+# Menu Configuration
 [[menu.main]]
 identifier = "home"
 name = "Home"
@@ -99,43 +128,9 @@ name = "Tags"
 url = "/tags/"
 weight = 8
 
-[params]
-mainSections = ["blog", "musings", "vim_stuff"]
-
-hideSummary = true
-
-comments = true
-
-archives = true
- archiveSection = ["blog", "musings", "vim_stuff"]
-
-defaultTheme = "dark"
-disableThemeToggle = true
-
-
-ShowCodeCopyButtons = true
-ShowPostNavLinks = true
-ShowReadingTime = true
-ShowShareButtons = true
-
-search = true
-searchPlaceholder = "Search..."
-
-[params.cover]
-linkFullImages = true
-
-[params.fuseOpts]
-isCaseSensitive = false
-shouldSort = true
-location = 0
-distance = 1_000
-threshold = 0.4
-minMatchCharLength = 0
-keys = [ "title", "permalink", "summary", "content" ]
-
-
+# Markup and Syntax Highlighting Settings
 [markup.highlight]
-codeFences = true
-guessSyntax = true
-lineNos = false
-noClasses = false
+  codeFences = true
+  guessSyntax = true
+  lineNos = false
+  noClasses = false
