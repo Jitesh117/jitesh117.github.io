@@ -15,6 +15,7 @@ Books that I read and enjoyed.
 3. [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) by Aurélien Géron
 4. [Deep Learning with PyTorch](https://www.manning.com/books/deep-learning-with-pytorch) by Eli Stevens, Luca Antiga, and Thomas Viehmann
 5. [Practical Vim](https://pragprog.com/titles/dnvim2/practical-vim-second-edition/) by Drew Neil
+6. [REST-API Design Rulebook](https://www.oreilly.com/library/view/rest-api-design/9781449317904/) by Mark Massé
 
 ## Fiction
 
