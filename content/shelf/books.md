@@ -12,10 +12,11 @@ Books that I read and enjoyed.
 
 1. [The Go programming language](https://www.gopl.io/) by Alan A. A. Donovan
 2. [HTTP The definitive guide](https://www.oreilly.com/library/view/http-the-definitive/1565925092/) by David Gourley and Brian Totty
-3. [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) by Aurélien Géron
-4. [Deep Learning with PyTorch](https://www.manning.com/books/deep-learning-with-pytorch) by Eli Stevens, Luca Antiga, and Thomas Viehmann
-5. [Practical Vim](https://pragprog.com/titles/dnvim2/practical-vim-second-edition/) by Drew Neil
-6. [REST-API Design Rulebook](https://www.oreilly.com/library/view/rest-api-design/9781449317904/) by Mark Massé
+3. [Learn go with tests](https://quii.gitbook.io/learn-go-with-tests) by Chris James
+4. [Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/) by Aurélien Géron
+5. [Deep Learning with PyTorch](https://www.manning.com/books/deep-learning-with-pytorch) by Eli Stevens, Luca Antiga, and Thomas Viehmann
+6. [Practical Vim](https://pragprog.com/titles/dnvim2/practical-vim-second-edition/) by Drew Neil
+7. [REST-API Design Rulebook](https://www.oreilly.com/library/view/rest-api-design/9781449317904/) by Mark Massé
 
 ## Fiction
 
