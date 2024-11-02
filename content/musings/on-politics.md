@@ -1,6 +1,6 @@
 +++
 title = 'On Politics'
-date = 2024-11-03T20:52:30+05:30
+date = 2024-11-02T20:52:30+05:30
 draft = false
 tags = ["Opinion"]
 +++
