@@ -1,0 +1,134 @@
+{{ $calloutEmojiDict := dict "info" "ℹ️" "warning" "⚠️" "error" "🚫" }} {{ $type
+:= .Get "type" | default "default" }} {{/* If emoji is not set, use the emoji
+from dict */}} {{ $emoji := .Get "emoji" }} {{ if eq $emoji "" }} {{ $emoji =
+index $calloutEmojiDict $type }} {{ end }} {{/* Also allow using "icon" */}} {{
+$icon := .Get "icon" }}
+<div class="callout callout-{{ $type }}">
+  <div class="callout-emoji">
+    {{- with $emoji -}}
+    <div class="emoji">{{ . }}</div>
+    {{- else -}} {{- with $icon }} {{ partial "utils/icon.html" (dict "name" .
+    "attributes" `height=1.2em class="icon-inline"`) -}} {{- end -}} {{- end -}}
+  </div>
+  <div class="callout-content">
+    <div class="callout-text">{{ .InnerDeindent | markdownify }}</div>
+  </div>
+</div>
+
+<!-- CSS equivalent -->
+<style>
+  /* Base callout styles */
+  .callout {
+    overflow-x: auto;
+    margin-top: 1.5rem;
+    display: flex;
+    border-radius: 0.5rem;
+    border: 1px solid;
+    padding: 0.5rem 1rem 0.5rem 0;
+  }
+
+  [dir="rtl"] .callout {
+    padding: 0.5rem 0 0.5rem 1rem;
+  }
+
+  /* Emoji/Icon container */
+  .callout-emoji {
+    padding-left: 0.75rem;
+    padding-right: 0.5rem;
+  }
+
+  [dir="rtl"] .callout-emoji {
+    padding-right: 0.75rem;
+    padding-left: 0.5rem;
+  }
+
+  /* Emoji styles */
+  .emoji {
+    user-select: none;
+    font-size: 1.25rem;
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+
+  /* Icon styles */
+  .icon-inline {
+    display: inline-block;
+    vertical-align: middle;
+    height: 1.2em;
+  }
+
+  /* Content container */
+  .callout-content {
+    width: 100%;
+    min-width: 0;
+    line-height: 1.75;
+  }
+
+  /* Text container */
+  .callout-text {
+    margin-top: 1.5rem;
+    line-height: 1.75;
+  }
+
+  .callout-text:first-child {
+    margin-top: 0;
+  }
+
+  /* Theme variants */
+  .callout-default {
+    border-color: rgb(251, 146, 60, 0.1);
+    background-color: rgb(255, 237, 213);
+    color: rgb(154, 52, 18);
+  }
+
+  .callout-info {
+    border-color: rgb(191, 219, 254, 0.3);
+    background-color: rgb(219, 234, 254, 0.3);
+    color: rgb(30, 58, 138);
+  }
+
+  .callout-warning {
+    border-color: rgb(253, 224, 71, 0.3);
+    background-color: rgb(254, 249, 195, 0.3);
+    color: rgb(161, 98, 7);
+  }
+
+  .callout-error {
+    border-color: rgb(254, 202, 202, 0.3);
+    background-color: rgb(254, 226, 226, 0.3);
+    color: rgb(153, 27, 27);
+  }
+
+  /* Dark mode styles */
+  @media (prefers-color-scheme: dark) {
+    .callout-default {
+      border-color: rgba(251, 146, 60, 0.3);
+      background-color: rgba(251, 146, 60, 0.2);
+      color: rgb(253, 186, 116);
+    }
+
+    .callout-info {
+      border-color: rgba(191, 219, 254, 0.3);
+      background-color: rgba(30, 58, 138, 0.3);
+      color: rgb(191, 219, 254);
+    }
+
+    .callout-warning {
+      border-color: rgba(253, 224, 71, 0.3);
+      background-color: rgba(161, 98, 7, 0.3);
+      color: rgb(253, 224, 71);
+    }
+
+    .callout-error {
+      border-color: rgba(254, 202, 202, 0.3);
+      background-color: rgba(153, 27, 27, 0.3);
+      color: rgb(254, 202, 202);
+    }
+  }
+
+  /* High contrast mode */
+  @media (forced-colors: active) {
+    .callout {
+      border-color: currentColor;
+    }
+  }
+</style>
