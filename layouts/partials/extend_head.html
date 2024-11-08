@@ -25,4 +25,30 @@
     });
   });
 </script>
+{{ end }} {{ if .Page.Store.Get "hasMermaid" }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+<script>
+  // INITIALIZE MERMAID.JS
+  mermaid.initialize({
+    startOnLoad: true,
+    theme: "dark",
+    themeVariables: {
+      darkMode: true,
+      background: "#000000",
+      primaryColor: "#FFFFFF",
+      lineColor: "#FFFFFF",
+      textColor: "#FFFFFF",
+      nodeTextColor: "#FFFFFF",
+      tertiaryColor: "#CCCCCC",
+    },
+    // ADDITIONAL CONFIGURATION OPTIONS AS NEEDED
+    sequence: {
+      showSequenceNumbers: true,
+    },
+    flowchart: {
+      htmlLabels: true,
+      curve: "basis",
+    },
+  });
+</script>
 {{ end }}

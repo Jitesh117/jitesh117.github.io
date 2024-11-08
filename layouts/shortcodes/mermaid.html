@@ -1,0 +1,16 @@
+<div style="display: flex; justify-content: center">
+  <pre class="mermaid">
+    {{- .Inner -}}
+  </pre>
+</div>
+
+{{ .Page.Store.Set "hasMermaid" true }}
+
+<style>
+  .mermaid {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    margin: 1em 0;
+  }
+</style>
