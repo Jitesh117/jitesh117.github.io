@@ -76,6 +76,9 @@ Could I have built this in JavaScript/TypeScript? Absolutely. Would it have work
 
 For this project, I decided to create something fun: a language server that helps you write in peak internet slang. It provides snippets and completions for creating social media style posts, rants, and reactions.
 
+This is how it looks like:
+![demo](/images/demo.gif)
+
 ### Setting up the project
 
 First, let's create our project structure:
