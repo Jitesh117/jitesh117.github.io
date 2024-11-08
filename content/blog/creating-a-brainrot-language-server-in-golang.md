@@ -307,4 +307,4 @@ This is only a basic language server. We'd need to add more stuff to it to make 
 
 Building an LSP might seem daunting, but Go and modern libraries make it approachable. This fun project shows how LSP can enhance any text editing experience, even if it's just helping you write more brainrot slangs lol.
 
-The full code is available on [GitHub](https://github.com/yourusername/brainrot-lsp). Feel free to contribute and make it even more 🔥!
+The full code is available on [GitHub](https://github.com/Jitesh117/brainrot-lsp). Feel free to contribute and make it even more 🔥!
