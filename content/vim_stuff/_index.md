@@ -1,3 +1,3 @@
 # Vim Stuff
 
-Weekly posts for everything vim.
+Biweekly posts for everything vim.
