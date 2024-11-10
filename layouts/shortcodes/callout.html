@@ -15,7 +15,6 @@ $icon := .Get "icon" }}
   </div>
 </div>
 
-<!-- CSS equivalent -->
 <style>
   /* Base callout styles */
   .callout {
@@ -73,62 +72,27 @@ $icon := .Get "icon" }}
     margin-top: 0;
   }
 
-  /* Theme variants */
   .callout-default {
-    border-color: rgb(251, 146, 60, 0.1);
-    background-color: rgb(255, 237, 213);
-    color: rgb(154, 52, 18);
+    border-color: rgba(251, 146, 60, 0.3);
+    background-color: rgba(251, 146, 60, 0.2);
+    color: rgb(253, 186, 116);
   }
 
   .callout-info {
-    border-color: rgb(191, 219, 254, 0.3);
-    background-color: rgb(219, 234, 254, 0.3);
-    color: rgb(30, 58, 138);
+    border-color: rgba(191, 219, 254, 0.3);
+    background-color: rgba(30, 58, 138, 0.3);
+    color: rgb(191, 219, 254);
   }
 
   .callout-warning {
-    border-color: rgb(253, 224, 71, 0.3);
-    background-color: rgb(254, 249, 195, 0.3);
-    color: rgb(161, 98, 7);
+    border-color: rgba(253, 224, 71, 0.3);
+    background-color: rgba(161, 98, 7, 0.3);
+    color: rgb(253, 224, 71);
   }
 
   .callout-error {
-    border-color: rgb(254, 202, 202, 0.3);
-    background-color: rgb(254, 226, 226, 0.3);
-    color: rgb(153, 27, 27);
-  }
-
-  /* Dark mode styles */
-  @media (prefers-color-scheme: dark) {
-    .callout-default {
-      border-color: rgba(251, 146, 60, 0.3);
-      background-color: rgba(251, 146, 60, 0.2);
-      color: rgb(253, 186, 116);
-    }
-
-    .callout-info {
-      border-color: rgba(191, 219, 254, 0.3);
-      background-color: rgba(30, 58, 138, 0.3);
-      color: rgb(191, 219, 254);
-    }
-
-    .callout-warning {
-      border-color: rgba(253, 224, 71, 0.3);
-      background-color: rgba(161, 98, 7, 0.3);
-      color: rgb(253, 224, 71);
-    }
-
-    .callout-error {
-      border-color: rgba(254, 202, 202, 0.3);
-      background-color: rgba(153, 27, 27, 0.3);
-      color: rgb(254, 202, 202);
-    }
-  }
-
-  /* High contrast mode */
-  @media (forced-colors: active) {
-    .callout {
-      border-color: currentColor;
-    }
+    border-color: rgba(254, 202, 202, 0.3);
+    background-color: rgba(153, 27, 27, 0.3);
+    color: rgb(254, 202, 202);
   }
 </style>
