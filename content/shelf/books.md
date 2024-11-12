@@ -28,6 +28,7 @@ Books that I read and enjoyed.
 ## Non-fiction
 
 1. [Show Your Work](https://www.goodreads.com/en/book/show/18290401) by Austin Kleon
-2. [Fooled by Randomness](https://www.goodreads.com/book/show/38315.Fooled_by_Randomness) by Nassim Nicholas Taleb
-3. [The Art of War](https://www.goodreads.com/book/show/10534.The_Art_of_War) by Sun Tzu
-4. [The Psychology of Money](https://www.goodreads.com/book/show/41881472-the-psychology-of-money) by Morgan Housel
+2. [Tuesdays with Morrie](https://www.goodreads.com/book/show/6900.Tuesdays_with_Morrie) By Mitch Albom
+3. [Fooled by Randomness](https://www.goodreads.com/book/show/38315.Fooled_by_Randomness) by Nassim Nicholas Taleb
+4. [The Art of War](https://www.goodreads.com/book/show/10534.The_Art_of_War) by Sun Tzu
+5. [The Psychology of Money](https://www.goodreads.com/book/show/41881472-the-psychology-of-money) by Morgan Housel
