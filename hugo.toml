@@ -33,8 +33,8 @@ buildFuture = true
 
   # Home Page Information
   [params.homeInfoParams]
-    Title = "Hey, I’m Jitesh 👋"
-    Content = "Exploring the ins and outs of software, with some commentary on life sprinkled in. Follow along as I break down tech, share useful tips, and maybe crack a bad joke or two."
+Title = "{{< terminal-prompt >}}"
+Content = "### Hey! I'm Jitesh\n Welcome to my corner of the internet. This website is a personal blog which I use as a platform to document my learning journey and showcase it for the world to see. **Hop in!**"
 
   # Social Icons
   [[params.socialIcons]]
