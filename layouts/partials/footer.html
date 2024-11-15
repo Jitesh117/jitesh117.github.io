@@ -1,6 +1,6 @@
 <!-- extend_footer.html -->
 {{ if and .IsPage (not .IsSection) (ne .RelPermalink "/tags/") (ne .RelPermalink
-"/search/") }}
+"/search/") (ne .RelPermalink "/about/") }}
 <style>
   .buy-me-coffee {
     display: inline-flex;
@@ -59,6 +59,14 @@
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+    <span>·</span>
+    <span>
+        <a target="_blank" href="https://jitesh117.github.io/index.xml">RSS Feed</a>
+    </span>
+    <span>·</span>
+    <span>
+        <a target="_blank" href="https://buymeacoffee.com/jitesh117">Buy Me A Coffee</a>
     </span>
 </footer>
 {{- end }}
