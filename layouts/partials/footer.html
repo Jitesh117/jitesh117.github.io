@@ -8,7 +8,8 @@
     background-color: var(--primary);
     color: black;
     padding: 10px 20px;
-    border-radius: 24px;
+    width:700px;
+    border-radius: 16px;
     border: 2px solid white;
     text-decoration: none;
     font-weight: bold;
@@ -29,27 +30,18 @@
     padding: 10px;
   }
 </style>
-
 <div style="text-align: center; margin-top: 20px">
-  <a
-    href="https://www.buymeacoffee.com/jitesh117"
-    target="_blank"
-    class="buy-me-coffee"
-  >
-    <img
-      src="/images/coffee_icon.png"
-      alt="Buy me a coffee"
-      height="50"
-    />
-    Like what you're reading? You can buy me a coffee!
-  </a>
+    <a href="https://www.buymeacoffee.com/jitesh117"
+       target="_blank"
+       class="buy-me-coffee">
+        <img src="/images/coffee_icon.png" alt="Buy me a coffee" height="50" />
+        Like what you're reading? You can buy me a coffee!
+    </a>
 </div>
 {{ end }}
 {{- if not (.Param "hideFooter") }}
 <footer class="footer">
-    <div class="comment">
-      {{ partial "giscus" . }}
-    </div>
+    <div class="comment">{{ partial "giscus" . }}</div>
     {{- if site.Copyright }}
     <span>{{ site.Copyright | markdownify }}</span>
     {{- else }}
@@ -58,7 +50,9 @@
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+        <a href="https://github.com/adityatelange/hugo-PaperMod/"
+           rel="noopener"
+           target="_blank">PaperMod</a>
     </span>
     <span>·</span>
     <span>
@@ -66,21 +60,25 @@
     </span>
     <span>·</span>
     <span>
-        <a target="_blank" href="https://buymeacoffee.com/jitesh117">Buy Me A Coffee</a>
+        <a target="_blank" href="https://buymeacoffee.com/jitesh117">Support my writing!</a>
     </span>
 </footer>
 {{- end }}
-
 {{- if (not site.Params.disableScrollToTop) }}
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+<a href="#top"
+   aria-label="go to top"
+   title="Go to Top (Alt + G)"
+   class="top-link"
+   id="top-link"
+   accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 12 6"
+         fill="currentColor">
         <path d="M12 6H0l6-6z" />
     </svg>
 </a>
 {{- end }}
-
 {{- partial "extend_footer.html" . }}
-
 <script>
     let menu = document.getElementById('menu')
     if (menu) {
@@ -110,7 +108,6 @@
     });
 
 </script>
-
 {{- if (not site.Params.disableScrollToTop) }}
 <script>
     var mybutton = document.getElementById("top-link");
@@ -126,7 +123,6 @@
 
 </script>
 {{- end }}
-
 {{- if (not site.Params.disableThemeToggle) }}
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
@@ -141,7 +137,6 @@
 
 </script>
 {{- end }}
-
 {{- if (and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") (.Param "ShowCodeCopyButtons")) }}
 <script>
     document.querySelectorAll('pre > code').forEach((codeblock) => {

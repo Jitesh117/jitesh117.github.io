@@ -1,0 +1,29 @@
+{{ $image := .Get "image" }} {{ $alt := .Get "alt" }}
+<div class="description-with-image">
+    <div class="description-text">{{ .Inner | markdownify}}</div>
+    <div class="description-image">
+        <img src="{{ $image }}" alt="{{ $alt }}" />
+    </div>
+</div>
+<style>
+  .description-with-image {
+    display: flex;
+    align-items: center;
+  }
+
+  .description-text {
+    width: 80%;
+    padding-right: 1rem;
+  }
+
+  .description-image {
+    width: 20%;
+  }
+
+  .description-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+</style>

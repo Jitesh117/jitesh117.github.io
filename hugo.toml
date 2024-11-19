@@ -123,9 +123,9 @@ url = "/search/"
 weight = 7
 
 [[menu.main]]
-identifier = "tags"
-name = "Tags"
-url = "/tags/"
+identifier = "about"
+name = "About"
+url = "/about/"
 weight = 8
 
 # Markup and Syntax Highlighting Settings
