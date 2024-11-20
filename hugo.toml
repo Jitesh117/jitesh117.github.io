@@ -87,45 +87,45 @@ url = "/"
 weight = 1
 
 [[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 2
+
+[[menu.main]]
 identifier = "archive"
 name = "Archive"
 url = "/archive/"
-weight = 2
+weight = 3
 
 [[menu.main]]
 identifier = "posts"
 name = "Blog"
 url = "/blog/"
-weight = 3
+weight = 4
 
 [[menu.main]]
 identifier = "musings"
 name = "Essays"
 url = "/musings/"
-weight = 4
+weight = 5
 
 [[menu.main]]
 identifier = "vim_stuff"
 name = "Vim Stuff"
 url = "/vim_stuff/"
-weight = 5
+weight = 6
 
 [[menu.main]]
 identifier = "shelf"
 name = "Shelf"
 url = "/shelf/"
-weight = 6
+weight = 7
 
 [[menu.main]]
 identifier = "search"
 name = "Search"
 url = "/search/"
-weight = 7
-
-[[menu.main]]
-identifier = "about"
-name = "About"
-url = "/about/"
 weight = 8
 
 # Markup and Syntax Highlighting Settings
