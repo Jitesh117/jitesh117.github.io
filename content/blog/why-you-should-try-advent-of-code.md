@@ -1,7 +1,7 @@
 +++
 title = "Why You SHOULD Try Advent of Code"
 date = 2024-11-24T10:56:44+05:30
-draft = true
+draft = false
 showToc = true
 cover.image = '/images/aoc.jpg'
 tags = ["tech"]
