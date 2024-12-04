@@ -1,7 +1,7 @@
 +++
 title = "Master Normal Mode in Vim"
 date = 2024-12-04T07:40:04+05:30
-draft = true
+draft = false
 showToc = true
 cover.image = 'images/normal_mode_vim.jpg'
 tags = ['vim']
