@@ -1,0 +1,23 @@
+<style>
+  .image-cards {
+    display: grid;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  @media (min-width: 640px) {
+    .image-cards {
+      grid-template-columns: repeat(
+        var(--image-cards-grid-cols, 3),
+        minmax(0, 1fr)
+      );
+    }
+  }
+
+  .not-prose {
+    max-width: none;
+  }
+</style>
+{{- $cols := .Get "cols" | default 2 -}}
+<div class="image-cards not-prose"
+     style="--image-cards-grid-cols: {{ $cols }}">{{- .Inner -}}</div>

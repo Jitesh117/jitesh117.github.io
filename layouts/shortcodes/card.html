@@ -1,0 +1,41 @@
+<style>
+  .image-card {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #1a1a1a;
+    color: #d1d1d1;
+    border: 0.5px solid grey;
+  }
+
+  .image-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .image-card-content {
+    padding: 8px;
+    display: flex;
+    text-align: center;
+  }
+
+  .image-card-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  .image-card-caption {
+    font-size: 1rem;
+  }
+</style>
+{{ $img := .Get "src" }} {{ $alt := .Get "alt" | default "" }} {{ $caption :=
+.Get "caption" | default "Image under assets directory, processed by Hugo." }}
+<div class="image-card">
+    <img src="{{ $img }}" alt="{{ $alt }}" />
+    <div class="image-card-content">
+        <h3 class="image-card-title">{{ $alt }}</h3>
+        <p class="image-card-caption">{{ $caption }}</p>
+    </div>
+</div>
