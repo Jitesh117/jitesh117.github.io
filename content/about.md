@@ -25,7 +25,7 @@ Welcome to my blog, where I document my learning journey and share it to the wor
 ## Things I'm proud of
 
 - Got Featured in [Golang Weekly #531](https://golangweekly.com/issues/531)
-- Scaled my blog to **7k+** readers across **100+** countries across the world
+- Scaled my blog to **9k+** readers across **100+** countries across the world
 - Dataset and Notebooks expert on [Kaggle](https://www.kaggle.com/jiteshkumarsahoo)
 
 {{< socials align="center" >}}
