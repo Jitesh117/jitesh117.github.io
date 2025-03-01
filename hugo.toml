@@ -30,6 +30,7 @@ buildFuture = true
   ShowPageNums = true
   search = true
   searchPlaceholder = "Search..."
+  disableScrollToTop = true
 
   # Home Page Information
   [params.homeInfoParams]
