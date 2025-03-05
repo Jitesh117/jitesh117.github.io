@@ -125,6 +125,8 @@ Macros let you record a series of commands and repeat them.
 
 ## Day 13: Visual Mode and Block Editing
 
+To read about visual mode in detail, checkout this [blog](https://jitesh117.github.io/vim_stuff/master-visual-mode/) of mine,
+
 ### Visual Mode Basics:
 
 - `v` → Start character-wise selection
@@ -160,26 +162,6 @@ set shiftwidth=4    " Indent by 4 spaces
 set tabstop=4       " A tab counts as 4 spaces
 ```
 
-### Plugins (if using `vim-plug`):
-
-Add this to your `.vimrc`:
-
-```vim
-call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-surround'  " Easily edit surrounding characters
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  " Fuzzy finder
-Plug 'vim-airline/vim-airline'  " Fancy status bar
-call plug#end()
-```
-
-Then, inside Vim, run:
-
-```vim
-:PlugInstall
-```
-
-🎯 **Goal for today**: Customize Vim and install a plugin.
-
 ---
 
 ## Final Thoughts
@@ -188,4 +170,4 @@ You’ve made it through your second week, and now Vim feels _a little less scar
 
 The journey doesn’t end here—Vim mastery takes time. But if you keep practicing, soon you’ll wonder how you ever lived without it.
 
-Now, go forth and Vim! 🚀
+Happy vimming!
