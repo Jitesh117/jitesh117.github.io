@@ -1,7 +1,7 @@
 +++
 title = "My Simple Blog Setup That Just Works, and Scales!"
 date = 2025-03-27T11:44:25+05:30
-draft = true
+draft = false
 showToc = true
 cover.image = 'images/blog_setup.png'
 tags = ['blog']
