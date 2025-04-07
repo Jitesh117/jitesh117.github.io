@@ -11,7 +11,7 @@ I was sitting in an auto rickshaw, heading back to my flat after work. Earphones
 
 Silence.
 
-"HOOOOOOONK!!!" A horn shatters the quiet. It jolts something in e.
+"HOOOOOOONK!!!" A horn shatters the quiet. It jolts something in me.
 
 And just like that, a thought I hadn’t let in for months forces its way through.
 
