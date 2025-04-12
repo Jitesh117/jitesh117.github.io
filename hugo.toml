@@ -32,6 +32,7 @@ buildFuture = true
   searchPlaceholder = "Search..."
   disableScrollToTop = true
 
+
   # Home Page Information
   [params.homeInfoParams]
 Title = "{{< terminal-prompt >}}"
