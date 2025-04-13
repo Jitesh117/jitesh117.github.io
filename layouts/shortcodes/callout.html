@@ -4,26 +4,28 @@ from dict */}} {{ $emoji := .Get "emoji" }} {{ if eq $emoji "" }} {{ $emoji =
 index $calloutEmojiDict $type }} {{ end }} {{/* Also allow using "icon" */}} {{
 $icon := .Get "icon" }}
 <div class="callout callout-{{ $type }}">
-  <div class="callout-emoji">
-    {{- with $emoji -}}
-    <div class="emoji">{{ . }}</div>
-    {{- else -}} {{- with $icon }} {{ partial "utils/icon.html" (dict "name" .
-    "attributes" `height=1.2em class="icon-inline"`) -}} {{- end -}} {{- end -}}
-  </div>
-  <div class="callout-content">
-    <div class="callout-text">{{ .InnerDeindent | markdownify }}</div>
-  </div>
+    <div class="callout-emoji">
+        {{- with $emoji -}}
+        <div class="emoji">{{ . }}</div>
+        {{- else -}} {{- with $icon }} {{ partial "utils/icon.html" (dict "name" .
+        "attributes" `height=1.2em class="icon-inline"`) -}} {{- end -}} {{- end -}}
+    </div>
+    <div class="callout-content">
+        <div class="callout-text">{{ .InnerDeindent | markdownify }}</div>
+    </div>
 </div>
-
 <style>
   /* Base callout styles */
   .callout {
     overflow-x: auto;
-    margin-top: 1.5rem;
+    margin: 1.5rem 0;
     display: flex;
-    border-radius: 0.5rem;
-    border: 1px solid;
-    padding: 0.5rem 1rem 0.5rem 0;
+    border-left: 4px solid;
+    border-radius: 0.75rem;
+    background-color: #f9fafb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    align-items: flex-start;
   }
 
   [dir="rtl"] .callout {
@@ -79,8 +81,8 @@ $icon := .Get "icon" }}
   }
 
   .callout-info {
-    border-color: rgba(191, 219, 254, 0.3);
-    background-color: rgba(30, 58, 138, 0.3);
+    border-color: #6b4c3b;
+    background-color: rgba(251, 146, 60, 0.2);
     color: rgb(191, 219, 254);
   }
 
