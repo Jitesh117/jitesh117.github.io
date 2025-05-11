@@ -3,7 +3,7 @@ title = "How I Use fzf to Supercharge My Workflow"
 date = 2024-09-28T18:19:24+05:30
 draft = false
 cover.image = '/images/fzf_cover.jpg'
-tags = ["linux", "Tech productivity"]
+tags = ["linux", "tech productivity"]
 showToc = true
 +++
 

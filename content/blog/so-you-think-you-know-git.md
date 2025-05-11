@@ -4,17 +4,17 @@ date = 2024-04-15T14:39:34+05:30
 draft = false
 cover.image = "/images/git_cover.jpg"
 ShowToc = true
-tags = ["Linux"]
+tags = ["linux"]
 +++
 
 This article is just about my learnings from the talk [So you Think you know Git](https://youtu.be/aolI_Rz0ZqY?si=HcJvZSBtWKw0Ssdc).
-
 
 One might think that everything there is to know about Git has already been covered, but that would be wrong. Even today, the Git codebase is seeing around 9 commits per day and 10,000 commits in the last 3 years. That means there are still plenty of new things being added to Git that you might not know about. Although most of these changes are very subtle or very targeted, they could be useful to some people.
 
 ## Some Helpful Config Stuff
 
 ### Aliasing commands in Git
+
 ```bash
 $ git config --global alias.staash 'stash --all'
 ```
@@ -22,12 +22,13 @@ $ git config --global alias.staash 'stash --all'
 The `git stash --all` command allows you to stash not only the changes in your working directory, but also any untracked files. This can be useful if you need to quickly switch branches or undo a large amount of work, without losing any of your changes.
 
 ### Running custom bash script
-By creating the `staash` alias, you can now simply type `git staash` instead of the longer `git stash --all` command. This can save time and make your Git workflow more efficient, especially if you find yourself frequently needing to stash all your changes.
 
+By creating the `staash` alias, you can now simply type `git staash` instead of the longer `git stash --all` command. This can save time and make your Git workflow more efficient, especially if you find yourself frequently needing to stash all your changes.
 
 ```bash
 $ git config --global alias.bb !better-branch.sh
 ```
+
 This command creates a global Git alias called `bb` that corresponds to running an exteernal shell scripot named `better-branch.sh`.
 
 The purpose of this alias is to provide a shortcut for running a custom script. You'd just need to type `git bb` to run the script you want.
@@ -35,23 +36,26 @@ The purpose of this alias is to provide a shortcut for running a custom script. 
 ## Oldies but Goodies
 
 ### Git Blame
-```bash 
-$ git blame 
+
+```bash
+$ git blame
 ```
+
 Okay most of you might know what this command does. This command is used to find the history of a file and understand who made specific changes.
 
 This can be useful for:
+
 - Tracking down the author of a problematic line of code
 - Understanding the context and reasoning behind a particular change.
 - Identifying areas of a codebase that might need refactoring or further attention.
 
-*But*, there is a variation of this command which most people don't use much. 
+_But_, there is a variation of this command which most people don't use much.
 
 ```bash
  $ git blame -L
- ```
- This command blames only a "L"ittle part of the code only for a particular line range, get it? 
+```
 
+This command blames only a "L"ittle part of the code only for a particular line range, get it?
 
 ```bash
 $ git blame -w
@@ -68,6 +72,7 @@ This command ignores the whitespace when blaming the changes along with detectio
 ```bash
 $ git blame -w -C -C
 ```
+
 This command ignores whitespace and detect lines moved or copied in the same commit or the commit that created the file.
 
 ### Git Log
@@ -79,6 +84,7 @@ $ git log -S
 This command is used to search the commit history for changes that introduce or remove the specified string using regular expressions.
 
 ### Git Diff
+
 ```bash
 $ git diff --word-diff
 ```
@@ -92,29 +98,34 @@ This is particularly helpful when you want to see the changes between two Git ob
 ```bash
 $ git config --global rerere.enabled true
 ```
+
 ![ReReRe](/images/rerere.png)
+
 > The preimage of the README.md file was recorded for later use in conflicts.
 
 The `rerere` stands for REuse Recorded REsolution.
 If you've a merge conflict, you can tell git to remember this and remember how you fixed it. So if you get the same merge conflict again, Git will automatically fix it for you. Isn't that neat!
 
 ![ReReRe](/images/rerere_again.png)
+
 > As you can see, the README.md file was staged using the previous resolution method when some conflict happened.
 
 ## Some New Stuff
 
 ### Branch Column
+
 ```bash
 $ git branch --column
 ```
 
 When you use the `git branch` command, it just lists the name of the branches in alphabetical order. But when using this command, it displays the branches in neat columns based on your column config.
 
-
 ### Force with Lease
+
 ```bash
 git push --force-with-lease
 ```
+
 This is kind of a "safe" version of force push. It'll check for what it thought the reference was and if it doesn't match it doesn't push it. It'll push as long your reference was the last one on the Git Server.
 
 This comes in handy when you're rebasing or amending your commit messages.
@@ -127,7 +138,7 @@ $ git maintenance
 
 It adds a cron job for Git to run in the background every hour or everyday and do maintenance tasks to the repository.
 
-This can be turned on by running: 
+This can be turned on by running:
 
 ```bash
 $ git maintenance start
@@ -144,23 +155,27 @@ This will modify your .git/config file to add `maintenance.strategy` value set t
 ## New GitHub stuff
 
 ### Allowed merge types
+
 Now you can specify which type of merge commits you want to be allowed to get merged in your repository. This gives you more control over the commit history and can help maintain a cleaner, more linear Git history.
 
 ### GitHub Actions
+
 ![Github Actions](/images/github-actions.png)
 GitHub Actions is a powerful CI/CD (Continuous Integration and Continuous Deployment) platform that allows you to automate your software workflows right from your GitHub repository. You can use pre-built actions or create your own custom actions to build, test, and deploy your code.
 
 ### GitHub Codespaces
+
 ![Github Codespaces](/images/github-codespaces.png)
 GitHub Codespaces is a cloud-based development environment that allows you to code directly from your browser. This can be useful for quickly spinning up a development environment or for collaborating with team members, without the need to set up a local development environment.
 
 ### GitHub Discussions
+
 ![Github Discussions](/images/github-discussions.png)
 GitHub Discussions is a feature that allows you to create and participate in conversations about your project, separate from the traditional issue tracker. This can be useful for things like feature requests, Q&A, or general project discussions.
 
 ### GitHub Packages
-GitHub Packages is a package hosting service that allows you to publish and consume packages (e.g., npm, Docker, Maven, etc.) directly from your GitHub repository. This can simplify your dependency management and streamline your development workflow.
 
+GitHub Packages is a package hosting service that allows you to publish and consume packages (e.g., npm, Docker, Maven, etc.) directly from your GitHub repository. This can simplify your dependency management and streamline your development workflow.
 
 These are just a few of the newer features and capabilities that GitHub has introduced in recent years. As you can see, GitHub has been continuously enhancing its platform to provide developers with more powerful tools and integrations to streamline their workflows.
 

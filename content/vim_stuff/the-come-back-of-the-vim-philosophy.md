@@ -4,7 +4,7 @@ date = 2024-10-16T19:34:57+05:30
 draft = false
 showToc = true
 cover.image = "/images/neovim_comeback.jpg"
-tags = ["Vim", "Opinion"]
+tags = ["vim", "Opinion"]
 +++
 
 Vim, or more specifically Neovim, is not what it used to be anymore. Once a tool embraced only by the most dedicated programmers who took great pride in mastering its arcane commands (and rightly so), it has now experienced a renaissance. This resurgence isn't just a comeback; it's a complete transformation of what Vim means to the modern developer.

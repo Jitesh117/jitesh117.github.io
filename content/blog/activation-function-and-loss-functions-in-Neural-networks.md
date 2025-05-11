@@ -5,12 +5,12 @@ draft = false
 cover.image = "/images/graphs.png"
 showToc = true
 math = true
-tags = ["Machine learning"]
+tags = ["machine learning"]
 +++
 
 ## Activation Functions in Neural Networks
 
-Activation functions are a crucial component of artificial neural networks, serving as the mathematical operation that determines the output of a node or neuron. They introduce non-linearities to the network, allowing it to learn complex patterns and relationships within the data. 
+Activation functions are a crucial component of artificial neural networks, serving as the mathematical operation that determines the output of a node or neuron. They introduce non-linearities to the network, allowing it to learn complex patterns and relationships within the data.
 
 ### 1. Sigmoid Function
 
@@ -33,7 +33,7 @@ ReLU is one of the most popular activation functions in deep learning. It replac
 
 Mathematically, the ReLU function is defined as:
 
-$$ f(x) = \max(0, x) $$ 
+$$ f(x) = \max(0, x) $$
 
 ```python
 def relu(x):
@@ -46,7 +46,7 @@ Tanh (Hyperbolic Tangent) is like the sigmoid function's cooler, more balanced s
 
 Mathematically, the tanh function is defined as:
 
-$$ \text{tanh}(x) = \frac{e^x - e^{-x}}{e^{x + e^{-x}}}$$ 
+$$ \text{tanh}(x) = \frac{e^x - e^{-x}}{e^{x + e^{-x}}}$$
 
 ```python
 def tanh(x):
@@ -60,7 +60,7 @@ When you're dealing with multi-class classification problems, the softmax functi
 Mathematically, the softmax function is defined as:
 
 $$
- \text{softmax}(x_i) = \frac{e^{x_i}}{\sum_{j} e^{x_j}} 
+ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum_{j} e^{x_j}}
 $$
 
 ```python
@@ -75,14 +75,15 @@ Leaky ReLU is like ReLU's rebellious cousin. Instead of shutting down completely
 
 Mathematically, the leaky ReLU function is defined as:
 
-$$ f(x) = \begin{cases} x & \text{if } x > 0 \\ \alpha x & \text{otherwise} \end{cases} 
 $$
-
+f(x) = \begin{cases} x & \text{if } x > 0 \\ \alpha x & \text{otherwise} \end{cases}
+$$
 
 ```python
 def leaky_relu(x, alpha=0.01):
     return np.where(x > 0, x, alpha * x)
 ```
+
 ### 6. ELU (Exponential Linear Unit)
 
 The ELU activation function is like the cool kid on the block, combining the best of both worlds – the robustness of ReLU and the ability to capture negative values. It's a smooth, continuous function that avoids the "dying ReLU" problem while still providing the beneficial properties of ReLU.
@@ -99,6 +100,7 @@ import numpy as np
 def elu(x, alpha=1.0):
     return np.where(x > 0, x, alpha * (np.exp(x) - 1))
 ```
+
 These are just a few examples of activation functions used in neural networks. Each activation function has its advantages and disadvantages, and the choice often depends on the specific problem being solved and empirical performance on validation data. Experimentation with different activation functions is crucial to finding the most suitable one for your neural network architecture and dataset.
 
 ## Loss Functions in Machine Learning
@@ -109,24 +111,24 @@ Alright, now that we've had our fun with activation functions, let's talk about 
 
 - Calculates the average squared difference between predicted and actual values.
 - Commonly used in regression problems.
-- Mathematically: $$ MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 $$
+- Mathematically: $$ MSE = \frac{1}{n} \sum\_{i=1}^{n} (y_i - \hat{y}\_i)^2 $$
 
 ### Binary Cross-Entropy Loss
 
 - Used in binary classification problems to measure the dissimilarity between predicted probabilities and actual binary labels.
-- Mathematically: $$ BCE = -\frac{1}{n} \sum_{i=1}^{n} [y_i \log(\hat{y}_i) + (1 - y_i) \log(1 - \hat{y}_i)] $$
+- Mathematically: $$ BCE = -\frac{1}{n} \sum\_{i=1}^{n} [y_i \log(\hat{y}_i) + (1 - y_i) \log(1 - \hat{y}_i)] $$
 
 ### Categorical Cross-Entropy Loss
 
 - An extension of binary cross-entropy loss for multi-class classification problems.
 - Measures the dissimilarity between predicted class probabilities and one-hot encoded target labels.
-- Mathematically: $$ CCE = -\frac{1}{n} \sum_{i=1}^{n} \sum_{j=1}^{m} y_{ij} \log(\hat{y}_{ij}) $$
+- Mathematically: $$ CCE = -\frac{1}{n} \sum*{i=1}^{n} \sum*{j=1}^{m} y*{ij} \log(\hat{y}*{ij}) $$
 
 ### Hinge Loss (for SVM)
 
 - Used in support vector machines (SVM) for binary classification.
 - Penalizes misclassified examples based on their distance from the decision boundary.
-- Mathematically: $$ HingeLoss = \max(0, 1 - y_i \cdot \hat{y}_i) $$
+- Mathematically: $$ HingeLoss = \max(0, 1 - y_i \cdot \hat{y}\_i) $$
 
 ### Huber Loss
 
@@ -140,3 +142,4 @@ Alright, now that we've had our fun with activation functions, let's talk about 
 - Just make sure these functions are differentiable to facilitate gradient-based optimization.
 
 Loss functions are selected based on the nature of the problem, the type of output, and the desired properties of the model's predictions. Choosing an appropriate loss function is crucial for achieving optimal performance and training stability.
+

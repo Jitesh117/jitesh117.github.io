@@ -3,10 +3,10 @@ title = 'Hyperparameter Tuning and Ensembling'
 date = 2024-03-16T17:56:43+05:30
 draft = false
 ShowToc = true
-tags = ["Machine learning"]
+tags = ["machine learning"]
 +++
 
-Ensembling, a powerful technique in machine learning, has gained widespread popularity for its ability to significantly enhance predictive performance. By combining the predictions of multiple individual models, ensembles can often achieve better results than any single model alone. However, to fully leverage the potential of ensembling, it's crucial to fine-tune the hyperparameters of the underlying base models. 
+Ensembling, a powerful technique in machine learning, has gained widespread popularity for its ability to significantly enhance predictive performance. By combining the predictions of multiple individual models, ensembles can often achieve better results than any single model alone. However, to fully leverage the potential of ensembling, it's crucial to fine-tune the hyperparameters of the underlying base models.
 
 Hyperparameter tuning involves searching for the optimal combination of model parameters that maximizes performance metrics such as accuracy or F1 score. This process can be computationally intensive and requires careful consideration of various factors, including model complexity, dataset characteristics, and computational resources. In recent years, the integration of hyperparameter tuning with ensembling techniques has become increasingly prevalent, leading to even more robust and accurate predictive models. This synergy between ensembling and hyperparameter tuning not only empowers practitioners to unlock the full potential of their models but also underscores the importance of thoughtful optimization in machine learning workflows.
 
@@ -60,6 +60,7 @@ voting_classifier.fit(input_df, target_df)
 ```
 
 ## Conclusion
+
 Ensembling and hyperparameter tuning are powerful techniques for improving model performance in machine learning. By combining multiple models and fine-tuning their parameters, we can create more accurate and robust predictive models.
 
 By leveraging the tools provided by scikit-learn, such as GridSearchCV and ensemble methods like Bagging and Boosting, we can streamline the process of model selection and optimization, ultimately leading to better results in real-world applications.

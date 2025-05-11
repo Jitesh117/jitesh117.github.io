@@ -3,7 +3,7 @@ title = 'Editor Wars Are Stupid'
 date = 2024-08-03T19:10:39+05:30
 draft = false
 cover.Image = 'images/editors.jpg'
-tags = ["Tech productivity", "Opinion"]
+tags = ["tech productivity", "Opinion"]
 +++
 
 If there's one thing that never fails to make me roll my eyes, it's the endless debate over code editors. You know what I'm talking about - those heated arguments where developers passionately defend their chosen editor as if it were the holy grail of coding.

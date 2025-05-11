@@ -4,6 +4,7 @@ date = 2024-08-15T18:19:09+05:30
 draft = false
 cover.Image = "/images/golang_quirks.jpg"
 showToc = true
+tags = ["golang"]
 +++
 
 Go, also known as Golang, is a popular programming language known for its simplicity and efficiency. However, like any language, it has its share of quirks that can surprise developers. This article explores some of the interesting features and potential gotchas in Go.

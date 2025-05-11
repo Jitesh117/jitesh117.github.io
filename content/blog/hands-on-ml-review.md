@@ -3,11 +3,10 @@ title = 'Hands on ML Book Review'
 date = 2024-06-22T21:17:57+05:30
 ShowToc = true
 cover.image = "/images/hands-on-ml.jpg"
-tags = ["Machine learning", "Book Review"]
+tags = ["machine learning", "Book Review"]
 +++
 
 I've heard so much about "Hands-On Machine Learning" as the go-to book for beginners in ML. I first picked it up in January but didn't get far. Now, though, I'm giving it another shot and committing to finishing it. Today, on June 8th, I'm starting to document this journey, which will end up in a blog post review of the book that you're reading now :)
-
 
 ## Jumping Right In
 
@@ -42,11 +41,12 @@ It’s filled with relevant graphs and figures that clarify each topic. For exam
 And guess what? All these figures are generated using Python code available in the book’s GitHub repository. This not only helps you grasp ML concepts but also shows you how to create various plots with matplotlib and sklearn.
 
 ## Real-World Applications
+
 One thing that really stands out is how the book ties everything back to real-world applications. You'll work on problems like a real Data Scientist works on their job. This helps you understand how the techniques you're learning can be applied to solve real problems, making the learning experience even more relevant and exciting.
 
 ## Step-by-Step Guidance
-The step-by-step guidance is another big plus. The author walks you through each process in a detailed manner, so you never feel lost. Whether it’s data preprocessing or model evaluation, each step is explained clearly, ensuring you can follow along and apply the knowledge to your own projects.
 
+The step-by-step guidance is another big plus. The author walks you through each process in a detailed manner, so you never feel lost. Whether it’s data preprocessing or model evaluation, each step is explained clearly, ensuring you can follow along and apply the knowledge to your own projects.
 
 So, if you're looking for a hands-on, engaging, and friendly guide to machine learning, this book is definitely worth checking out!
 

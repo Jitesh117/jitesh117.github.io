@@ -4,7 +4,7 @@ date = 2024-04-30T16:22:06+05:30
 draft = false
 cover.image = "/images/tmux.jpg"
 showToc = true
-tags = ["Linux"]
+tags = ["linux"]
 +++
 
 ## 1. Introduction
@@ -171,4 +171,3 @@ tmux is perfect for running long-running processes, such as database migrations,
 tmux is a powerful terminal multiplexer that can significantly enhance your productivity and workflow. With its ability to create persistent sessions, split windows and panes, and customize almost every aspect of its behavior, tmux is a must-have tool for anyone who spends a significant amount of time in the terminal.
 
 I encourage you to explore tmux, experiment with its features, and customize it to fit your specific needs. The initial learning curve may seem steep, but the benefits of mastering tmux are well worth the effort. Happy multiplexing!
-

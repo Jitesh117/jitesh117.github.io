@@ -4,7 +4,7 @@ date = 2024-11-08T09:56:17+05:30
 draft = false
 cover.image = '/images/brainrot.jpg'
 showToc = true
-tags = ["Golang", "Tech"]
+tags = ["golang", "tech"]
 +++
 
 I was reading the language server protocol docs and about json-rpc for collaborating on a new project which will need an LSP server. Since it was getting a little boring to just read so much of documentations and RFCs, I thought of making a small and fun project around LSPs.

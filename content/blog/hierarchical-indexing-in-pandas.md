@@ -4,14 +4,14 @@ date = 2024-04-25T11:56:07+05:30
 cover.image = "/images/indexing.jpg"
 draft = false
 ShowToc = true
-tags = ["Machine Learning"]
+tags = ["machine learning"]
 +++
 
-Working with high-dimensional or categorized data can be a complex and challenging task, but Pandas provides a powerful tool to simplify this process: hierarchical indexing. 
+Working with high-dimensional or categorized data can be a complex and challenging task, but Pandas provides a powerful tool to simplify this process: hierarchical indexing.
 
-Hierarchical indexing, also known as multi-level or multi-indexed indexing, allows you to create and manipulate indexes with multiple levels or dimensions, providing a more intuitive and organized way to structure, access, and analyze your data. 
+Hierarchical indexing, also known as multi-level or multi-indexed indexing, allows you to create and manipulate indexes with multiple levels or dimensions, providing a more intuitive and organized way to structure, access, and analyze your data.
 
-This indexing technique is particularly useful when dealing with datasets that contain multiple levels of categorization or grouping, such as data from different regions, periods, or product categories. 
+This indexing technique is particularly useful when dealing with datasets that contain multiple levels of categorization or grouping, such as data from different regions, periods, or product categories.
 
 By leveraging hierarchical indexing, you can efficiently manage and analyze these complex data structures, unlocking new possibilities for data exploration, reshaping, and group-based operations like pivoting. In this article, we'll dive deep into the world of hierarchical indexing in Pandas, exploring its creation, indexing methods, manipulation techniques, and real-world applications, equipping you with the knowledge to harness the full potential of this powerful feature.
 
@@ -77,9 +77,10 @@ df.unstack(level='number')
 ### Reshaping Data with Hierarchical Indexes
 
 Hierarchical indexing plays a critical role in reshaping data and group-based operations like forming a pivot table. For example, this data could be rearranged into a DataFrame using its `unstack` method:
+
 ```python
 In [270]: data.unstack()
-Out[270]: 
+Out[270]:
         1         2         3
 a  0.670216  0.852965 -0.955869
 b -0.023493 -2.304234 -0.652469
@@ -88,6 +89,7 @@ d       NaN  1.074623  0.723642
 ```
 
 The inverse operation of `unstack` is `stack`:
+
 ```python
 In [271]: data.unstack().stack()
 Out[271]:
@@ -105,7 +107,6 @@ d  2    1.074623
 
 These reshaping operations are particularly useful when working with higher-dimensional or categorized data, allowing you to explore and analyze your data from different perspectives.
 
-
 ## Benefits of Hierarchical Indexing
 
 Hierarchical indexing in Pandas offers several benefits:
@@ -116,3 +117,4 @@ Hierarchical indexing in Pandas offers several benefits:
 4. **Memory Efficiency**: By leveraging hierarchical indexing, Pandas can store and manipulate data more efficiently, especially when working with higher-dimensional datasets.
 
 While hierarchical indexing introduces additional complexity, it can greatly simplify the handling and analysis of multi-dimensional or categorized data in Pandas.
+

@@ -4,7 +4,7 @@ date = 2024-05-17T15:43:31+05:30
 math = true
 cover.image = "/images/perceptron.jpg"
 ShowToc = true
-tags = ["Machine learning"]
+tags = ["machine learning"]
 +++
 
 The perceptron is a foundational concept in machine learning, representing the simplest type of artificial neural network. This article explores the perceptron model, its functionality, and its significance in the world of Machine learning.
@@ -47,7 +47,6 @@ $$
 \end{cases}
 $$
 
-
 ## Training the Perceptron
 
 Training a perceptron involves adjusting its weights and bias to minimize classification errors on the training dataset. This process is known as the perceptron learning algorithm, which follows these steps:
@@ -74,6 +73,7 @@ Here, $\eta$ is the learning rate, $y$ is the actual label, and $\hat{y}$ is the
 ## Implementation
 
 The python implementation of Perceptron looks as follows:
+
 ```python
 import numpy as np
 
@@ -146,7 +146,7 @@ class Perceptron:
 
 Despite its simplicity, the perceptron laid the groundwork for the development of more complex neural network architectures. Concepts like weight adjustment, activation functions, and bias units have been carried forward into modern deep learning.
 
-
 ## Conclusion
 
 The perceptron is a simple but important algorithm for learning basic machine learning concepts. Even though it is an old algorithm, it helps explain the foundations of more advanced artificial intelligence systems used today. The perceptron's straightforward approach to classifying data into two groups makes it a valuable teaching tool. Its principles are still built into the complex AI models driving modern technology.
+

@@ -5,7 +5,7 @@ draft = false
 ShowToc = true
 cover.image = "images/dimension.jpg"
 math = true
-tags = ["Machine Learning"]
+tags = ["machine learning"]
 +++
 
 As the number of features or dimensions grows in a dataset, the effectiveness of many machine learning algorithms can suffer from an issue called the "curse of dimensionality." This problem is particularly prevalent for instance-based algorithms like K-nearest neighbors (KNN).
@@ -13,7 +13,6 @@ As the number of features or dimensions grows in a dataset, the effectiveness of
 The KNN algorithm relies on calculating the distances between data points to determine which points are nearest neighbors.
 
 In low dimensional spaces like 2D or 3D, the concepts of distance and neighborhood are relatively straightforward. However, in high dimensional spaces, some counterintuitive properties emerge.
-
 
 The KNN classifier makes the assumption that similar points share similar labels. Unfortunately, in high dimensional spaces, points that are drawn from a probability distribution, tend to never be close together. We can illustrate this on a simple example. We will draw points uniformly at random within the unit cube (illustrated in the figure) and we will investigate how much space the k𝑘 nearest neighbors of a test point inside this cube will take up.
 
@@ -43,7 +42,6 @@ Therefore, to find the 10-nearest neighbors, almost the entire space is needed. 
 
 The breakdown of this core assumption of KNN in high dimensions is a manifestation of the curse of dimensionality, which severely limits the algorithm's effectiveness in such scenarios.
 
-
 The curse of dimensionality poses a significant challenge for the K-nearest neighbors (KNN) algorithm, as it breaks down one of its fundamental assumptions: the notion of similarity based on proximity. In high-dimensional spaces, the concept of nearness becomes increasingly diluted, and the distances between data points become more uniform, rendering the algorithm less effective.
 
 To mitigate the curse of dimensionality, several techniques can be employed:
@@ -56,3 +54,4 @@ To mitigate the curse of dimensionality, several techniques can be employed:
 6. **Hybrid approaches**: Integrating KNN with other machine learning techniques, such as decision trees or support vector machines, can leverage the strengths of different algorithms and potentially overcome the limitations of KNN in high dimensions.
 
 While the dimensionality is a fundamental challenge in high-dimensional spaces, these techniques can help alleviate its impact on the KNN algorithm. However, it is essential to carefully evaluate the trade-offs between dimensionality reduction and potential information loss, as well as consider alternative algorithms that may be better suited for high-dimensional data, such as tree-based methods or kernel-based methods.
+
