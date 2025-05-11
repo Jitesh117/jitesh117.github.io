@@ -130,6 +130,13 @@ name = "Search"
 url = "/search/"
 weight = 8
 
+[[menu.main]]
+identifier = "graph"
+name = "Graph"
+url = "/graph/"
+weight = 9
+
+
 # Markup and Syntax Highlighting Settings
 [markup.highlight]
   codeFences = true
