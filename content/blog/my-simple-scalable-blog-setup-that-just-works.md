@@ -4,7 +4,7 @@ date = 2025-03-27T11:44:25+05:30
 draft = false
 showToc = true
 cover.image = 'images/blog_setup.png'
-tags = ['blog']
+tags = ["blog"]
 +++
 
 Ever since I started posting the analytics of my blog, people keep asking me about my blog setup. So I decided to write a blog on it, which you're reading currently haha.

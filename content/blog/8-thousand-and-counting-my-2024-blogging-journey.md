@@ -4,7 +4,7 @@ date = 2024-12-26T10:51:07+05:30
 draft = false
 showToc = true
 cover.image = '/images/2024_blogging_review.jpg'
-tags = []
+tags = ["blog"]
 +++
 
 _Unexpected_. If I could describe my blogging journey with just one word, this would be the word I'd use. I did not expect in my wildest dreams that my writing would gather this big of an audience.
