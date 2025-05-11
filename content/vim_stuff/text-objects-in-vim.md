@@ -4,6 +4,7 @@ date = 2024-10-09T20:24:41+05:30
 draft = false
 cover.image = "/images/text_objects_vim.jpg"
 showToc = true
+tags = ["vim"]
 +++
 
 ## Introduction
