@@ -233,10 +233,19 @@ default "100%" (.Get "width") }} {{ $graphHeight := default "600px" (.Get
           // Handle node click
           handleNodeClick(d);
 
-          // Open link in new tab when clicked (only for post nodes)
+          // Open link in new tab when clicked (for both post and tag nodes)
           if (!d.isTag && (d.link || d.permalink)) {
             window.open(d.link || d.permalink, "_blank");
-          }
+          } else if (d.isTag) {
+                // For tag nodes, permalink format: "/permalink/tag_name_with_underscores"
+                const tagName = d.title.replace(/\s+/g, "-");
+                const tagPermalink = {{ if eq hugo.Environment "production" }}
+                  "https://jitesh117.github.io/tags/" + tagName.toLowerCase()
+                {{ else }}
+                  "http://localhost:1313/tags/" + tagName.toLowerCase()
+                {{ end }};
+                window.open(tagPermalink, "_blank");
+              }
         })
         .on("mouseover", (event, d) => {
           // Show tooltip instantly on hover
