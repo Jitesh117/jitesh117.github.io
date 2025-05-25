@@ -1,5 +1,5 @@
 {{ $graphId := default "hugo-blog-graph" (.Get "id") }} {{ $graphWidth :=
-default "600px" (.Get "width") }} {{ $graphHeight := default "600px" (.Get
+default "100%" (.Get "width") }} {{ $graphHeight := default "600px" (.Get
 "height") }} {{ $jsonPath := default "/index.json" (.Get "data") }}
 <div class="blog-graph-container" id="container-{{ $graphId }}">
     <div class="blog-graph" id="{{ $graphId }}"></div>
@@ -14,7 +14,7 @@ default "600px" (.Get "width") }} {{ $graphHeight := default "600px" (.Get
 
   .blog-graph {
       width: 100%;
-      height: {{ $graphHeight }};
+      /* height: {{ $graphHeight }}; */
       aspect-ratio: 1;
       border-radius: 16px;
       background-color: var(--code-bg, #f5f5f5);
@@ -75,7 +75,6 @@ default "600px" (.Get "width") }} {{ $graphHeight := default "600px" (.Get
     let simulation;
     let svg;
     let g; // Global group element
-    let zoom; // Zoom behavior
     let currentZoomScale = 1; // Track current zoom level
     const zoomThreshold = 1.5; // Zoom level at which to show labels
     const graphId = "{{ $graphId }}";
@@ -106,61 +105,6 @@ default "600px" (.Get "width") }} {{ $graphHeight := default "600px" (.Get
     tooltip.className = "node-tooltip";
     document.getElementById(`container-${graphId}`).appendChild(tooltip);
 
-    // Function to fit graph to container
-    function fitGraphToContainer() {
-      if (!simulation || !svg || !g) return;
-
-      // Get all node positions
-      const nodes = graphData.nodes;
-      if (nodes.length === 0) return;
-
-      // Calculate bounding box of all nodes
-      let minX = Infinity, maxX = -Infinity;
-      let minY = Infinity, maxY = -Infinity;
-
-      nodes.forEach(node => {
-        if (node.x !== undefined && node.y !== undefined) {
-          const nodeRadius = node.radius || 5;
-          minX = Math.min(minX, node.x - nodeRadius);
-          maxX = Math.max(maxX, node.x + nodeRadius);
-          minY = Math.min(minY, node.y - nodeRadius);
-          maxY = Math.max(maxY, node.y + nodeRadius);
-        }
-      });
-
-      // Add padding around the graph
-      const padding = 50;
-      const graphWidth = maxX - minX + 2 * padding;
-      const graphHeight = maxY - minY + 2 * padding;
-
-      // Get container dimensions
-      const containerWidth = graphElement.clientWidth;
-      const containerHeight = graphElement.clientHeight;
-
-      // Calculate scale to fit the graph in the container
-      const scaleX = containerWidth / graphWidth;
-      const scaleY = containerHeight / graphHeight;
-      const scale = Math.min(scaleX, scaleY, 2); // Cap at 2x to avoid over-zooming
-
-      // Calculate center of the graph
-      const centerX = (minX + maxX) / 2;
-      const centerY = (minY + maxY) / 2;
-
-      // Calculate translation to center the graph
-      const translateX = containerWidth / 2 - centerX * scale;
-      const translateY = containerHeight / 2 - centerY * scale;
-
-      // Apply the transform
-      const transform = d3.zoomIdentity
-        .translate(translateX, translateY)
-        .scale(scale);
-
-      // Update the zoom behavior and apply transform
-      svg.transition()
-        .duration(750)
-        .call(zoom.transform, transform);
-    }
-
     // Initialize the visualization
     function initGraph() {
       // Get the dimensions of the graph container
@@ -181,7 +125,7 @@ default "600px" (.Get "width") }} {{ $graphHeight := default "600px" (.Get
         .attr("viewBox", `0 0 ${width} ${height}`);
 
       // Add zoom capabilities
-      zoom = d3
+      const zoom = d3
         .zoom()
         .scaleExtent([0.1, 10])
         .on("zoom", (event) => {
@@ -585,28 +529,6 @@ default "600px" (.Get "width") }} {{ $graphHeight := default "600px" (.Get
           .attr("y2", (d) => d.target.y);
 
         nodeGroup.attr("transform", (d) => `translate(${d.x},${d.y})`);
-      });
-
-      // Fit graph to container after simulation stabilizes
-      let stabilizationTimer;
-      simulation.on("tick", () => {
-        // Update positions (existing code above)
-        link
-          .attr("x1", (d) => d.source.x)
-          .attr("y1", (d) => d.source.y)
-          .attr("x2", (d) => d.target.x)
-          .attr("y2", (d) => d.target.y);
-
-        nodeGroup.attr("transform", (d) => `translate(${d.x},${d.y})`);
-
-        // Clear existing timer and set a new one
-        clearTimeout(stabilizationTimer);
-        stabilizationTimer = setTimeout(() => {
-          // Only fit if the simulation has cooled down
-          if (simulation.alpha() < 0.1) {
-            fitGraphToContainer();
-          }
-        }, 1000); // Wait 1 second after last tick
       });
     }
 
