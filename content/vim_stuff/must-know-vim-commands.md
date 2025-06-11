@@ -11,8 +11,6 @@ So in this article, I would list down the vim commands which I use THE MOST. Man
 
 This one would be mostly a cheatsheet sort of article and not a "How To" one.
 
----
-
 ## Navigation Basics
 
 ### `h`, `j`, `k`, `l` – The Arrow Keys
@@ -52,8 +50,6 @@ G  → go to the bottom
 $ → End of line
 ```
 
----
-
 ## Editing Text
 
 ### `i`, `I`, `a`, `A` – Insert Modes
@@ -88,8 +84,6 @@ p  → paste below
 P  → paste above
 ```
 
----
-
 ## Searching and Replacing
 
 ### `/pattern` – Search Forward
@@ -120,8 +114,6 @@ Ask before replacing:
 :%s/dog/cat/gc
 ```
 
----
-
 ## Visual Mode
 
 ### `v`, `V`, `Ctrl+v`
@@ -134,8 +126,6 @@ Ctrl+v   → block visual mode (aka column selection)
 
 Once selected, you can `d`, `y`, or `p` like usual.
 
----
-
 ## File Operations
 
 ### `:w`, `:q`, `:wq`, `:q!`
@@ -146,8 +136,6 @@ Once selected, you can `d`, `y`, or `p` like usual.
 :wq  → save and quit
 :q!  → quit without saving
 ```
-
----
 
 ## Buffers, Windows, and Tabs
 
@@ -177,8 +165,6 @@ gT             → previous tab
 :tabclose      → close tab
 ```
 
----
-
 ## Marks and Jumps
 
 ### `m{a-z}` and `'a`, `` `a``
@@ -195,8 +181,6 @@ Jump to it:
 'a → jump to line of mark a
 `a → jump to exact position of mark a
 ```
-
----
 
 ## Other Handy Commands
 
@@ -226,8 +210,6 @@ J → joins the current line with the next line
 
 In visual mode, you can select multiple lines and use `>` or `<` to shift them.
 
----
-
 ## Config Tweaks Worth Knowing
 
 Put these in your `~/.vimrc` to make Vim more friendly:
@@ -242,12 +224,8 @@ set incsearch       " Incremental search
 set ignorecase      " Case-insensitive search
 ```
 
----
-
 ## Final Tip
 
 You don’t have to memorize all this in one sitting. Start with the basics (`h`, `j`, `k`, `l`, `:wq`) and layer on as you go. Vim rewards muscle memory. The more you use it, the more natural it feels.
 
-Happy Vimming! 😄
-
----
+Happy Vimming!
