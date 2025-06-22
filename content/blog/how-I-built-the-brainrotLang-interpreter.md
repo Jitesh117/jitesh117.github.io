@@ -7,7 +7,7 @@ cover.image = '/images/brainrotLangInterpreter.jpg'
 tags = ['tech', 'golang', 'brainrot']
 +++
 
-Last year, when learning about how the LSPs (Language Server Protocol) for different languages work internally, built this [Brainrot LSP](https://github.com/Jitesh117/brainrot-lsp), which was a Language Server for brainrot slangs which can be integrated to your neovim config.
+Last year, when learning about how the LSPs (Language Server Protocol) for different languages work internally, I built this [Brainrot LSP](https://github.com/Jitesh117/brainrot-lsp), which was a Language Server for brainrot slangs which can be integrated to your neovim config.
 
 And for some reason, now I want to expand on that idea. So I decided to build a full-fledged Brainrot Programming Language Suite!
 
@@ -17,7 +17,7 @@ In this article, I would walk y'all through the interpreter for The BrainrotLang
 You can find the source code of this project in this [**github repository**](https://github.com/Jitesh117/brainrotLang-interpreter)
 {{< /callout >}}
 
-So let me make things clear first, I didn't come up with all of the concepts used in this interpreter all by myself. I took help from the very famous book of Thorsten Ball called [Writing an Interpreter in Go](https://interpreterbook.com/).
+Although I knew I had to build this, I didn't know how. When looking into literature around languages I came across this very famous book of Thorsten Ball called [Writing an Interpreter in Go](https://interpreterbook.com/), which I referred to build brainrotLang's interpreter.
 
 Okay so the first thing you might want to think about before starting with writing the interpreter is, of course, the syntax, the keywords and stuff.
 
@@ -294,8 +294,8 @@ Next up I might add support for array methods like `.push()` or iteration. But f
 You can find the source code of this project in this [**github repository**](https://github.com/Jitesh117/brainrotLang-interpreter)
 {{< /callout >}}
 
-## Conclusion
+## Up Next
 
-So that's all folks. We now have a working, chaotic brainrot programming language. Next up in this series, I'll write about how the compiler and the LSP of this language works!
+We now have a working, chaotic brainrot programming language, but we still have to build the compiler and the LSP. Next up in this series, I'll write about how the compiler and the LSP of this language works!
 
 Stay unbothered, moisturized, happy, in your lane, focused and keep flourishing!
