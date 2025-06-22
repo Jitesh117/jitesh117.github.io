@@ -298,4 +298,4 @@ You can find the source code of this project in this [**github repository**](htt
 
 So that's all folks. We now have a working, chaotic brainrot programming language. Next up in this series, I'll write about how the compiler and the LSP of this language works!
 
-Stay unbothered, moisturized,happy, in your lane, focused and keep flourishing!
+Stay unbothered, moisturized, happy, in your lane, focused and keep flourishing!
