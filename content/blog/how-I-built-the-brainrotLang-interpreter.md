@@ -1,6 +1,6 @@
 +++
 title = "How I Built the BrainrotLang Interpreter in Golang"
-date = 2025-06-20T19:14:10+05:30
+date = 2025-06-22T19:14:10+05:30
 draft = false
 showToc = true
 cover.image = '/images/brainrotLangInterpreter.jpg'
