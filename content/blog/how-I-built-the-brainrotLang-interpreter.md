@@ -11,7 +11,7 @@ Last year, when learning about how the LSPs (Language Server Protocol) for diffe
 
 And for some reason, now I want to expand on that idea. So I decided to build a full-fledged Brainrot Programming Language Suite!
 
-In this article, I would walk y'all through the interpreter for The BrainrotLang. This article is the first one in the BrainrotLang Series, and it's going to be crazzyyyy!
+In this article, I would walk y'all through the interpreter for The BrainrotLang. This article is the first one in the BrainrotLang Trilogy, and it's going to be so slayyy✨
 
 {{< callout  emoji="🌐" >}}
 You can find the source code of this project in this [**github repository**](https://github.com/Jitesh117/brainrotLang-interpreter)
@@ -296,6 +296,6 @@ You can find the source code of this project in this [**github repository**](htt
 
 ## Up Next
 
-We now have a working, chaotic brainrot programming language, but we still have to build the compiler and the LSP. Next up in this series, I'll write about how the compiler and the LSP of this language works!
+We now have a working, chaotic brainrot programming language, but we still have to build the compiler and the LSP. Next up in this trilogy, I'll write about how the compiler and the LSP of this language works! Don't worry, unlike other trilogies, this won't suck lol.
 
 Stay unbothered, moisturized, happy, in your lane, focused and keep flourishing!
