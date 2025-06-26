@@ -1,10 +1,11 @@
 <style>
-  @media (max-width: 768px) {
+  /* Mobile and tablet graph styles */
+  @media (max-width: 1500px) {
     #bmc-iframe {
       border-radius: 0 !important;
     }
     
-    /* Mobile graph styles */
+    /* FAB button styles */
     .graph-fab {
       position: fixed;
       bottom: 18px;
@@ -25,6 +26,12 @@
     .graph-fab:hover {
       transform: scale(1.05);
       box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+    }
+    
+    .graph-fab img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
     }
     
     .graph-container {
@@ -48,43 +55,30 @@
     }
   }
   
-  /* Desktop graph styles */
-  @media (min-width: 769px) {
+  /* Desktop graph styles (large screens) */
+  @media (min-width: 1501px) {
     .graph-fab {
-      display: none; /* Hide FAB button on desktop */
+      display: none; /* Hide FAB button on large desktop */
     }
     
     .graph-container {
-    position: fixed;
-    top: 50%;
-    left: calc(((100% - 700px) / 2) / 2); /* Center in left column */
-    transform: translateY(-50%) translateX(-50%); /* Center vertically and horizontally */
-    width: 350px; /* Fixed width for better positioning */
-    height: 350px;
-    background-color: var(--code-bg);
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    padding: 10px;
-    z-index: 99;
-    display: block; /* Always visible on desktop */
-    overflow: hidden;
-  }
-    
-    /* Hide when screen gets too narrow */
-    @media (max-width: 1400px) {
-      .graph-container {
-        display: none;
-      }
+      position: fixed;
+      top: 50%;
+      left: calc(((100% - 700px) / 2) / 2); /* Center in left column */
+      transform: translateY(-50%) translateX(-50%); /* Center vertically and horizontally */
+      width: 350px; /* Fixed width for better positioning */
+      height: 350px;
+      background-color: var(--code-bg);
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      padding: 10px;
+      z-index: 99;
+      display: block; /* Always visible on desktop */
+      overflow: hidden;
     }
   }
   
   /* Common styles */
-  .graph-fab svg {
-    width: 24px;
-    height: 24px;
-    fill: #fff;
-  }
-  
   .graph-container svg {
     display: block;
     margin: 0 auto;
@@ -128,17 +122,7 @@
 
 <!-- Floating Action Button (mobile only) -->
 <div id="graph-fab" class="graph-fab">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,16c-2.21,0-4-1.79-4-4s1.79-4,4-4s4,1.79,4,4 S14.21,16,12,16z"/>
-    <circle cx="6.5" cy="9.5" r="1.5"/>
-    <circle cx="9.5" cy="5.5" r="1.5"/>
-    <circle cx="14.5" cy="5.5" r="1.5"/>
-    <circle cx="17.5" cy="9.5" r="1.5"/>
-    <circle cx="17.5" cy="14.5" r="1.5"/>
-    <circle cx="14.5" cy="18.5" r="1.5"/>
-    <circle cx="9.5" cy="18.5" r="1.5"/>
-    <circle cx="6.5" cy="14.5" r="1.5"/>
-  </svg>
+  <img src="/images/graph_icon.png" alt="Graph" />
 </div>
 
 <script>
