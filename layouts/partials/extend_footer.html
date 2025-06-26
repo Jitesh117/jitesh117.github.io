@@ -171,6 +171,7 @@
   }
 </style>
 
+{{ if and (eq .Kind "page") (not .IsHome) (ne .Layout "search") (ne .Type "tags") (ne .Type "categories") (ne .Type "archives") ( ne .RelPermalink "/graph/")}}
 <!-- Graph Container -->
 <div id="graph-container" class="graph-container">
   <div class="graph-controls">
@@ -182,9 +183,9 @@
 </div>
 
 <!-- Floating Action Button (mobile only) -->
-<div id="graph-fab" class="graph-fab">
+{{/*  <div id="graph-fab" class="graph-fab">
   <img src="/images/graph_icon.png" alt="Graph" />
-</div>
+</div>  */}}
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -216,21 +217,21 @@
       }
     });
     
-    // Zoom in button
+    // Zoom in button with smoother transition
     zoomIn.addEventListener('click', function() {
       currentZoom += 0.2;
-      applyZoom();
+      applyZoom(true); // true for smooth transition
     });
     
-    // Zoom out button
+    // Zoom out button with smoother transition
     zoomOut.addEventListener('click', function() {
       if (currentZoom > 0.4) {
         currentZoom -= 0.2;
-        applyZoom();
+        applyZoom(true); // true for smooth transition
       }
     });
     
-    function applyZoom() {
+    function applyZoom(smooth = false) {
       const svgElement = document.querySelector('#floating-graph svg');
       if (svgElement) {
         const g = svgElement.querySelector('g');
@@ -238,7 +239,20 @@
           // Apply zoom transformation with centering
           const centerX = svgElement.viewBox.baseVal.width / 2;
           const centerY = svgElement.viewBox.baseVal.height / 2;
-          g.setAttribute('transform', `translate(${centerX * (1-currentZoom)},${centerY * (1-currentZoom)}) scale(${currentZoom})`);
+          
+          // For smoother zooming
+          if (smooth) {
+            g.style.transition = "transform 350ms cubic-bezier(0.215, 0.61, 0.355, 1)";
+            g.style.transform = `translate(${centerX * (1-currentZoom)}px, ${centerY * (1-currentZoom)}px) scale(${currentZoom})`;
+            
+            // Also update the SVG attribute for D3 compatibility
+            setTimeout(() => {
+              g.setAttribute('transform', `translate(${centerX * (1-currentZoom)},${centerY * (1-currentZoom)}) scale(${currentZoom})`);
+            }, 350);
+          } else {
+            g.style.transition = "none";
+            g.setAttribute('transform', `translate(${centerX * (1-currentZoom)},${centerY * (1-currentZoom)}) scale(${currentZoom})`);
+          }
         }
       }
     }
@@ -265,3 +279,4 @@
     });
   });
 </script>
+{{ end }}
