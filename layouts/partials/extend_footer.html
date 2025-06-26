@@ -14,24 +14,27 @@
       height: 56px;
       border-radius: 50%;
       background-color: var(--primary);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.25);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       z-index: 100;
       transition: all 0.3s;
+      border: 2px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(2px);
     }
     
     .graph-fab:hover {
       transform: scale(1.05);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.35);
     }
     
     .graph-fab img {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       object-fit: contain;
+      filter: brightness(1.1);
     }
     
     .graph-container {
@@ -41,12 +44,13 @@
       width: 350px;
       height: 350px;
       background-color: var(--code-bg);
-      border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+      padding: 15px;
       z-index: 99;
       display: none;
       overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
     }
     
     .graph-container.active {
@@ -69,12 +73,13 @@
       width: 350px; /* Fixed width for better positioning */
       height: 350px;
       background-color: var(--code-bg);
-      border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-      padding: 10px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+      padding: 15px;
       z-index: 99;
       display: block; /* Always visible on desktop */
       overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
     }
   }
   
@@ -83,11 +88,58 @@
     display: block;
     margin: 0 auto;
     width: 100% !important;
+    height: calc(100% - 40px) !important;
   }
   
-  .graph-container .graph-header {
-    text-align: center;
+  .graph-container svg g {
+    transition: transform 0.3s ease-out;
+  }
+  
+  .graph-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
     margin-bottom: 5px;
+    border-bottom: 1px solid rgba(125,125,125,0.2);
+  }
+  
+  /* Update the graph controls button styling */
+  .graph-controls button {
+    background-color: rgba(var(--primary-rgb, 100, 100, 100), 0.2);
+    color: var(--content, #000);
+    border: 1px solid rgba(125, 125, 125, 0.3);
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .graph-controls button:hover {
+    background-color: rgba(var(--primary-rgb, 100, 100, 100), 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+  
+  .graph-controls button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    background-color: rgba(var(--primary-rgb, 100, 100, 100), 0.4);
+  }
+  
+  .graph-title {
+    font-size: 14px;
+    color: var(--primary);
+    padding: 0 10px;
+    font-weight: 500;
   }
   
   @keyframes fadeIn {
@@ -102,22 +154,14 @@
   }
 </style>
 
-<script
-  data-name="BMC-Widget"
-  data-cfasync="false"
-  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-  data-id="jitesh117"
-  data-description="Support me on Buy me a coffee!"
-  data-message="Like what you're reading? You can buy me a coffee!"
-  data-color="grey"
-  data-position="Right"
-  data-x_margin="18"
-  data-y_margin="18"
-></script>
-
 <!-- Graph Container -->
 <div id="graph-container" class="graph-container">
-  {{ partial "graph.html" (dict "graphId" "floating-graph" "graphWidth" "100%" "graphHeight" "100%" "jsonPath" "/index.json") }}
+  <div class="graph-controls">
+    <button id="zoom-out" aria-label="Zoom out">−</button>
+    <div class="graph-title">Topic Graph</div>
+    <button id="zoom-in" aria-label="Zoom in">+</button>
+  </div>
+  {{ partial "graph.html" (dict "graphId" "floating-graph" "graphWidth" "100%" "graphHeight" "calc(100% - 40px)" "jsonPath" "/index.json") }}
 </div>
 
 <!-- Floating Action Button (mobile only) -->
@@ -129,8 +173,11 @@
   document.addEventListener('DOMContentLoaded', function() {
     const fab = document.getElementById('graph-fab');
     const container = document.getElementById('graph-container');
+    const zoomIn = document.getElementById('zoom-in');
+    const zoomOut = document.getElementById('zoom-out');
     let graphInitialized = false;
-    const isMobile = window.innerWidth <= 768;
+    let currentZoom = 1;
+    const isMobile = window.innerWidth <= 1500;
     
     // Initialize graph on page load for desktop
     if (!isMobile) {
@@ -152,6 +199,33 @@
       }
     });
     
+    // Zoom in button
+    zoomIn.addEventListener('click', function() {
+      currentZoom += 0.2;
+      applyZoom();
+    });
+    
+    // Zoom out button
+    zoomOut.addEventListener('click', function() {
+      if (currentZoom > 0.4) {
+        currentZoom -= 0.2;
+        applyZoom();
+      }
+    });
+    
+    function applyZoom() {
+      const svgElement = document.querySelector('#floating-graph svg');
+      if (svgElement) {
+        const g = svgElement.querySelector('g');
+        if (g) {
+          // Apply zoom transformation with centering
+          const centerX = svgElement.viewBox.baseVal.width / 2;
+          const centerY = svgElement.viewBox.baseVal.height / 2;
+          g.setAttribute('transform', `translate(${centerX * (1-currentZoom)},${centerY * (1-currentZoom)}) scale(${currentZoom})`);
+        }
+      }
+    }
+    
     // Close graph when clicking outside (mobile only)
     document.addEventListener('click', function(event) {
       if (isMobile && 
@@ -164,9 +238,8 @@
     
     // Handle window resize
     window.addEventListener('resize', function() {
-      const newIsMobile = window.innerWidth <= 768;
+      const newIsMobile = window.innerWidth <= 1500;
       if (newIsMobile !== isMobile && !graphInitialized) {
-        // Trigger graph initialization when switching between mobile/desktop
         setTimeout(function() {
           window.dispatchEvent(new Event('resize'));
           graphInitialized = true;
