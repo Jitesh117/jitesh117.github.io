@@ -1,0 +1,764 @@
+{{- $graphId := .graphId | default "hugo-component-graph" -}} {{- $graphWidth :=
+.graphWidth | default "100%" -}} {{- $graphHeight := .graphHeight | default
+"600px" -}} {{- $jsonPath := .jsonPath | default "/index.json" -}}
+<div class="component-graph-container" id="container-{{ $graphId }}">
+  <div class="component-graph" id="{{ $graphId }}"></div>
+</div>
+<style>
+  .component-graph-container {
+      position: relative;
+      width: {{ $graphWidth }};
+      margin: 20px 0;
+      border-radius: 8px;
+  }
+
+  .component-graph {
+      width: 100%;
+      /* height: {{ $graphHeight }}; */
+      aspect-ratio: 1;
+      border-radius: 16px;
+      background-color: var(--code-bg, #f5f5f5);
+      overflow: hidden;
+  }
+
+  .node-label {
+      font-size: 10px;
+      text-anchor: middle;
+      pointer-events: none;
+      font-family: sans-serif;
+      fill: #333;
+      user-select: none;
+      opacity: 0; /* Hidden by default */
+      transition: opacity 0.3s;
+  }
+
+  .node-label-background {
+      fill: rgba(255, 255, 255, 0.8);
+      rx: 3;
+      ry: 3;
+      pointer-events: none;
+      opacity: 0; /* Hidden by default */
+      transition: opacity 0.3s;
+  }
+
+  .tag-label {
+      font-size: 12px;
+      font-weight: bold;
+      text-anchor: middle;
+      pointer-events: none;
+      font-family: sans-serif;
+      fill: var(--primary);
+      user-select: none;
+  }
+
+  .node-tooltip {
+      position: absolute;
+      padding: 8px 12px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border-radius: 4px;
+      font-size: 12px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+      z-index: 100;
+      max-width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+</style>
+<script>
+    (function () {
+      // Main variables
+      let graphData = { nodes: [], links: [] };
+      let simulation;
+      let svg;
+      let g; // Global group element
+      let currentZoomScale = 1; // Track current zoom level
+      const zoomThreshold = 1.5; // Zoom level at which to show labels
+      const graphId = "{{ $graphId }}";
+      const jsonPath = "{{ $jsonPath }}";
+      const graphElement = document.getElementById(graphId);
+
+      //  Color palette for tag nodes
+      const colorPalette = [
+        "#f28e2c",
+        "#04ff00",
+        "#b342f5",
+        "#e6327a",
+        "#edc949",
+        "#76b7b2",
+        "#af7aa1",
+        "#9c755f",
+        "#bab0ab",
+        "#6b9ac4",
+        "#d7a763",
+        "#d37372",
+        "#a4ccc9",
+        "#8bb174",
+        "#f1d78c",
+      ];
+
+      // Create tooltip div
+      const tooltip = document.createElement("div");
+      tooltip.className = "node-tooltip";
+      document.getElementById(`container-${graphId}`).appendChild(tooltip);
+
+      // Initialize the visualization
+      function initGraph() {
+        // Get the dimensions of the graph container
+        const width = graphElement.clientWidth;
+        const height = graphElement.clientHeight;
+
+        // Clear any existing SVG
+        if (graphElement.querySelector("svg")) {
+          graphElement.querySelector("svg").remove();
+        }
+
+        // Create SVG element
+        svg = d3
+          .select("#" + graphId)
+          .append("svg")
+          .attr("width", width)
+          .attr("height", height)
+          .attr("viewBox", `0 0 ${width} ${height}`);
+
+        // Add zoom capabilities
+        const zoom = d3
+          .zoom()
+          .scaleExtent([0.1, 10])
+          .on("zoom", (event) => {
+            g.attr("transform", event.transform);
+            currentZoomScale = event.transform.k;
+
+            // Show/hide labels based on zoom level
+            updateLabelsVisibility(currentZoomScale);
+
+            // Adjust node spacing based on zoom level
+            if (simulation) {
+              adjustNodeSpacing(currentZoomScale);
+            }
+          });
+
+        svg.call(zoom);
+
+        // Create a group for the graph
+        g = svg.append("g");
+
+        // Calculate tag sizes based on connections
+        const tagConnections = {};
+        graphData.nodes.forEach((node) => {
+          if (node.isTag) {
+            tagConnections[node.id] = 0;
+          }
+        });
+
+        graphData.links.forEach((link) => {
+          if (link.source.id) {
+            if (tagConnections[link.source.id] !== undefined) {
+              tagConnections[link.source.id]++;
+            }
+          } else if (tagConnections[link.source] !== undefined) {
+            tagConnections[link.source]++;
+          }
+        });
+
+        // Update node sizes based on connections
+        graphData.nodes.forEach((node) => {
+          if (node.isTag) {
+            const connectionCount = tagConnections[node.id] || 1;
+            node.radius = Math.max(8, Math.min(14, 5 + connectionCount * 0.8));
+            node.connections = connectionCount;
+          } else {
+            node.radius = 5;
+          }
+        });
+
+        // Create forces with stronger center gravity
+        simulation = d3
+          .forceSimulation(graphData.nodes)
+          .force(
+            "link",
+            d3
+              .forceLink(graphData.links)
+              .id((d) => d.id)
+              .distance((d) => {
+                // Larger distance for tag nodes with many connections
+                if (d.source.isTag) {
+                  return 80 + d.source.connections * 2;
+                }
+                return 50;
+              }),
+          )
+          .force(
+            "charge",
+            d3.forceManyBody().strength((d) => (d.isTag ? -300 : -50)),
+          )
+          .force("center", d3.forceCenter(width / 2, height / 2))
+          .force(
+            "collision",
+            d3.forceCollide().radius((d) => d.radius * 1.5),
+          )
+          .force("x", d3.forceX(width / 2).strength(0.1))
+          .force("y", d3.forceY(height / 2).strength(0.1));
+
+        // Draw links with grey color
+        const link = g
+          .append("g")
+          .attr("class", "links")
+          .selectAll("line")
+          .data(graphData.links)
+          .enter()
+          .append("line")
+          .attr("stroke", "#888888") // Grey lines
+          .attr("stroke-opacity", 0.6)
+          .attr("stroke-width", 1)
+          .attr("data-source", (d) => d.source.id || d.source)
+          .attr("data-target", (d) => d.target.id || d.target)
+          .style("transition", "opacity 0.3s, stroke 0.3s, stroke-width 0.3s"); // Add transition
+
+        // Create a group for each node
+        const nodeGroup = g
+          .append("g")
+          .attr("class", "nodes")
+          .selectAll("g")
+          .data(graphData.nodes)
+          .enter()
+          .append("g")
+          .attr("data-id", (d) => d.id)
+          .style("cursor", "pointer")
+          .call(drag(simulation))
+          .on("click", (event, d) => {
+            // Handle node click
+            handleNodeClick(d);
+
+            // Open link in new tab when clicked (for both post and tag nodes)
+            if (!d.isTag && (d.link || d.permalink)) {
+              window.open(d.link || d.permalink, "_blank");
+            } else if (d.isTag) {
+                  // For tag nodes, permalink format: "/permalink/tag_name_with_underscores"
+                  const tagName = d.title.replace(/\s+/g, "-");
+                  const tagPermalink = {{ if eq hugo.Environment "production" }}
+                    "https://jitesh117.github.io/tags/" + tagName.toLowerCase()
+                  {{ else }}
+                    "http://localhost:1313/tags/" + tagName.toLowerCase()
+                  {{ end }};
+                  window.open(tagPermalink, "_blank");
+                }
+          })
+          .on("mouseover", (event, d) => {
+            // Show tooltip instantly on hover
+            const tooltipText = d.isTag
+              ? `Tag: ${d.title} (${d.connections} posts)`
+              : d.title;
+            showTooltip(tooltipText, event.pageX, event.pageY);
+            highlightConnections(d);
+          })
+          .on("mousemove", (event) => {
+            // Move tooltip with cursor
+            updateTooltipPosition(event.pageX, event.pageY);
+          })
+          .on("mouseout", () => {
+            // Hide tooltip when not hovering
+            hideTooltip();
+            resetHighlighting();
+          });
+
+        // Draw node circles
+        nodeGroup
+          .append("circle")
+          .attr("r", (d) => d.radius)
+          .attr("fill", (d) => {
+            if (d.isTag) {
+              return colorPalette[d.colorIndex];
+            }
+            return "#ffffff";
+          })
+          .attr("stroke", (d) => (d.isTag ? "#333333" : "#888888"))
+          .attr("stroke-width", (d) => (d.isTag ? 1.5 : 1))
+          .style("transition", "opacity 0.3s, fill 0.3s, stroke-width 0.3s");
+
+        // Add text labels to tag nodes
+        nodeGroup
+          .filter((d) => d.isTag)
+          .append("text")
+          .attr("class", "tag-label")
+          .attr("dy", (d) => d.radius + 12) // Position below the circle
+          .text((d) => d.title)
+          .style("opacity", 0.85)
+          .style("fill", (d) => {
+            // Check if the tag color is dark, if so use white text
+            const color = d3.color(colorPalette[d.colorIndex]);
+          })
+          .each(function (d) {
+            d.hasTagLabel = true; // Mark nodes that already have tag labels
+          });
+
+        // Create label groups for all nodes (skip tag nodes that already have labels)
+        const labelGroups = nodeGroup
+          .filter((d) => !d.hasTagLabel) // Skip tag nodes that already have labels
+          .append("g")
+          .attr("class", "label-group");
+
+        // Add background rectangles for text labels (initially hidden)
+        labelGroups
+          .append("rect")
+          .attr("class", "node-label-background")
+          .attr("x", -40)
+          .attr("y", (d) => d.radius + 2)
+          .attr("width", 80) // Will be adjusted to text width
+          .attr("height", 16)
+          .style("opacity", 0);
+
+        // Add text labels to ALL nodes (initially hidden, will show on zoom)
+        const labels = labelGroups
+          .append("text")
+          .attr("class", "node-label")
+          .attr("dy", (d) => d.radius + 14) // Position below the circle
+          .text((d) => d.title)
+          .style("opacity", 0); // Start hidden
+
+        // Adjust background rectangle width based on text length
+        labels.each(function () {
+          const bbox = this.getBBox();
+          const parent = d3.select(this.parentNode);
+          parent
+            .select("rect")
+            .attr("x", bbox.x - 2)
+            .attr("width", bbox.width + 4);
+        });
+
+        // Function to update label visibility based on zoom level
+        function updateLabelsVisibility(scale) {
+          // Show all node labels when zoomed in beyond threshold
+          nodeGroup
+            .selectAll(".node-label")
+            .style("opacity", scale >= zoomThreshold ? 1 : 0);
+          nodeGroup
+            .selectAll(".node-label-background")
+            .style("opacity", scale >= zoomThreshold ? 0.8 : 0);
+
+          // For tag nodes, we might want to always show their labels
+          nodeGroup
+            .filter((d) => d.isTag)
+            .selectAll(".tag-label")
+            .style("opacity", 0.85);
+        }
+
+        // Function to adjust node spacing based on zoom level
+        function adjustNodeSpacing(scale) {
+          // Calculate zoom factor - increase more aggressively
+          const zoomFactor = Math.max(0, (scale - 1) * 1.2);
+
+          // Increase collision radius when zoomed in
+          const collisionRadius = (d) => {
+            const baseRadius = d.radius * 1.5;
+            return baseRadius * (1 + zoomFactor);
+          };
+
+          // Adjust link distance based on zoom - much more aggressive spacing
+          const linkDistance = (d) => {
+            const baseDistance = d.source.isTag
+              ? 80 + d.source.connections * 3
+              : 60;
+            return baseDistance * (1 + zoomFactor * 1.5);
+          };
+
+          // Also adjust repulsive force
+          const chargeStrength = (d) => {
+            const baseCharge = d.isTag ? -300 : -50;
+            return baseCharge * (1 + zoomFactor);
+          };
+
+          // Update forces
+          simulation
+            .force("collision", d3.forceCollide().radius(collisionRadius))
+            .force(
+              "link",
+              d3
+                .forceLink(graphData.links)
+                .id((d) => d.id)
+                .distance(linkDistance),
+            )
+            .force("charge", d3.forceManyBody().strength(chargeStrength))
+            .alpha(0.3) // Restart simulation with low alpha
+            .restart();
+        }
+
+        // Variable to track if we're currently dragging
+        let isDragging = false;
+
+        // Function to handle node click
+        function handleNodeClick(d) {
+          // Reset all nodes and links
+          nodeGroup
+            .selectAll("circle")
+            .attr("fill", (n) => {
+              if (n.isTag) {
+                return colorPalette[n.colorIndex];
+              }
+              return "#ffffff";
+            })
+            .attr("stroke-width", (n) => (n.isTag ? 1.5 : 1));
+
+          link
+            .attr("stroke", "#888888")
+            .attr("stroke-width", 1)
+            .attr("stroke-opacity", 0.6);
+
+          // Highlight the clicked node
+          nodeGroup
+            .filter((n) => n.id === d.id)
+            .select("circle")
+            .attr("stroke-width", 2.5)
+            .attr("stroke", "#000000");
+
+          const connectedNodes = [];
+
+          if (d.isTag) {
+            // For tag nodes: find all posts connected to this tag
+            link.each(function (l) {
+              if (l.source.id === d.id || l.source === d.id) {
+                // Highlight this connection with the tag's color
+                d3.select(this)
+                  .attr("stroke", colorPalette[d.colorIndex])
+                  .attr("stroke-width", 2)
+                  .attr("stroke-opacity", 1);
+                connectedNodes.push(l.target.id || l.target);
+              }
+            });
+          } else {
+            // For post nodes: find all tags connected to this post
+            const connectedTagColors = {};
+
+            link.each(function (l) {
+              if (l.target.id === d.id || l.target === d.id) {
+                const sourceId = l.source.id || l.source;
+                const tagNode = graphData.nodes.find((n) => n.id === sourceId);
+                if (tagNode) {
+                  const tagColor = colorPalette[tagNode.colorIndex];
+                  connectedTagColors[sourceId] = tagColor;
+
+                  // Highlight this connection with the tag's color
+                  d3.select(this)
+                    .attr("stroke", tagColor)
+                    .attr("stroke-width", 2)
+                    .attr("stroke-opacity", 1);
+
+                  connectedNodes.push(sourceId);
+                }
+              }
+            });
+          }
+
+          // Highlight connected nodes
+          nodeGroup
+            .filter((n) => connectedNodes.includes(n.id))
+            .select("circle")
+            .attr("stroke-width", 2)
+            .attr("stroke", "#000000");
+        }
+
+        // Function to highlight connections for a node
+        function highlightConnections(d) {
+          if (isDragging) return; // Don't highlight during drag
+
+          // Dim all nodes and links first
+          nodeGroup.style("opacity", 0.4);
+          link.style("opacity", 0.1);
+
+          // Highlight this node
+          nodeGroup.filter((n) => n.id === d.id).style("opacity", 1);
+
+          const connectedNodes = [];
+
+          if (d.isTag) {
+            // For tag nodes: find all posts connected to this tag
+            link.each(function (l) {
+              if (l.source.id === d.id || l.source === d.id) {
+                // Highlight this connection with the tag's color
+                d3.select(this)
+                  .style("opacity", 1)
+                  .attr("stroke", colorPalette[d.colorIndex])
+                  .attr("stroke-width", 1.5);
+                connectedNodes.push(l.target.id || l.target);
+              }
+            });
+          } else {
+            // For post nodes: find all tags connected to this post and use their colors
+            link.each(function (l) {
+              if (l.target.id === d.id || l.target === d.id) {
+                const sourceId = l.source.id || l.source;
+                const tagNode = graphData.nodes.find((n) => n.id === sourceId);
+
+                if (tagNode) {
+                  // Highlight this connection with the tag's color
+                  d3.select(this)
+                    .style("opacity", 1)
+                    .attr("stroke", colorPalette[tagNode.colorIndex])
+                    .attr("stroke-width", 1.5);
+                  connectedNodes.push(sourceId);
+                }
+              }
+            });
+          }
+
+          // Highlight connected nodes
+          nodeGroup
+            .filter((n) => connectedNodes.includes(n.id))
+            .style("opacity", 1);
+        }
+
+        // Function to reset highlighting
+        function resetHighlighting() {
+          if (isDragging) return; // Don't reset during drag
+          nodeGroup.style("opacity", 1);
+          link
+            .style("opacity", 0.6)
+            .attr("stroke", "#888888")
+            .attr("stroke-width", 1);
+        }
+
+        // Update positions on tick
+        simulation.on("tick", () => {
+          link
+            .attr("x1", (d) => d.source.x)
+            .attr("y1", (d) => d.source.y)
+            .attr("x2", (d) => d.target.x)
+            .attr("y2", (d) => d.target.y);
+
+          nodeGroup.attr("transform", (d) => `translate(${d.x},${d.y})`);
+        });
+      }
+
+      // Tooltip functions
+      function showTooltip(text, x, y) {
+        tooltip.textContent = text;
+        tooltip.style.opacity = "1";
+        updateTooltipPosition(x, y);
+      }
+
+      function updateTooltipPosition(x, y) {
+        const rect = graphElement.getBoundingClientRect();
+        const offsetX = x - rect.left;
+        const offsetY = y - rect.top;
+
+        tooltip.style.left = `${offsetX + 15}px`;
+        tooltip.style.top = `${offsetY - 10}px`;
+      }
+
+      function hideTooltip() {
+        tooltip.style.opacity = "0";
+      }
+
+      // Create a drag behavior for nodes
+      function drag(simulation) {
+        function dragstarted(event) {
+          if (!event.active) simulation.alphaTarget(0.3).restart();
+          event.subject.fx = event.subject.x;
+          event.subject.fy = event.subject.y;
+          isDragging = true;
+        }
+
+        function dragged(event) {
+          event.subject.fx = event.x;
+          event.subject.fy = event.y;
+        }
+
+        function dragended(event) {
+          if (!event.active) simulation.alphaTarget(0);
+          event.subject.fx = null;
+          event.subject.fy = null;
+          setTimeout(() => {
+            isDragging = false;
+          }, 100);
+        }
+
+        return d3
+          .drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended);
+      }
+
+      // Process the Hugo index.json file
+      function processHugoData(data) {
+        const postNodes = data.map((post, index) => ({
+          id: "post-" + index,
+          title: post.title,
+          permalink: post.permalink,
+          link: post.link || post.permalink,
+          tags: post.tags || [],
+          isTag: false,
+        }));
+
+        // Collect all unique tags
+        const allTags = new Set();
+        postNodes.forEach((post) => {
+          if (post.tags && post.tags.length > 0) {
+            post.tags.forEach((tag) => allTags.add(tag));
+          }
+        });
+
+        // Create tag nodes
+        const tagNodes = Array.from(allTags).map((tag) => ({
+          id: "tag-" + tag.replace(/\s+/g, "-").toLowerCase(),
+          title: tag,
+          isTag: true,
+          colorIndex: 0, // Default color index, will be updated by graph coloring
+        }));
+
+        // Create links from posts to their tags
+        const links = [];
+        postNodes.forEach((post) => {
+          if (post.tags && post.tags.length > 0) {
+            post.tags.forEach((tag) => {
+              const tagId = "tag-" + tag.replace(/\s+/g, "-").toLowerCase();
+              links.push({
+                source: tagId,
+                target: post.id,
+                value: 1,
+              });
+            });
+          }
+        });
+
+        // Create tag-to-tag adjacency map for graph coloring
+        const tagAdjacencyMap = createTagAdjacencyMap(tagNodes, links);
+
+        // Apply graph coloring algorithm to assign colors to tag nodes
+        applyGraphColoring(tagNodes, tagAdjacencyMap);
+
+        // Combine post and tag nodes
+        const nodes = [...tagNodes, ...postNodes];
+
+        return { nodes, links };
+      }
+
+      // Create an adjacency map for tag nodes that are connected to the same posts
+      function createTagAdjacencyMap(tagNodes, links) {
+        const tagIds = tagNodes.map((tag) => tag.id);
+        const adjacencyMap = {};
+
+        // Initialize adjacency map for each tag
+        tagIds.forEach((tagId) => {
+          adjacencyMap[tagId] = new Set();
+        });
+
+        // Find post nodes
+        const postToTagsMap = {};
+
+        // For each link, store which tag is connected to which post
+        links.forEach((link) => {
+          const sourceId = link.source.id || link.source;
+          const targetId = link.target.id || link.target;
+
+          // If source is a tag and target is a post
+          if (sourceId.startsWith("tag-") && !targetId.startsWith("tag-")) {
+            if (!postToTagsMap[targetId]) {
+              postToTagsMap[targetId] = [];
+            }
+            postToTagsMap[targetId].push(sourceId);
+          }
+        });
+
+        // For each post, add all its connected tags as "adjacent" to each other
+        Object.values(postToTagsMap).forEach((connectedTags) => {
+          if (connectedTags.length > 1) {
+            // For each tag, add all other tags connected to the same post as adjacent
+            for (let i = 0; i < connectedTags.length; i++) {
+              for (let j = 0; j < connectedTags.length; j++) {
+                if (i !== j) {
+                  adjacencyMap[connectedTags[i]].add(connectedTags[j]);
+                }
+              }
+            }
+          }
+        });
+
+        return adjacencyMap;
+      }
+
+      // Apply a greedy graph coloring algorithm to assign colors to tag nodes
+      function applyGraphColoring(tagNodes, adjacencyMap) {
+        // Sort nodes by degree (number of connections) for better coloring
+        const sortedTags = [...tagNodes].sort((a, b) => {
+          const degreeA = adjacencyMap[a.id] ? adjacencyMap[a.id].size : 0;
+          const degreeB = adjacencyMap[b.id] ? adjacencyMap[b.id].size : 0;
+          return degreeB - degreeA; // Sort by degree (descending)
+        });
+
+        // For each tag node, assign the lowest possible color index
+        sortedTags.forEach((tagNode) => {
+          const usedColors = new Set();
+
+          // Check colors used by adjacent tags
+          if (adjacencyMap[tagNode.id]) {
+            adjacencyMap[tagNode.id].forEach((adjacentTagId) => {
+              // Find the adjacent tag node and its color
+              const adjacentTag = tagNodes.find((t) => t.id === adjacentTagId);
+              if (adjacentTag && adjacentTag.colorIndex !== undefined) {
+                usedColors.add(adjacentTag.colorIndex);
+              }
+            });
+          }
+
+          // Find the lowest unused color index
+          let colorIndex = 0;
+          while (usedColors.has(colorIndex)) {
+            colorIndex++;
+          }
+          tagNode.colorIndex = colorIndex % colorPalette.length;
+        });
+      }
+
+      // Fetch the data and initialize the graph
+      function loadGraphData() {
+  const jsonPath = "{{ .jsonPath | default "/index.json" }}";
+  fetch(jsonPath)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            graphData = processHugoData(data);
+            initGraph();
+          })
+          .catch((error) => {
+            console.error("Error loading blog graph data:", error);
+            graphElement.innerHTML =
+              '<div style="padding: 20px; text-align: center;">Error loading blog graph data.</div>';
+          });
+      }
+
+      // Handle window resize
+      window.addEventListener("resize", () => {
+        if (simulation) {
+          initGraph();
+        }
+      });
+
+      // Load D3.js if not already loaded
+      function loadScript(url, callback) {
+        if (typeof d3 !== "undefined") {
+          callback();
+          return;
+        }
+
+        const script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = url;
+        script.onload = callback;
+        document.head.appendChild(script);
+      }
+
+      // Start loading when the DOM is ready
+      loadScript(
+        "https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js",
+        loadGraphData,
+      );
+    })();
+</script>

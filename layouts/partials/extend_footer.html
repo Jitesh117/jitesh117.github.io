@@ -3,15 +3,191 @@
     #bmc-iframe {
       border-radius: 0 !important;
     }
+    
+    /* Mobile graph styles */
+    .graph-fab {
+      position: fixed;
+      bottom: 18px;
+      left: 18px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.3s;
+    }
+    
+    .graph-fab:hover {
+      transform: scale(1.05);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+    }
+    
+    .graph-container {
+      position: fixed;
+      bottom: 85px;
+      left: 18px;
+      width: 350px;
+      height: 350px;
+      background-color: var(--code-bg);
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      padding: 10px;
+      z-index: 99;
+      display: none;
+      overflow: hidden;
+    }
+    
+    .graph-container.active {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+  }
+  
+  /* Desktop graph styles */
+  @media (min-width: 769px) {
+    .graph-fab {
+      display: none; /* Hide FAB button on desktop */
+    }
+    
+    .graph-container {
+    position: fixed;
+    top: 50%;
+    left: calc(((100% - 700px) / 2) / 2); /* Center in left column */
+    transform: translateY(-50%) translateX(-50%); /* Center vertically and horizontally */
+    width: 350px; /* Fixed width for better positioning */
+    height: 350px;
+    background-color: var(--code-bg);
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    padding: 10px;
+    z-index: 99;
+    display: block; /* Always visible on desktop */
+    overflow: hidden;
+  }
+    
+    /* Hide when screen gets too narrow */
+    @media (max-width: 1400px) {
+      .graph-container {
+        display: none;
+      }
+    }
+  }
+  
+  /* Common styles */
+  .graph-fab svg {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+  }
+  
+  .graph-container svg {
+    display: block;
+    margin: 0 auto;
+    width: 100% !important;
+  }
+  
+  .graph-container .graph-header {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @media (max-width: 400px) {
+    .graph-container {
+      width: calc(100% - 36px);
+    }
   }
 </style>
-<script data-name="BMC-Widget"
-        data-cfasync="false"
-        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-        data-id="jitesh117"
-        data-description="Support me on Buy me a coffee!"
-        data-message="Like what you're reading? You can buy me a coffee!"
-        data-color="grey"
-        data-position="Right"
-        data-x_margin="18"
-        data-y_margin="18"></script>
+
+<script
+  data-name="BMC-Widget"
+  data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="jitesh117"
+  data-description="Support me on Buy me a coffee!"
+  data-message="Like what you're reading? You can buy me a coffee!"
+  data-color="grey"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"
+></script>
+
+<!-- Graph Container -->
+<div id="graph-container" class="graph-container">
+  {{ partial "graph.html" (dict "graphId" "floating-graph" "graphWidth" "100%" "graphHeight" "100%" "jsonPath" "/index.json") }}
+</div>
+
+<!-- Floating Action Button (mobile only) -->
+<div id="graph-fab" class="graph-fab">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,16c-2.21,0-4-1.79-4-4s1.79-4,4-4s4,1.79,4,4 S14.21,16,12,16z"/>
+    <circle cx="6.5" cy="9.5" r="1.5"/>
+    <circle cx="9.5" cy="5.5" r="1.5"/>
+    <circle cx="14.5" cy="5.5" r="1.5"/>
+    <circle cx="17.5" cy="9.5" r="1.5"/>
+    <circle cx="17.5" cy="14.5" r="1.5"/>
+    <circle cx="14.5" cy="18.5" r="1.5"/>
+    <circle cx="9.5" cy="18.5" r="1.5"/>
+    <circle cx="6.5" cy="14.5" r="1.5"/>
+  </svg>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const fab = document.getElementById('graph-fab');
+    const container = document.getElementById('graph-container');
+    let graphInitialized = false;
+    const isMobile = window.innerWidth <= 768;
+    
+    // Initialize graph on page load for desktop
+    if (!isMobile) {
+      setTimeout(function() {
+        window.dispatchEvent(new Event('resize'));
+        graphInitialized = true;
+      }, 500);
+    }
+    
+    fab.addEventListener('click', function() {
+      container.classList.toggle('active');
+      
+      // Initialize the graph the first time the container becomes visible
+      if (!graphInitialized && container.classList.contains('active')) {
+        setTimeout(function() {
+          window.dispatchEvent(new Event('resize'));
+          graphInitialized = true;
+        }, 100);
+      }
+    });
+    
+    // Close graph when clicking outside (mobile only)
+    document.addEventListener('click', function(event) {
+      if (isMobile && 
+          !container.contains(event.target) && 
+          !fab.contains(event.target) && 
+          container.classList.contains('active')) {
+        container.classList.remove('active');
+      }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+      const newIsMobile = window.innerWidth <= 768;
+      if (newIsMobile !== isMobile && !graphInitialized) {
+        // Trigger graph initialization when switching between mobile/desktop
+        setTimeout(function() {
+          window.dispatchEvent(new Event('resize'));
+          graphInitialized = true;
+        }, 100);
+      }
+    });
+  });
+</script>
