@@ -109,7 +109,8 @@
   }
   
   .graph-container svg g {
-    transition: transform 0.3s ease-out;
+    /* Remove this transition line to make drags instant */
+    /* transition: transform 0.3s ease-out; */
   }
   
   .graph-controls {
@@ -121,42 +122,20 @@
     border-bottom: 1px solid rgba(125,125,125,0.2);
   }
   
-  /* Update the graph controls button styling */
-  .graph-controls button {
-    background-color: rgba(var(--primary-rgb, 100, 100, 100), 0.2);
-    color: var(--content, #000);
-    border: 1px solid rgba(125, 125, 125, 0.3);
-    border-radius: 4px;
-    width: 32px;
-    height: 32px;
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  
-  .graph-controls button:hover {
-    background-color: rgba(var(--primary-rgb, 100, 100, 100), 0.3);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  }
-  
-  .graph-controls button:active {
-    transform: translateY(0);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    background-color: rgba(var(--primary-rgb, 100, 100, 100), 0.4);
-  }
-  
   .graph-title {
     font-size: 14px;
     color: var(--primary);
     padding: 0 10px;
     font-weight: 500;
+  }
+  
+  /* Add zoom instructions */
+  .zoom-instructions {
+    font-size: 12px;
+    font-style: italic;
+    opacity: 0.8;
+    font-weight: normal;
+    margin-left: 5px;
   }
   
   @keyframes fadeIn {
@@ -171,30 +150,25 @@
   }
 </style>
 
-{{ if and (eq .Kind "page") (not .IsHome) (ne .Layout "search") (ne .Type "tags") (ne .Type "categories") (ne .Type "archives") ( ne .RelPermalink "/graph/")}}
+{{ if and (eq .Kind "page") (not .IsHome) (ne .Layout "search") (ne .Type "tags") (ne .Type "categories") (ne .Type "archives") (ne .RelPermalink "/graph/")}}
 <!-- Graph Container -->
 <div id="graph-container" class="graph-container">
   <div class="graph-controls">
-    <button id="zoom-out" aria-label="Zoom out">−</button>
-    <div class="graph-title">Topic Graph</div>
-    <button id="zoom-in" aria-label="Zoom in">+</button>
+    <div class="graph-title">Topic Graph <span class="zoom-instructions">(Use scroll wheel to zoom)</span></div>
   </div>
   {{ partial "graph.html" (dict "graphId" "floating-graph" "graphWidth" "100%" "graphHeight" "calc(100% - 40px)" "jsonPath" "/index.json") }}
 </div>
 
 <!-- Floating Action Button (mobile only) -->
-{{/*  <div id="graph-fab" class="graph-fab">
+<div id="graph-fab" class="graph-fab">
   <img src="/images/graph_icon.png" alt="Graph" />
-</div>  */}}
+</div>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const fab = document.getElementById('graph-fab');
     const container = document.getElementById('graph-container');
-    const zoomIn = document.getElementById('zoom-in');
-    const zoomOut = document.getElementById('zoom-out');
     let graphInitialized = false;
-    let currentZoom = 1;
     const isMobile = window.innerWidth <= 1500;
     
     // Initialize graph on page load for desktop
@@ -205,76 +179,27 @@
       }, 500);
     }
     
-    fab.addEventListener('click', function() {
-      container.classList.toggle('active');
-      
-      // Initialize the graph the first time the container becomes visible
-      if (!graphInitialized && container.classList.contains('active')) {
-        setTimeout(function() {
-          window.dispatchEvent(new Event('resize'));
-          graphInitialized = true;
-        }, 100);
-      }
-    });
-    
-    // Zoom in button with smoother transition
-    zoomIn.addEventListener('click', function() {
-      currentZoom += 0.2;
-      applyZoom(true); // true for smooth transition
-    });
-    
-    // Zoom out button with smoother transition
-    zoomOut.addEventListener('click', function() {
-      if (currentZoom > 0.4) {
-        currentZoom -= 0.2;
-        applyZoom(true); // true for smooth transition
-      }
-    });
-    
-    function applyZoom(smooth = false) {
-      const svgElement = document.querySelector('#floating-graph svg');
-      if (svgElement) {
-        const g = svgElement.querySelector('g');
-        if (g) {
-          // Apply zoom transformation with centering
-          const centerX = svgElement.viewBox.baseVal.width / 2;
-          const centerY = svgElement.viewBox.baseVal.height / 2;
-          
-          // For smoother zooming
-          if (smooth) {
-            g.style.transition = "transform 350ms cubic-bezier(0.215, 0.61, 0.355, 1)";
-            g.style.transform = `translate(${centerX * (1-currentZoom)}px, ${centerY * (1-currentZoom)}px) scale(${currentZoom})`;
-            
-            // Also update the SVG attribute for D3 compatibility
-            setTimeout(() => {
-              g.setAttribute('transform', `translate(${centerX * (1-currentZoom)},${centerY * (1-currentZoom)}) scale(${currentZoom})`);
-            }, 350);
-          } else {
-            g.style.transition = "none";
-            g.setAttribute('transform', `translate(${centerX * (1-currentZoom)},${centerY * (1-currentZoom)}) scale(${currentZoom})`);
-          }
+    if (fab) {
+      fab.addEventListener('click', function() {
+        container.classList.toggle('active');
+        
+        // Initialize the graph the first time the container becomes visible
+        if (!graphInitialized && container.classList.contains('active')) {
+          setTimeout(function() {
+            window.dispatchEvent(new Event('resize'));
+            graphInitialized = true;
+          }, 100);
         }
-      }
+      });
     }
     
     // Close graph when clicking outside (mobile only)
     document.addEventListener('click', function(event) {
       if (isMobile && 
-          !container.contains(event.target) && 
-          !fab.contains(event.target) && 
+          container && !container.contains(event.target) && 
+          fab && !fab.contains(event.target) && 
           container.classList.contains('active')) {
         container.classList.remove('active');
-      }
-    });
-    
-    // Handle window resize
-    window.addEventListener('resize', function() {
-      const newIsMobile = window.innerWidth <= 1500;
-      if (newIsMobile !== isMobile && !graphInitialized) {
-        setTimeout(function() {
-          window.dispatchEvent(new Event('resize'));
-          graphInitialized = true;
-        }, 100);
       }
     });
   });
