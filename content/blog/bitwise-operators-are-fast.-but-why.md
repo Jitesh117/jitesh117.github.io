@@ -4,6 +4,7 @@ date = 2025-08-10T11:29:39+05:30
 draft = false
 showToc = true
 cover.Image = '/images/bitwise_operators.png'
+tags = ['tech']
 +++
 
 Some days back I was solving [this](https://codeforces.com/contest/1891/problem/B) problem on [CodeForces](https://codeforces.com/), and I was getting TLE(Time Limit Exceeded) for my solution, even though I knew it shouldn't take too long to run, since I had already optimized my code, after reading the editorial.
