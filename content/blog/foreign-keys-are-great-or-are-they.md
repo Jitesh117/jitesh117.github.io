@@ -1,7 +1,7 @@
 +++
 title = "Foreign Keys Are Great. Or are they?"
 date = 2025-08-31T10:42:21+05:30
-draft = true
+draft = false
 showToc = true
 cover.image = '/images/FK.jpg'
 tags = ['Tech', 'SQL']
