@@ -7,13 +7,13 @@ cover.image = ''
 tags = ['tech', 'opinion']
 +++
 
-A couple of months ago, I started building the backend for a personal project. Then life happened — work got busy, other stuff took priority, and the project went on pause.
+A couple of months ago, I started building the backend for a personal project. Then life happened, got busy in work, other stuff took priority, and the project went on pause.
 
 At that time, I skipped TDD because I wanted to move fast. I told myself, “I’ll add tests later.” Classic.
 
 Fast forward to a few days ago, I finally decided to pick it back up. But when I opened the code, I couldn’t make sense of it. I didn’t remember the flow, the logic, or even why I wrote some parts the way I did.
 
-That’s when it hit me — maybe I should write the tests I skipped earlier. It’d help me re-learn the code and make future changes safer. Two birds, one stone.
+That’s when it hit me, maybe I should write the tests I skipped earlier. It’d help me re-learn the code and make future changes safer. Two birds, one stone.
 
 While writing the tests, I realized how tangled things were. The database layer was tightly coupled with the handlers, so testing anything in isolation was a mess. I ended up refactoring a ton of code just to make it testable.
 
