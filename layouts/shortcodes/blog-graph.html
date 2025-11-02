@@ -2,7 +2,7 @@
 default "100%" (.Get "width") }} {{ $graphHeight := default "600px" (.Get
 "height") }} {{ $jsonPath := default "/index.json" (.Get "data") }}
 <div class="blog-graph-container" id="container-{{ $graphId }}">
-    <div class="blog-graph" id="{{ $graphId }}"></div>
+  <div class="blog-graph" id="{{ $graphId }}"></div>
 </div>
 <style>
   .blog-graph-container {
@@ -593,33 +593,43 @@ default "100%" (.Get "width") }} {{ $graphHeight := default "600px" (.Get
         isTag: false,
       }));
 
-      // Collect all unique tags
+      // Collect all unique tags (normalized to lowercase) to avoid duplicate
+      // nodes when tags appear with different casing across posts.
       const allTags = new Set();
       postNodes.forEach((post) => {
         if (post.tags && post.tags.length > 0) {
-          post.tags.forEach((tag) => allTags.add(tag));
+          post.tags.forEach((tag) => {
+            if (typeof tag === "string") {
+              allTags.add(tag.trim().toLowerCase());
+            }
+          });
         }
       });
 
-      // Create tag nodes
+      // Create tag nodes from normalized tags. Titles are stored lowercase
+      // as well so node identity and display remain consistent.
       const tagNodes = Array.from(allTags).map((tag) => ({
-        id: "tag-" + tag.replace(/\s+/g, "-").toLowerCase(),
+        id: "tag-" + tag.replace(/\s+/g, "-"),
         title: tag,
         isTag: true,
         colorIndex: 0, // Default color index, will be updated by graph coloring
       }));
 
-      // Create links from posts to their tags
+      // Create links from posts to their tags. Use a normalized tag id so
+      // casing differences don't create duplicate tag nodes or broken links.
       const links = [];
       postNodes.forEach((post) => {
         if (post.tags && post.tags.length > 0) {
           post.tags.forEach((tag) => {
-            const tagId = "tag-" + tag.replace(/\s+/g, "-").toLowerCase();
-            links.push({
-              source: tagId,
-              target: post.id,
-              value: 1,
-            });
+            if (typeof tag === "string") {
+              const normalized = tag.trim().toLowerCase();
+              const tagId = "tag-" + normalized.replace(/\s+/g, "-");
+              links.push({
+                source: tagId,
+                target: post.id,
+                value: 1,
+              });
+            }
           });
         }
       });
