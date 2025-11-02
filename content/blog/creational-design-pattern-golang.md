@@ -4,7 +4,7 @@ date = 2025-10-26T08:00:19+05:30
 draft = false
 showToc = true
 cover.image = 'images/creational_design.jpg'
-tags = ['Golang', 'Tech']
+tags = ['golang', 'tech']
 +++
 
 This is one the first blog in the design pattern series, and in this one, I'll be focusing on the creational design patterns. Creational Design pattern is one of the most intuitive design pattern if you ask me, dealing with the fundamental problem of _how do we create objects the right way_ .

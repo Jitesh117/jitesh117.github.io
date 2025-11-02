@@ -3,7 +3,7 @@ title = 'My First Month on a Mac'
 date = 2025-07-04T19:42:57+05:30
 draft = false
 cover.image = '/images/mac_experience.jpg'
-tags = ['Linux', 'Mac']
+tags = ['linux', 'mac']
 +++
 
 This june, I got my first mac, a mac mini to be precise. And to be honest, I've always wanted own a mac. You always hear from the mac cultists, how a mac can't be compared with _any_ other computer.

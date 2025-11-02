@@ -4,7 +4,7 @@ date = 2025-08-31T10:42:21+05:30
 draft = false
 showToc = true
 cover.image = '/images/FK.jpg'
-tags = ['Tech', 'SQL']
+tags = ['tech', 'SQL']
 +++
 
 Last week I was knee-deep in building the backend for my project. I had just wrapped up the user endpoints and was ready to tackle posts. That's when I made a classic mistake - I jumped straight into coding without doing any proper database modeling or planning.
