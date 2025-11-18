@@ -10,7 +10,7 @@
         src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
         data-id="jitesh117"
         data-description="Support me on Buy me a coffee!"
-        data-message="Like what you're reading? You can buy me a coffee!"
+        data-message="Like what you're reading? You can donate to support my writing!"
         data-color="grey"
         data-position="Right"
         data-x_margin="18"
@@ -21,7 +21,7 @@
     #bmc-iframe {
       border-radius: 0 !important;
     }
-    
+
     /* FAB button styles */
     .graph-fab {
       position: fixed;
@@ -31,29 +31,29 @@
       height: 56px;
       border-radius: 50%;
       background-color: var(--primary);
-      box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       z-index: 100;
       transition: all 0.3s;
-      border: 2px solid rgba(255,255,255,0.1);
+      border: 2px solid rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(2px);
     }
-    
+
     .graph-fab:hover {
       transform: scale(1.05);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     }
-    
+
     .graph-fab img {
       width: 30px;
       height: 30px;
       object-fit: contain;
       filter: brightness(1.1);
     }
-    
+
     .graph-container {
       position: fixed;
       bottom: 85px;
@@ -62,26 +62,26 @@
       height: 350px;
       background-color: var(--code-bg);
       border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
       padding: 15px;
       z-index: 99;
       display: none;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
+
     .graph-container.active {
       display: block;
       animation: fadeIn 0.3s ease-in-out;
     }
   }
-  
+
   /* Desktop graph styles (large screens) */
   @media (min-width: 1501px) {
     .graph-fab {
       display: none; /* Hide FAB button on large desktop */
     }
-    
+
     .graph-container {
       position: fixed;
       top: 50%;
@@ -91,15 +91,15 @@
       height: 350px;
       background-color: var(--code-bg);
       border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
       padding: 15px;
       z-index: 99;
       display: block; /* Always visible on desktop */
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
   }
-  
+
   /* Common styles */
   .graph-container svg {
     display: block;
@@ -107,28 +107,28 @@
     width: 100% !important;
     height: calc(100% - 40px) !important;
   }
-  
+
   .graph-container svg g {
     /* Remove this transition line to make drags instant */
     /* transition: transform 0.3s ease-out; */
   }
-  
+
   .graph-controls {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 5px 0;
     margin-bottom: 5px;
-    border-bottom: 1px solid rgba(125,125,125,0.2);
+    border-bottom: 1px solid rgba(125, 125, 125, 0.2);
   }
-  
+
   .graph-title {
     font-size: 14px;
     color: var(--primary);
     padding: 0 10px;
     font-weight: 500;
   }
-  
+
   /* Add zoom instructions */
   .zoom-instructions {
     font-size: 12px;
@@ -137,69 +137,82 @@
     font-weight: normal;
     margin-left: 5px;
   }
-  
+
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  
+
   @media (max-width: 400px) {
     .graph-container {
       width: calc(100% - 36px);
     }
   }
 </style>
-
-{{ if and (eq .Kind "page") (not .IsHome) (ne .Layout "search") (ne .Type "tags") (ne .Type "categories") (ne .Type "archives") (ne .RelPermalink "/graph/")}}
+{{ if and (eq .Kind "page") (not .IsHome) (ne .Layout "search") (ne .Type
+"tags") (ne .Type "categories") (ne .Type "archives") (ne .RelPermalink
+"/graph/")}}
 <!-- Graph Container -->
 <div id="graph-container" class="graph-container">
-  <div class="graph-controls">
-    <div class="graph-title">Topic Graph <span class="zoom-instructions">(Use scroll wheel to zoom)</span></div>
-  </div>
-  {{ partial "graph.html" (dict "graphId" "floating-graph" "graphWidth" "100%" "graphHeight" "calc(100% - 40px)" "jsonPath" "/index.json") }}
+    <div class="graph-controls">
+        <div class="graph-title">
+            Topic Graph
+            <span class="zoom-instructions">(Use scroll wheel to zoom)</span>
+        </div>
+    </div>
+    {{ partial "graph.html" (dict "graphId" "floating-graph" "graphWidth" "100%"
+    "graphHeight" "calc(100% - 40px) " "jsonPath" "/index.json") }}
 </div>
-
 <!-- Floating Action Button (mobile only) -->
 <div id="graph-fab" class="graph-fab">
-  <img src="/images/graph_icon.png" alt="Graph" />
+    <img src="/images/graph_icon.png" alt="Graph" />
 </div>
-
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const fab = document.getElementById('graph-fab');
-    const container = document.getElementById('graph-container');
+  document.addEventListener("DOMContentLoaded", function () {
+    const fab = document.getElementById("graph-fab");
+    const container = document.getElementById("graph-container");
     let graphInitialized = false;
     const isMobile = window.innerWidth <= 1500;
-    
+
     // Initialize graph on page load for desktop
     if (!isMobile) {
-      setTimeout(function() {
-        window.dispatchEvent(new Event('resize'));
+      setTimeout(function () {
+        window.dispatchEvent(new Event("resize"));
         graphInitialized = true;
       }, 500);
     }
-    
+
     if (fab) {
-      fab.addEventListener('click', function() {
-        container.classList.toggle('active');
-        
+      fab.addEventListener("click", function () {
+        container.classList.toggle("active");
+
         // Initialize the graph the first time the container becomes visible
-        if (!graphInitialized && container.classList.contains('active')) {
-          setTimeout(function() {
-            window.dispatchEvent(new Event('resize'));
+        if (!graphInitialized && container.classList.contains("active")) {
+          setTimeout(function () {
+            window.dispatchEvent(new Event("resize"));
             graphInitialized = true;
           }, 100);
         }
       });
     }
-    
+
     // Close graph when clicking outside (mobile only)
-    document.addEventListener('click', function(event) {
-      if (isMobile && 
-          container && !container.contains(event.target) && 
-          fab && !fab.contains(event.target) && 
-          container.classList.contains('active')) {
-        container.classList.remove('active');
+    document.addEventListener("click", function (event) {
+      if (
+        isMobile &&
+        container &&
+        !container.contains(event.target) &&
+        fab &&
+        !fab.contains(event.target) &&
+        container.classList.contains("active")
+      ) {
+        container.classList.remove("active");
       }
     });
   });
