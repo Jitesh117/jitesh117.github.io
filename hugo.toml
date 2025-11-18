@@ -136,6 +136,11 @@ name = "Graph"
 url = "/graph/"
 weight = 9
 
+[[menu.main]]
+identifier = "donate"
+name = "Donate"
+url = "/donate/"
+weight = 10
 
 # Markup and Syntax Highlighting Settings
 [markup.highlight]
