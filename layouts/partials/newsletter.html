@@ -1,0 +1,65 @@
+{{ if and .IsPage (not .IsSection) (ne .RelPermalink "/tags/") (ne .RelPermalink
+"/search/") }}
+<style>
+  /* Chrome Autofill Fix */
+  input.autofill-fix:-webkit-autofill,
+  input.autofill-fix:-webkit-autofill:hover,
+  input.autofill-fix:-webkit-autofill:focus,
+  input.autofill-fix:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--primary2) !important;
+    caret-color: var(--primary2) !important;
+    -webkit-box-shadow: 0 0 0px 1000px var(--entry) inset !important;
+    box-shadow: 0 0 0px 1000px var(--entry) inset !important;
+    background-color: var(--entry) !important;
+    transition: background-color 9999s ease-in-out 0s;
+  }
+</style>
+<div style="max-width: 100%;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            border: 0.5px solid var(--border);
+            border-radius: 12px;
+            background: var(--entry)">
+    <form action="https://buttondown.com/api/emails/embed-subscribe/jitesh117"
+          target="_blank"
+          method="post"
+          class="embeddable-buttondown-form"
+          style="text-align: left">
+        <label for="bd-email"
+               style="display: block;
+                      margin-bottom: 0.5rem;
+                      font-weight: 600;
+                      font-size: 1rem;
+                      color: var(--primary2)">Join the newsletter!</label>
+        <input type="email"
+               name="email"
+               id="bd-email"
+               class="autofill-fix"
+               placeholder="you@example.com"
+               required
+               style="width: 100%;
+                      padding: 0.65rem;
+                      border: 1px solid #ccc;
+                      border-radius: 8px;
+                      margin-bottom: 1rem;
+                      color: var(--primary2)" />
+        <input type="submit"
+               value="Subscribe"
+               style="width: 100%;
+                      padding: 0.75rem;
+                      background: var(--primary);
+                      color: var(--theme);
+                      border: none;
+                      border-radius: 8px;
+                      font-weight: 600;
+                      font-size: 1rem;
+                      cursor: pointer" />
+        <p style="font-size: 0.85rem; margin-top: 1rem; text-align: center">
+            <a href="https://buttondown.com/refer/jitesh117"
+               target="_blank"
+               style="color: var(--secondary);
+                      text-decoration: none">Powered by Buttondown</a>
+        </p>
+    </form>
+</div>
+{{ end }}
