@@ -1,7 +1,7 @@
 +++
 title = "Implementing MapReduce in Golang"
-date = 2025-11-22T08:14:37+05:30
-draft = true
+date = 2025-11-21T08:14:37+05:30
+draft = false
 showToc = true
 cover.image = '/images/mapreduce.png'
 tags = ['golang', 'paper implementation']
