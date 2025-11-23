@@ -14,6 +14,8 @@ Welcome to my blog, where I document my learning journey and share it to the wor
 [Archive]({{< relref "/archive/" >}}) page lists all posts in chronological order. You can also search by keywords using the [Search]({{< relref "/search/" >}}) or [Tags]({{< relref "/tags" >}}) pages.
 {{< /description-with-image >}}
 
+{{< blog-graph width="300px" height="300px" >}}
+
 ## Recent Projects
 
 - [Brainrot Language Server](https://github.com/Jitesh117/brainrot-lsp) built using Golang. [Blog post]({{< relref "/blog/creating-a-brainrot-language-server-in-golang/" >}})
@@ -25,7 +27,7 @@ Welcome to my blog, where I document my learning journey and share it to the wor
 ## Things I'm proud of
 
 - Got Featured in [Golang Weekly #531](https://golangweekly.com/issues/531)
-- Scaled my blog to **9k+** readers across **100+** countries across the world
+- Scaled my blog to **18k+** readers across **100+** countries across the world
 - Dataset and Notebooks expert on [Kaggle](https://www.kaggle.com/jiteshkumarsahoo)
 
 {{< socials align="center" >}}
