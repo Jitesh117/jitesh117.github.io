@@ -294,7 +294,7 @@ After all reducers finish:
 
 ```
 --- reducer 0 output ---
-foo 4
+foo 3
 qux 4
 
 --- reducer 1 output ---
