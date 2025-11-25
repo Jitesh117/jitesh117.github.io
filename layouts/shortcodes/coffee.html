@@ -10,14 +10,18 @@
         If my articles helped you or made your day a bit better, here’s a small way
         to support my work.
     </p>
-    Scan this UPI QR: <b>sahookumarjitesh@okaxis</b>
+    Scan/Tap this UPI QR: <b>sahookumarjitesh@okaxis</b>
     <div style="display: flex; justify-content: center; margin-bottom: 1.5rem">
-        <img src="{{ .Site.BaseURL }}images/qr_code.png"
-             alt="QR Code"
-             style="width: 240px;
-                    border: 1px solid #ccc;
-                    border-radius: 10px;
-                    padding: 8px" />
+        <a href="upi://pay?pa=sahookumarjitesh@okaxis&pn=Jitesh%20Kumar%20Sahoo&aid=uGICAgMDU1d_EWQ"
+           target="_blank">
+            <img src="{{ .Site.BaseURL }}images/qr_code.png"
+                 alt="QR Code"
+                 style="width: 240px;
+                        border: 1px solid #ccc;
+                        border-radius: 10px;
+                        padding: 8px;
+                        cursor: pointer" />
+        </a>
     </div>
     OR
     <div style="width: 200px; margin: 0 auto">
