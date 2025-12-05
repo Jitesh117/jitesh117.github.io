@@ -138,6 +138,8 @@ type Task struct {
 }
 ```
 
+{{< newsletter >}}
+
 ## How It All Works Together
 
 Let's trace through a complete example with the input:
