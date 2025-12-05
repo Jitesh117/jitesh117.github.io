@@ -19,7 +19,7 @@ These were the points which one would normally hear _for_ using ORMs in other la
 - **Abstraction:** "I don't want to know which SQL dialect I'm using."
 - **Convenience:** "I just want `user.save()`."
 
-But Go is a different beast. After combing through discussions and Reddit threads, it becomes clear that the rejection of ORMs isn't just about preference—it’s about the fundamental philosophy of the language.
+But Go is a different beast. After combing through discussions and Reddit threads, it becomes clear that the rejection of ORMs isn't just about preference - it's about the fundamental philosophy of the language.
 
 ## 1. The Burden of "Mental Translation"
 
@@ -37,11 +37,11 @@ You need to write a complex query involving a `LEFT JOIN`, a `GROUP BY`, and a W
 
 As another user pointed out, the abstraction layer often creates more work than it saves:
 
-> Things that could have just been sql queries had to go through abstractions and “magic” which eventually shoots you in the foot when you didn’t handle that one edge case, or don’t understand how it works underneath the table.
+> Things that could have just been sql queries had to go through abstractions and "magic" which eventually shoots you in the foot when you didn't handle that one edge case, or don't understand how it works underneath the table.
 
 ## 2. The Fallacy of the "Black Box"
 
-Go is a language that values **explicitness**. We handle errors explicitly (`if err != nil`). We prefer readable code over clever code. ORMs, by definition, rely on "Magic"—implicit behaviors that happen without the developer seeing them.
+Go is a language that values **explicitness**. We handle errors explicitly (`if err != nil`). We prefer readable code over clever code. ORMs, by definition, rely on "Magic", implicit behaviors that happen without the developer seeing them.
 
 This "Black Box" nature becomes a nightmare when performance issues arise.
 
@@ -58,7 +58,7 @@ Perhaps the most insidious issue with ORMs is how they influence application des
 
 This leads to dangerous coupling:
 
-> Orms also encourage bad usage, I have seen code that just saves whatever “object” is passed from front end. You cant imagine the amount of overwritten data and invalid states that caused.
+> Orms also encourage bad usage, I have seen code that just saves whatever "object" is passed from front end. You cant imagine the amount of overwritten data and invalid states that caused.
 
 When your API request body, your internal business logic struct, and your database model are all the exact same struct (because the ORM makes it easy to do so), you risk:
 
