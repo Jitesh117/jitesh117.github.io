@@ -26,8 +26,15 @@ Welcome to my blog, where I document my learning journey and share it to the wor
 ## Things I'm proud of
 
 - Got Featured in [Golang Weekly #531](https://golangweekly.com/issues/531)
-- Scaled my blog to **24K+** readers across **100+** countries across the world
+- Scaled my blog to **26K+** readers across **100+** countries across the world
 - Dataset and Notebooks expert on [Kaggle](https://www.kaggle.com/jiteshkumarsahoo)
+
+## Want to hire me?
+
+You landed on my blog and something here made you think, “We should work together"?
+If that’s the case, great! Because building systems and writing clean, purposeful software is what I do best.
+
+Hit me up on my email: [sahookumarjitesh@gmail.com](mailto:sahookumarjitesh@gmail.com)
 
 ## In case you need this
 
