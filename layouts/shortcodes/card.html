@@ -5,6 +5,7 @@
     background-color: #1a1a1a;
     color: #d1d1d1;
     border: 0.5px solid grey;
+    padding: 0px 12px;
   }
 
   .image-card img {
@@ -14,7 +15,6 @@
   }
 
   .image-card-content {
-    padding: 8px;
     display: flex;
     text-align: center;
   }
@@ -33,9 +33,9 @@
 {{ $img := .Get "src" }} {{ $alt := .Get "alt" | default "" }} {{ $caption :=
 .Get "caption" | default "Image under assets directory, processed by Hugo." }}
 <div class="image-card">
-    <img src="{{ $img }}" alt="{{ $alt }}" />
-    <div class="image-card-content">
-        <h3 class="image-card-title">{{ $alt }}</h3>
-        <p class="image-card-caption">{{ $caption }}</p>
-    </div>
+  <img src="{{ $img }}" alt="{{ $alt }}" />
+  <div class="image-card-content">
+    <h3 class="image-card-title">{{ $alt }}</h3>
+    <p class="image-card-caption">{{ $caption }}</p>
+  </div>
 </div>
