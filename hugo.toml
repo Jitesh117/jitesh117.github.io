@@ -137,10 +137,16 @@ url = "/graph/"
 weight = 9
 
 [[menu.main]]
+identifier = "hotwheels"
+name = "Hotwheels"
+url = "/hotwheels/"
+weight = 10
+
+[[menu.main]]
 identifier = "donate"
 name = "Donate"
 url = "/donate/"
-weight = 10
+weight = 11
 
 # Markup and Syntax Highlighting Settings
 [markup.highlight]
