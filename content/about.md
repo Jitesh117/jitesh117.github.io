@@ -36,6 +36,15 @@ If that’s the case, great! Because building systems and writing clean, purpose
 
 Hit me up on my email: [sahookumarjitesh@gmail.com](mailto:sahookumarjitesh@gmail.com)
 
+## I also post food I cooked
+
+{{< cards >}}
+{{< card src="/images/shin_ramen.jpeg"  caption="Shin Ramyun" >}}
+{{< card src="/images/chicken_brocolli.jpeg"  caption="Pan fried chicken and brocolli with rice" >}}
+{{< /cards >}}
+
+More on [this page]({{< relref "/food/" >}})
+
 ## In case you need this
 
 {{< youtube amXl7FG7J4c >}}
