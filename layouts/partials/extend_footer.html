@@ -5,16 +5,18 @@
     }
   }
 </style>
-<script data-name="BMC-Widget"
-        data-cfasync="false"
-        src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-        data-id="jitesh117"
-        data-description="Support me on Buy me a coffee!"
-        data-message="Like what you're reading? You can donate to support my writing!"
-        data-color="yellow"
-        data-position="Right"
-        data-x_margin="18"
-        data-y_margin="18"></script>
+<script
+  data-name="BMC-Widget"
+  data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="jitesh117"
+  data-description="Support me on Buy me a coffee!"
+  data-message="Like what you're reading? You can donate to support my writing!"
+  data-color="#FFDD00"
+  data-position="Right"
+  data-x_margin="18"
+  data-y_margin="18"
+></script>
 <style>
   /* Mobile and tablet graph styles */
   @media (max-width: 1500px) {
@@ -160,18 +162,18 @@
 "/graph/")}}
 <!-- Graph Container -->
 <div id="graph-container" class="graph-container">
-    <div class="graph-controls">
-        <div class="graph-title">
-            Topic Graph
-            <span class="zoom-instructions">(Use scroll wheel to zoom)</span>
-        </div>
+  <div class="graph-controls">
+    <div class="graph-title">
+      Topic Graph
+      <span class="zoom-instructions">(Use scroll wheel to zoom)</span>
     </div>
-    {{ partial "graph.html" (dict "graphId" "floating-graph" "graphWidth" "100%"
-    "graphHeight" "calc(100% - 40px) " "jsonPath" "/index.json") }}
+  </div>
+  {{ partial "graph.html" (dict "graphId" "floating-graph" "graphWidth" "100%"
+  "graphHeight" "calc(100% - 40px) " "jsonPath" "/index.json") }}
 </div>
 <!-- Floating Action Button (mobile only) -->
 <div id="graph-fab" class="graph-fab">
-    <img src="/images/graph_icon.png" alt="Graph" />
+  <img src="/images/graph_icon.png" alt="Graph" />
 </div>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
