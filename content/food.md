@@ -17,4 +17,6 @@ hideMeta = true
 {{< card src="/images/chicken_popcorn.jpeg"  caption="Peri peri chicken popcorn" >}}
 {{< card src="/images/chicken_rice.jpeg"  caption="Chicken curry with rice and jalebis" >}}
 {{< card src="/images/rajma_chawal.jpeg"  caption="Rajma Chawal" >}}
+{{< card src="/images/oats.jpeg"  caption="Overnight chocolate protein oats" >}}
+{{< card src="/images/garlic_spaghetti.jpeg"  caption="Garlic chilli spaghetti" >}}
 {{< /cards >}}
