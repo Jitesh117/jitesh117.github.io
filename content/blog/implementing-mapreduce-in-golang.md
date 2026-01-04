@@ -248,7 +248,7 @@ Once all maps are done, the Master has intermediate data organized like this:
 
 ```
 Reducer 0: {
-    "foo": ["1", "1", "1", "1"],
+    "foo": ["1", "1", "1"],
     "qux": ["1", "1", "1", "1"]
 }
 
