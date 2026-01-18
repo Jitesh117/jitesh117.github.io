@@ -1,3 +1,6 @@
+{{ $img := .Get "src" }} {{ $alt := .Get "alt" | default "" }} {{ $caption :=
+.Get "caption" | default "" }} {{ $recipe := .Get "recipe" }}
+
 <style>
   .image-card {
     border-radius: 8px;
@@ -5,37 +8,321 @@
     background-color: #1a1a1a;
     color: #d1d1d1;
     border: 0.5px solid grey;
-    padding: 0px 12px;
+    padding: 0 12px;
+    cursor: pointer;
+    transition: transform 0.1s ease;
   }
-
+  .image-card:active {
+    transform: scale(0.98);
+  }
   .image-card img {
     width: 100%;
     height: auto;
     object-fit: cover;
   }
-
   .image-card-content {
-    display: flex;
     text-align: center;
+    padding: 8px 0;
   }
-
   .image-card-title {
     font-size: 1.125rem;
     font-weight: 600;
     color: white;
-    margin-bottom: 8px;
   }
-
   .image-card-caption {
     font-size: 1rem;
   }
+  /* ---------- modal ---------- */
+  .recipe-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  .recipe-modal.hidden {
+    display: none;
+  }
+  .recipe-modal-wrapper {
+    position: relative;
+    max-width: 720px;
+    width: 90%;
+    max-height: 85vh;
+  }
+  .recipe-modal-content {
+    background: #121212;
+    color: #eaeaea;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 24px;
+    padding-top: 24px;
+    border-radius: 10px;
+    position: relative;
+  }
+  .recipe-modal-close {
+    position: sticky;
+    top: 10px;
+    left: calc(100% - 48px);
+    margin-bottom: -36px;
+    font-size: 28px;
+    cursor: pointer;
+    background: #121212;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    color: #fff;
+    border: 1px solid #333;
+    transition: background 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    float: right;
+  }
+  .recipe-modal-close:hover {
+    background: #2a2a2a;
+  }
+  .recipe-modal-image-container {
+    position: relative;
+    width: calc(100% + 48px);
+    margin-left: -24px;
+    margin-right: -24px;
+    height: 250px;
+    justify-content: center;
+    border-radius: 10px 10px 0 0;
+    clear: both;
+  }
+  .recipe-modal-image-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(20px);
+    opacity: 0.6;
+    margin-bottom: 24px;
+  }
+  .recipe-modal-image {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    z-index: 1;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .recipe-modal {
+      align-items: flex-end;
+    }
+
+    .recipe-modal-wrapper {
+      width: 100%;
+      max-height: 95vh;
+    }
+
+    .recipe-modal-content {
+      border-radius: 10px 10px 0 0;
+      padding: 16px;
+      padding-top: 16px;
+      max-height: 95vh;
+    }
+
+    .recipe-modal-close {
+      top: 8px;
+      left: calc(100% - 40px);
+      width: 32px;
+      height: 32px;
+      font-size: 24px;
+      margin-bottom: -32px;
+    }
+
+    .recipe-modal-image-container {
+      width: calc(100% + 32px);
+      margin-left: -16px;
+      margin-right: -16px;
+      margin-top: 8px;
+      height: 300px;
+    }
+
+    .recipe-modal-image {
+      max-width: 80%;
+    }
+
+    .recipe-modal-content h1 {
+      font-size: 1.5em;
+    }
+
+    .recipe-modal-content h2 {
+      font-size: 1.25em;
+    }
+
+    .recipe-modal-content h3 {
+      font-size: 1.1em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .recipe-modal-image-container {
+      height: 250px;
+    }
+
+    .recipe-modal-image {
+      max-width: 90%;
+    }
+  }
+
+  /* Markdown styling */
+  .recipe-modal-content h1,
+  .recipe-modal-content h2,
+  .recipe-modal-content h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    color: #fff;
+  }
+  .recipe-modal-content h1 {
+    font-size: 2em;
+  }
+  .recipe-modal-content h2 {
+    font-size: 1.5em;
+  }
+  .recipe-modal-content h3 {
+    font-size: 1.25em;
+  }
+  .recipe-modal-content p {
+    margin-bottom: 1em;
+    line-height: 1.6;
+  }
+  .recipe-modal-content ul,
+  .recipe-modal-content ol {
+    margin-bottom: 1em;
+    padding-left: 2em;
+    line-height: 1.6;
+  }
+  .recipe-modal-content code {
+    background: #2a2a2a;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.9em;
+  }
+  .recipe-modal-content pre {
+    background: #2a2a2a;
+    padding: 1em;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-bottom: 1em;
+  }
+  .recipe-modal-content blockquote {
+    border-left: 4px solid #555;
+    padding-left: 1em;
+    margin-left: 0;
+    color: #aaa;
+  }
 </style>
-{{ $img := .Get "src" }} {{ $alt := .Get "alt" | default "" }} {{ $caption :=
-.Get "caption" | default "Image under assets directory, processed by Hugo." }}
-<div class="image-card">
+
+<div
+  class="image-card"
+  {{
+  if
+  $recipe
+  }}
+  data-recipe="{{ $recipe }}"
+  data-img="{{ $img }}"
+  data-alt="{{ $alt }}"
+  onclick="openRecipeModal(this)"
+  role="button"
+  tabindex="0"
+  {{
+  end
+  }}
+>
   <img src="{{ $img }}" alt="{{ $alt }}" />
   <div class="image-card-content">
+    {{ if $alt }}
     <h3 class="image-card-title">{{ $alt }}</h3>
+    {{ end }} {{ if $caption }}
     <p class="image-card-caption">{{ $caption }}</p>
+    {{ end }}
   </div>
 </div>
+
+<!-- ---------- modal ---------- -->
+<div id="recipe-modal" class="recipe-modal hidden">
+  <div class="recipe-modal-wrapper">
+    <div class="recipe-modal-content">
+      <span class="recipe-modal-close" onclick="closeRecipeModal()">×</span>
+      <div class="recipe-modal-image-container">
+        <img
+          id="recipe-modal-image-bg"
+          class="recipe-modal-image-bg"
+          src=""
+          alt=""
+        />
+        <img id="recipe-modal-image" class="recipe-modal-image" src="" alt="" />
+      </div>
+      <div id="recipe-modal-body"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/11.1.1/marked.min.js"></script>
+
+<script>
+  function openRecipeModal(card) {
+    const url = card.dataset.recipe;
+    const imgSrc = card.dataset.img;
+    const imgAlt = card.dataset.alt;
+    if (!url) return;
+
+    const modal = document.getElementById("recipe-modal");
+    const body = document.getElementById("recipe-modal-body");
+    const modalImage = document.getElementById("recipe-modal-image");
+    const modalImageBg = document.getElementById("recipe-modal-image-bg");
+
+    // Set both the main image and the blurred background
+    modalImage.src = imgSrc;
+    modalImage.alt = imgAlt;
+    modalImageBg.src = imgSrc;
+    modalImageBg.alt = "";
+
+    body.innerHTML = "<p>Loading…</p>";
+    modal.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+
+    fetch(url)
+      .then((res) => res.text())
+      .then((markdown) => {
+        const html = marked.parse(markdown);
+        body.innerHTML = html;
+      })
+      .catch(() => {
+        body.innerHTML = "<p>Failed to load recipe.</p>";
+      });
+  }
+
+  function closeRecipeModal() {
+    document.getElementById("recipe-modal").classList.add("hidden");
+    document.body.style.overflow = "";
+  }
+
+  // ESC to close
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeRecipeModal();
+  });
+
+  // Close modal when clicking outside content
+  document
+    .getElementById("recipe-modal")
+    .addEventListener("click", function (e) {
+      if (e.target === this) {
+        closeRecipeModal();
+      }
+    });
+</script>

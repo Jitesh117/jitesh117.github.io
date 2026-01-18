@@ -11,7 +11,10 @@ hideMeta = true
 Hi, I'm Jitesh!
 
 Welcome to my blog, where I document my learning journey and share it to the world.
-[Archive]({{< relref "/archive/" >}}) page lists all posts in chronological order. You can also search by keywords using the [Search]({{< relref "/search/" >}}) or [Tags]({{< relref "/tags" >}}) pages.
+
+[Archive]({{< relref "/archive/" >}}) page lists all posts in chronological order.
+
+You can also search by keywords using the [Search]({{< relref "/search/" >}}) or [Tags]({{< relref "/tags" >}}) pages.
 {{< /description-with-image >}}
 
 ## Recent Projects
@@ -26,7 +29,7 @@ Welcome to my blog, where I document my learning journey and share it to the wor
 ## Things I'm proud of
 
 - Got Featured in [Golang Weekly #531](https://golangweekly.com/issues/531)
-- Scaled my blog to **26K+** readers across **100+** countries across the world
+- Scaled my blog to **30K+** readers across **100+** countries across the world
 - Dataset and Notebooks expert on [Kaggle](https://www.kaggle.com/jiteshkumarsahoo)
 
 ## Want to hire me?
@@ -43,7 +46,16 @@ Hit me up on my email: [sahookumarjitesh@gmail.com](mailto:sahookumarjitesh@gmai
 {{< card src="/images/chicken_brocolli.jpeg"  caption="Pan fried chicken and brocolli with rice" >}}
 {{< /cards >}}
 
-More on [this page]({{< relref "/food/" >}})
+More on [this page ➡️]({{< relref "/food/" >}})
+
+## My Hotwheels collection
+
+{{< cards >}}
+{{< card src="/images/stradale.jpeg"  caption="Ferrari SF90 Stradale Assetto Fiorano" >}}
+{{< card src="/images/cybertruck.jpeg"  caption="Tesla Cybertruck" >}}
+{{< /cards >}}
+
+More on [this page➡️]({{< relref "/hotwheels/" >}})
 
 ## In case you need this
 
