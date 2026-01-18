@@ -95,58 +95,31 @@ url = "/about/"
 weight = 2
 
 [[menu.main]]
-identifier = "archive"
-name = "Archive"
-url = "/archive/"
-weight = 3
-
-[[menu.main]]
 identifier = "posts"
 name = "Blog"
 url = "/blog/"
-weight = 4
+weight = 3
 
 [[menu.main]]
 identifier = "musings"
 name = "Essays"
 url = "/musings/"
-weight = 5
+weight = 4
 
 [[menu.main]]
 identifier = "vim_stuff"
 name = "Vim Stuff"
 url = "/vim_stuff/"
-weight = 6
-
-[[menu.main]]
-identifier = "shelf"
-name = "Shelf"
-url = "/shelf/"
-weight = 7
+weight = 5
 
 [[menu.main]]
 identifier = "search"
-name = "Search"
+name = "🔍"
 url = "/search/"
-weight = 8
+weight = 6
 
-[[menu.main]]
-identifier = "graph"
-name = "Graph"
-url = "/graph/"
-weight = 9
 
-[[menu.main]]
-identifier = "hotwheels"
-name = "Hotwheels"
-url = "/hotwheels/"
-weight = 10
 
-[[menu.main]]
-identifier = "donate"
-name = "Donate"
-url = "/donate/"
-weight = 11
 
 # Markup and Syntax Highlighting Settings
 [markup.highlight]
