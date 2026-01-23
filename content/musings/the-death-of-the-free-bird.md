@@ -127,5 +127,5 @@ The bird isn't just dying anymore. It might already be dead. We're just having t
 I'll miss what it was. I won't miss what it has become.
 
 {{< callout  emoji="🌐" >}}
-If you want to cut the clutter in your X web experience, you can download this [browser extension](https://soitis.dev/control-panel-for-twitter). Makes the experience much better in my opinion.
+If you want to de-clutter your X web experience, you can download this [browser extension](https://soitis.dev/control-panel-for-twitter). Makes the experience much better in my opinion.
 {{< /callout >}}
