@@ -37,7 +37,7 @@ He fired the executives. He rebranded it to "X", still the dumbest rebrand in hi
 
 When Elon bought it, he tweeted: "the bird is freed."
 
-{{< x user="elonmusk" id="1585841080431321088" >}}
+{{< tweet user="elonmusk" id="1585841080431321088" >}}
 
 That's when the bird actually started dying. Slowly rotting from the inside.
 
