@@ -80,7 +80,7 @@ The third-party app ban was especially painful. Apps like Tweetbot and Twitterri
 
 Remember when people changed their profile pictures to look like Elon and posted ridiculous tweets? That was one of the funniest days on Twitter, hands down. But it also showed how broken verification had become.
 
-Major brands started pulling their ads. And instead of asking why, Musk told dismissed them on stage. Advertisers left. Big accounts left. The people who made the platform worth visiting, they're all leaving.
+Major brands started pulling their ads. And instead of asking why, Musk dismissed them on stage. Advertisers left. Big accounts left. The people who made the platform worth visiting, they're all leaving.
 
 ## The Alternatives That Aren't Quite There
 
