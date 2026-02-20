@@ -1,47 +1,28 @@
 +++
-title = 'Rebuilding Google Bigtable in Pure Go: Single File, Zero Dependencies'
-date = 2026-02-18T19:37:55+05:30
-draft = true
+title = 'I Built Google Bigtable in Go: One File, Zero Dependencies'
+date = 2026-02-20T19:37:55+05:30
+cover.image = '/images/bigtable.png'
+draft = false
 showToc = true
 +++
 
-In this blog post, I'm going to cover about my implementation of the [BigTable] paper by google, in pure golang.
+Recently, I read the the [Google Bigtable paper](https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf), and what a fun read it was.
 
-## What is BigTable?
+And I asked myself, how much of it can I fit in a single go file, with no external dependencies whatsoever, and it turns out, quite a lot. And that's what this blog post is about. My implementation of this famous paper.
 
-BigTable is a distributed storage system for managing structure data that is designed to scale to a very large size, Terrabytes and Petabytes in fact, that too across thousands of commodity servers.
+{{< callout  emoji="🌐" >}}
+You can find the source code of this project in this [**github repository**](https://github.com/Jitesh117/bigtableGo)
+{{< /callout >}}
 
-Every piece of data is indexed b three coordinates:
+## 1. What Is Bigtable?
 
-```elixir
-(row key, column key, timestamp) → value
-```
+![Architecture](/images/bigtable_arch.png)
 
-But what was the need of BigTable?
+Bigtable is a distributed storage system designed to scale to petabytes of data across thousands of commodity servers. Despite being called a "table," it is not a relational database.
 
-When data you have to store gets to a humongous size, you need certain things in check:
+I mean sure it does resemble a database, but it does something different, and it does it really well. It provides clients with a simple data model that supports dynamiccontrol over data layout and format, and allow clients to reason about the locality properties of the data represented in the underlying storage.
 
-1. Wide applicability
-2. Scalability
-3. High Performance(of course)
-4. High availability!!!
-
-BigTable solved for these problems, BigTable was used fora variety of workloads, from latency sensitive data serving to heavy throughput batch processing.
-
-## But isn't this what a regular relational database does?
-
-Sure BigTable is very much in resemblance to a database. But it doesn't support a full relational data model.
-What it does instead, and really well, is to provide clients with a simple enough data model that supports dynamic control over data layout and format, and allow clients to reason about the locality properties of the data represented in the underlying sotrage.
-
-BigTable treats data as uninterpreted strings, although clients often serialise various forms of structured and semi-structured data into these strings. Clients have full control over the locality of their data through careful choices in their schemas.
-
-And one of the best features of Bigtable is that they let clients dynamically control whether to server data out of memory or from disk.
-
-## How is data structured in Bigtable
-
-Bigtable is a sparse, distributed, persisten multi-dimensional sorted map. Very big words right? Don't be intimidated. It basically means you have a sorted dictionary(I'm assuming you're familiar with python) as your primary data structure.
-
-And this "map" is indexed by a row key, column key, and a timestamp. Each value in the map is an uninterpreted array of bytes.
+It is a **sparse, distributed, persistent, multidimensional sorted map**. Very big words right? Don't be intimidated. It basically means you have sorted dictionary(I'm assuming you're familiar with python a bit) as your primary data structure.
 
 If this still seems daunting to look at, if translated to golang, this is how it would look like:
 
@@ -73,114 +54,16 @@ type Cell struct {
 }
 ```
 
-Pretty simple right? Now let's discuss what do each field in the `Cell` struct actually mean.
+### But what was the need of BigTable?
 
-### Rows
+When data you have to store gets to a humongous size, you need certain things in check:
 
-The rows keys in a table are arbitrary strings(upto 64KB in size). Every read or write of data under a single row key is atomic(regardless of the number of different columns being read or written in the row).
+1. Wide applicability
+2. Scalability
+3. High Performance(of course)
+4. High availability!!!
 
-Bigtablemaintains data in lexicographic order by row key. The row range for a table is dynamically partitioned.
-Each row range is called a _tablet_, which is the unit of distribution and load balancing.
-
-"Row range" is basically how far and from what point does the end user want to query their data. Clieinits can exploit this property by selecting their row keys so that they get good locality f or their data accesses.
-
-### Column Families
-
-Column keys are grouped into sets called _column families_, which form the basic unit of access control. All data stored in a column family is usually of the same type.
-
-### Timestamps
-
-Each cell in a Bigtable can contain multiple versions of the same data; these versions are indexex by timestamp. Bigtable timestampes are 64-bit integers. They can be assigned by Bigtable, in which case they represent "realtime" in microseconds, or by the end users, in whichcase they must generate unique timestamps themselves.
-
-## Building Blocks
-
-BigTable is built on top of already established google tech, like Google File System to store log and data files.
-But my goal was to build everything from scratch, and since building GFS was out of scope for this, I went ahead with simulating it with local disk I/O wrapped in a simple interface.
-
-```go
-type GFS struct {
-	baseDir string
-	mu      sync.Mutex
-	files   map[string]*GFSFile
-}
-
-type GFSFile struct {
-	path    string
-	content []byte
-	size    int64
-	mu      sync.RWMutex
-}
-```
-
-It also uses Google SSTable file format, which provides a persisten, ordered immutable map from keys to values, where both keys and values are arbitrary byte strings.
-
-```go
-type SSTableBlock struct {
-	cells []*Cell
-}
-
-type SSTableIndex struct {
-	BlockOffsets []int64   // byte offset of each block
-	FirstKeys    []CellKey // first key in each block
-}
-
-type SSTableFooter struct {
-	IndexOffset int64
-	BloomOffset int64
-	Magic       uint32
-}
-
-// SSTableWriter builds an SSTable file
-type SSTableWriter struct {
-	path         string
-	gfs          *GFS
-	buf          bytes.Buffer
-	index        SSTableIndex
-	bloom        *BloomFilter
-	blockCells   []*Cell
-	blockSize    int
-	maxBlockSize int
-}
-```
-
-### Schema
-
-```go
-type TableSchema struct {
-	Name           string
-	ColumnFamilies map[string]*ColumnFamily
-	mu             sync.RWMutex
-}
-```
-
-A `TableSchema` is the schema object created when a user calls `CreateTable`. In Bigtable, schema changes are lightweight, you can add or remove column families without touching the data. The `ColumnFamily` struct store per-family tuning parameters:
-
-```go
-type ColumnFamily struct {
-    Name        string
-    MaxVersions int
-    TTL         time.Duration
-    Compression string   // "none", "snappy", "zlib"
-    BloomFilter bool
-    InMemory    bool
-}
-```
-
-MaxVersions: How many historical versions to keep. Once the limit is exceeded, old versions are garbage-collected during compaction.
-TTL: Time-to-live. Versions older than this duration are automatically deleted during compaction.
-Compression: SSTables for this family will be compressed using the named algorithm. Compression is per-family because some data (like HTML) compresses well while other data (like encrypted blobs) does not.
-InMemory: If true, all SSTables for this column family are kept in memory for faster reads. The paper uses this for the METADATA table's location columns.
-
-## Chubby
-
-Behind this adorably cute name, lies a hhigly available and persistent distributed lock service, which is used by Bigtable.
-
-A Chubby service consists of five active replicas, one of which is elected to be the master and actively server requests. The service is live when a majority of the replicas are running and can communicate with each other.
-
-## 1. Overview: What Is Bigtable?
-
-Bigtable is a distributed storage system designed to scale to petabytes of data across thousands of commodity servers. Despite being called a "table," it is not a relational database. It is a **sparse, distributed, persistent, multidimensional sorted map**.
-
+BigTable solved for these problems, BigTable was used for a variety of workloads, from latency sensitive data serving to heavy throughput batch processing.
 Every piece of data is indexed by three coordinates:
 
 ```
@@ -193,11 +76,11 @@ Every piece of data is indexed by three coordinates:
 
 The data model gives users enormous flexibility. Google's original use cases included the web index (storing crawled HTML with timestamps), Google Analytics, Google Earth, and Gmail.
 
-Our Go implementation faithfully simulates all the major architectural components described in the paper.
-
----
+Pretty simple right? Now let's discuss what do each field in the `Cell` struct actually mean.
 
 ## 2. Constants and Configuration
+
+Before we get into the fun stuff, let's talk about the boring-but-important numbers that control how the whole system behaves. Think of these as the dials you'd turn if you were deploying this in production.
 
 ```go
 const (
@@ -210,8 +93,6 @@ const (
 )
 ```
 
-These constants define the tuning knobs for the entire system. They mirror the kinds of parameters that would be configurable in a real deployment:
-
 - **`DefaultMemtableMaxSize`** (4 MB): Once an in-memory write buffer (the memtable) reaches this size, it is frozen and flushed to disk as an SSTable. In production Bigtable this is configurable per table.
 - **`DefaultMajorCompactionThreshold`** (5): After 5 SSTables accumulate for a tablet, a major compaction is triggered to merge them into one, reclaiming space from deleted data.
 - **`MetadataTableName`**: The special internal `METADATA` table stores the locations of all user tablets. It is managed by Bigtable itself, not by users.
@@ -219,11 +100,9 @@ These constants define the tuning knobs for the entire system. They mirror the k
 - **`ChubbyLeaseDuration`** (10s): How long a Chubby session remains valid between heartbeats. If a tablet server fails to renew within this window, the master declares it dead.
 - **`LatestTimestamp`**: A sentinel value (`MaxInt64`) used when searching for the newest version of a cell. By sorting timestamps in descending order, the newest version always comes first.
 
----
-
 ## 3. Core Data Types
 
-This section defines the fundamental vocabulary of the system — the building blocks every other component uses.
+This section defines the fundamental vocabulary of the system, the building blocks every other component uses.
 
 ### Timestamp
 
@@ -235,7 +114,7 @@ func Now() Timestamp {
 }
 ```
 
-Timestamps are microsecond-precision Unix timestamps stored as `int64`. The paper notes that clients can assign their own timestamps for controlled versioning, or let Bigtable assign them automatically. `Now()` is the automatic assignment path.
+Timestamps are microsecond-precision Unix timestamps stored as `int64`. The paper states that clients can assign their own timestamps for controlled versioning, or let Bigtable assign them automatically. `Now()` is the automatic assignment path.
 
 ### RowKey
 
@@ -247,7 +126,7 @@ func (r RowKey) Compare(other RowKey) int {
 }
 ```
 
-Row keys are raw byte slices. The entire Bigtable data model hinges on **lexicographic ordering** of row keys — this is what makes range scans efficient. A famous design pattern from the paper is reversing domain names (`com.google` instead of `google.com`) so that pages from the same domain cluster together on disk.
+Row keys are raw byte slices. The entire Bigtable data model hinges on **lexicographic ordering** of row keys, this is what makes range scans efficient. A famous design pattern from the paper is reversing domain names (`com.google` instead of `google.com`) so that pages from the same domain cluster together on disk.
 
 ### Column and ColumnFamily
 
@@ -258,7 +137,7 @@ type Column struct {
 }
 ```
 
-A column is identified by two parts separated by a colon: `family:qualifier`. The family (`anchor`, `contents`, `language`) is defined at table-creation time and controls compression, versioning policy, and memory residency. The qualifier is dynamic — it can be anything and is not declared in advance. This is what makes Bigtable "sparse": a row only stores the columns it actually has values for.
+A column is identified by two parts separated by a colon: `family:qualifier`. The family (`anchor`, `contents`, `language`) is defined at table-creation time and controls compression, versioning policy, and memory residency. The qualifier is dynamic, it can be anything and is not declared in advance. This is what makes Bigtable "sparse": a row only stores the columns it actually has values for.
 
 ### Cell
 
@@ -272,7 +151,7 @@ type Cell struct {
 }
 ```
 
-A `Cell` is one versioned value at a specific `(row, column, timestamp)` coordinate. The `Deleted` flag makes it a **tombstone** — a marker that says "this cell was deleted." Tombstones are how deletions propagate through the system before a major compaction permanently removes the data.
+A `Cell` is one versioned value at a specific `(row, column, timestamp)` coordinate. The `Deleted` flag makes it a **tombstone** , a marker that says "this cell was deleted." Tombstones are how deletions propagate through the system before a major compaction permanently removes the data.
 
 ### CellKey and CompareCellKeys
 
@@ -287,7 +166,7 @@ func CompareCellKeys(a, b CellKey) int {
 }
 ```
 
-`CellKey` is the sort key used throughout the system — in the memtable, in SSTables, and during merge operations. The critical detail is that **timestamps are sorted descending**: newest versions come first. This means a simple forward scan naturally yields the most recent version first, which is what most reads want.
+`CellKey` is the sort key used throughout the system, in the memtable, in SSTables, and during merge operations. The critical detail is that **timestamps are sorted descending**: newest versions come first. This means a simple forward scan naturally yields the most recent version first, which is what most reads want.
 
 ### Mutation
 
@@ -311,9 +190,7 @@ type RowRange struct {
 }
 ```
 
-`RowRange` defines a half-open interval `[Start, End)` over row keys. This is the unit of work for scans. `nil` endpoints represent unbounded ranges, meaning "start of table" or "end of table." Tablets are also described by `RowRange`s — a tablet server only accepts reads and writes for row keys within its assigned range.
-
----
+`RowRange` defines a half-open interval `[Start, End)` over row keys. This is the unit of work for scans. `nil` endpoints represent unbounded ranges, meaning "start of table" or "end of table." Tablets are also described by `RowRange`s , a tablet server only accepts reads and writes for row keys within its assigned range.
 
 ## 4. Schema
 
@@ -324,7 +201,7 @@ type TableSchema struct {
 }
 ```
 
-A `TableSchema` is the schema object created when a user calls `CreateTable`. In Bigtable, schema changes are lightweight — you can add or remove column families without touching the data. The `ColumnFamily` struct stores per-family tuning parameters:
+A `TableSchema` is the schema object created when a user calls `CreateTable`. In Bigtable, schema changes are lightweight, you can add or remove column families without touching the data. The `ColumnFamily` struct stores per-family tuning parameters:
 
 ```go
 type ColumnFamily struct {
@@ -344,9 +221,7 @@ type ColumnFamily struct {
 
 `AddColumnFamily` enforces uniqueness and sets default values. `GetColumnFamily` uses a read lock for concurrent access.
 
----
-
-## 5. GFS — The Storage Foundation
+## 5. GFS : The Storage Foundation
 
 ```go
 type GFS struct {
@@ -363,14 +238,12 @@ The `GFS` struct tracks a registry of open files and delegates to standard `os` 
 - **`Create(name)`**: Creates a new file, ensuring all parent directories exist.
 - **`Append(name, data)`**: Opens the file in append mode and writes bytes atomically. This is the primary write pattern for the commit log.
 - **`Read(name)`**: Returns the entire file contents. In real GFS, reads can be streamed in chunks.
-- **`Write(name, data)`**: Atomically replaces a file's content. This is used for SSTable creation — write the whole file at once, then make it visible.
+- **`Write(name, data)`**: Atomically replaces a file's content. This is used for SSTable creation: write the whole file at once, then make it visible.
 - **`Register(name)`**: Registers a file that already exists on disk (used during recovery).
 
 The design of GFS is central to Bigtable's architecture. Because GFS replicates data across machines, Bigtable does not need to implement its own replication. SSTables are immutable once written, which makes them trivially replicable and cacheable.
 
----
-
-## 6. Chubby — The Lock Service
+## 6. Chubby: The Lock Service
 
 Chubby is a distributed lock service that Bigtable relies on for five critical functions:
 
@@ -418,7 +291,7 @@ func (c *Chubby) TryLock(path string, sess *ChubbySession) bool {
 }
 ```
 
-Locks are exclusive. `TryLock` is non-blocking: it returns `true` if the lock was acquired, `false` if another session holds it. This is what the master uses for election — whichever process wins the lock first becomes the active master.
+Locks are exclusive. `TryLock` is non-blocking: it returns `true` if the lock was acquired, `false` if another session holds it. This is what the master uses for election: whichever process wins the lock first becomes the active master.
 
 ### Watches
 
@@ -437,7 +310,7 @@ The constructor creates the standard Bigtable Chubby paths:
 - `/bigtable/servers`: A directory where each tablet server creates its lock file.
 - `/bigtable/acls`: Access control lists.
 
----
+{{< newsletter >}}
 
 ## 7. Bloom Filter
 
@@ -449,7 +322,7 @@ type BloomFilter struct {
 }
 ```
 
-A Bloom filter is a probabilistic data structure that answers "is this element in the set?" with two possible answers: **definitely not** (zero false negatives) or **probably yes** (some false positives). In Bigtable, each SSTable has a Bloom filter covering all `(row, column)` pairs in that file.
+Okay, this one is my favorite. A Bloom filter may sound fancy but it does exactly one thing: it tells you whether something is definitely not in a set, or probably is. That asymmetry is surprisingly powerful.
 
 ```go
 func (bf *BloomFilter) MightContain(key []byte) bool {
@@ -467,9 +340,7 @@ func (bf *BloomFilter) MightContain(key []byte) bool {
 
 The filter uses CRC32 hashing with a seed per hash function. The number of bits and hash functions is computed from the expected item count and desired false positive rate using the standard Bloom filter formulas.
 
----
-
-## 8. Memtable — The In-Memory Write Buffer
+## 8. Memtable: The In-Memory Write Buffer
 
 ```go
 type Memtable struct {
@@ -498,7 +369,7 @@ func (m *Memtable) Insert(cell *Cell) error {
 }
 ```
 
-Binary search (`sort.Search`) finds the insertion point in O(log n) time. The slice is then shifted to make room — O(n) in the worst case, but acceptable for in-memory operations. In a production system, a skip list or balanced BST (like a red-black tree) would give O(log n) insertion and avoid the copy. The paper mentions that the original Bigtable used a skip list.
+Binary search (`sort.Search`) finds the insertion point in O(log n) time. The slice is then shifted to make room: O(n) in the worst case, but acceptable for in-memory operations. In a production system, a skip list or balanced BST (like a red-black tree) would give O(log n) insertion and avoid the copy. The paper mentions that the original Bigtable used a skip list.
 
 ### Get and Scan
 
@@ -516,7 +387,7 @@ func (m *Memtable) Freeze() {
 }
 ```
 
-Freezing a memtable is a lightweight operation — it just sets a flag. After freezing, the memtable becomes read-only. Write attempts return an error. The frozen memtable is added to the `immutable` slice on the tablet and remains readable while it is being written to disk.
+Freezing a memtable is a lightweight operation: it just sets a flag. After freezing, the memtable becomes read-only. Write attempts return an error. The frozen memtable is added to the `immutable` slice on the tablet and remains readable while it is being written to disk.
 
 ### Iterator
 
@@ -529,9 +400,7 @@ type MemtableIterator struct {
 
 The iterator provides a cursor over the sorted entries, used during SSTable creation (the writer walks the memtable in order to produce a sorted SSTable).
 
----
-
-## 9. Commit Log — The Write-Ahead Log
+## 9. Commit Log: The Write-Ahead Log
 
 ```go
 type CommitLog struct {
@@ -547,7 +416,7 @@ The commit log is the **durability guarantee** of the system. Before any mutatio
 
 ### One Log Per Server (Not Per Tablet)
 
-A key architectural decision from the paper: each tablet server maintains **a single commit log** for all of its tablets, not one log per tablet. This dramatically reduces the number of concurrent GFS writes (GFS writes are expensive). The tradeoff is that recovery becomes more complex — when a server fails and its tablets are reassigned to different servers, each new server must sort through the log to find entries relevant to its tablets.
+Here's a decision that seems weird at first: instead of each tablet keeping its own log, the entire server shares one. Sounds messy, right? Turns out it's actually smarter. This dramatically reduces the number of concurrent GFS writes (GFS writes are expensive). The tradeoff is that recovery becomes more complex: when a server fails and its tablets are reassigned to different servers, each new server must sort through the log to find entries relevant to its tablets.
 
 ```go
 func (cl *CommitLog) Append(tabletID string, cell *Cell) (int64, error) {
@@ -571,11 +440,9 @@ func (cl *CommitLog) ReadFrom(minSeq int64) ([]*LogRecord, error) {
 
 `ReadFrom` replays the log from a given sequence number. `Tablet.Recover()` calls this and re-inserts the relevant cells into a fresh memtable. The `minSeq` parameter allows the system to skip log entries that were already flushed to SSTables before the crash.
 
----
+## 10. SSTable: Immutable On-Disk Storage
 
-## 10. SSTable — Immutable On-Disk Storage
-
-SSTables (Sorted String Tables) are the persistent, immutable files that store Bigtable data on GFS. Once written, an SSTable is never modified — this immutability is what allows them to be safely cached, replicated, and read concurrently without locking.
+Once the memtable is full and frozen, it needs to go somewhere permanent. That's where SSTables come in, immutable files that sit on GFS and never change once written. Immutability sounds like a constraint, but it's actually what makes everything else easier: caching, replication, concurrent reads, all of it.
 
 ### File Format
 
@@ -586,7 +453,7 @@ The SSTable binary format consists of four sections:
 ```
 
 - **Data Blocks**: Fixed-size blocks of JSON-encoded cells, sorted by `CellKey`. Each block is up to 64 KB.
-- **Index Block**: A JSON-encoded array of `(blockOffset, firstKey)` pairs — one entry per data block. This allows binary search to find the block containing a target key.
+- **Index Block**: A JSON-encoded array of `(blockOffset, firstKey)` pairs, one entry per data block. This allows binary search to find the block containing a target key.
 - **Bloom Filter**: A JSON-encoded bloom filter covering all `(row, family, qualifier)` triples in the file.
 - **Footer**: Two `int64` values (offsets to the index and bloom filter) and a magic number (`0xB16B00B5`) for validation.
 
@@ -633,7 +500,7 @@ type SSTableReader struct {
 }
 ```
 
-The reader is lazy — it only loads data from GFS on the first access (`load()`). This avoids I/O for SSTables that are never read.
+The reader is lazy, it only loads data from GFS on the first access (`load()`). This avoids I/O for SSTables that are never read.
 
 **Get path**:
 
@@ -644,9 +511,7 @@ The reader is lazy — it only loads data from GFS on the first access (`load()`
 
 **Scan path**: Walk all blocks in order, filtering by row range and column families.
 
----
-
-## 11. Tablet — A Contiguous Row Range
+## 11. Tablet: A Contiguous Row Range
 
 A tablet is the fundamental unit of distribution and load balancing in Bigtable. Each tablet covers a contiguous range of rows `[StartKey, EndKey)` in one table.
 
@@ -773,10 +638,9 @@ const (
 
 State transitions prevent races: a tablet in `TabletCompacting` state rejects new compaction requests; one in `TabletUnloading` is being prepared for transfer to another server.
 
----
+## 12. Caches: Block Cache and Scan Cache
 
-## 12. Caches — Block Cache and Scan Cache
-
+Two reads of the same row shouldn't cost the same as two reads of completely different rows. That's the whole motivation for caching here.
 Both caches use a simple FIFO eviction policy (a production system would use LRU):
 
 ```go
@@ -802,8 +666,6 @@ The **block cache** stores decoded SSTable blocks. Without it, reading the same 
 The **scan cache** stores the final merged results of `Get` calls, keyed by `"get:{row}:{col}"`. This is a higher-level cache: if the same `(row, column)` is read multiple times without any intervening writes, the second read is served directly from the cache without touching the memtable or any SSTable.
 
 The scan cache is **invalidated** after writes (to ensure read-your-writes consistency) and after minor compactions (because the memtable contents changed). The `Clear()` method wipes the entire scan cache when a compaction completes.
-
----
 
 ## 13. Tablet Server
 
@@ -851,7 +713,7 @@ func (ts *TabletServer) Write(tabletStr string, row RowKey, mutations []Mutation
     for _, m := range mutations {
         cell := &Cell{...}
 
-        // 2. Write to commit log (WAL) — MUST persist before memtable
+        // 2. Write to commit log (WAL), MUST persist before memtable
         ts.commitLog.Append(tabletStr, cell)
 
         // 3. Insert into memtable
@@ -861,7 +723,7 @@ func (ts *TabletServer) Write(tabletStr string, row RowKey, mutations []Mutation
 }
 ```
 
-The ordering is critical: the WAL write **must** complete before the memtable write. If the server crashes after the WAL write but before the memtable write, recovery will replay the WAL and reconstruct the memtable. If the crash happened before the WAL write, neither the WAL nor the memtable has the data — but the client never received an acknowledgment, so it will retry.
+The ordering is critical: the WAL write **must** complete before the memtable write. If the server crashes after the WAL write but before the memtable write, recovery will replay the WAL and reconstruct the memtable. If the crash happened before the WAL write, neither the WAL nor the memtable has the data, but the client never received an acknowledgment, so it will retry.
 
 ### The Read Path
 
@@ -872,7 +734,7 @@ func (ts *TabletServer) Read(tabletStr string, row RowKey, col Column, maxVersio
 }
 ```
 
-Reads go directly to the tablet's `Get()` method, which implements the merged view described in the Tablet section. Clients communicate directly with tablet servers — the master is not involved in the read path at all.
+Reads go directly to the tablet's `Get()` method, which implements the merged view described in the Tablet section. Clients communicate directly with tablet servers, the master is not involved in the read path at all.
 
 ### Atomic Read-Modify-Write
 
@@ -891,8 +753,6 @@ func (ts *TabletServer) ReadModifyWrite(tabletStr string, row RowKey, ops []Read
 
 Atomicity is achieved by holding the tablet's memtable lock for the entire read-compute-write operation. This is a coarse-grained lock, but it's correct: no other write can interleave with this operation. The paper describes a similar atomic `CheckAndMutate` operation for conditional writes.
 
----
-
 ## 14. Master Server
 
 ```go
@@ -905,7 +765,7 @@ type Master struct {
 }
 ```
 
-The master is the coordinator of the cluster. It does **not** serve any data — clients never contact the master for reads or writes. Instead, the master handles:
+The master is kind of like a manager who does zero actual work but keeps the whole team from falling apart. It never touches your data directly , clients never talk to it for reads or writes, but without it, nobody would know where anything lives. These are the operation master does:
 
 1. **Tablet assignment**: Tracking which tablet server owns which tablet.
 2. **Server failure detection**: Using Chubby watches to detect dead servers and reclaim their tablets.
@@ -985,11 +845,11 @@ func (m *Master) CreateTable(schema *TableSchema) error {
 
 A new table starts with exactly one tablet covering the entire row key space `[nil, nil)`. As data accumulates, tablets are split by the tablet servers. This is the standard "start with one shard, split as you grow" approach used by many distributed databases.
 
----
-
 ## 15. Tablet Location Hierarchy
 
-Finding the right tablet server for a given `(table, row)` pair is a three-level lookup — a B+-tree-like hierarchy that can address up to ~2^34 tablets with just three network round trips.
+Every read and write needs to find the right tablet server first. Do that naively and you're adding a network round trip to every single operation. Bigtable's solution is a three-level hierarchy that can locate any of ~34 billion tablets in just three hops, and in practice, usually zero, thanks to client-side caching.
+
+Finding the right tablet server for a given `(table, row)` pair is a three-level lookup, a B+-tree-like hierarchy that can address up to ~2^34 tablets with just three network round trips.
 
 ```
 Level 0: Chubby file at /bigtable/root-tablet-location
@@ -1014,7 +874,7 @@ type TabletLocation struct {
 }
 ```
 
-Cache entries have a 30-second TTL. On a cache hit, the client contacts the tablet server directly — zero overhead. On a miss or a stale entry (tablet moved), the client re-traverses the hierarchy.
+Cache entries have a 30-second TTL. On a cache hit, the client contacts the tablet server directly, zero overhead. On a miss or a stale entry (tablet moved), the client re-traverses the hierarchy.
 
 ```go
 func (c *Client) findTabletServer(table string, row RowKey) (*TabletServer, string, error) {
@@ -1033,8 +893,6 @@ func (c *Client) findTabletServer(table string, row RowKey) (*TabletServer, stri
 ```
 
 The paper notes that the client library prefetches tablet locations to further reduce latency. Our implementation includes the cache invalidation path: when a write fails (suggesting the tablet moved), the cache entry is invalidated before retrying.
-
----
 
 ## 16. Client Library
 
@@ -1056,7 +914,7 @@ These are the basic CRUD operations. `Put` creates a `MutationSet`; `Delete` cre
 func (c *Client) GetVersions(table string, row RowKey, col Column, maxVersions int) ([]*Cell, error)
 ```
 
-Returns up to `maxVersions` historical versions, newest first. This is a key differentiator from traditional databases — Bigtable natively supports historical reads without needing a separate audit log.
+Returns up to `maxVersions` historical versions, newest first. This is a key differentiator from traditional databases, Bigtable natively supports historical reads without needing a separate audit log.
 
 ### Scan
 
@@ -1082,8 +940,6 @@ func (c *Client) Append(table string, row RowKey, col Column, data []byte) error
 ```
 
 These are higher-level operations built on top of `ReadModifyWrite`. `Increment` reads the current integer value, adds `delta`, and writes back. `Append` reads the current byte slice and appends `data`. Both are atomic because `ReadModifyWrite` holds the tablet's write lock.
-
----
 
 ## 17. Cluster Bootstrap
 
@@ -1120,13 +976,11 @@ func NewCluster(numServers int) (*Cluster, error) {
 
 `Cluster.Stop` gracefully shuts down all servers and the master, releasing locks in the process.
 
----
+# 18. The Demo
 
-## 18. Main — The Demo
+Okay enough theory. Let's actually run the thing.
 
-The `main()` function exercises all major code paths:
-
-### Step 1–2: Cluster Boot and Table Creation
+## Step 1–2: Cluster Boot and Table Creation
 
 ```go
 cluster, _ := NewCluster(3)
@@ -1137,13 +991,13 @@ cluster.CreateTable("webtable",
 )
 ```
 
-This mirrors the paper's running example: a `webtable` that stores web crawl data, with `anchor` (link anchor text), `contents` (page HTML), and `language` columns. Row keys are reversed domain names (`com.google`, `com.cnn.www`) to cluster pages from the same domain.
+We boot a 3-server cluster and create a `webtable`, the same example Google uses in the paper, which is a nice full-circle moment. The table has three column families: `anchor` for link anchor text, `contents` for the actual page HTML, and `language`. Row keys are reversed domain names (`com.google`, `com.cnn.www`) so that pages from the same domain end up physically next to each other on disk. This significantly makes it faster.
 
-### Step 3–4: Writes and Reads
+## Step 3–4: Writes and Reads
 
-Basic puts and gets validate the write and read paths end-to-end.
+Nothing fancy here, just a basic put followed by a get to confirm the write path and read path actually talk to each other correctly. If this works, the plumbing is good.
 
-### Step 5: Multi-Version Reads
+## Step 5: Multi-Version Reads
 
 ```go
 client.PutWithTimestamp("webtable", row, col, value, t0)
@@ -1152,34 +1006,34 @@ client.PutWithTimestamp("webtable", row, col, value, t2)
 versions, _ := client.GetVersions("webtable", row, col, 3)
 ```
 
-Demonstrates that Bigtable stores multiple versions and returns them newest-first. This is how the web crawl use case works: every re-crawl of a page creates a new version with a new timestamp, while old versions are retained for a configurable period.
+This is one of my favorite parts of Bigtable. We write the same cell three times with different timestamps, then ask for all three versions back. They come out newest-first. This is exactly how the web crawl use case works in production, every time Google re-crawls a page, it doesn't overwrite the old content, it just writes a new version. You can always go back and ask "what did this page look like six months ago?"
 
-### Step 6: Range Scan
+## Step 6: Range Scan
 
 ```go
 cells, _ := client.Scan("webtable", RowKey("com.a"), RowKey("com.z"), nil, 1)
 ```
 
-Scans all rows starting with `com.` — exploiting lexicographic ordering to efficiently retrieve related data.
+One line, but a lot happening under the hood. This scans every row between `com.a` and `com.z`. which, because of our reversed domain name trick, means every `.com` domain. The lexicographic ordering does all the heavy lifting here; this is not filtering per se, just exploiting how the data is laid out.
 
-### Step 7–8: Atomic Counter and Append
+## Step 7–8: Atomic Counter and Append
 
 ```go
 client.Increment("usertable", userRow, counterCol, 1) // 5 times
 client.Append("usertable", userRow, logCol, []byte("|search"))
 ```
 
-Demonstrates the `ReadModifyWrite` path for counters (like page view counts) and append-only logs (like activity streams).
+Both of these go through `ReadModifyWrite`, which holds the tablet's write lock for the entire read-compute-write cycle. That's what makes them atomic. `Increment` is exactly what you'd use for page view counts. `Append` is perfect for activity streams, every action just gets tacked onto the end of a log column.
 
-### Step 9: Deletion
+## Step 9: Deletion
 
 ```go
 client.Delete("webtable", row, col)
 ```
 
-Writes a tombstone. The cell disappears from subsequent reads but is not physically removed until the next major compaction.
+Looks simple, but this doesn't actually delete anything yet. It writes a tombstone, a marker that says "this cell is gone." The data physically disappears only when the next major compaction rolls around and merges everything together. Until then, the read path just sees the tombstone and skips over the old versions. It's a bit like marking an email as deleted without emptying the trash.
 
-### Step 10: Compaction Under Load
+## Step 10: Compaction Under Load
 
 ```go
 for i := 0; i < 1000; i++ {
@@ -1188,9 +1042,9 @@ for i := 0; i < 1000; i++ {
 time.Sleep(2 * time.Second)
 ```
 
-Writes enough data to trigger the background minor compaction loop. After the sleep, the SSTable files on disk under `/tmp/bigtable_gfs/sstables/` can be inspected.
+We hammer the table with 1000 writes to push the memtable over its 4MB threshold and trigger the background minor compaction loop. After the sleep, peek inside `/tmp/bigtable_gfs/sstables/`, you'll actually see the SSTable files sitting on disk. That's real data, written by the system we just built.
 
-### Step 11: Batch Write
+## Step 11: Batch Write
 
 ```go
 server.Write(tabletStr, row, []Mutation{
@@ -1200,85 +1054,202 @@ server.Write(tabletStr, row, []Mutation{
 })
 ```
 
-Creates a user record with three columns atomically — either all three columns are written or none are.
-
----
+Three columns, one call, one atomic operation. Either all three land or none of them do. This is per-row atomicity in action, if you're creating a user record and the server dies halfway through, you won't end up with a row that has a name but no email address.
 
 ## 19. Data Flow Summary
 
-Here is a complete trace of a write operation from the client to durable storage:
+Alright, let's tie it all together. Here's what actually happens under the hood when you do a single write, from your client call all the way to durable storage.
 
-```
-Client.Put("webtable", "com.google", Column{"anchor","Google"}, "Google HQ")
-  │
-  ├─► findTabletServer()
-  │     ├─► Check TabletLocationCache → cache hit
-  │     └─► Return (TabletServer "ts-1", "webtable[nil,nil)")
-  │
-  └─► TabletServer.Write("webtable[nil,nil)", "com.google", mutations)
-        │
-        ├─► Verify Chubby session (ACL check)
-        │
-        ├─► CommitLog.Append(tabletID, cell)
-        │     └─► JSON-encode LogRecord to /tmp/bigtable_gfs/logs/ts-1.log (GFS)
-        │         ← Returns seqNo = 42
-        │
-        ├─► Tablet.Apply(cell)
-        │     └─► Memtable.Insert(cell)
-        │           └─► Binary search → insert at correct sorted position
-        │               ← Memtable size: 1.2 MB
-        │
-        ├─► Invalidate ScanCache for "com.google:anchor:Google"
-        │
-        └─► [If memtable size >= 4 MB]
-              └─► Signal minorFlushCh
-                    └─► [Background goroutine wakes up]
-                          └─► Tablet.MinorCompaction()
-                                ├─► Freeze memtable
-                                ├─► Create new empty memtable
-                                ├─► SSTableWriter.Add() for each entry
-                                ├─► SSTableWriter.Finish() → write to GFS
-                                └─► Register new SSTableReader (newest first)
-                                      └─► [If len(sstables) >= 5]
-                                            └─► Signal majorCompactCh
-                                                  └─► Tablet.MajorCompaction()
-```
+### How the write operates
 
-And a read:
+First, the client's write request must reach the correct tablet server and be durably persisted:
+{{< mermaid >}}
+sequenceDiagram
+participant Client
+participant Cache as TabletLocationCache
+participant TS as TabletServer (ts-1)
+participant Chubby
+participant CommitLog
+participant GFS
 
-```
-Client.Get("webtable", "com.google", Column{"anchor","Google"})
-  │
-  ├─► findTabletServer() → TabletServer "ts-1"
-  │
-  └─► TabletServer.Read() → Tablet.Get()
-        │
-        ├─► Check ScanCache → miss
-        │
-        ├─► Memtable.Get("com.google", anchor:Google, maxVersions=1)
-        │     └─► Binary search → [Cell{value="Google HQ", ts=1234567}]
-        │
-        ├─► For each immutable memtable: Get() → []
-        │
-        ├─► For each SSTable:
-        │     ├─► bloom.MightContain("com.google\x00anchor\x00Google") → true
-        │     ├─► Binary-search index → block 0 at offset 0
-        │     └─► Decode block → [Cell{value="Google HQ", ts=999}] (older version)
-        │
-        ├─► mergeCells(all results, maxVersions=1)
-        │     └─► Sort by timestamp desc → [ts=1234567, ts=999]
-        │         Apply version limit → [ts=1234567]
-        │
-        ├─► Store in ScanCache
-        │
-        └─► Return Cell{value="Google HQ", ts=1234567}
-```
+    Note over Client,GFS: Phase 1: Write Request & Durability
 
----
+    Client->>TS: Put("webtable", "com.google", Column{"anchor","Google"}, "Google HQ")
+    TS->>Cache: findTabletServer()
+    Cache-->>TS: Cache hit → ("ts-1", "webtable[nil,nil)")
+
+    TS->>Chubby: Verify session (ACL check)
+    Chubby-->>TS: OK
+
+    TS->>CommitLog: Append(tabletID, cell)
+    CommitLog->>GFS: JSON encode LogRecord → /tmp/bigtable_gfs/logs/ts-1.log
+    GFS-->>CommitLog: seqNo = 42
+    CommitLog-->>TS: Ack (Write is durable)
+
+{{< /mermaid >}}
+Once durable, the write is applied to the in-memory structure:
+
+{{< mermaid >}}
+sequenceDiagram
+participant TS as TabletServer (ts-1)
+participant Tablet
+participant Memtable
+participant Cache as ScanCache
+
+    Note over TS,Cache: Phase 2: Apply to Memtable
+
+    TS->>Tablet: Apply(cell)
+    Tablet->>Memtable: Insert(cell)
+    Memtable-->>Tablet: Binary search insert
+    Tablet-->>TS: Current size = 1.2MB
+
+    TS->>Cache: Invalidate("com.google:anchor:Google")
+    Cache-->>TS: Cache entry removed
+
+    Note over TS,Memtable: Memtable threshold: 4MB
+    Note over TS,Memtable: Current: 1.2MB (no flush needed)
+
+{{< /mermaid >}}
+
+When memtable exceeds 4MB, background goroutines handle persistence:
+{{< mermaid >}}
+sequenceDiagram
+participant TS as TabletServer
+participant Tablet
+participant Memtable
+participant MinorBG as MinorCompaction Goroutine
+participant MajorBG as MajorCompaction Goroutine
+participant GFS
+
+Note over TS,GFS: Phase 3: Compaction (Triggered when memtable ≥ 4MB)
+
+alt Memtable size >= 4MB
+TS->>MinorBG: Signal minorFlushCh
+activate MinorBG
+
+    MinorBG->>Tablet: MinorCompaction()
+    MinorBG->>Memtable: Freeze current memtable
+    MinorBG->>Tablet: Create new memtable
+
+    MinorBG->>GFS: Write SSTable (Finish)
+    GFS-->>MinorBG: SSTable written
+
+    MinorBG->>Tablet: Register SSTableReader (newest first)
+    Tablet-->>MinorBG: Total SSTables = 6
+
+    alt len(sstables) >= 5
+        MinorBG->>MajorBG: Signal majorCompactCh
+        activate MajorBG
+        MajorBG->>Tablet: MajorCompaction()
+        Note over MajorBG,Tablet: Merge multiple SSTables<br/>to reduce read amplification
+        deactivate MajorBG
+    end
+
+    deactivate MinorBG
+
+end
+
+{{< /mermaid >}}
+
+### And a read:
+
+Every read starts with locating the tablet and checking the query result cache:
+
+{{< mermaid >}}
+
+sequenceDiagram
+participant Client
+participant TS as TabletServer (ts-1)
+participant Cache as TabletLocationCache
+participant Tablet
+participant ScanCache
+
+    Note over Client,ScanCache: Phase 1: Request Routing & L1 Cache
+
+    Client->>TS: Get("webtable", "com.google", Column{"anchor","Google"})
+
+    TS->>Cache: findTabletServer()
+    Cache-->>TS: Cache hit → "ts-1"
+
+    TS->>Tablet: Read(row="com.google", column="anchor:Google")
+
+    Tablet->>ScanCache: Lookup("com.google:anchor:Google")
+    ScanCache-->>Tablet: Cache Miss
+
+    Note over Tablet: ScanCache miss → Must read from storage layers
+
+{{< /mermaid >}}
+
+On cache miss, Bigtable reads from three storage layers **in order of freshness**:
+{{< mermaid >}}
+sequenceDiagram
+participant Tablet
+participant Memtable
+participant ImmMem as Immutable Memtables
+participant SSTable
+participant Bloom
+participant Block
+
+    Note over Tablet,Block: Phase 2: Multi-Level Storage Read
+
+    Note over Tablet: Level 1: Active Memtable
+    Tablet->>Memtable: Get(key, maxVersions=1)
+    Memtable-->>Tablet: [Cell{value="Google HQ", ts=1234567}]
+
+    Note over Tablet: Level 2: Immutable Memtables (pending flush)
+    loop For each immutable memtable
+        Tablet->>ImmMem: Get(key)
+        ImmMem-->>Tablet: [] (empty)
+    end
+
+    Note over Tablet: Level 3: SSTables (newest → oldest)
+    loop For each SSTable
+        Tablet->>Bloom: MightContain("com.google\x00anchor\x00Google")
+        Bloom-->>Tablet: true (possible match)
+
+        Tablet->>SSTable: Binary search index
+        SSTable-->>Tablet: block 0 @ offset 0
+
+        Tablet->>Block: Decode block
+        Block-->>Tablet: [Cell{value="Google HQ", ts=999}]
+    end
+
+    Note over Tablet: Results collected:<br/>Memtable: ts=1234567<br/>SSTable: ts=999
+
+{{< /mermaid >}}
+
+Bigtable's multi-versioning requires merging results from all layers:
+
+{{< mermaid >}}
+sequenceDiagram
+participant Tablet
+participant Merger
+participant ScanCache
+participant TS as TabletServer
+participant Client
+
+    Note over Tablet,Client: Phase 3: Version Reconciliation & Response
+
+    Note over Tablet: Collected results:<br/>• Memtable: ts=1234567<br/>• SSTable: ts=999
+
+    Tablet->>Merger: mergeCells(allResults, maxVersions=1)
+
+    Note over Merger: 1. Sort by timestamp desc<br/>[1234567, 999]<br/><br/>2. Apply version limit<br/>Keep only latest (1234567)<br/><br/>3. Apply tombstone rules
+
+    Merger-->>Tablet: [Cell{value="Google HQ", ts=1234567}]
+
+    Note over Tablet: Update cache for future reads
+    Tablet->>ScanCache: Store("com.google:anchor:Google", result)
+    ScanCache-->>Tablet: Cached
+
+    Tablet-->>TS: Cell{value="Google HQ", ts=1234567}
+    TS-->>Client: Cell{value="Google HQ", ts=1234567}
+
+{{< /mermaid >}}
 
 ## Conclusion
 
-This implementation covers all the major components described in the Bigtable paper:
+If you've made it this far, here's a cheat sheet of everything we built and how it maps back to the paper. Turns out one Go file can do a lot.
 
 | Paper Concept                  | Implementation                                       |
 | ------------------------------ | ---------------------------------------------------- |
@@ -1301,3 +1272,10 @@ This implementation covers all the major components described in the Bigtable pa
 | Read-modify-write              | Atomic increment and append                          |
 
 The major simplifications versus a production system are: using `encoding/json` instead of a binary format, using a local filesystem instead of real GFS, using a sorted slice instead of a skip list for the memtable, and omitting network RPC (everything runs in-process). But the architecture, data flow, and algorithms are faithful to the original paper.
+
+{{< callout  type="info" >}}
+Similar blog posts:
+
+1. [MapReduce implementation in Go](https://jitesh117.github.io/blog/implementing-mapreduce-in-golang/)
+2. [Tail at Scale implementation in Go](https://jitesh117.github.io/blog/implementing-tail-at-scale-in-golang/)
+   {{< /callout >}}
