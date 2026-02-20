@@ -4,6 +4,7 @@ date = 2026-02-20T19:37:55+05:30
 cover.image = '/images/bigtable.png'
 draft = false
 showToc = true
+tags = ['golang', 'paper implementation']
 +++
 
 Recently, I read the the [Google Bigtable paper](https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf), and what a fun read it was.
