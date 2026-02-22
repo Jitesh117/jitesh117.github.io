@@ -1280,3 +1280,5 @@ Similar blog posts:
 1. [MapReduce implementation in Go](https://jitesh117.github.io/blog/implementing-mapreduce-in-golang/)
 2. [Tail at Scale implementation in Go](https://jitesh117.github.io/blog/implementing-tail-at-scale-in-golang/)
    {{< /callout >}}
+
+In the next blog in this [paper implementation](https://jitesh117.github.io/tags/paper-implementation/) series, I'll implement the [Google File System](https://static.googleusercontent.com/media/research.google.com/en//archive/gfs-sosp2003.pdf) paper. Maybe even integrate to this implementation. Stay tuned! Subscribe to the [newsletter](https://buttondown.com/jitesh117) if you haven't yet.
