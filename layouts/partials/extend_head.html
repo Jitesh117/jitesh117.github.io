@@ -52,3 +52,194 @@
   });
 </script>
 {{ end }}
+
+{{ if eq .Section "archive" }}
+<style>
+.archive-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.filter-group, .sort-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.filter-group label, .sort-group label {
+  color: var(--secondary);
+  font-size: 0.9rem;
+}
+.archive-date-input {
+  padding: 0.4rem 0.6rem;
+  padding-right: 2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--code-bg);
+  color: var(--content);
+  font-family: inherit;
+  font-size: 0.9rem;
+  color-scheme: light dark;
+}
+.archive-date-input::-webkit-calendar-picker-filter {
+  filter: invert(1);
+}
+.archive-date-input::-webkit-calendar-picker-icon {
+  filter: invert(1);
+}
+.archive-btn, .archive-select {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--entry);
+  color: var(--content);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+.archive-btn:hover, .archive-select:hover {
+  background: var(--primary);
+  color: var(--theme);
+  border-color: var(--primary);
+}
+.archive-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.archive-no-results {
+  text-align: center;
+  padding: 2rem;
+  color: var(--secondary);
+}
+.archive-year, .archive-month, .archive-entry {
+  transition: opacity 0.2s ease;
+}
+.archive-year.hidden, .archive-month.hidden, .archive-entry.hidden {
+  display: none;
+}
+@media (max-width: 600px) {
+  .archive-controls {
+    flex-direction: column;
+  }
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const startDateInput = document.getElementById('start-date');
+  const endDateInput = document.getElementById('end-date');
+  const filterBtn = document.getElementById('filter-btn');
+  const clearFilterBtn = document.getElementById('clear-filter-btn');
+  const sortOrder = document.getElementById('sort-order');
+  const archiveContainer = document.getElementById('archive-container');
+  const noResults = document.getElementById('no-results');
+
+  function filterPosts() {
+    const startDate = startDateInput.value ? new Date(startDateInput.value) : null;
+    const endDate = endDateInput.value ? new Date(endDateInput.value) : null;
+
+    const entries = document.querySelectorAll('.archive-entry');
+    let visibleCount = 0;
+
+    entries.forEach(entry => {
+      const entryDate = entry.getAttribute('data-date');
+      if (!entryDate) {
+        entry.classList.add('hidden');
+        return;
+      }
+
+      const date = new Date(entryDate);
+
+      let show = true;
+      if (startDate && date < startDate) show = false;
+      if (endDate && date > endDate) show = false;
+
+      if (show) {
+        entry.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        entry.classList.add('hidden');
+      }
+    });
+
+    document.querySelectorAll('.archive-month').forEach(month => {
+      const visibleEntries = month.querySelectorAll('.archive-entry:not(.hidden)');
+      month.classList.toggle('hidden', visibleEntries.length === 0);
+    });
+
+    document.querySelectorAll('.archive-year').forEach(year => {
+      const visibleMonths = year.querySelectorAll('.archive-month:not(.hidden)');
+      year.classList.toggle('hidden', visibleMonths.length === 0);
+    });
+
+    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  function clearFilters() {
+    startDateInput.value = '';
+    endDateInput.value = '';
+    filterPosts();
+  }
+
+  function sortPosts() {
+    const order = sortOrder.value;
+    
+    const allEntries = Array.from(document.querySelectorAll('.archive-entry'));
+    allEntries.sort((a, b) => {
+      const dateA = new Date(a.getAttribute('data-date'));
+      const dateB = new Date(b.getAttribute('data-date'));
+      return order === 'asc' ? dateA - dateB : dateB - dateA;
+    });
+
+    const sortedData = {};
+    allEntries.forEach(entry => {
+      const year = entry.closest('.archive-year').getAttribute('data-year');
+      const month = entry.closest('.archive-month').getAttribute('data-month');
+      if (!sortedData[year]) sortedData[year] = {};
+      if (!sortedData[year][month]) sortedData[year][month] = [];
+      sortedData[year][month].push(entry);
+    });
+
+    const sortedYears = Array.from(document.querySelectorAll('.archive-year')).sort((a, b) => {
+      const yearA = parseInt(a.getAttribute('data-year'));
+      const yearB = parseInt(b.getAttribute('data-year'));
+      return order === 'asc' ? yearA - yearB : yearB - yearA;
+    });
+
+    const archiveContainer = document.getElementById('archive-container');
+    sortedYears.forEach(year => {
+      archiveContainer.appendChild(year);
+      const yearKey = year.getAttribute('data-year');
+      const monthOrder = ['January', 'February', 'March', 'April', 'May', 'June', 
+                          'July', 'August', 'September', 'October', 'November', 'December'];
+      const sortedMonths = Array.from(year.querySelectorAll('.archive-month')).sort((a, b) => {
+        const monthA = monthOrder.indexOf(a.getAttribute('data-month'));
+        const monthB = monthOrder.indexOf(b.getAttribute('data-month'));
+        return order === 'asc' ? monthA - monthB : monthB - monthA;
+      });
+      year.querySelectorAll('.archive-month').forEach(month => month.remove());
+      sortedMonths.forEach(month => {
+        year.appendChild(month);
+        const monthKey = month.getAttribute('data-month');
+        const postsContainer = month.querySelector('.archive-posts');
+        postsContainer.innerHTML = '';
+        if (sortedData[yearKey] && sortedData[yearKey][monthKey]) {
+          sortedData[yearKey][monthKey].forEach(entry => {
+            postsContainer.appendChild(entry);
+          });
+        }
+      });
+    });
+  }
+
+  filterBtn.addEventListener('click', filterPosts);
+  clearFilterBtn.addEventListener('click', clearFilters);
+  sortOrder.addEventListener('change', sortPosts);
+});
+</script>
+{{ end }}
