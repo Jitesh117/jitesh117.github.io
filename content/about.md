@@ -32,7 +32,15 @@ You can also search by keywords using the [Search]({{< relref "/search/" >}}) or
 - Scaled my blog to **30K+** readers across **100+** countries across the world
 - Dataset and Notebooks expert on [Kaggle](https://www.kaggle.com/jiteshkumarsahoo)
 
-## Want to hire me?
+## Want to collaborate on a post?
+
+If you have an idea, product, or perspective you'd like to share with my audience of **30K+** readers, I'd love to hear from you!
+
+Whether it's a guest post, a sponsored write-up, or a joint deep-dive, let's make something worth reading.
+
+Check out the [Collaboration page]({{< relref "/collab/" >}}) for details on formats, rates, and how to get started.
+
+## Want to work with me?
 
 You landed on my blog and something here made you think, “We should work together"?
 If that’s the case, great! Because building systems and writing clean, purposeful software is what I do best.
