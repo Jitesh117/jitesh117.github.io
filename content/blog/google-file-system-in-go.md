@@ -1123,7 +1123,7 @@ If you made it this far, congratulations! Here's a brief cheat sheet for quick r
 | Heartbeat protocol          | 500ms interval, chunk reports, stale detection      |
 | Garbage collection          | Two-phase GC: expired files → orphaned chunks       |
 
-In the next blog in this [paper implementation]({{< relref "/tags/paper-implementation/">}}) series, I'll implement the [Amazon Dynamo](https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf) paper. Stay tuned! Subscribe to the [newsletter](https://buttondown.com/jitesh117) if you haven't yet.
+In the next blog in this [paper implementation]({{< relref "/tags/paper-implementation/">}}) series, I'll implement the [Amazon Dynamo](https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf) paper. Stay tuned! Subscribe to the [newsletter](https://newsletter.jiteshcodes.com/subscription/form) if you haven't yet.
 {{< callout  type="info" >}}
 Similar blog posts:
 

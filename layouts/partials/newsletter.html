@@ -20,17 +20,14 @@
             border: 0.5px solid var(--border);
             border-radius: 12px;
             background: var(--entry)">
-    <form action="https://buttondown.com/api/emails/embed-subscribe/jitesh117"
-          target="_blank"
-          method="post"
-          class="embeddable-buttondown-form"
-          style="text-align: left">
+    <form method="post" action="http://newsletter.jiteshcodes.com/subscription/form" class="listmonk-form">
         <label for="bd-email"
                style="display: block;
                       margin-bottom: 0.5rem;
                       font-weight: 600;
                       font-size: 1rem;
                       color: var(--primary2)">Join the newsletter!</label>
+        <input type="hidden" name="nonce" />
         <input type="email"
                name="email"
                id="bd-email"
@@ -43,6 +40,7 @@
                       border-radius: 8px;
                       margin-bottom: 1rem;
                       color: var(--primary2)" />
+        <input type="hidden" name="l" value="ee103a16-cbc4-4be9-9db5-946476ad1f5f" />
         <input type="submit"
                value="Subscribe"
                style="width: 100%;
@@ -54,7 +52,6 @@
                       font-weight: 600;
                       font-size: 1rem;
                       cursor: pointer" />
-        <p style="font-size: 0.85rem; margin-top: 1rem; text-align: center"></p>
     </form>
 </div>
 {{ end }}

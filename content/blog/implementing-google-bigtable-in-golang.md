@@ -1282,4 +1282,4 @@ Similar blog posts:
 3. [Google File System implementation in Go]({{< relref "/blog/google-file-system-in-go/">}})
    {{< /callout >}}
 
-In the next blog in this [paper implementation](https://jitesh117.github.io/tags/paper-implementation/) series, I'll implement the [Google File System](https://static.googleusercontent.com/media/research.google.com/en//archive/gfs-sosp2003.pdf) paper. Maybe even integrate to this implementation. Stay tuned! Subscribe to the [newsletter](https://buttondown.com/jitesh117) if you haven't yet.
+In the next blog in this [paper implementation](https://jitesh117.github.io/tags/paper-implementation/) series, I'll implement the [Google File System](https://static.googleusercontent.com/media/research.google.com/en//archive/gfs-sosp2003.pdf) paper. Maybe even integrate to this implementation. Stay tuned! Subscribe to the [newsletter](https://newsletter.jiteshcodes.com/subscription/form) if you haven't yet.
