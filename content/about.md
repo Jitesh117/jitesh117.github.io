@@ -19,6 +19,7 @@ You can also search by keywords using the [Search]({{< relref "/search/" >}}) or
 
 ## Recent Projects
 
+- [Vim Royale](https://vimroyale.com/) built using React, Golang, PostgreSQL and Docker.
 - [Brainrot Language Server](https://github.com/Jitesh117/brainrot-lsp) built using Golang. [Blog post]({{< relref "/blog/creating-a-brainrot-language-server-in-golang/" >}})
 - [Interpreter](https://github.com/Jitesh117/monkeylang_interpreter_go) written in Golang. [Blog post]({{< relref "/blog/things-building-an-interpreter-taught-me/" >}})
 - [MapReduce Implementation](https://github.com/Jitesh117/mapReduceGo) written in Golang. [Blog post]({{< relref "/blog/implementing-mapreduce-in-golang/" >}})
@@ -30,6 +31,7 @@ You can also search by keywords using the [Search]({{< relref "/search/" >}}) or
 
 - Got Featured in [Golang Weekly #531](https://golangweekly.com/issues/531)
 - Scaled my blog to **30K+** readers across **100+** countries across the world
+- 200+ users to [Vim Royale](https://vimroyale.com/) within a week!
 - Dataset and Notebooks expert on [Kaggle](https://www.kaggle.com/jiteshkumarsahoo)
 
 ## Want to collaborate on a post?
