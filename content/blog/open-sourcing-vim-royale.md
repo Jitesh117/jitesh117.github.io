@@ -1,7 +1,7 @@
 +++
 title = 'Open Sourcing Vim Royale'
 date = 2026-06-05T11:18:14+05:30
-draft = true
+draft = false
 showToC = true
 cover.image = "/images/open_sourcing.png"
 +++
