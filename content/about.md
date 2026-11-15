@@ -1,73 +1,75 @@
 +++
 draft = false
 url = "/about/"
+layout = "about"
+title = "About"
+summary = "Jitesh is a software engineer at Consuma in Bengaluru who builds things to understand them: distributed systems papers rebuilt in Go, interpreters, dev tools, and Vim Royale."
 showReadingTime = false
 hideMeta = true
 +++
 
-# {{< terminal-prompt >}}
+{{< about-hero image="/images/profile.jpg" alt="Photo of Jitesh" >}}
+# Hi, I'm Jitesh.
 
-{{< description-with-image image="/images/profile.jpg" alt="Description of image" >}}
-Hi, I'm Jitesh!
+A software engineer at **Consuma** in Bengaluru. I build things to understand them: famous systems papers rebuilt in Go, interpreters from scratch, and a multiplayer Vim game. Then I write about what I learned.
 
-Welcome to my blog, where I document my learning journey and share it to the world.
+Writing here since March 2024: **90+ posts** on systems, Go, Vim, and being a developer. New here? [Start with MapReduce →]({{< relref "/blog/implementing-mapreduce-in-golang" >}})
+{{< /about-hero >}}
 
-[Archive]({{< relref "/archive/" >}}) page lists all posts in chronological order.
+## Selected work
 
-You can also search by keywords using the [Search]({{< relref "/search/" >}}) or [Tags]({{< relref "/tags" >}}) pages.
-{{< /description-with-image >}}
+{{< project-featured title="Vim Royale" url="https://vimroyale.com/" img="/images/vim_royale_preview.jpg" stats="300+ players|1,000+ matches|open source" stack="React · Go · PostgreSQL · Docker" code="https://github.com/Jitesh117/vim_royale" post="/blog/open-sourcing-vim-royale" >}}
+Realtime 1v1 Vim battles: race an opponent to edit your buffer into the target code. One shall lose, one shall vim.
+{{< /project-featured >}}
 
-## Recent Projects
+**Systems, rebuilt from the papers**
 
-- [Vim Royale](https://vimroyale.com/) built using React, Golang, PostgreSQL and Docker.
-- [Brainrot Language Server](https://github.com/Jitesh117/brainrot-lsp) built using Golang. [Blog post]({{< relref "/blog/creating-a-brainrot-language-server-in-golang/" >}})
-- [Interpreter](https://github.com/Jitesh117/monkeylang_interpreter_go) written in Golang. [Blog post]({{< relref "/blog/things-building-an-interpreter-taught-me/" >}})
-- [MapReduce Implementation](https://github.com/Jitesh117/mapReduceGo) written in Golang. [Blog post]({{< relref "/blog/implementing-mapreduce-in-golang/" >}})
+{{< projects >}}
+{{< project title="MapReduce" post="/blog/implementing-mapreduce-in-golang" >}}Go · [code](https://github.com/Jitesh117/mapReduceGo){{< /project >}}
+{{< project title="The Tail at Scale" post="/blog/implementing-tail-at-scale-in-golang" >}}Go · [code](https://github.com/Jitesh117/tailAtScaleGo){{< /project >}}
+{{< project title="Bigtable" post="/blog/implementing-google-bigtable-in-golang" >}}Go, one file, zero deps · [code](https://github.com/Jitesh117/bigtableGo){{< /project >}}
+{{< project title="Google File System" post="/blog/google-file-system-in-go" >}}Go, one file, zero deps · [code](https://github.com/Jitesh117/googleFileSystemGo){{< /project >}}
+{{< project title="Amazon Dynamo" post="/blog/implementing-amazon-dynamo-in-elixir" img="/images/dynamo_cover.png" >}}Elixir · [code](https://github.com/Jitesh117/dynamo_elixir){{< /project >}}
+{{< /projects >}}
 
-- [Autograd engine](https://github.com/Jitesh117/autograd_dart) written in Dart
-- [TUI monkeytype](https://github.com/Jitesh117/monkeytype-tui) using the bubbleTea framework
+## Highlights
 
-## Things I'm proud of
+- **48K+** readers
+- **100+** countries
+- **90+** posts since 2024
+- **#531** featured in [Golang Weekly](https://golangweekly.com/issues/531)
 
-- Got Featured in [Golang Weekly #531](https://golangweekly.com/issues/531)
-- Scaled my blog to **30K+** readers across **100+** countries across the world
-- 200+ users to [Vim Royale](https://vimroyale.com/) within a week!
-- Dataset and Notebooks expert on [Kaggle](https://www.kaggle.com/jiteshkumarsahoo)
+Also: Datasets and Notebooks Expert on [Kaggle](https://www.kaggle.com/jiteshkumarsahoo)
 
-## Want to collaborate on a post?
+## Let's collaborate
 
-If you have an idea, product, or perspective you'd like to share with my audience of **30K+** readers, I'd love to hear from you!
+Have an idea, product or perspective you'd like to put in front of **48K+ developers**? I do guest posts, sponsored write-ups and joint deep dives, as long as the result is worth reading. See the [collaboration page]({{< relref "/collab/" >}}) for audience stats and formats, or email [sahookumarjitesh@gmail.com](mailto:sahookumarjitesh@gmail.com).
 
-Whether it's a guest post, a sponsored write-up, or a joint deep-dive, let's make something worth reading.
+## Off the keyboard
 
-Check out the [Collaboration page]({{< relref "/collab/" >}}) for details on formats, rates, and how to get started.
+### I cook
 
-## Want to work with me?
-
-You landed on my blog and something here made you think, “We should work together"?
-If that’s the case, great! Because building systems and writing clean, purposeful software is what I do best.
-
-Hit me up on my email: [sahookumarjitesh@gmail.com](mailto:sahookumarjitesh@gmail.com)
-
-## I also post food I cooked
-
-{{< cards >}}
-{{< card src="/images/shin_ramen.jpeg"  caption="Shin Ramyun" >}}
-{{< card src="/images/chicken_brocolli.jpeg"  caption="Pan fried chicken and brocolli with rice" >}}
+{{< cards cols="4" >}}
+{{< card src="/images/spaghetti_korean_chicken.jpeg" caption="Spaghetti with Korean fried chicken" >}}
+{{< card src="/images/shin_ramen.jpeg" caption="Shin Ramyun" >}}
+{{< card src="/images/butter_chicken.jpeg" caption="Butter chicken" >}}
+{{< card src="/images/chicken_popcorn.jpeg" caption="Peri peri chicken popcorn" >}}
 {{< /cards >}}
 
-More on [this page ➡️]({{< relref "/food/" >}})
+[More from my kitchen →]({{< relref "/food/" >}})
 
-## My Hotwheels collection
+### I collect diecast cars
 
-{{< cards >}}
-{{< card src="/images/stradale.jpeg"  caption="Ferrari SF90 Stradale Assetto Fiorano" >}}
-{{< card src="/images/cybertruck.jpeg"  caption="Tesla Cybertruck" >}}
+{{< cards cols="4" >}}
+{{< car src="/images/stradale.jpeg" caption="Ferrari SF90 Stradale" brand="ferrari" >}}
+{{< car src="/images/cybertruck.jpeg" caption="Tesla Cybertruck" brand="tesla" >}}
+{{< car src="/images/camaro.jpeg" caption="1971 Chevrolet Camaro Z/28" brand="chevrolet" >}}
+{{< car src="/images/cadillac.jpeg" caption="1950 Cadillac Eldorado Biarritz" brand="cadillac" >}}
 {{< /cards >}}
 
-More on [this page➡️]({{< relref "/hotwheels/" >}})
+[See the full collection →]({{< relref "/hotwheels/" >}})
 
-## In case you need this
+And in case you need this:
 
 {{< youtube amXl7FG7J4c >}}
 

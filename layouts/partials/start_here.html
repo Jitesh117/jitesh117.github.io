@@ -1,0 +1,35 @@
+{{- /* "Start here" grid of hand-picked posts (params.startHere), shown at the top of the archive. */ -}}
+{{- $pages := slice -}}
+{{- range site.Params.startHere -}}
+  {{- with site.GetPage . -}}{{- $pages = $pages | append . -}}
+  {{- else -}}{{- warnf "startHere: page %q not found" . -}}{{- end -}}
+{{- end -}}
+{{- with $pages }}
+<section class="sh" aria-labelledby="sh-title">
+  <h2 id="sh-title" class="sh-title">Start here</h2>
+  <div class="sh-grid">
+    {{- range . }}
+    <a class="sh-card" href="{{ .RelPermalink }}">
+      {{- with .Params.cover.image }}<img src="{{ printf "/%s" (strings.TrimPrefix "/" .) | relURL }}" alt="" loading="lazy">{{ end }}
+      <span class="sh-t">{{ .Title }}</span>
+      <span class="sh-rt">{{ .ReadingTime }} min read</span>
+    </a>
+    {{- end }}
+  </div>
+</section>
+<style>
+  .sh { margin: 0 0 2rem; }
+  .sh-title { font-size: 0.75rem; font-family: monospace; font-weight: 400; text-transform: uppercase; letter-spacing: 0.1em; color: var(--secondary); margin: 0 0 0.7rem; }
+  .sh-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; }
+  .sh-card { display: flex; flex-direction: column; gap: 0.3rem; box-shadow: none; }
+  .sh-card img {
+    width: 100%; aspect-ratio: 16 / 10; object-fit: cover; margin: 0 0 0.2rem;
+    border: 1px solid var(--border); border-radius: 6px; opacity: 0.85; transition: opacity 0.2s ease, border-color 0.2s ease;
+  }
+  .sh-card:hover img { opacity: 1; border-color: var(--secondary); }
+  .sh-t { font-weight: 600; font-size: 0.82rem; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .sh-card:hover .sh-t { text-decoration: underline; }
+  .sh-rt { font-size: 0.72rem; color: var(--secondary); }
+  @media (max-width: 640px) { .sh-grid { grid-template-columns: 1fr 1fr; } }
+</style>
+{{- end }}

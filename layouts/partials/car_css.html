@@ -1,0 +1,33 @@
+{{- /* Styles for the {{< car >}} shortcode; included from extend_head.html on pages that use it. */ -}}
+<style>
+  .car {
+    --c: #9aa0a6;
+    position: relative; display: flex; flex-direction: column; margin: 0; overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 10px; background: var(--entry);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .car:hover { transform: translateY(-3px); border-color: var(--secondary); }
+  .car-img { position: relative; background: #e9e9ea; }
+  .post-content .car-img img { display: block; width: 100%; aspect-ratio: 4 / 3; margin: 0; border-radius: 0; object-fit: cover; }
+  .car-tag {
+    position: absolute; top: 8px; right: 8px; padding: 0.1rem 0.5rem; border-radius: 999px;
+    font-size: 0.68rem; font-weight: 600; color: #111; background: rgba(255, 255, 255, 0.85);
+  }
+  .post-content figure.car { margin: 0; }
+  .post-content figure.car > figcaption {
+    flex: 1; display: flex; align-items: center; gap: 0.65rem; margin: 0; padding: 0.65rem 0.8rem;
+    font-size: inherit; font-weight: inherit;
+  }
+  .car-logo { flex-shrink: 0; width: 30px; height: 30px; color: var(--c); fill: currentColor; }
+  .post-content .car-logo-img { flex-shrink: 0; width: 46px; height: 30px; margin: 0; border-radius: 0; object-fit: contain; }
+  .car-badge {
+    flex-shrink: 0; display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 0.35rem;
+    border: 1.5px solid var(--secondary); border-radius: 6px; color: var(--secondary);
+    font-family: monospace; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .car-text { display: flex; flex-direction: column; min-width: 0; }
+  .car-name { font-size: 0.92rem; font-weight: 600; line-height: 1.3; color: var(--primary); }
+  .car-make { font-size: 0.72rem; color: var(--secondary); letter-spacing: 0.02em; }
+  @media (prefers-reduced-motion: reduce) { .car, .car:hover { transition: none; transform: none; } }
+</style>

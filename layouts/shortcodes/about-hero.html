@@ -1,0 +1,11 @@
+{{- /* About page hero: whoami line + photo + markdown bio. Usage:
+       {{< about-hero image="/images/profile.jpg" alt="Photo of Jitesh" >}} markdown {{< /about-hero >}} */ -}}
+<div class="ab-hero">
+  <div class="ab-hero-text">
+    <div class="ab-whoami"><code>[~]$ whoami <span class="ab-cursor"></span></code></div>
+    {{ .Inner | markdownify }}
+  </div>
+  {{- with .Get "image" }}
+  <img class="ab-photo" src="{{ . | relURL }}" alt="{{ $.Get "alt" | default "" }}" width="140" height="140">
+  {{- end }}
+</div>

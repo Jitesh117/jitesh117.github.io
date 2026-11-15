@@ -1,0 +1,25 @@
+{{- /* Featured project card (wide, screenshot + stats + buttons). Usage:
+  {{< project-featured title="Vim Royale" url="https://vimroyale.com/" img="/images/x.jpg"
+      stats="300+ players|1,000+ matches" code="https://github.com/..." post="/blog/..." >}}
+  One-line description in markdown.
+  {{< /project-featured >}} */ -}}
+{{- $url := .Get "url" -}}
+{{- $post := "" -}}{{ with .Get "post" }}{{ $post = site.GetPage . }}{{ end -}}
+<div class="pjf">
+  <a class="pjf-shot" href="{{ $url }}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+    {{- with .Get "img" }}<img src="{{ . | relURL }}" alt="" loading="lazy">{{ end -}}
+  </a>
+  <div class="pjf-body">
+    <a class="pjf-title" href="{{ $url }}" target="_blank" rel="noopener">{{ .Get "title" }}</a>
+    <div class="pjf-desc">{{ .Inner | markdownify }}</div>
+    {{- with .Get "stats" }}
+    <div class="pjf-stats">{{ range split . "|" }}<span>{{ . }}</span>{{ end }}</div>
+    {{- end }}
+    {{- with .Get "stack" }}<div class="pjf-stack">{{ . }}</div>{{ end }}
+    <div class="pjf-actions">
+      <a class="pjf-btn" href="{{ $url }}" target="_blank" rel="noopener">▶ Play</a>
+      {{- with .Get "code" }}<a class="pjf-link" href="{{ . }}" target="_blank" rel="noopener">Code</a>{{ end }}
+      {{- with $post }}<a class="pjf-link" href="{{ .RelPermalink }}">Read the post</a>{{ end }}
+    </div>
+  </div>
+</div>

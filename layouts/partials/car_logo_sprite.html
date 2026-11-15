@@ -1,0 +1,17 @@
+{{- /* Hidden SVG sprite with every brand logo from data/carbrands.toml (logo = true), built from
+       static/images/brands/<key>.svg. Cards reference them with <use href="#brand-<key>">.
+       Emitted by the {{< cards >}} shortcode when it contains {{< car >}} cards. */ -}}
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+  {{- range $key, $b := site.Data.carbrands }}
+  {{- if $b.logo }}
+  {{- $file := printf "static/images/brands/%s.svg" $key }}
+  {{- if fileExists $file }}
+  {{- $svg := readFile $file }}
+  {{- $vb := index (findRESubmatch `viewBox="([^"]+)"` $svg 1) 0 1 | default "0 0 24 24" }}
+  {{- /* keep the drawing (paths and groups, incl. transforms); drop wrapper/metadata; black fills follow currentColor */}}
+  {{- $inner := replaceRE `(?s)^.*?<svg[^>]*>` "" $svg | replaceRE `(?s)</svg>\s*$` "" | replaceRE `(?s)<(metadata|title|desc)>.*?</(metadata|title|desc)>` "" | replaceRE `fill="#0+"` `fill="currentColor"` }}
+  <symbol id="brand-{{ $key }}" viewBox="{{ $vb }}">{{ $inner | safeHTML }}</symbol>
+  {{- else }}{{ warnf "car logo sprite: missing %s" $file }}{{ end }}
+  {{- end }}
+  {{- end }}
+</svg>

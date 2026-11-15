@@ -1,0 +1,142 @@
+{{- /* Floating "Play Vim Royale" button, bottom-right on every page. Retro arcade "attract mode":
+       a block cursor eats a row of pixel dots, the label alternates with a blinking PRESS START,
+       the button hops every few seconds with a light sweep, and hovering pops a "+1 COIN".
+       Everything stops for prefers-reduced-motion. */ -}}
+{{- with site.Params.vimRoyale }}
+<a class="vr-fab" href="{{ .url }}" target="_blank" rel="noopener" aria-label="Play Vim Royale, a multiplayer Vim game">
+  <span class="vr-fab-track" aria-hidden="true">
+    {{- range seq 10 }}<i></i>{{ end -}}
+    <b class="vr-fab-eater"></b>
+  </span>
+  <span class="vr-fab-label" aria-hidden="true">
+    <span class="vr-fab-a"><em>▶</em> PLAY VIM ROYALE</span>
+    <span class="vr-fab-b">PRESS START</span>
+  </span>
+  <span class="vr-fab-coin" aria-hidden="true">+1 COIN</span>
+</a>
+<style>
+  @property --edge { syntax: "<color>"; inherits: true; initial-value: #7aa2f7; }
+  .vr-fab {
+    /* retro palette (same muted tones as the stat tiles) */
+    --blue: #7aa2f7; --green: #9ece6a; --amber: #e0af68; --purple: #bb9af7; --pink: #f7768e;
+    --px: var(--primary);
+    --edge: var(--blue);
+    position: fixed; right: 22px; bottom: 22px; z-index: 101;
+    display: inline-flex; flex-direction: column; align-items: stretch; gap: 0.45rem;
+    padding: 0.5rem 0.85rem 0.6rem;
+    font-family: "JetBrains Mono", "Fira Code", ui-monospace, Menlo, monospace;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; line-height: 1;
+    color: var(--px); background: var(--entry);
+    /* 8-bit border: four 3px edges leave notched corners, plus a hard drop shadow */
+    box-shadow:
+      0 -3px 0 0 var(--edge), 0 3px 0 0 var(--edge),
+      -3px 0 0 0 var(--edge), 3px 0 0 0 var(--edge),
+      6px 6px 0 0 var(--tertiary);
+    text-decoration: none; overflow: visible;
+    animation: vr-in 0.5s steps(5, end) both 0.6s, vr-hop 6s steps(1, end) 2s infinite, vr-edge 7.5s steps(1, end) infinite;
+    transition: transform 0.08s steps(2, end), box-shadow 0.08s steps(2, end);
+  }
+
+  /* light sweep that crosses the button on each hop */
+  .vr-fab::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    background: linear-gradient(100deg, transparent 0 40%, rgba(255, 255, 255, 0.16) 40% 48%, transparent 48% 54%, rgba(255, 255, 255, 0.1) 54% 57%, transparent 57%);
+    background-size: 250% 100%; background-position: 130% 0; background-repeat: no-repeat;
+    animation: vr-sweep 6s steps(8, end) 2s infinite;
+  }
+  /* CRT scanlines on hover */
+  .vr-fab::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+    background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 3px);
+    transition: opacity 0.15s ease;
+  }
+
+  /* dot track + block cursor that eats the dots */
+  .vr-fab-track { position: relative; display: flex; justify-content: space-between; align-items: center; height: 6px; }
+  .vr-fab-track i { width: 3px; height: 3px; background: var(--px); }
+  .vr-fab-track i:nth-child(5n+1) { background: var(--blue); }
+  .vr-fab-track i:nth-child(5n+2) { background: var(--green); }
+  .vr-fab-track i:nth-child(5n+3) { background: var(--amber); }
+  .vr-fab-track i:nth-child(5n+4) { background: var(--purple); }
+  .vr-fab-track i:nth-child(5n+5) { background: var(--pink); }
+  /* "eaten" strip grows behind the cursor in the same steps, hiding the dots it has passed */
+  .vr-fab-track::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--entry); z-index: 1;
+    animation: vr-cover 3s steps(11, end) infinite;
+  }
+  .vr-fab-eater {
+    position: absolute; left: 0; top: -1px; z-index: 2; width: 7px; height: 8px; background: var(--amber);
+    animation: vr-move 3s steps(11, end) infinite, vr-chomp 0.3s steps(1, end) infinite;
+  }
+
+  /* label: PLAY VIM ROYALE <-> blinking PRESS START */
+  .vr-fab-label { position: relative; display: grid; }
+  .vr-fab-label > span { grid-area: 1 / 1; white-space: nowrap; text-align: center; }
+  .vr-fab-a { animation: vr-label-a 6s steps(1, end) infinite; }
+  .vr-fab-a em { font-style: normal; color: var(--green); }
+  .vr-fab-b { opacity: 0; color: var(--amber); animation: vr-label-b 6s steps(1, end) infinite; }
+
+  /* +1 COIN pop on hover */
+  .vr-fab-coin {
+    position: absolute; left: 50%; top: -6px; transform: translate(-50%, 0); opacity: 0; pointer-events: none;
+    padding: 2px 5px; font-size: 0.62rem; letter-spacing: 0.1em; color: #111; background: #f2c94c;
+    box-shadow: 0 -2px 0 0 #f2c94c, 0 2px 0 0 #f2c94c, -2px 0 0 0 #f2c94c, 2px 0 0 0 #f2c94c, 3px 3px 0 0 #a07a1c;
+  }
+
+  /* hover / focus: arcade press, scanlines, coin pop, faster cursor */
+  .vr-fab:hover, .vr-fab:focus-visible {
+    animation-play-state: paused; transform: translate(3px, 3px);
+    box-shadow:
+      0 -3px 0 0 var(--edge), 0 3px 0 0 var(--edge),
+      -3px 0 0 0 var(--edge), 3px 0 0 0 var(--edge),
+      3px 3px 0 0 var(--tertiary);
+  }
+  .vr-fab:hover::after, .vr-fab:focus-visible::after { opacity: 1; }
+  .vr-fab:hover .vr-fab-coin, .vr-fab:focus-visible .vr-fab-coin { animation: vr-coin 0.7s steps(6, end) forwards; }
+  .vr-fab:hover .vr-fab-a, .vr-fab:focus-visible .vr-fab-a { animation: none; opacity: 1; }
+  .vr-fab:hover .vr-fab-b, .vr-fab:focus-visible .vr-fab-b { animation: none; opacity: 0; }
+  .vr-fab:active { transform: translate(6px, 6px); box-shadow: 0 -3px 0 0 var(--edge), 0 3px 0 0 var(--edge), -3px 0 0 0 var(--edge), 3px 0 0 0 var(--edge); }
+
+  @keyframes vr-in { from { transform: translateY(160%); opacity: 0; } to { transform: none; opacity: 1; } }
+  /* quiet most of the cycle, then a two-step pixel hop */
+  @keyframes vr-hop {
+    0%, 86% { translate: 0 0; }
+    88% { translate: 0 -6px; }
+    91% { translate: 0 -9px; }
+    94% { translate: 0 -4px; }
+    96% { translate: 0 -2px; }
+    98%, 100% { translate: 0 0; }
+  }
+  /* marquee-style border colour cycle */
+  @keyframes vr-edge {
+    0% { --edge: var(--blue); } 20% { --edge: var(--green); } 40% { --edge: var(--amber); }
+    60% { --edge: var(--purple); } 80% { --edge: var(--pink); }
+  }
+  @keyframes vr-sweep { 0%, 86% { background-position: 130% 0; } 100% { background-position: -40% 0; } }
+  @keyframes vr-move { from { left: -2px; } to { left: calc(100% + 2px); } }
+  @keyframes vr-chomp { 0% { clip-path: none; } 50% { clip-path: polygon(0 0, 100% 0, 45% 50%, 100% 100%, 0 100%); } }
+  @keyframes vr-cover { from { width: 0; } to { width: 100%; } }
+  @keyframes vr-label-a { 0%, 49.9% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  @keyframes vr-label-b {
+    0%, 49.9% { opacity: 0; }
+    50% { opacity: 1; } 58% { opacity: 0; } 66% { opacity: 1; } 74% { opacity: 0; } 82% { opacity: 1; } 90%, 100% { opacity: 1; }
+  }
+  @keyframes vr-coin {
+    0% { opacity: 1; transform: translate(-50%, 0); }
+    60% { opacity: 1; transform: translate(-50%, -26px); }
+    100% { opacity: 0; transform: translate(-50%, -34px); }
+  }
+
+  @media (max-width: 600px) {
+    .vr-fab { right: 16px; bottom: 16px; padding: 0.45rem 0.65rem 0.5rem; font-size: 0.64rem; }
+  }
+  @media print { .vr-fab { display: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .vr-fab, .vr-fab::before, .vr-fab-track::before, .vr-fab-eater, .vr-fab-a, .vr-fab-b,
+    .vr-fab:hover .vr-fab-coin { animation: none !important; }
+    .vr-fab-track::before { width: 0; }
+    .vr-fab-a { opacity: 1; }
+    .vr-fab-b { opacity: 0; }
+  }
+</style>
+{{- end }}

@@ -21,3 +21,6 @@
 {{- $cols := .Get "cols" | default 2 -}}
 <div class="image-cards not-prose"
      style="--image-cards-grid-cols: {{ $cols }}">{{- .Inner -}}</div>
+{{- /* {{< car >}} cards reference brand logos from an SVG sprite; emit it here (not in the footer,
+       which the theme caches per layout and so can't vary per page). */ -}}
+{{- if strings.Contains .Inner `class="car"` }}{{ partial "car_logo_sprite.html" . }}{{ end }}

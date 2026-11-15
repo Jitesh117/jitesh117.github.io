@@ -1,0 +1,124 @@
+# Brands for the diecast collection (content/hotwheels.md, {{< car brand="..." >}}).
+# name:    label shown on the card
+# color:   logo colour (tuned to read well on the dark theme; official colours that are black/navy are lightened)
+# logo:    true if static/images/brands/<key>.svg exists (single-colour; drawn in `color` via an SVG sprite)
+# logoImg: file in static/images/brands/ shown as-is (for multi-colour logos)
+# Neither: the Hot Wheels logo is shown as a fallback.
+# Sources: Simple Icons (CC0); batman, hotwheels, dodge, cupra, mercury from Wikimedia Commons (public domain, cleaned to plain shapes).
+
+[ferrari]
+name = "Ferrari"
+color = "#e8332a"
+logo = true
+
+[tesla]
+name = "Tesla"
+color = "#e82127"
+logo = true
+
+[ford]
+name = "Ford"
+color = "#3d7bd9"
+logo = true
+
+[chevrolet]
+name = "Chevrolet"
+color = "#d6a23c"
+logo = true
+
+[mercedes]
+name = "Mercedes-Benz"
+color = "#c3c7cc"
+logo = true
+
+[bugatti]
+name = "Bugatti"
+color = "#3f6fe0"
+logo = true
+
+[acura]
+name = "Acura"
+color = "#c3c7cc"
+logo = true
+
+[mclaren]
+name = "McLaren"
+color = "#ff8000"
+logo = true
+
+[volkswagen]
+name = "Volkswagen"
+color = "#4a7fe0"
+logo = true
+
+[porsche]
+name = "Porsche"
+color = "#c9302c"
+logo = true
+
+[honda]
+name = "Honda"
+color = "#e8283a"
+logo = true
+
+[subaru]
+name = "Subaru"
+color = "#3a78d6"
+logo = true
+
+[cadillac]
+name = "Cadillac"
+color = "#c2a46b"
+logo = true
+
+[mazda]
+name = "Mazda"
+color = "#c3c7cc"
+logo = true
+
+[renault]
+name = "Renault"
+color = "#ffcc33"
+logo = true
+
+[nissan]
+name = "Nissan"
+color = "#d61f45"
+logo = true
+
+[dodge]
+name = "Dodge"
+color = "#d8342b"
+logo = true
+
+[shelby]
+name = "Shelby"
+color = "#3d7bd9"
+
+[cupra]
+name = "Cupra"
+color = "#c58a5c"
+logo = true
+
+[mercury]
+name = "Mercury"
+color = "#b9bec4"
+logo = true
+
+[gma]
+name = "Gordon Murray"
+color = "#b9bec4"
+
+[czinger]
+name = "Czinger"
+color = "#b9bec4"
+
+[batman]
+name = "Batman"
+color = "#f2c94c"
+logo = true
+
+[hotwheels]
+name = "Hot Wheels original"
+color = "#ff6a13"
+logoImg = "hotwheels.svg"   # multi-colour wordmark, shown as an image in its own colours

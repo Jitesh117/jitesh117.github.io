@@ -1,0 +1,32 @@
+{{- /* Post lists (homepage incl. /page/N/, and the Blog / Essays / Vim Stuff sections):
+       two-column card grid on desktop, single column on mobile. Included from extend_head.html. */ -}}
+<style>
+  @media (min-width: 769px) {
+    .main {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      align-content: start;
+    }
+    /* everything except post cards (hero, page header, intro text, pagination) spans both columns */
+    .main > :not(.post-entry) { grid-column: 1 / -1; }
+    .main > .page-footer { margin-top: 8px; }
+
+    .main > .post-entry {
+      display: flex; flex-direction: column;
+      margin: 0; padding: 14px;
+      transition: border-color 0.2s ease;
+    }
+    .main > .post-entry:hover { border-color: var(--secondary); }
+    .main > .post-entry:active { transform: none; }
+
+    .post-entry .entry-cover { margin-bottom: 12px; }
+    .post-entry .entry-cover img {
+      aspect-ratio: 16 / 9; object-fit: cover; display: block;
+      border-radius: calc(var(--radius) - 2px);
+    }
+    .post-entry .entry-header h2 { font-size: 17px; line-height: 1.35; }
+    /* keep meta pinned to the bottom so cards in a row line up */
+    .post-entry .entry-footer { margin-top: auto; padding-top: 8px; font-size: 12px; }
+  }
+</style>

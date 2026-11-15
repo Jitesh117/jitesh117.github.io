@@ -1,1 +1,3 @@
 .obsidian
+# local hugo build output (GitHub Actions builds the site itself)
+public/

@@ -1,0 +1,38 @@
+{{- /* Diecast car card with a brand-personalised frame. Must be used inside {{< cards >}} (it emits the logo sprite). Usage:
+  {{< car src="/images/f50.jpeg" caption="Ferrari F50" brand="ferrari" >}}
+  Params:
+    src, caption   image and name (required)
+    brand          key from data/carbrands.toml: sets the logo/badge and frame colour
+    color          optional per-car frame colour override, e.g. color="#8a2be2"
+    tag            optional small chip, e.g. tag="Treasure Hunt" or tag="1:64"
+*/ -}}
+{{- $brandKey := .Get "brand" | default "" -}}
+{{- $brand := dict -}}
+{{- with $brandKey }}{{ with index site.Data.carbrands . }}{{ $brand = . }}{{ else }}{{ warnf "car: unknown brand %q" $brandKey }}{{ end }}{{ end -}}
+{{- $name := $brand.name | default "" -}}
+{{- $color := .Get "color" | default $brand.color | default "#9aa0a6" -}}
+{{- $hasLogo := $brand.logo | default false -}}
+{{- $logoImg := $brand.logoImg | default "" -}}
+{{- /* no logo of its own (or no brand at all): fall back to the Hot Wheels wordmark */ -}}
+{{- if and (not $logoImg) (not $hasLogo) }}{{ $logoImg = index site.Data.carbrands "hotwheels" "logoImg" }}{{ end -}}
+{{- $badge := "" -}}
+{{- if eq $brandKey "hotwheels" }}{{ $badge = "HW" }}{{ else if eq $brandKey "gma" }}{{ $badge = "GMA" }}{{ else if $name }}{{ $badge = $name }}{{ end -}}
+<figure class="car" style="--c: {{ $color | safeCSS }};">
+  <div class="car-img">
+    <img src="{{ .Get "src" | relURL }}" alt="{{ .Get "caption" }}" loading="lazy">
+    {{- with .Get "tag" }}<span class="car-tag">{{ . }}</span>{{ end }}
+  </div>
+  <figcaption>
+    {{- if $logoImg }}
+    <img class="car-logo-img" src="{{ printf "images/brands/%s" $logoImg | relURL }}" alt="{{ $name }} logo">
+    {{- else if $hasLogo }}
+    <svg class="car-logo" role="img" aria-label="{{ $name }} logo"><use href="#brand-{{ $brandKey }}"></use></svg>
+    {{- else if $badge }}
+    <span class="car-badge" aria-hidden="true">{{ $badge }}</span>
+    {{- end }}
+    <span class="car-text">
+      <span class="car-name">{{ .Get "caption" }}</span>
+      {{- with $name }}<span class="car-make">{{ . }}</span>{{ end }}
+    </span>
+  </figcaption>
+</figure>

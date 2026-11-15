@@ -1,0 +1,21 @@
+{{- /* Project card with thumbnail. Usage:
+  {{< project title="MapReduce" post="/blog/implementing-mapreduce-in-golang" >}}Go · [code](https://...){{< /project >}}
+  Params: title (required), post (page path; link + cover image), url (link if no post),
+          img (override thumbnail), placeholder (text shown when there is no image, default "$ _").
+  Inner markdown is the one-line meta. */ -}}
+{{- $page := "" -}}
+{{- with .Get "post" }}{{ $page = site.GetPage . }}{{ if not $page }}{{ errorf "project: page %q not found" . }}{{ end }}{{ end -}}
+{{- $href := .Get "url" -}}
+{{- with $page }}{{ $href = .RelPermalink }}{{ end -}}
+{{- $img := .Get "img" -}}
+{{- if and (not $img) $page }}{{ with $page.Params.cover.image }}{{ $img = printf "/%s" (strings.TrimPrefix "/" .) }}{{ end }}{{ end -}}
+{{- $external := and (not $page) (strings.HasPrefix $href "http") -}}
+<div class="pj">
+  <a class="pj-thumb" href="{{ $href }}"{{ if $external }} target="_blank" rel="noopener"{{ end }} tabindex="-1" aria-hidden="true">
+    {{- with $img }}<img src="{{ . | relURL }}" alt="" loading="lazy">{{ else }}<span class="pj-ph">{{ $.Get "placeholder" | default "$ _" }}</span>{{ end -}}
+  </a>
+  <div class="pj-body">
+    <a class="pj-title" href="{{ $href }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ .Get "title" }}</a>
+    <span class="pj-meta">{{ .Inner | markdownify }}</span>
+  </div>
+</div>

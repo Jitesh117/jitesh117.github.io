@@ -1,0 +1,106 @@
+{{- /* Collaboration page layout (content/collab.md, layout = "collab").
+       Hero + CTA come from front matter (title, lede, email); section styling keys off heading ids:
+       #at-a-glance, #who-reads-this-blog, #top-posts, #why-work-with-me, #ways-to-collaborate. */ -}}
+{{- define "main" }}
+{{- $email := .Params.email }}
+<article class="post-single collab">
+  <header class="cl-hero">
+    <h1>{{ .Title }}</h1>
+    {{- with .Params.lede }}<p class="cl-lede">{{ . | markdownify }}</p>{{ end }}
+    {{- with $email }}
+    <div class="cl-actions">
+      <a class="cl-btn" href="mailto:{{ . }}?subject=Collaboration">Email me</a>
+      <span class="cl-note">{{ . }} · replies within 2 business days</span>
+    </div>
+    {{- end }}
+  </header>
+
+  <div class="post-content">
+    {{- partial "anchored_headings.html" .Content -}}
+  </div>
+
+  {{- with $email }}
+  <section class="cl-cta">
+    <h2>Let's talk</h2>
+    <p>Tell me about your product and what you'd like to reach readers with. We'll work out the format, timing and rates together.</p>
+    <a class="cl-btn" href="mailto:{{ . }}?subject=Collaboration">Email {{ . }}</a>
+  </section>
+  {{- end }}
+</article>
+
+<style>
+  .collab .post-content h2, .cl-cta h2 { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.01em; color: var(--primary); margin: 2.8rem 0 1rem; }
+  .collab .post-content h2 .anchor { display: none; }
+  .collab .post-content ul { padding-left: 0; }
+  .collab .post-content li { list-style: none; }
+  .collab .post-content p { color: var(--secondary); }
+
+  /* hero */
+  .cl-hero { margin: 0.5rem 0 0; }
+  .cl-hero h1 { font-size: 2.3rem; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 0.8rem; }
+  .cl-lede { font-size: 1.05rem; line-height: 1.6; color: var(--secondary); margin: 0 0 1.2rem; max-width: 36em; }
+  .cl-lede strong { color: var(--primary); }
+  .cl-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; }
+  .cl-btn {
+    display: inline-block; padding: 0.55rem 1.1rem; border-radius: 8px; background: var(--primary); color: var(--theme) !important;
+    font-weight: 700; font-size: 0.92rem; box-shadow: none !important; transition: opacity 0.15s ease;
+  }
+  .cl-btn:hover { opacity: 0.88; }
+  .cl-note { font-size: 0.82rem; color: var(--secondary); }
+
+  /* at a glance: stat tiles */
+  .collab #at-a-glance + ul { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; margin: 0 0 0.8rem; }
+  .collab #at-a-glance + ul li { margin: 0; padding: 0.9rem 0.8rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.8rem; line-height: 1.35; color: var(--secondary); }
+  .collab #at-a-glance + ul li strong { display: block; margin-bottom: 0.2rem; font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; color: var(--primary); }
+  /* stat tile accents (Tokyo Night palette, muted) */
+  .collab #at-a-glance + ul li:nth-child(4n+1) { --acc: 122, 162, 247; }
+  .collab #at-a-glance + ul li:nth-child(4n+2) { --acc: 158, 206, 106; }
+  .collab #at-a-glance + ul li:nth-child(4n+3) { --acc: 224, 175, 104; }
+  .collab #at-a-glance + ul li:nth-child(4n+4) { --acc: 187, 154, 247; }
+  .collab #at-a-glance + ul li { background: rgb(var(--acc)) !important; border-color: rgb(var(--acc)) !important; color: rgba(26, 27, 38, 0.78) !important; }
+  .collab #at-a-glance + ul li strong { color: #1a1b26 !important; }
+  .collab #at-a-glance + ul li a { color: inherit; box-shadow: none; text-decoration: underline; text-underline-offset: 2px; }
+  .collab #at-a-glance + ul + p { font-size: 0.88rem; }
+
+  /* who reads: label / value rows */
+  .collab #who-reads-this-blog + p + ul { margin: 0; border-top: 1px solid var(--border); }
+  .collab #who-reads-this-blog + p + ul li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; margin: 0; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.93rem; }
+  .collab #who-reads-this-blog + p + ul li strong { font-size: 0.82rem; font-weight: 600; color: var(--secondary); padding-top: 0.1rem; }
+
+  /* top posts table */
+  .collab #top-posts + table { display: table; width: 100%; margin: 0 0 0.8rem; border-collapse: collapse; font-size: 0.92rem; }
+  .collab #top-posts + table thead th { padding: 0 0 0.5rem; border-bottom: 1px solid var(--border); font-size: 0.78rem; font-weight: 600; color: var(--secondary); text-align: left; }
+  .collab #top-posts + table thead th:last-child { text-align: right; }
+  .collab #top-posts + table td { padding: 0.55rem 0; border-bottom: 1px solid var(--border); }
+  .collab #top-posts + table td:last-child { text-align: right; font-variant-numeric: tabular-nums; color: var(--secondary); white-space: nowrap; padding-left: 1rem; }
+  .collab #top-posts + table td a { box-shadow: none; color: var(--primary); }
+  .collab #top-posts + table td a:hover { text-decoration: underline; }
+  .collab #top-posts + table tr:first-child td { font-weight: 600; }
+  .collab #top-posts + table + p { font-size: 0.88rem; }
+
+  /* why work with me: 2-col cards */
+  .collab #why-work-with-me + ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; margin: 0; }
+  .collab #why-work-with-me + ul li { margin: 0; padding: 0.9rem 1rem; border: 1px solid var(--border); border-radius: 8px; background: var(--entry); font-size: 0.86rem; line-height: 1.55; color: var(--secondary); }
+  .collab #why-work-with-me + ul li strong { display: block; margin-bottom: 0.25rem; font-size: 0.98rem; color: var(--primary); }
+  .collab #why-work-with-me + ul li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+  /* ways to collaborate: 3 package cards */
+  .collab #ways-to-collaborate + p + ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; margin: 0; }
+  .collab #ways-to-collaborate + p + ul li { margin: 0; padding: 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.84rem; line-height: 1.55; color: var(--secondary); }
+  .collab #ways-to-collaborate + p + ul li strong { display: block; margin-bottom: 0.35rem; font-size: 1rem; color: var(--primary); }
+
+  /* bottom CTA */
+  .cl-cta { margin: 2.8rem 0 1rem; padding: 1.4rem 1.5rem; border: 1px solid var(--border); border-left: 3px solid var(--primary); border-radius: 10px; background: var(--entry); }
+  .cl-cta h2 { margin-top: 0 !important; margin-bottom: 0.5rem !important; }
+  .cl-cta p { margin: 0 0 1rem; font-size: 0.93rem; line-height: 1.6; color: var(--secondary); }
+
+  .collab .post-content > p:last-child { margin-top: 2rem; font-size: 0.78rem; color: var(--secondary); }
+
+  @media (max-width: 640px) {
+    .cl-hero h1 { font-size: 1.8rem; }
+    .collab #at-a-glance + ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .collab #why-work-with-me + ul, .collab #ways-to-collaborate + p + ul { grid-template-columns: 1fr; }
+    .collab #who-reads-this-blog + p + ul li { grid-template-columns: 1fr; gap: 0.15rem; }
+  }
+</style>
+{{- end }}

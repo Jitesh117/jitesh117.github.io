@@ -1,0 +1,75 @@
+{{- /* Overrides themes/PaperMod/layouts/partials/home_info.html.
+  Editorial hero: whoami, headline, Play Vim Royale + newsletter, "Start here" thumbnail grid (partials/start_here.html, shared with the archive).
+  PaperMod only renders this partial when params.homeInfoParams is set. */ -}}
+{{- if site.Params.homeInfoParams }}
+
+<article class="first-entry home-hero">
+  <div class="hh-whoami"><code>[~]$ whoami <span class="hh-cursor"></span></code></div>
+  <h1 class="hh-h1">I build things <em>to understand them</em>.</h1>
+  <p class="hh-sub">Distributed systems papers rebuilt in Go, an interpreter from scratch, Vim deep dives, and essays on writing, work and being a developer. Also: a multiplayer Vim game.</p>
+
+  <div class="hh-actions">
+    {{- with site.Params.vimRoyale }}
+    <a class="hh-btn" href="{{ .url }}" target="_blank" rel="noopener">▶ Play Vim Royale</a>
+    {{- end }}
+    <form method="post" action="https://newsletter.jiteshcodes.com/subscription/form" class="hh-news listmonk-form">
+      <label for="hh-email" class="hh-sr">Email address</label>
+      <input type="hidden" name="nonce" />
+      <input type="hidden" name="l" value="ee103a16-cbc4-4be9-9db5-946476ad1f5f" />
+      <input type="email" name="email" id="hh-email" placeholder="you@example.com" required />
+      <input type="submit" value="Subscribe" />
+    </form>
+  </div>
+  {{- with site.Params.newsletterPromise }}<p class="hh-promise">{{ . }}</p>{{ end }}
+
+  <div class="hh-start">{{ partial "start_here.html" . }}</div>
+
+  <div class="hh-social">{{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}</div>
+</article>
+
+<style>
+  .home-hero { min-height: 0; }
+  .hh-whoami code { background: transparent; color: var(--secondary); font-family: monospace; font-size: 0.95rem; padding: 0; }
+  .hh-cursor {
+    display: inline-block; width: 0.55em; height: 1em; margin-left: 2px; vertical-align: text-bottom;
+    background: var(--primary); animation: hh-blink 1s step-start infinite;
+  }
+  @keyframes hh-blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .hh-cursor { animation: none; } }
+
+  .hh-h1 { font-size: 2.5rem; line-height: 1.1; letter-spacing: -0.02em; margin: 0.6rem 0 0.8rem; }
+  .hh-h1 em { font-style: normal; color: var(--secondary); }
+  .hh-sub { font-size: 1.05rem; color: var(--secondary); max-width: 34em; margin: 0 0 1.2rem; line-height: 1.55; }
+
+  .hh-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+  .hh-btn {
+    display: inline-block; padding: 0.55rem 1.05rem; border-radius: 8px; white-space: nowrap;
+    background: var(--primary); color: var(--theme) !important; font-weight: 700; box-shadow: none !important;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .hh-btn:hover { transform: translateY(-1px); opacity: 0.9; }
+  .hh-news { flex: 1 1 280px; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; }
+  .hh-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .hh-news input[type="email"] {
+    flex: 1 1 180px; min-width: 0; padding: 0.55rem 0.7rem; border: 1px solid var(--border);
+    border-radius: 8px; background: var(--code-bg); color: var(--primary);
+  }
+  .hh-news input[type="submit"] {
+    padding: 0.55rem 1.05rem; border: 1px solid var(--primary); border-radius: 8px; cursor: pointer;
+    background: transparent; color: var(--primary); font-weight: 600;
+  }
+  .hh-news input[type="submit"]:hover { background: var(--primary); color: var(--theme); }
+  .hh-promise { margin: 0.5rem 0 0; font-size: 0.82rem; color: var(--secondary); }
+
+  .hh-start { margin-top: 1.6rem; padding-top: 1.2rem; border-top: 1px solid var(--border); }
+  .hh-start .sh { margin: 0; }
+
+  .hh-social { margin-top: 0.9rem; }
+  .hh-social .social-icons { padding: 0; }
+  .hh-social .social-icons a { padding: 0 0.6rem 0 0; }
+  .hh-social .social-icons svg { width: 20px; height: 20px; color: var(--secondary); }
+  .hh-social .social-icons a:hover svg { color: var(--primary); }
+
+  @media (max-width: 600px) { .hh-h1 { font-size: 1.9rem; } }
+</style>
+{{- end -}}

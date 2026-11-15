@@ -1,0 +1,185 @@
+{{- /* Archive page: compact filter bar (title search, year, sort, section tabs, URL sync). */ -}}
+<style>
+  .af { display: grid; gap: 0.5rem; margin-bottom: 1.8rem; }
+  .af-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .af-row { display: flex; align-items: center; gap: 0.5rem; }
+
+  .af-search {
+    flex: 1; min-width: 0; display: flex; align-items: center; gap: 0.45rem; height: 34px;
+    padding: 0 0.6rem; border: 1px solid var(--border); border-radius: 7px; background: var(--entry);
+    color: var(--secondary); transition: border-color 0.15s ease;
+  }
+  .af-search:focus-within { border-color: var(--secondary); }
+  .af-search input {
+    flex: 1; min-width: 0; border: 0; outline: 0; background: transparent;
+    color: var(--primary); font: inherit; font-size: 0.88rem;
+  }
+  .af-search input::-webkit-search-cancel-button { filter: invert(0.6); cursor: pointer; }
+  .af-kbd {
+    font-family: monospace; font-size: 0.7rem; padding: 0 0.35rem; color: var(--secondary);
+    border: 1px solid var(--border); border-radius: 4px;
+  }
+  .af-search:focus-within .af-kbd { display: none; }
+
+  .af-select, .af-sort {
+    height: 34px; padding: 0 0.7rem; border: 1px solid var(--border); border-radius: 7px;
+    background: var(--entry); color: var(--secondary); font: inherit; font-size: 0.82rem; cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .af-select {
+    appearance: none; padding-right: 1.6rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 0.55rem center;
+  }
+  .af-select:hover, .af-sort:hover, .af-select:focus-visible, .af-sort:focus-visible { color: var(--primary); border-color: var(--secondary); outline: 0; }
+  .af-select.is-set { color: var(--primary); border-color: var(--secondary); }
+  .af-sort { white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+  .af-row2 { justify-content: space-between; font-size: 0.82rem; }
+  .af-tabs { display: flex; flex-wrap: wrap; gap: 0.15rem 0.9rem; }
+  .af-tabs button {
+    padding: 0.15rem 0; border: 0; border-bottom: 1px solid transparent; background: none; cursor: pointer;
+    color: var(--secondary); font: inherit; transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .af-tabs button:hover { color: var(--primary); }
+  .af-tabs button[aria-pressed="true"] { color: var(--primary); border-bottom-color: var(--primary); }
+  .af-n { font-size: 0.72rem; opacity: 0.6; }
+  .af-tabs button:focus-visible { outline: 1px solid var(--secondary); outline-offset: 3px; }
+
+  .af-status { display: flex; align-items: center; gap: 0.5rem; color: var(--secondary); white-space: nowrap; }
+  .af-reset {
+    padding: 0; border: 0; background: none; cursor: pointer; color: var(--primary); font: inherit;
+    text-decoration: underline; text-underline-offset: 2px;
+  }
+
+  .archive-no-results { text-align: center; padding: 2rem; color: var(--secondary); }
+  .archive-year.hidden, .archive-month.hidden, .archive-entry.hidden { display: none; }
+
+  @media (max-width: 600px) {
+    .af-kbd { display: none; }
+    .af-row2 { flex-wrap: wrap; }
+  }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var root = document.getElementById('archive-filters');
+  var container = document.getElementById('archive-container');
+  if (!root || !container) return;
+
+  var q = document.getElementById('af-q');
+  var year = document.getElementById('af-year');
+  var sortBtn = document.getElementById('af-sort');
+  var countEl = document.getElementById('af-count');
+  var resetBtn = document.getElementById('af-reset');
+  var noResults = document.getElementById('no-results');
+  var tabs = root.querySelectorAll('[data-section]');
+  var entries = Array.prototype.slice.call(container.querySelectorAll('.archive-entry'));
+  var total = entries.length;
+
+  var state = { q: '', section: '', year: '', sort: 'desc' };
+
+  function setCount(el, n) {
+    var sup = el && el.querySelector('.archive-count');
+    if (sup) sup.textContent = '  ' + n;
+  }
+
+  function apply() {
+    var words = state.q.toLowerCase().split(/\s+/).filter(Boolean);
+    var visible = 0;
+
+    entries.forEach(function (e) {
+      var d = e.dataset.date || '';
+      var title = e.dataset.title || '';
+      var show =
+        (!state.section || e.dataset.section === state.section) &&
+        (!state.year || d.slice(0, 4) === state.year) &&
+        words.every(function (w) { return title.indexOf(w) !== -1; });
+      e.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+
+    container.querySelectorAll('.archive-month').forEach(function (m) {
+      var n = m.querySelectorAll('.archive-entry:not(.hidden)').length;
+      m.classList.toggle('hidden', n === 0);
+      setCount(m.querySelector('.archive-month-header'), n);
+    });
+    container.querySelectorAll('.archive-year').forEach(function (y) {
+      var n = y.querySelectorAll('.archive-entry:not(.hidden)').length;
+      y.classList.toggle('hidden', n === 0);
+      setCount(y.querySelector('.archive-year-header'), n);
+    });
+
+    tabs.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.section === state.section)); });
+    year.value = state.year;
+    year.classList.toggle('is-set', !!state.year);
+
+    var filtered = state.q || state.section || state.year;
+    countEl.textContent = filtered ? visible + ' of ' + total : '';
+    resetBtn.hidden = !filtered;
+    noResults.hidden = visible !== 0;
+    syncUrl();
+  }
+
+  function reverseChildren(parent, selector) {
+    var kids = Array.prototype.slice.call(parent.querySelectorAll(':scope > ' + selector));
+    kids.reverse().forEach(function (k) { parent.appendChild(k); });
+  }
+
+  function setSort(order) {
+    if (order !== 'asc') order = 'desc';
+    sortBtn.textContent = order === 'asc' ? 'Oldest ↑' : 'Newest ↓';
+    sortBtn.setAttribute('aria-label', 'Sort order: ' + (order === 'asc' ? 'oldest' : 'newest') + ' first');
+    if (order === state.sort) return;
+    state.sort = order;
+    reverseChildren(container, '.archive-year');
+    container.querySelectorAll('.archive-year').forEach(function (y) { reverseChildren(y, '.archive-month'); });
+    container.querySelectorAll('.archive-posts').forEach(function (p) { reverseChildren(p, '.archive-entry'); });
+    syncUrl();
+  }
+
+  function syncUrl() {
+    var u = new URL(location.href);
+    ['q', 'section', 'year'].forEach(function (k) {
+      if (state[k]) u.searchParams.set(k, state[k]); else u.searchParams.delete(k);
+    });
+    if (state.sort === 'asc') u.searchParams.set('sort', 'asc'); else u.searchParams.delete('sort');
+    history.replaceState(null, '', u);
+  }
+
+  function reset() {
+    state.q = state.section = state.year = '';
+    q.value = '';
+    apply();
+  }
+
+  var t;
+  q.addEventListener('input', function () {
+    clearTimeout(t);
+    t = setTimeout(function () { state.q = q.value.trim(); apply(); }, 120);
+  });
+  q.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { q.value = ''; state.q = ''; apply(); q.blur(); }
+  });
+  tabs.forEach(function (b) {
+    b.addEventListener('click', function () { state.section = b.dataset.section; apply(); });
+  });
+  year.addEventListener('change', function () { state.year = year.value; apply(); });
+  sortBtn.addEventListener('click', function () { setSort(state.sort === 'desc' ? 'asc' : 'desc'); });
+  resetBtn.addEventListener('click', reset);
+  noResults.querySelector('[data-reset]').addEventListener('click', reset);
+
+  document.addEventListener('keydown', function (e) {
+    var tag = (e.target.tagName || '').toLowerCase();
+    if (e.key === '/' && !e.altKey && !e.ctrlKey && !e.metaKey && tag !== 'input' && tag !== 'textarea' && tag !== 'select' && !e.target.isContentEditable) {
+      e.preventDefault(); q.focus();
+    }
+  });
+
+  var p = new URLSearchParams(location.search);
+  state.q = p.get('q') || ''; q.value = state.q;
+  state.section = p.get('section') || '';
+  state.year = p.get('year') || '';
+  setSort(p.get('sort'));
+  apply();
+});
+</script>

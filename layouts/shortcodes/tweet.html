@@ -1,0 +1,11 @@
+{{- /*
+  Local replacement for Hugo's built-in "tweet" shortcode, which was removed in
+  Hugo v0.156.0. Overrides it so the same markup works on both the CI Hugo
+  version and newer local versions. Usage: {{< tweet user="name" id="123" >}}
+*/ -}}
+{{- $user := .Get "user" -}}
+{{- $id := .Get "id" -}}
+<blockquote class="twitter-tweet" data-dnt="true">
+  <a href="https://twitter.com/{{ $user }}/status/{{ $id }}">https://twitter.com/{{ $user }}/status/{{ $id }}</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

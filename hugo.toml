@@ -32,11 +32,30 @@ buildFuture = true
   searchPlaceholder = "Search..."
   disableScrollToTop = true
 
+  # SEO / social previews (used for meta description, og:* and twitter:* on pages without their own)
+  description = "Jitesh builds things to understand them: distributed systems papers rebuilt in Go, an interpreter from scratch, Vim deep dives, essays on being a developer, and Vim Royale, a multiplayer Vim game."
+  images = ["images/cover.jpeg"]
+  newsletterPromise = "New posts on building systems from scratch in Go, plus Vim tips, straight to your inbox. No spam, unsubscribe anytime."
+
+  # Homepage "Start here" list (page paths, in display order)
+  startHere = [
+    "/blog/implementing-mapreduce-in-golang",
+    "/blog/implementing-tail-at-scale-in-golang",
+    "/blog/implementing-google-bigtable-in-golang",
+    "/blog/google-file-system-in-go",
+  ]
+
+  [params.social]
+    twitter = "Jitesh_117"
+
+  [params.vimRoyale]
+    url = "https://vimroyale.com/"
+
 
   # Home Page Information
   [params.homeInfoParams]
 Title = "{{< terminal-prompt >}}"
-Content = "### Hey! I'm Jitesh\n Welcome to my corner of the internet. This website is a personal blog which I use as a platform to document my learning journey and showcase it for the world to see. \n\n   Join my __[newsletter](https://newsletter.jiteshcodes.com/subscription/form)__!"
+Content = "### Hey! I'm Jitesh\n I build distributed systems and dev tools from scratch in Go, write about Vim, and made a multiplayer Vim game."
 
   # Social Icons
   [[params.socialIcons]]
@@ -65,7 +84,7 @@ Content = "### Hey! I'm Jitesh\n Welcome to my corner of the internet. This webs
 
   [[params.socialIcons]]
   name = "RSS"
-  url = "https://jitesh117.github.io/index.xml"
+  url = "https://jiteshcodes.com/index.xml"
 
   # Cover Image Parameters
   [params.cover]

@@ -27,29 +27,50 @@
   {{- end }}
 </header>
 
-<div class="archive-controls">
-  <div class="filter-group">
-    <label for="start-date">{{ i18n "start_date" | default "Start Date" }}:</label>
-    <input type="date" id="start-date" class="archive-date-input">
-    <label for="end-date">{{ i18n "end_date" | default "End Date" }}:</label>
-    <input type="date" id="end-date" class="archive-date-input">
-    <button id="filter-btn" class="archive-btn">{{ i18n "filter" | default "Filter" }}</button>
-    <button id="clear-filter-btn" class="archive-btn">{{ i18n "clear" | default "Clear" }}</button>
-  </div>
-  <div class="sort-group">
-    <label for="sort-order">{{ i18n "sort_by" | default "Sort" }}:</label>
-    <select id="sort-order" class="archive-select">
-      <option value="desc">{{ i18n "newest_first" | default "Newest First" }}</option>
-      <option value="asc">{{ i18n "oldest_first" | default "Oldest First" }}</option>
-    </select>
-  </div>
-</div>
+{{ partial "start_here.html" . }}
 
 {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
 
 {{- if site.Params.ShowAllPagesInArchive }}
 {{- $pages = site.RegularPages }}
 {{- end }}
+
+{{- $sectionLabels := dict "blog" "Blog" "musings" "Essays" "vim_stuff" "Vim Stuff" }}
+
+<div class="af" id="archive-filters">
+  <div class="af-row">
+    <label class="af-search">
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <span class="af-sr">Search post titles</span>
+      <input type="search" id="af-q" placeholder="Search {{ len $pages }} posts…" autocomplete="off" spellcheck="false">
+      <kbd class="af-kbd" aria-hidden="true">/</kbd>
+    </label>
+    <select id="af-year" class="af-select" aria-label="Filter by year">
+      <option value="">All years</option>
+      {{- range $pages.GroupByPublishDate "2006" }}
+      {{- if ne .Key "0001" }}<option value="{{ .Key }}">{{ .Key }}</option>{{ end }}
+      {{- end }}
+    </select>
+    <button type="button" id="af-sort" class="af-sort" aria-label="Sort order: newest first">Newest ↓</button>
+  </div>
+
+  <div class="af-row af-row2">
+    <div class="af-tabs" role="group" aria-label="Filter by section">
+      <button type="button" data-section="" aria-pressed="true">All</button>
+      {{- range site.Params.mainSections }}
+      {{- $n := len (where $pages "Section" .) }}
+      {{- if $n }}
+      <button type="button" data-section="{{ . }}" aria-pressed="false">{{ index $sectionLabels . | default (humanize .) }} <span class="af-n">{{ $n }}</span></button>
+      {{- end }}
+      {{- end }}
+    </div>
+    <div class="af-status" aria-live="polite">
+      <span id="af-count"></span>
+      <button type="button" id="af-reset" class="af-reset" hidden>Reset</button>
+    </div>
+  </div>
+</div>
+
 
 <div id="archive-container">
   {{- range $pages.GroupByPublishDate "2006" }}
@@ -64,7 +85,7 @@
       <div class="archive-posts">
         {{- range .Pages }}
         {{- if eq .Kind "page" }}
-        <div class="archive-entry" data-date="{{ .Date.Format "2006-01-02" }}">
+        <div class="archive-entry" data-date="{{ .Date.Format "2006-01-02" }}" data-section="{{ .Section }}" data-title="{{ .Title | plainify | lower }}">
           <h3 class="archive-entry-title entry-hint-parent">
             {{- .Title | markdownify }}
             {{- if .Draft }}
@@ -91,8 +112,9 @@
   {{- end }}
 </div>
 
-<div id="no-results" class="archive-no-results" style="display: none;">
-  <p>{{ i18n "no_results" | default "No posts found within the selected date range." }}</p>
+<div id="no-results" class="archive-no-results" hidden>
+  <p>No posts match these filters.</p>
+  <button type="button" class="af-reset" data-reset>Reset filters</button>
 </div>
 
 {{- end }}{{/* end main */}}
