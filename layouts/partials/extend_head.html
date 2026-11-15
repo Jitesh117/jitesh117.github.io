@@ -58,3 +58,6 @@
 {{ if eq .Section "archive" }}{{ partial "archive_filters.html" . }}{{ end }}
 
 {{ if strings.Contains .RawContent "{{< car " }}{{ partial "car_css.html" . }}{{ end }}
+
+{{- /* Images now carry width/height (to avoid layout shift); keep them scaling with their container */}}
+<style>.post-content img[width], .entry-cover img[width] { max-width: 100%; height: auto; }</style>

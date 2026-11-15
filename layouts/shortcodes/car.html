@@ -19,7 +19,8 @@
 {{- if eq $brandKey "hotwheels" }}{{ $badge = "HW" }}{{ else if eq $brandKey "gma" }}{{ $badge = "GMA" }}{{ else if $name }}{{ $badge = $name }}{{ end -}}
 <figure class="car" style="--c: {{ $color | safeCSS }};">
   <div class="car-img">
-    <img src="{{ .Get "src" | relURL }}" alt="{{ .Get "caption" }}" loading="lazy">
+    {{- $t := partial "img_src.html" (dict "src" (.Get "src") "w" 480) }}
+    <img src="{{ $t.src | relURL }}" alt="{{ .Get "caption" }}" loading="lazy" decoding="async"{{ with $t.w }} width="{{ . }}" height="{{ $t.h }}"{{ end }}>
     {{- with .Get "tag" }}<span class="car-tag">{{ . }}</span>{{ end }}
   </div>
   <figcaption>

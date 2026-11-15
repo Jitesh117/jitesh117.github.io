@@ -12,7 +12,7 @@
 {{- $external := and (not $page) (strings.HasPrefix $href "http") -}}
 <div class="pj">
   <a class="pj-thumb" href="{{ $href }}"{{ if $external }} target="_blank" rel="noopener"{{ end }} tabindex="-1" aria-hidden="true">
-    {{- with $img }}<img src="{{ . | relURL }}" alt="" loading="lazy">{{ else }}<span class="pj-ph">{{ $.Get "placeholder" | default "$ _" }}</span>{{ end -}}
+    {{- with $img }}{{ $t := partial "img_src.html" (dict "src" . "w" 240) }}<img src="{{ $t.src | relURL }}" alt="" loading="lazy" decoding="async">{{ else }}<span class="pj-ph">{{ $.Get "placeholder" | default "$ _" }}</span>{{ end -}}
   </a>
   <div class="pj-body">
     <a class="pj-title" href="{{ $href }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ .Get "title" }}</a>

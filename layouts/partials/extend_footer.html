@@ -142,12 +142,11 @@
 <div id="graph-container" class="graph-container">
   <div class="graph-controls">
     <div class="graph-title">
-      Topic Graph
-      <span class="zoom-instructions">(Use scroll wheel to zoom)</span>
+      Graph
+      <span class="zoom-instructions">(scroll to zoom, drag to move)</span>
     </div>
   </div>
-  {{ partial "graph.html" (dict "graphId" "floating-graph" "graphWidth" "100%"
-  "graphHeight" "calc(100% - 40px) " "jsonPath" "/index.json") }}
+  {{ partial "graph.html" (dict "id" "floating-graph" "mode" "local" "height" "calc(100% - 40px)") }}
 </div>
 <!-- Floating Action Button (mobile only) -->
 <div id="graph-fab" class="graph-fab">

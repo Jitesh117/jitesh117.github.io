@@ -1,0 +1,5 @@
+{{- /* Markdown images: serve a resized WebP (max 1400px wide) when the image lives under /images/. */ -}}
+{{- $img := partial "img_src.html" (dict "src" .Destination "w" 1400) -}}
+<img src="{{ $img.src | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async"
+  {{- with $img.w }} width="{{ . }}" height="{{ $img.h }}"{{ end }}>
+{{- /* */ -}}

@@ -7,7 +7,7 @@
 {{- $post := "" -}}{{ with .Get "post" }}{{ $post = site.GetPage . }}{{ end -}}
 <div class="pjf">
   <a class="pjf-shot" href="{{ $url }}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-    {{- with .Get "img" }}<img src="{{ . | relURL }}" alt="" loading="lazy">{{ end -}}
+    {{- with .Get "img" }}{{ $t := partial "img_src.html" (dict "src" . "w" 800) }}<img src="{{ $t.src | relURL }}" alt="" loading="lazy" decoding="async">{{ end -}}
   </a>
   <div class="pjf-body">
     <a class="pjf-title" href="{{ $url }}" target="_blank" rel="noopener">{{ .Get "title" }}</a>

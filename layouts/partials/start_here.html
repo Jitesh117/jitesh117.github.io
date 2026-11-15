@@ -10,7 +10,7 @@
   <div class="sh-grid">
     {{- range . }}
     <a class="sh-card" href="{{ .RelPermalink }}">
-      {{- with .Params.cover.image }}<img src="{{ printf "/%s" (strings.TrimPrefix "/" .) | relURL }}" alt="" loading="lazy">{{ end }}
+      {{- with .Params.cover.image }}{{ $img := partial "img_src.html" (dict "src" . "w" 480) }}<img src="{{ $img.src | relURL }}" alt="" loading="lazy" decoding="async"{{ with $img.w }} width="{{ . }}" height="{{ $img.h }}"{{ end }}>{{ end }}
       <span class="sh-t">{{ .Title }}</span>
       <span class="sh-rt">{{ .ReadingTime }} min read</span>
     </a>

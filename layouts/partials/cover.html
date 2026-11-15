@@ -1,0 +1,18 @@
+{{- /* Overrides the theme's cover image: serves a resized WebP (720px wide in lists, 1400px on
+       the post itself) instead of the full-size original. With params.cover.linkFullImages the
+       image on a post still links to the original file. */ -}}
+{{- with .cxt }}
+{{- if (and .Params.cover.image (not $.isHidden)) }}
+{{- $alt := (.Params.cover.alt | default .Params.cover.caption | plainify) | default .Title }}
+{{- $orig := printf "/%s" (strings.TrimPrefix "/" .Params.cover.image) }}
+{{- $img := partial "img_src.html" (dict "src" $orig "w" (cond $.IsSingle 1400 720)) }}
+{{- $addLink := and site.Params.cover.linkFullImages $.IsSingle }}
+<figure class="entry-cover">
+  {{- if $addLink }}<a href="{{ $orig | relURL }}" target="_blank" rel="noopener noreferrer">{{ end -}}
+  <img loading="{{ cond $.IsSingle "eager" "lazy" }}" decoding="async" src="{{ $img.src | relURL }}" alt="{{ $alt }}"
+    {{- with $img.w }} width="{{ . }}" height="{{ $img.h }}"{{ end }}>
+  {{- if $addLink }}</a>{{ end -}}
+  {{- if $.IsSingle }}{{ with .Params.cover.caption }}<p>{{ . | markdownify }}</p>{{ end }}{{ end }}
+</figure>
+{{- end }}
+{{- end -}}

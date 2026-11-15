@@ -9,10 +9,30 @@ buildFuture = true
 
 # Output Formats
 [outputs]
-  home = ['html', 'rss', 'json']
+  home = ['html', 'rss', 'json', 'graph']
   section = ['html', 'rss']
   taxonomy = ['html']
   term = ['html']
+
+# Expose static/images to Hugo's image processing (resized WebP copies are generated at build
+# time by layouts/partials/img_src.html); the originals are still published at /images/...
+[module]
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "static/images"
+    target = "assets/images"
+
+# Lightweight data for the graph view (posts, tags and post-to-post links): /graph.json
+[outputFormats.graph]
+  mediaType = "application/json"
+  baseName = "graph"
+  isPlainText = true
+  notAlternative = true
 
 # Site Parameters
 [params]

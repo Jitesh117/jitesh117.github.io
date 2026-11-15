@@ -1,0 +1,29 @@
+{{- /* /graph.json: nodes and edges for the Obsidian-style graph (layouts/partials/graph.html).
+       posts: every post in mainSections, with its tag ids
+       links: post -> post edges found as internal links in the rendered content
+       tags:  tag term pages (Hugo merges case variants like "Opinion"/"opinion") */ -}}
+{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
+{{- $paths := slice -}}
+{{- range $pages }}{{ $paths = $paths | append .RelPermalink }}{{ end -}}
+{{- $posts := slice -}}
+{{- $links := slice -}}
+{{- range $pages -}}
+  {{- $p := . -}}
+  {{- $tags := slice -}}
+  {{- range .GetTerms "tags" }}{{ $tags = $tags | append .RelPermalink }}{{ end -}}
+  {{- $posts = $posts | append (dict "id" .RelPermalink "title" .Title "section" .Section "tags" $tags) -}}
+  {{- $seen := slice -}}
+  {{- range findRE `href="[^"]+"` .Content -}}
+    {{- $u := strings.TrimSuffix `"` (strings.TrimPrefix `href="` .) -}}
+    {{- $u = replaceRE `^https?://(www\.)?(jiteshcodes\.com|jitesh117\.github\.io|localhost:\d+)` "" $u -}}
+    {{- $u = replaceRE `[#?].*$` "" $u -}}
+    {{- if and (hasPrefix $u "/") (not (hasSuffix $u "/")) }}{{ $u = printf "%s/" $u }}{{ end -}}
+    {{- if and (in $paths $u) (ne $u $p.RelPermalink) (not (in $seen $u)) -}}
+      {{- $seen = $seen | append $u -}}
+      {{- $links = $links | append (dict "source" $p.RelPermalink "target" $u) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $tags := slice -}}
+{{- range site.Taxonomies.tags }}{{ $tags = $tags | append (dict "id" .Page.RelPermalink "title" .Page.LinkTitle) }}{{ end -}}
+{{- dict "posts" $posts "links" $links "tags" $tags | jsonify -}}

@@ -243,7 +243,8 @@
   end
   }}
 >
-  <img src="{{ $img }}" alt="{{ $alt }}" />
+  {{- $t := partial "img_src.html" (dict "src" $img "w" 560) }}
+  <img src="{{ $t.src | relURL }}" alt="{{ $alt }}" loading="lazy" decoding="async"{{ with $t.w }} width="{{ . }}" height="{{ $t.h }}"{{ end }} />
   <div class="image-card-content">
     {{ if $alt }}
     <h3 class="image-card-title">{{ $alt }}</h3>

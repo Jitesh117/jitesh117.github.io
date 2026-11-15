@@ -1,0 +1,24 @@
+{{- /* Resized, WebP copy of a site image for display. Usage:
+     {{ $img := partial "img_src.html" (dict "src" "/images/foo.png" "w" 720) }}
+     <img src="{{ $img.src }}" width="{{ $img.w }}" height="{{ $img.h }}">
+   Returns dict: src (URL), w/h (pixel size, 0 if unknown).
+   Only processes raster images under /images/ that Hugo can read (via the static/images ->
+   assets/images mount in hugo.toml); anything else (SVG, GIF, external URLs) is passed through. */ -}}
+{{- $src := .src | default "" -}}
+{{- $w := .w | default 720 -}}
+{{- $out := dict "src" $src "w" 0 "h" 0 -}}
+{{- $path := strings.TrimPrefix "/" $src -}}
+{{- if and (hasPrefix $path "images/") (not (strings.Contains $path "://")) -}}
+  {{- with resources.Get $path -}}
+    {{- if in (slice "jpeg" "png" "webp" "bmp" "tiff") .MediaType.SubType -}}
+      {{- $img := . -}}
+      {{- if gt $img.Width $w -}}
+        {{- $img = $img.Process (printf "resize %dx webp q78" $w) -}}
+      {{- else -}}
+        {{- $img = $img.Process "webp q80" -}}
+      {{- end -}}
+      {{- $out = dict "src" $img.RelPermalink "w" $img.Width "h" $img.Height -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

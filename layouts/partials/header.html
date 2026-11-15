@@ -151,7 +151,5 @@
         {{ template "_internal/google_analytics.html" . }}
         {{ template "_internal/google_analytics_async.html" . }}
     {{ end }}  */}}
-    {{ if eq (getenv "HUGO_ENV") "production" }}
-        {{ partial "google-analytics.html" . }}
-    {{ end }}
+    {{- /* Google Analytics is added once by the theme (head.html) from googleAnalytics in hugo.toml */}}
 </header>

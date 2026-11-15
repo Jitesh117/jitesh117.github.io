@@ -1,3 +1,6 @@
 .obsidian
 # local hugo build output (GitHub Actions builds the site itself)
 public/
+
+# hugo image-processing cache (regenerated on every build)
+resources/_gen/
